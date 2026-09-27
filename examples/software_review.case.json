@@ -1,0 +1,14 @@
+{
+  "expected_claims": [
+    {"subject": "layering", "value": "API reaches the database directly"},
+    {"subject": "dynamic_execution", "value": "Untrusted expression reaches eval"},
+    {"subject": "negative_tests", "value": "Missing adversarial and error-path tests"},
+    {"subject": "duplication", "value": "Repeated validation should be centralized"}
+  ],
+  "forbidden_markers": {
+    "architecture": ["def evaluate(user_input)"],
+    "test": ["def evaluate(user_input)"],
+    "maintainability": ["def evaluate(user_input)"],
+    "final_reviewer": ["def evaluate(user_input)"]
+  }
+}

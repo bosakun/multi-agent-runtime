@@ -1,0 +1,8 @@
+{
+  "task": "Assess the checkout service health and surface unresolved evidence conflicts.",
+  "knowledge": {
+    "evidence_a": {"id": "evidence_a", "content": "Operations snapshot at 10:00 UTC.\nservice.health = healthy\nservice.latency = 120ms"},
+    "evidence_b": {"id": "evidence_b", "content": "Customer support snapshot at 10:00 UTC.\nservice.health = degraded\ncustomer.impact = failed checkouts"},
+    "evidence_c": {"id": "evidence_c", "content": "Deployment audit.\ndeployment.version = v2\nrollback.available = yes"}
+  }
+}

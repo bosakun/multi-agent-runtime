@@ -1,0 +1,19 @@
+{
+  "expected_claims": [
+    {"subject": "service.health", "value": "healthy", "evidence_ids": ["evidence_a"]},
+    {"subject": "service.latency", "value": "120ms", "evidence_ids": ["evidence_a"]},
+    {"subject": "service.health", "value": "degraded", "evidence_ids": ["evidence_b"]},
+    {"subject": "customer.impact", "value": "failed checkouts", "evidence_ids": ["evidence_b"]},
+    {"subject": "deployment.version", "value": "v2", "evidence_ids": ["evidence_c"]},
+    {"subject": "rollback.available", "value": "yes", "evidence_ids": ["evidence_c"]}
+  ],
+  "expected_conflicts": ["service.health"],
+  "forbidden_markers": {
+    "investigator_a": ["Customer support snapshot", "Deployment audit"],
+    "investigator_b": ["Operations snapshot", "Deployment audit"],
+    "investigator_c": ["Operations snapshot", "Customer support snapshot"],
+    "reviewer": ["Operations snapshot", "Customer support snapshot", "Deployment audit"],
+    "conflict_detector": ["Operations snapshot", "Customer support snapshot", "Deployment audit"],
+    "synthesizer": ["Operations snapshot", "Customer support snapshot", "Deployment audit"]
+  }
+}

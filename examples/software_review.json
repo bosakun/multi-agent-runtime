@@ -1,0 +1,15 @@
+{
+  "task": "Review a proposed expression-evaluation endpoint before release.",
+  "inputs": {
+    "architecture": "Layered architecture: HTTP handlers should call an application service. Proposed handler writes directly to the database.",
+    "changed_files": ["api/expressions.py", "tests/test_expressions.py"],
+    "changed_code": "def evaluate(user_input): return eval(user_input)",
+    "dependencies": ["fastapi"],
+    "security_constraints": "Never execute user-supplied Python code.",
+    "requirements": "Accept arithmetic expressions and reject invalid or unsafe input.",
+    "tests": "Only happy path test: 1 + 2 returns 3.",
+    "changed_behavior": "Accepts expressions from unauthenticated clients.",
+    "diff": "Duplicate validation appears in three handlers.",
+    "design_constraints": "Centralize input validation in the application service."
+  }
+}
