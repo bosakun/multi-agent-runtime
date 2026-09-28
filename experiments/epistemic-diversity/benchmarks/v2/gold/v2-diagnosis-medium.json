@@ -1,0 +1,135 @@
+{
+  "task_id": "v2-diagnosis-medium",
+  "relevant_evidence_ids": [
+    "e_2e7fdc63a03f",
+    "e_9c8fb7649713",
+    "e_b295c4348c4b",
+    "e_d763d32b097c",
+    "e_33d1b3dd49e1",
+    "e_ad6549f71bd0"
+  ],
+  "distractor_ids": [
+    "e_c09b3193ee51",
+    "e_d62eee5aad19",
+    "e_179221beb5c4"
+  ],
+  "claims": [
+    {
+      "subject": "slowdown",
+      "value": "present",
+      "supporting_sets": [
+        [
+          "e_2e7fdc63a03f"
+        ]
+      ]
+    },
+    {
+      "subject": "retry_setting",
+      "value": "raised",
+      "supporting_sets": [
+        [
+          "e_9c8fb7649713"
+        ]
+      ]
+    },
+    {
+      "subject": "database_queue",
+      "value": "normal",
+      "supporting_sets": [
+        [
+          "e_b295c4348c4b"
+        ]
+      ]
+    },
+    {
+      "subject": "control_cluster",
+      "value": "healthy",
+      "supporting_sets": [
+        [
+          "e_d763d32b097c"
+        ]
+      ]
+    },
+    {
+      "subject": "rollback",
+      "value": "restores",
+      "supporting_sets": [
+        [
+          "e_33d1b3dd49e1"
+        ]
+      ]
+    },
+    {
+      "subject": "request_mix",
+      "value": "stable",
+      "supporting_sets": [
+        [
+          "e_ad6549f71bd0"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "cause",
+      "value": "retry_amplification",
+      "supporting_sets": [
+        [
+          "e_2e7fdc63a03f",
+          "e_33d1b3dd49e1",
+          "e_9c8fb7649713",
+          "e_b295c4348c4b",
+          "e_d763d32b097c"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "candidate",
+      "value": "retry",
+      "supporting_sets": [
+        [
+          "e_2e7fdc63a03f",
+          "e_9c8fb7649713",
+          "e_b295c4348c4b"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "cap_retries",
+  "constraints": [
+    "slowdown",
+    "retry_setting",
+    "database_queue",
+    "control_cluster",
+    "rollback",
+    "request_mix"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_c1ce004cd90b2248f521",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_2e7fdc63a03f": 2,
+    "e_9c8fb7649713": 2,
+    "e_b295c4348c4b": 2,
+    "e_d763d32b097c": 2,
+    "e_33d1b3dd49e1": 2,
+    "e_ad6549f71bd0": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_2e7fdc63a03f",
+      "e_33d1b3dd49e1",
+      "e_9c8fb7649713",
+      "e_ad6549f71bd0",
+      "e_b295c4348c4b",
+      "e_d763d32b097c"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

@@ -1,0 +1,146 @@
+{
+  "task_id": "v2-planning-medium",
+  "relevant_evidence_ids": [
+    "e_402bb1c36d3e",
+    "e_917029ec9c48",
+    "e_64cc6209fca5",
+    "e_1a104367abe4",
+    "e_323ce802f524",
+    "e_aa80a272b193"
+  ],
+  "distractor_ids": [
+    "e_244b874f0a23",
+    "e_80a1e650c8df",
+    "e_6f2f3419d83d"
+  ],
+  "claims": [
+    {
+      "subject": "procurement",
+      "value": "needed",
+      "supporting_sets": [
+        [
+          "e_402bb1c36d3e"
+        ]
+      ]
+    },
+    {
+      "subject": "rehearsal",
+      "value": "needed",
+      "supporting_sets": [
+        [
+          "e_917029ec9c48"
+        ]
+      ]
+    },
+    {
+      "subject": "independence",
+      "value": "confirmed",
+      "supporting_sets": [
+        [
+          "e_64cc6209fca5"
+        ]
+      ]
+    },
+    {
+      "subject": "technician",
+      "value": "reserved",
+      "supporting_sets": [
+        [
+          "e_1a104367abe4"
+        ]
+      ]
+    },
+    {
+      "subject": "downtime",
+      "value": "approved",
+      "supporting_sets": [
+        [
+          "e_323ce802f524"
+        ]
+      ]
+    },
+    {
+      "subject": "verification",
+      "value": "required",
+      "supporting_sets": [
+        [
+          "e_aa80a272b193"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "sequence",
+      "value": "parallel_join_install_verify",
+      "supporting_sets": [
+        [
+          "e_1a104367abe4",
+          "e_323ce802f524",
+          "e_402bb1c36d3e",
+          "e_64cc6209fca5",
+          "e_917029ec9c48",
+          "e_aa80a272b193"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "installation_slot",
+      "value": "available",
+      "supporting_sets": [
+        [
+          "e_1a104367abe4",
+          "e_323ce802f524"
+        ]
+      ]
+    },
+    {
+      "subject": "preparation",
+      "value": "parallel",
+      "supporting_sets": [
+        [
+          "e_402bb1c36d3e",
+          "e_64cc6209fca5",
+          "e_917029ec9c48"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "procure_and_rehearse_then_install_then_verify",
+  "constraints": [
+    "procurement",
+    "rehearsal",
+    "independence",
+    "technician",
+    "downtime",
+    "verification"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_2ff9eb8b262368ad0eed",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_402bb1c36d3e": 2,
+    "e_917029ec9c48": 2,
+    "e_64cc6209fca5": 2,
+    "e_1a104367abe4": 2,
+    "e_323ce802f524": 2,
+    "e_aa80a272b193": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_1a104367abe4",
+      "e_323ce802f524",
+      "e_402bb1c36d3e",
+      "e_64cc6209fca5",
+      "e_917029ec9c48",
+      "e_aa80a272b193"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

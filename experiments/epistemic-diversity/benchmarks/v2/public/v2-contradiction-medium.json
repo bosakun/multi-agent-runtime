@@ -1,0 +1,169 @@
+{
+  "id": "v2-contradiction-medium",
+  "family": "contradiction",
+  "template": "scope_disambiguation",
+  "question": "Reconcile regional and local service reports. Determine the status for the requested tenant using the target and scope records rather than assuming that a regional summary applies to every tenant.",
+  "instructions": {
+    "reporting_fields": [
+      "regional_report",
+      "regional_scope",
+      "local_report",
+      "local_scope",
+      "target",
+      "local_probe"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "regional_report",
+            "value": "healthy"
+          },
+          {
+            "subject": "regional_scope",
+            "value": "all_other_tenants"
+          }
+        ],
+        "conclusion": {
+          "subject": "regional_applicability",
+          "value": "not_target"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "local_report",
+            "value": "failing"
+          },
+          {
+            "subject": "local_scope",
+            "value": "tenant_m"
+          },
+          {
+            "subject": "target",
+            "value": "tenant_m"
+          },
+          {
+            "subject": "local_probe",
+            "value": "verified"
+          }
+        ],
+        "conclusion": {
+          "subject": "target_status",
+          "value": "failing"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "regional_applicability",
+            "value": "not_target"
+          },
+          {
+            "subject": "target_status",
+            "value": "failing"
+          }
+        ],
+        "conclusion": {
+          "subject": "apparent_conflict",
+          "value": "scope_resolved"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "local_report",
+            "value": "healthy"
+          },
+          {
+            "subject": "local_scope",
+            "value": "tenant_m"
+          },
+          {
+            "subject": "target",
+            "value": "tenant_m"
+          },
+          {
+            "subject": "local_probe",
+            "value": "verified"
+          }
+        ],
+        "conclusion": {
+          "subject": "target_status",
+          "value": "healthy"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "apparent_conflict",
+            "value": "scope_resolved"
+          }
+        ],
+        "choice": "investigate_tenant_m"
+      },
+      {
+        "premises": [
+          {
+            "subject": "target_status",
+            "value": "healthy"
+          }
+        ],
+        "choice": "monitor_tenant_m"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_3673b5e7d532",
+      "content": "Source record. Observation: regional_scope = all_other_tenants.\nSource routing marker: CANARY_0ac3f0c4bca41223",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_dd37953c1312",
+      "content": "Source record. Observation: provider_award = received.\nSource routing marker: CANARY_55f7e7d167e6bec3",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_41c171248c71",
+      "content": "Source record. Observation: local_scope = tenant_m.\nSource routing marker: CANARY_c89448f6a77a3c99",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_31c7aca73ba3",
+      "content": "Source record. Observation: local_probe = verified.\nSource routing marker: CANARY_21dfe02f0659fcc9",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_f0e1b29d07fc",
+      "content": "Source record. Observation: tenant_n_theme = changed.\nSource routing marker: CANARY_00ac8a2c0239876b",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e7eb70e5e53a",
+      "content": "Source record. Observation: old_local_probe = healthy.\nSource routing marker: CANARY_56ca9a74c71c4a19",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a7e9d6c5aa02",
+      "content": "Source record. Observation: regional_report = healthy.\nSource routing marker: CANARY_75ebbd7f15b188d0",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_023d5276bbdc",
+      "content": "Source record. Observation: target = tenant_m.\nSource routing marker: CANARY_0db5d9ed1c10219e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_6eff49f578d9",
+      "content": "Source record. Observation: local_report = failing.\nSource routing marker: CANARY_c4450f80d563f92a",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "medium",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "scope_disambiguation"
+}

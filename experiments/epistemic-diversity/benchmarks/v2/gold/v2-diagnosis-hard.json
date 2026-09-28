@@ -1,0 +1,161 @@
+{
+  "task_id": "v2-diagnosis-hard",
+  "relevant_evidence_ids": [
+    "e_2685e9abeb29",
+    "e_2a05d90bbf76",
+    "e_2823d4d98851",
+    "e_e512d6ca3df1",
+    "e_cd056efdcd9f",
+    "e_1af6d5b6d84b",
+    "e_437e995cde7a"
+  ],
+  "distractor_ids": [
+    "e_8c7b1404d9ea",
+    "e_28af2fb7f07f",
+    "e_4df5bd53326f"
+  ],
+  "claims": [
+    {
+      "subject": "failure",
+      "value": "present",
+      "supporting_sets": [
+        [
+          "e_2685e9abeb29"
+        ]
+      ]
+    },
+    {
+      "subject": "humidity",
+      "value": "high",
+      "supporting_sets": [
+        [
+          "e_2a05d90bbf76"
+        ]
+      ]
+    },
+    {
+      "subject": "firmware",
+      "value": "new",
+      "supporting_sets": [
+        [
+          "e_2823d4d98851"
+        ]
+      ]
+    },
+    {
+      "subject": "drying_test",
+      "value": "restores",
+      "supporting_sets": [
+        [
+          "e_e512d6ca3df1"
+        ]
+      ]
+    },
+    {
+      "subject": "firmware_revert",
+      "value": "unchanged",
+      "supporting_sets": [
+        [
+          "e_cd056efdcd9f"
+        ]
+      ]
+    },
+    {
+      "subject": "sensor_check",
+      "value": "valid",
+      "supporting_sets": [
+        [
+          "e_1af6d5b6d84b"
+        ]
+      ]
+    },
+    {
+      "subject": "material",
+      "value": "moisture_sensitive",
+      "supporting_sets": [
+        [
+          "e_437e995cde7a"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "cause",
+      "value": "moisture",
+      "supporting_sets": [
+        [
+          "e_1af6d5b6d84b",
+          "e_2685e9abeb29",
+          "e_2823d4d98851",
+          "e_2a05d90bbf76",
+          "e_437e995cde7a",
+          "e_cd056efdcd9f",
+          "e_e512d6ca3df1"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "firmware_link",
+      "value": "excluded",
+      "supporting_sets": [
+        [
+          "e_1af6d5b6d84b",
+          "e_2823d4d98851",
+          "e_cd056efdcd9f"
+        ]
+      ]
+    },
+    {
+      "subject": "humidity_link",
+      "value": "supported",
+      "supporting_sets": [
+        [
+          "e_2a05d90bbf76",
+          "e_437e995cde7a",
+          "e_e512d6ca3df1"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "control_humidity",
+  "constraints": [
+    "failure",
+    "humidity",
+    "firmware",
+    "drying_test",
+    "firmware_revert",
+    "sensor_check",
+    "material"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_fa49d6f2763d3c7db1e3",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_2685e9abeb29": 2,
+    "e_2a05d90bbf76": 2,
+    "e_2823d4d98851": 2,
+    "e_e512d6ca3df1": 2,
+    "e_cd056efdcd9f": 2,
+    "e_1af6d5b6d84b": 2,
+    "e_437e995cde7a": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_1af6d5b6d84b",
+      "e_2685e9abeb29",
+      "e_2823d4d98851",
+      "e_2a05d90bbf76",
+      "e_437e995cde7a",
+      "e_cd056efdcd9f",
+      "e_e512d6ca3df1"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

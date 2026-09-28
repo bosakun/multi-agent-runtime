@@ -1,0 +1,169 @@
+{
+  "task_id": "v2-ranking-medium",
+  "relevant_evidence_ids": [
+    "e_f07830a12e02",
+    "e_3a68b2c26ea3",
+    "e_240877bb98e3",
+    "e_4a71bcddba4b",
+    "e_6bb8d812fe62",
+    "e_4f7ee5cf38ed"
+  ],
+  "distractor_ids": [
+    "e_926359f21353",
+    "e_9126493cd15f",
+    "e_a5d5d1061a5f"
+  ],
+  "claims": [
+    {
+      "subject": "reports_origin",
+      "value": "one_bulletin",
+      "supporting_sets": [
+        [
+          "e_f07830a12e02"
+        ]
+      ]
+    },
+    {
+      "subject": "bulletin_verification",
+      "value": "absent",
+      "supporting_sets": [
+        [
+          "e_3a68b2c26ea3"
+        ]
+      ]
+    },
+    {
+      "subject": "independent_assay",
+      "value": "negative",
+      "supporting_sets": [
+        [
+          "e_240877bb98e3"
+        ]
+      ]
+    },
+    {
+      "subject": "assay_control",
+      "value": "valid",
+      "supporting_sets": [
+        [
+          "e_4a71bcddba4b"
+        ]
+      ]
+    },
+    {
+      "subject": "assay_scope",
+      "value": "same_batch",
+      "supporting_sets": [
+        [
+          "e_6bb8d812fe62"
+        ]
+      ]
+    },
+    {
+      "subject": "sample_chain",
+      "value": "intact",
+      "supporting_sets": [
+        [
+          "e_4f7ee5cf38ed"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "ranking",
+      "value": "assay_first",
+      "supporting_sets": [
+        [
+          "e_240877bb98e3",
+          "e_3a68b2c26ea3",
+          "e_4a71bcddba4b",
+          "e_4f7ee5cf38ed",
+          "e_6bb8d812fe62",
+          "e_f07830a12e02"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "apparent_majority",
+      "value": "dependent",
+      "supporting_sets": [
+        [
+          "e_3a68b2c26ea3",
+          "e_f07830a12e02"
+        ]
+      ]
+    },
+    {
+      "subject": "assay",
+      "value": "strong_negative",
+      "supporting_sets": [
+        [
+          "e_240877bb98e3",
+          "e_4a71bcddba4b",
+          "e_4f7ee5cf38ed",
+          "e_6bb8d812fe62"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "prioritize_negative_assay_over_reposts",
+  "constraints": [
+    "reports_origin",
+    "bulletin_verification",
+    "independent_assay",
+    "assay_control",
+    "assay_scope",
+    "sample_chain"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_a74c04d9e7657411a02a",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [
+    {
+      "subject": "bulletin_claim",
+      "value": "positive",
+      "supporting_sets": [
+        [
+          "e_c4899d26bf95"
+        ]
+      ]
+    },
+    {
+      "subject": "social_count",
+      "value": "three_reposts",
+      "supporting_sets": [
+        [
+          "e_eeda6fddbd2e"
+        ]
+      ]
+    }
+  ],
+  "weak_evidence_ids": [
+    "e_c4899d26bf95",
+    "e_eeda6fddbd2e"
+  ],
+  "evidence_importance": {
+    "e_f07830a12e02": 2,
+    "e_3a68b2c26ea3": 2,
+    "e_240877bb98e3": 3,
+    "e_4a71bcddba4b": 2,
+    "e_6bb8d812fe62": 2,
+    "e_4f7ee5cf38ed": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_240877bb98e3",
+      "e_3a68b2c26ea3",
+      "e_4a71bcddba4b",
+      "e_4f7ee5cf38ed",
+      "e_6bb8d812fe62",
+      "e_f07830a12e02"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

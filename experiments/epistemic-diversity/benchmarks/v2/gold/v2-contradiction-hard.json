@@ -1,0 +1,175 @@
+{
+  "task_id": "v2-contradiction-hard",
+  "relevant_evidence_ids": [
+    "e_a94cd5a160b9",
+    "e_cc0aae90b4e6",
+    "e_776a13a3f006",
+    "e_66806cd423ad",
+    "e_14d55888f9bc",
+    "e_8f26fb7ab3e6",
+    "e_89893e78d219"
+  ],
+  "distractor_ids": [
+    "e_a6ffa433a2a3",
+    "e_e83053d8bd81",
+    "e_ad7411770ee1"
+  ],
+  "claims": [
+    {
+      "subject": "dashboard",
+      "value": "safe",
+      "supporting_sets": [
+        [
+          "e_a94cd5a160b9"
+        ]
+      ]
+    },
+    {
+      "subject": "dashboard_condition",
+      "value": "unloaded",
+      "supporting_sets": [
+        [
+          "e_cc0aae90b4e6"
+        ]
+      ]
+    },
+    {
+      "subject": "test",
+      "value": "unsafe",
+      "supporting_sets": [
+        [
+          "e_776a13a3f006"
+        ]
+      ]
+    },
+    {
+      "subject": "test_condition",
+      "value": "loaded",
+      "supporting_sets": [
+        [
+          "e_66806cd423ad"
+        ]
+      ]
+    },
+    {
+      "subject": "target_condition",
+      "value": "loaded",
+      "supporting_sets": [
+        [
+          "e_14d55888f9bc"
+        ]
+      ]
+    },
+    {
+      "subject": "calibration",
+      "value": "valid",
+      "supporting_sets": [
+        [
+          "e_8f26fb7ab3e6"
+        ]
+      ]
+    },
+    {
+      "subject": "sample_order",
+      "value": "test_newer",
+      "supporting_sets": [
+        [
+          "e_89893e78d219"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "resolved_safety",
+      "value": "unsafe",
+      "supporting_sets": [
+        [
+          "e_14d55888f9bc",
+          "e_66806cd423ad",
+          "e_776a13a3f006",
+          "e_89893e78d219",
+          "e_8f26fb7ab3e6",
+          "e_a94cd5a160b9",
+          "e_cc0aae90b4e6"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "applicable_source",
+      "value": "test",
+      "supporting_sets": [
+        [
+          "e_14d55888f9bc",
+          "e_66806cd423ad",
+          "e_cc0aae90b4e6"
+        ]
+      ]
+    },
+    {
+      "subject": "preferred_source",
+      "value": "test",
+      "supporting_sets": [
+        [
+          "e_14d55888f9bc",
+          "e_66806cd423ad",
+          "e_89893e78d219",
+          "e_8f26fb7ab3e6",
+          "e_cc0aae90b4e6"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "stop_loaded_operation",
+  "constraints": [
+    "dashboard",
+    "dashboard_condition",
+    "test",
+    "test_condition",
+    "target_condition",
+    "calibration",
+    "sample_order"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_5ce6499f2edac8a51eeb",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [
+    {
+      "subject": "operator_memory",
+      "value": "usually_safe",
+      "supporting_sets": [
+        [
+          "e_d0640a52ba7d"
+        ]
+      ]
+    }
+  ],
+  "weak_evidence_ids": [
+    "e_d0640a52ba7d"
+  ],
+  "evidence_importance": {
+    "e_a94cd5a160b9": 2,
+    "e_cc0aae90b4e6": 2,
+    "e_776a13a3f006": 2,
+    "e_66806cd423ad": 2,
+    "e_14d55888f9bc": 2,
+    "e_8f26fb7ab3e6": 2,
+    "e_89893e78d219": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_14d55888f9bc",
+      "e_66806cd423ad",
+      "e_776a13a3f006",
+      "e_89893e78d219",
+      "e_8f26fb7ab3e6",
+      "e_a94cd5a160b9",
+      "e_cc0aae90b4e6"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

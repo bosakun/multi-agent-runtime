@@ -1,0 +1,187 @@
+{
+  "id": "v2-ranking-hard",
+  "family": "ranking",
+  "template": "diagnostic_intervention_over_recency_and_popularity",
+  "question": "Rank intervention and opinion evidence for a performance regression. Establish intervention validity, workload scope, replication and recency from the records; popularity alone does not establish diagnostic value.",
+  "instructions": {
+    "reporting_fields": [
+      "reversal_result",
+      "reversal_control",
+      "hardware_state",
+      "workload_scope",
+      "opinion_recency",
+      "opinion_test",
+      "replication",
+      "popular_opinion",
+      "endorsements"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "reversal_result",
+            "value": "restores"
+          },
+          {
+            "subject": "reversal_control",
+            "value": "matched"
+          },
+          {
+            "subject": "hardware_state",
+            "value": "unchanged"
+          },
+          {
+            "subject": "workload_scope",
+            "value": "same"
+          }
+        ],
+        "conclusion": {
+          "subject": "intervention",
+          "value": "diagnostic"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "opinion_recency",
+            "value": "newer"
+          },
+          {
+            "subject": "opinion_test",
+            "value": "none"
+          }
+        ],
+        "conclusion": {
+          "subject": "recency_advantage",
+          "value": "non_diagnostic"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "intervention",
+            "value": "diagnostic"
+          },
+          {
+            "subject": "replication",
+            "value": "independent"
+          },
+          {
+            "subject": "recency_advantage",
+            "value": "non_diagnostic"
+          }
+        ],
+        "conclusion": {
+          "subject": "ranking",
+          "value": "intervention_first"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "reversal_result",
+            "value": "unchanged"
+          },
+          {
+            "subject": "reversal_control",
+            "value": "matched"
+          },
+          {
+            "subject": "replication",
+            "value": "failed"
+          }
+        ],
+        "conclusion": {
+          "subject": "ranking",
+          "value": "collect_more_tests"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "ranking",
+            "value": "intervention_first"
+          }
+        ],
+        "choice": "prioritize_controlled_reversal"
+      },
+      {
+        "premises": [
+          {
+            "subject": "ranking",
+            "value": "collect_more_tests"
+          }
+        ],
+        "choice": "withhold_causal_ranking"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_a99bb468922e",
+      "content": "Source record. Observation: opinion_recency = newer.\nSource routing marker: CANARY_42753e63326a1fe5",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_5023d6109f3a",
+      "content": "Source record. Observation: reversal_result = restores.\nSource routing marker: CANARY_a776b46c4900da6d",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_c63d2ffd41e9",
+      "content": "Source record. Observation: popular_opinion = hardware.\nSource routing marker: CANARY_f50d2404e8f06e6d",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_4636576453a1",
+      "content": "Source record. Observation: old_purchase = expensive.\nSource routing marker: CANARY_251c37ee3428a0d3",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_553a21081ad7",
+      "content": "Source record. Observation: benchmark_logo = familiar.\nSource routing marker: CANARY_503542cb2195d4a7",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_8ba995ac53be",
+      "content": "Source record. Observation: workload_scope = same.\nSource routing marker: CANARY_e56f102c1ec8470b",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a9061a55a0b6",
+      "content": "Source record. Observation: opinion_test = none.\nSource routing marker: CANARY_6f4a4ce5a03d0e31",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_f56fb73a6ea8",
+      "content": "Source record. Observation: endorsements = many.\nSource routing marker: CANARY_a964f7f5f5a8542e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_105896c72c94",
+      "content": "Source record. Observation: hardware_state = unchanged.\nSource routing marker: CANARY_1033c9d1a48e0fae",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_0643c4caa3d2",
+      "content": "Source record. Observation: replication = independent.\nSource routing marker: CANARY_e8d2e600c62fea60",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_8b2ae42d76e6",
+      "content": "Source record. Observation: reversal_control = matched.\nSource routing marker: CANARY_7fc7a9c11078f463",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_215fe2aa9176",
+      "content": "Source record. Observation: other_workload = hardware_bound.\nSource routing marker: CANARY_2a2f552a14a7f6a2",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "diagnostic_intervention_over_recency_and_popularity"
+}

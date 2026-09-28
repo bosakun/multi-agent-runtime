@@ -1,0 +1,162 @@
+{
+  "task_id": "v2-missing-hard",
+  "relevant_evidence_ids": [
+    "e_c17ded4d8818",
+    "e_e2c1834d86b9",
+    "e_a792860e654e",
+    "e_0fb3a2b0bb60",
+    "e_264b35605976",
+    "e_0baaf68f8126",
+    "e_25547d639215"
+  ],
+  "distractor_ids": [
+    "e_6e6034edd0a7",
+    "e_105bd35be796",
+    "e_f7229f079283"
+  ],
+  "claims": [
+    {
+      "subject": "option_a_cost",
+      "value": "lower",
+      "supporting_sets": [
+        [
+          "e_c17ded4d8818"
+        ]
+      ]
+    },
+    {
+      "subject": "option_b_access",
+      "value": "better",
+      "supporting_sets": [
+        [
+          "e_e2c1834d86b9"
+        ]
+      ]
+    },
+    {
+      "subject": "cost_mandate",
+      "value": "soft",
+      "supporting_sets": [
+        [
+          "e_a792860e654e"
+        ]
+      ]
+    },
+    {
+      "subject": "access_mandate",
+      "value": "soft",
+      "supporting_sets": [
+        [
+          "e_0fb3a2b0bb60"
+        ]
+      ]
+    },
+    {
+      "subject": "preference_weights",
+      "value": "absent",
+      "supporting_sets": [
+        [
+          "e_264b35605976"
+        ]
+      ]
+    },
+    {
+      "subject": "preference_owner",
+      "value": "council",
+      "supporting_sets": [
+        [
+          "e_0baaf68f8126"
+        ]
+      ]
+    },
+    {
+      "subject": "policy_inventory",
+      "value": "complete",
+      "supporting_sets": [
+        [
+          "e_25547d639215"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "information_gap",
+      "value": "tradeoff_weights",
+      "supporting_sets": [
+        [
+          "e_0fb3a2b0bb60",
+          "e_25547d639215",
+          "e_264b35605976",
+          "e_a792860e654e",
+          "e_c17ded4d8818",
+          "e_e2c1834d86b9"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "dominance",
+      "value": "neither",
+      "supporting_sets": [
+        [
+          "e_c17ded4d8818",
+          "e_e2c1834d86b9"
+        ]
+      ]
+    },
+    {
+      "subject": "priority",
+      "value": "unfixed",
+      "supporting_sets": [
+        [
+          "e_0fb3a2b0bb60",
+          "e_a792860e654e"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "undetermined",
+  "constraints": [
+    "option_a_cost",
+    "option_b_access",
+    "cost_mandate",
+    "access_mandate",
+    "preference_weights",
+    "preference_owner",
+    "policy_inventory"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_be0c5ea50d1d4f1a66ee",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_c17ded4d8818": 2,
+    "e_e2c1834d86b9": 2,
+    "e_a792860e654e": 2,
+    "e_0fb3a2b0bb60": 2,
+    "e_264b35605976": 2,
+    "e_0baaf68f8126": 2,
+    "e_25547d639215": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_0baaf68f8126",
+      "e_0fb3a2b0bb60",
+      "e_25547d639215",
+      "e_264b35605976",
+      "e_a792860e654e",
+      "e_c17ded4d8818",
+      "e_e2c1834d86b9"
+    ]
+  ],
+  "allowed_uncertainty": [
+    "tradeoff_weights"
+  ],
+  "required_unknowns": [
+    "tradeoff_weights"
+  ],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

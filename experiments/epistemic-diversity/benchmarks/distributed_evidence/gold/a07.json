@@ -1,0 +1,112 @@
+{
+  "task_id": "a07",
+  "relevant_evidence_ids": [
+    "e_fd6e3a22d8",
+    "e_e257bcb4b3",
+    "e_0f5fbed63b",
+    "e_ed1622ec99",
+    "e_c304448ed8",
+    "e_4509df06be"
+  ],
+  "distractor_ids": [
+    "e_a9e5c31674",
+    "e_3abc9c03ec",
+    "e_e5c00c331f"
+  ],
+  "claims": [
+    {
+      "subject": "route_delay",
+      "value": "observed",
+      "supporting_sets": [
+        [
+          "e_fd6e3a22d8"
+        ]
+      ]
+    },
+    {
+      "subject": "weather_alert",
+      "value": "active",
+      "supporting_sets": [
+        [
+          "e_e257bcb4b3"
+        ]
+      ]
+    },
+    {
+      "subject": "alternate_route_control",
+      "value": "unaffected",
+      "supporting_sets": [
+        [
+          "e_0f5fbed63b"
+        ]
+      ]
+    },
+    {
+      "subject": "detour_capacity",
+      "value": "insufficient",
+      "supporting_sets": [
+        [
+          "e_ed1622ec99"
+        ]
+      ]
+    },
+    {
+      "subject": "driver_availability",
+      "value": "unavailable",
+      "supporting_sets": [
+        [
+          "e_c304448ed8"
+        ]
+      ]
+    },
+    {
+      "subject": "detour_clearance",
+      "value": "pending",
+      "supporting_sets": [
+        [
+          "e_4509df06be"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "route_disruption_supported",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_fd6e3a22d8",
+          "e_e257bcb4b3",
+          "e_0f5fbed63b"
+        ]
+      ]
+    },
+    {
+      "subject": "detour_feasible",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_ed1622ec99",
+          "e_c304448ed8",
+          "e_4509df06be"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "investigate_routes",
+  "constraints": [
+    "route_delay",
+    "weather_alert",
+    "alternate_route_control",
+    "detour_capacity",
+    "driver_availability",
+    "detour_clearance"
+  ],
+  "failure_factors": [
+    "detour_capacity",
+    "driver_availability",
+    "detour_clearance"
+  ],
+  "hidden_annotation": "GOLD_ONLY_4dde22750d2957b6bf9d"
+}

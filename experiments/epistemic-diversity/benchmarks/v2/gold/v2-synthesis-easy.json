@@ -1,0 +1,95 @@
+{
+  "task_id": "v2-synthesis-easy",
+  "relevant_evidence_ids": [
+    "e_9344ac0c4e4e",
+    "e_45bef06ab0f2",
+    "e_2790a67d08aa",
+    "e_e365284caa2a"
+  ],
+  "distractor_ids": [
+    "e_0e97f105fe27",
+    "e_91be7aafc057",
+    "e_2c409eca7714"
+  ],
+  "claims": [
+    {
+      "subject": "origin",
+      "value": "verified",
+      "supporting_sets": [
+        [
+          "e_9344ac0c4e4e"
+        ]
+      ]
+    },
+    {
+      "subject": "inspection",
+      "value": "pass",
+      "supporting_sets": [
+        [
+          "e_45bef06ab0f2"
+        ]
+      ]
+    },
+    {
+      "subject": "cold_chain",
+      "value": "intact",
+      "supporting_sets": [
+        [
+          "e_2790a67d08aa"
+        ]
+      ]
+    },
+    {
+      "subject": "recipient",
+      "value": "registered",
+      "supporting_sets": [
+        [
+          "e_e365284caa2a"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "release_basis",
+      "value": "complete",
+      "supporting_sets": [
+        [
+          "e_2790a67d08aa",
+          "e_45bef06ab0f2",
+          "e_9344ac0c4e4e"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "release_batch",
+  "constraints": [
+    "origin",
+    "inspection",
+    "cold_chain",
+    "recipient"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_cbd363cb2ff48dc99177",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_9344ac0c4e4e": 2,
+    "e_45bef06ab0f2": 2,
+    "e_2790a67d08aa": 2,
+    "e_e365284caa2a": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_2790a67d08aa",
+      "e_45bef06ab0f2",
+      "e_9344ac0c4e4e",
+      "e_e365284caa2a"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

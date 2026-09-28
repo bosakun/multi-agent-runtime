@@ -1,0 +1,183 @@
+{
+  "task_id": "v2-ranking-hard",
+  "relevant_evidence_ids": [
+    "e_5023d6109f3a",
+    "e_8b2ae42d76e6",
+    "e_105896c72c94",
+    "e_8ba995ac53be",
+    "e_a99bb468922e",
+    "e_a9061a55a0b6",
+    "e_0643c4caa3d2"
+  ],
+  "distractor_ids": [
+    "e_215fe2aa9176",
+    "e_4636576453a1",
+    "e_553a21081ad7"
+  ],
+  "claims": [
+    {
+      "subject": "reversal_result",
+      "value": "restores",
+      "supporting_sets": [
+        [
+          "e_5023d6109f3a"
+        ]
+      ]
+    },
+    {
+      "subject": "reversal_control",
+      "value": "matched",
+      "supporting_sets": [
+        [
+          "e_8b2ae42d76e6"
+        ]
+      ]
+    },
+    {
+      "subject": "hardware_state",
+      "value": "unchanged",
+      "supporting_sets": [
+        [
+          "e_105896c72c94"
+        ]
+      ]
+    },
+    {
+      "subject": "workload_scope",
+      "value": "same",
+      "supporting_sets": [
+        [
+          "e_8ba995ac53be"
+        ]
+      ]
+    },
+    {
+      "subject": "opinion_recency",
+      "value": "newer",
+      "supporting_sets": [
+        [
+          "e_a99bb468922e"
+        ]
+      ]
+    },
+    {
+      "subject": "opinion_test",
+      "value": "none",
+      "supporting_sets": [
+        [
+          "e_a9061a55a0b6"
+        ]
+      ]
+    },
+    {
+      "subject": "replication",
+      "value": "independent",
+      "supporting_sets": [
+        [
+          "e_0643c4caa3d2"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "ranking",
+      "value": "intervention_first",
+      "supporting_sets": [
+        [
+          "e_0643c4caa3d2",
+          "e_105896c72c94",
+          "e_5023d6109f3a",
+          "e_8b2ae42d76e6",
+          "e_8ba995ac53be",
+          "e_a9061a55a0b6",
+          "e_a99bb468922e"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "intervention",
+      "value": "diagnostic",
+      "supporting_sets": [
+        [
+          "e_105896c72c94",
+          "e_5023d6109f3a",
+          "e_8b2ae42d76e6",
+          "e_8ba995ac53be"
+        ]
+      ]
+    },
+    {
+      "subject": "recency_advantage",
+      "value": "non_diagnostic",
+      "supporting_sets": [
+        [
+          "e_a9061a55a0b6",
+          "e_a99bb468922e"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "prioritize_controlled_reversal",
+  "constraints": [
+    "reversal_result",
+    "reversal_control",
+    "hardware_state",
+    "workload_scope",
+    "opinion_recency",
+    "opinion_test",
+    "replication"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_293aad8ee74c4f65170b",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [
+    {
+      "subject": "popular_opinion",
+      "value": "hardware",
+      "supporting_sets": [
+        [
+          "e_c63d2ffd41e9"
+        ]
+      ]
+    },
+    {
+      "subject": "endorsements",
+      "value": "many",
+      "supporting_sets": [
+        [
+          "e_f56fb73a6ea8"
+        ]
+      ]
+    }
+  ],
+  "weak_evidence_ids": [
+    "e_c63d2ffd41e9",
+    "e_f56fb73a6ea8"
+  ],
+  "evidence_importance": {
+    "e_5023d6109f3a": 3,
+    "e_8b2ae42d76e6": 2,
+    "e_105896c72c94": 2,
+    "e_8ba995ac53be": 2,
+    "e_a99bb468922e": 2,
+    "e_a9061a55a0b6": 2,
+    "e_0643c4caa3d2": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_0643c4caa3d2",
+      "e_105896c72c94",
+      "e_5023d6109f3a",
+      "e_8b2ae42d76e6",
+      "e_8ba995ac53be",
+      "e_a9061a55a0b6",
+      "e_a99bb468922e"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

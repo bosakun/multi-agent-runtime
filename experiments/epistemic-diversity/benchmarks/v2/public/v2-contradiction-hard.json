@@ -1,0 +1,177 @@
+{
+  "id": "v2-contradiction-hard",
+  "family": "contradiction",
+  "template": "reliability_condition_and_time_precedence",
+  "question": "Resolve apparently conflicting pump-safety reports for the requested operation. Establish which source applies using the condition, calibration and temporal-order records, without automatically trusting either source.",
+  "instructions": {
+    "reporting_fields": [
+      "dashboard",
+      "dashboard_condition",
+      "test",
+      "test_condition",
+      "target_condition",
+      "calibration",
+      "sample_order",
+      "operator_memory"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "test_condition",
+            "value": "loaded"
+          },
+          {
+            "subject": "target_condition",
+            "value": "loaded"
+          },
+          {
+            "subject": "dashboard_condition",
+            "value": "unloaded"
+          }
+        ],
+        "conclusion": {
+          "subject": "applicable_source",
+          "value": "test"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "applicable_source",
+            "value": "test"
+          },
+          {
+            "subject": "calibration",
+            "value": "valid"
+          },
+          {
+            "subject": "sample_order",
+            "value": "test_newer"
+          }
+        ],
+        "conclusion": {
+          "subject": "preferred_source",
+          "value": "test"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "preferred_source",
+            "value": "test"
+          },
+          {
+            "subject": "test",
+            "value": "unsafe"
+          },
+          {
+            "subject": "dashboard",
+            "value": "safe"
+          }
+        ],
+        "conclusion": {
+          "subject": "resolved_safety",
+          "value": "unsafe"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "preferred_source",
+            "value": "test"
+          },
+          {
+            "subject": "test",
+            "value": "safe"
+          }
+        ],
+        "conclusion": {
+          "subject": "resolved_safety",
+          "value": "safe"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "resolved_safety",
+            "value": "unsafe"
+          }
+        ],
+        "choice": "stop_loaded_operation"
+      },
+      {
+        "premises": [
+          {
+            "subject": "resolved_safety",
+            "value": "safe"
+          }
+        ],
+        "choice": "continue_loaded_operation"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_e83053d8bd81",
+      "content": "Source record. Observation: paint_temperature = normal.\nSource routing marker: CANARY_4a85c61fb3119922",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_8f26fb7ab3e6",
+      "content": "Source record. Observation: calibration = valid.\nSource routing marker: CANARY_503b9d1f45faf337",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a94cd5a160b9",
+      "content": "Source record. Observation: dashboard = safe.\nSource routing marker: CANARY_1ecd42f38784f0ab",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_14d55888f9bc",
+      "content": "Source record. Observation: target_condition = loaded.\nSource routing marker: CANARY_17d91bb7eff04ddf",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_ad7411770ee1",
+      "content": "Source record. Observation: old_training = complete.\nSource routing marker: CANARY_c7860a1617c4fca0",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_89893e78d219",
+      "content": "Source record. Observation: sample_order = test_newer.\nSource routing marker: CANARY_ab648f13661f1ad9",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_66806cd423ad",
+      "content": "Source record. Observation: test_condition = loaded.\nSource routing marker: CANARY_febd797b9ec93a75",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a6ffa433a2a3",
+      "content": "Source record. Observation: backup_pump = safe.\nSource routing marker: CANARY_a625547f5f3ca48a",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_d0640a52ba7d",
+      "content": "Source record. Observation: operator_memory = usually_safe.\nSource routing marker: CANARY_5b5856c2f95daa79",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_776a13a3f006",
+      "content": "Source record. Observation: test = unsafe.\nSource routing marker: CANARY_a2afbfbf63205fef",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_cc0aae90b4e6",
+      "content": "Source record. Observation: dashboard_condition = unloaded.\nSource routing marker: CANARY_5aec0e91ad3f1487",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 3,
+  "evidence_interaction_type": "reliability_condition_and_time_precedence"
+}

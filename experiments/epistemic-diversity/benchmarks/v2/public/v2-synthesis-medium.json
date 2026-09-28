@@ -1,0 +1,161 @@
+{
+  "id": "v2-synthesis-medium",
+  "family": "synthesis",
+  "template": "alternative_support_and_confirmation",
+  "question": "Reconstruct whether a remote field station opened on schedule. A direct signed record or two independent observers can establish opening, but a clock calibration and receiver identity must also agree.",
+  "instructions": {
+    "reporting_fields": [
+      "signed_record",
+      "observer_east",
+      "observer_west",
+      "clock",
+      "receiver",
+      "schedule"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "signed_record",
+            "value": "present"
+          }
+        ],
+        "conclusion": {
+          "subject": "opening_observation",
+          "value": "present"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "observer_east",
+            "value": "opened"
+          },
+          {
+            "subject": "observer_west",
+            "value": "opened"
+          }
+        ],
+        "conclusion": {
+          "subject": "opening_observation",
+          "value": "present"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "opening_observation",
+            "value": "present"
+          },
+          {
+            "subject": "clock",
+            "value": "calibrated"
+          },
+          {
+            "subject": "receiver",
+            "value": "matched"
+          }
+        ],
+        "conclusion": {
+          "subject": "opening_validation",
+          "value": "valid"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "observer_east",
+            "value": "closed"
+          },
+          {
+            "subject": "observer_west",
+            "value": "closed"
+          }
+        ],
+        "conclusion": {
+          "subject": "opening_observation",
+          "value": "absent"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "opening_validation",
+            "value": "valid"
+          },
+          {
+            "subject": "schedule",
+            "value": "due"
+          }
+        ],
+        "choice": "confirm_opening"
+      },
+      {
+        "premises": [
+          {
+            "subject": "opening_observation",
+            "value": "absent"
+          },
+          {
+            "subject": "schedule",
+            "value": "due"
+          }
+        ],
+        "choice": "report_missed_opening"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_b0e26510e4de",
+      "content": "Source record. Observation: receiver = matched.\nSource routing marker: CANARY_cbd3c476e71e5a19",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_62ae81e76c95",
+      "content": "Source record. Observation: observer_west = opened.\nSource routing marker: CANARY_9f29abfca8f2c6ed",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_d0b357eae5c9",
+      "content": "Source record. Observation: signed_record = missing.\nSource routing marker: CANARY_bcb9cc01427995e1",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_9f911acd02d9",
+      "content": "Source record. Observation: neighbor_clock = broken.\nSource routing marker: CANARY_1916196001106a9f",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_c912eda52593",
+      "content": "Source record. Observation: clock = calibrated.\nSource routing marker: CANARY_d895495e4109c1cb",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_751a721994f4",
+      "content": "Source record. Observation: station_paint = renewed.\nSource routing marker: CANARY_5c63e2908830946d",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_551cf54952aa",
+      "content": "Source record. Observation: schedule = due.\nSource routing marker: CANARY_585c789dc4ccb2bf",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2df32adb89ea",
+      "content": "Source record. Observation: observer_east = opened.\nSource routing marker: CANARY_b96e17c32e5f13e2",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_41f821c8afb4",
+      "content": "Source record. Observation: weather_forecast = cloudy.\nSource routing marker: CANARY_c1f8ab21e74595a1",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "medium",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "alternative_support_and_confirmation"
+}

@@ -1,0 +1,199 @@
+{
+  "id": "a01",
+  "family": "distributed_evidence",
+  "template": "release_incident",
+  "question": "An online service shows an intermittent error after a release. Assess association and recovery readiness using the explicit rules.",
+  "instructions": {
+    "reporting_fields": [
+      "error_signal",
+      "release_overlap",
+      "control_group",
+      "rollback_probe",
+      "traffic_stability",
+      "rollback_package"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "error_signal",
+            "value": "normal"
+          },
+          {
+            "subject": "release_overlap",
+            "value": "absent"
+          },
+          {
+            "subject": "control_group",
+            "value": "affected"
+          }
+        ],
+        "conclusion": {
+          "subject": "release_association",
+          "value": "no"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "error_signal",
+            "value": "elevated"
+          },
+          {
+            "subject": "release_overlap",
+            "value": "present"
+          },
+          {
+            "subject": "control_group",
+            "value": "unaffected"
+          }
+        ],
+        "conclusion": {
+          "subject": "release_association",
+          "value": "yes"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "rollback_probe",
+            "value": "unchanged"
+          },
+          {
+            "subject": "traffic_stability",
+            "value": "varying"
+          },
+          {
+            "subject": "rollback_package",
+            "value": "missing"
+          }
+        ],
+        "conclusion": {
+          "subject": "recovery_ready",
+          "value": "no"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "rollback_probe",
+            "value": "improves"
+          },
+          {
+            "subject": "traffic_stability",
+            "value": "steady"
+          },
+          {
+            "subject": "rollback_package",
+            "value": "ready"
+          }
+        ],
+        "conclusion": {
+          "subject": "recovery_ready",
+          "value": "yes"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "release_association",
+            "value": "no"
+          },
+          {
+            "subject": "recovery_ready",
+            "value": "no"
+          }
+        ],
+        "choice": "observe"
+      },
+      {
+        "premises": [
+          {
+            "subject": "release_association",
+            "value": "no"
+          },
+          {
+            "subject": "recovery_ready",
+            "value": "yes"
+          }
+        ],
+        "choice": "prepare_recovery"
+      },
+      {
+        "premises": [
+          {
+            "subject": "release_association",
+            "value": "yes"
+          },
+          {
+            "subject": "recovery_ready",
+            "value": "no"
+          }
+        ],
+        "choice": "investigate_release"
+      },
+      {
+        "premises": [
+          {
+            "subject": "release_association",
+            "value": "yes"
+          },
+          {
+            "subject": "recovery_ready",
+            "value": "yes"
+          }
+        ],
+        "choice": "rollback"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_6c7d6f5b6c",
+      "content": "Case record 3. Observation: control_group = affected. This report concerns the current case.\nSource routing marker: CANARY_9508a2881b7e910f",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_7df83dbaec",
+      "content": "Unrelated archival note. Observation: archival_0 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_0f3016b009aa8f95",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_760339029e",
+      "content": "Case record 2. Observation: release_overlap = absent. This report concerns the current case.\nSource routing marker: CANARY_d82896c0f9203e86",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_85dfa72345",
+      "content": "Case record 4. Observation: rollback_probe = unchanged. This report concerns the current case.\nSource routing marker: CANARY_814c97d9c3c20feb",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_6ff82c5e3f",
+      "content": "Case record 6. Observation: rollback_package = missing. This report concerns the current case.\nSource routing marker: CANARY_05e94c83e5847495",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_446bf04a24",
+      "content": "Unrelated archival note. Observation: archival_2 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_29533bc4adc145aa",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a1283b44c7",
+      "content": "Case record 1. Observation: error_signal = normal. This report concerns the current case.\nSource routing marker: CANARY_8276a244435a3adf",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_88fc8c7c97",
+      "content": "Case record 5. Observation: traffic_stability = varying. This report concerns the current case.\nSource routing marker: CANARY_1a6257623ef3c4d5",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_65e7b1aada",
+      "content": "Unrelated archival note. Observation: archival_1 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_ed0df3539be095d8",
+      "trust": "untrusted_data"
+    }
+  ]
+}

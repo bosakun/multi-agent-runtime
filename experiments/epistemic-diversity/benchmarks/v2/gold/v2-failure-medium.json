@@ -1,0 +1,155 @@
+{
+  "task_id": "v2-failure-medium",
+  "relevant_evidence_ids": [
+    "e_588d9ee1510c",
+    "e_e16f04a330f4",
+    "e_327673e6cfbc",
+    "e_43f684031d56",
+    "e_c0ccf345df9b",
+    "e_0f0695e6774e"
+  ],
+  "distractor_ids": [
+    "e_d07d2cb5d2a5",
+    "e_64213666bd6f",
+    "e_e89854913e0b"
+  ],
+  "claims": [
+    {
+      "subject": "artifact",
+      "value": "invalid",
+      "supporting_sets": [
+        [
+          "e_588d9ee1510c"
+        ]
+      ]
+    },
+    {
+      "subject": "incident_start",
+      "value": "after_deploy",
+      "supporting_sets": [
+        [
+          "e_e16f04a330f4"
+        ]
+      ]
+    },
+    {
+      "subject": "validation",
+      "value": "skipped",
+      "supporting_sets": [
+        [
+          "e_327673e6cfbc"
+        ]
+      ]
+    },
+    {
+      "subject": "validation_capability",
+      "value": "would_detect",
+      "supporting_sets": [
+        [
+          "e_43f684031d56"
+        ]
+      ]
+    },
+    {
+      "subject": "rollback",
+      "value": "delayed",
+      "supporting_sets": [
+        [
+          "e_c0ccf345df9b"
+        ]
+      ]
+    },
+    {
+      "subject": "duration",
+      "value": "extended",
+      "supporting_sets": [
+        [
+          "e_0f0695e6774e"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "primary",
+      "value": "bad_artifact",
+      "supporting_sets": [
+        [
+          "e_588d9ee1510c",
+          "e_e16f04a330f4"
+        ]
+      ]
+    },
+    {
+      "subject": "contributor",
+      "value": "missed_barrier",
+      "supporting_sets": [
+        [
+          "e_327673e6cfbc",
+          "e_43f684031d56"
+        ]
+      ]
+    },
+    {
+      "subject": "amplifier",
+      "value": "rollback_delay",
+      "supporting_sets": [
+        [
+          "e_0f0695e6774e",
+          "e_c0ccf345df9b"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "failure_pattern",
+      "value": "layered",
+      "supporting_sets": [
+        [
+          "e_0f0695e6774e",
+          "e_327673e6cfbc",
+          "e_43f684031d56",
+          "e_588d9ee1510c",
+          "e_c0ccf345df9b",
+          "e_e16f04a330f4"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "validate_artifacts_and_shorten_rollback",
+  "constraints": [
+    "artifact",
+    "incident_start",
+    "validation",
+    "validation_capability",
+    "rollback",
+    "duration"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_ea7fd7e5ae486d0abd7b",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_588d9ee1510c": 2,
+    "e_e16f04a330f4": 2,
+    "e_327673e6cfbc": 2,
+    "e_43f684031d56": 2,
+    "e_c0ccf345df9b": 2,
+    "e_0f0695e6774e": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_0f0695e6774e",
+      "e_327673e6cfbc",
+      "e_43f684031d56",
+      "e_588d9ee1510c",
+      "e_c0ccf345df9b",
+      "e_e16f04a330f4"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

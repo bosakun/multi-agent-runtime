@@ -1,0 +1,108 @@
+{
+  "task_id": "b08",
+  "relevant_evidence_ids": [
+    "e_278d4d27ed",
+    "e_dc7c3d192e",
+    "e_b24f3c7c75",
+    "e_2d9b529837",
+    "e_6e75eda400",
+    "e_c1f5a6e82a"
+  ],
+  "distractor_ids": [
+    "e_0a1a6ebfa7",
+    "e_2db24ce88c",
+    "e_0ec02b00c2"
+  ],
+  "claims": [
+    {
+      "subject": "demand_forecast",
+      "value": "high",
+      "supporting_sets": [
+        [
+          "e_278d4d27ed"
+        ]
+      ]
+    },
+    {
+      "subject": "staffing_capacity",
+      "value": "sufficient",
+      "supporting_sets": [
+        [
+          "e_dc7c3d192e"
+        ]
+      ]
+    },
+    {
+      "subject": "access_requirement",
+      "value": "expanded",
+      "supporting_sets": [
+        [
+          "e_b24f3c7c75"
+        ]
+      ]
+    },
+    {
+      "subject": "venue_budget",
+      "value": "funded",
+      "supporting_sets": [
+        [
+          "e_2d9b529837"
+        ]
+      ]
+    },
+    {
+      "subject": "supplier_commitment",
+      "value": "confirmed",
+      "supporting_sets": [
+        [
+          "e_6e75eda400"
+        ]
+      ]
+    },
+    {
+      "subject": "fallback_site",
+      "value": "available",
+      "supporting_sets": [
+        [
+          "e_c1f5a6e82a"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "expansion_justified",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_278d4d27ed",
+          "e_dc7c3d192e",
+          "e_b24f3c7c75"
+        ]
+      ]
+    },
+    {
+      "subject": "expansion_feasible",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_2d9b529837",
+          "e_6e75eda400",
+          "e_c1f5a6e82a"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "expand_with_fallback",
+  "constraints": [
+    "demand_forecast",
+    "staffing_capacity",
+    "access_requirement",
+    "venue_budget",
+    "supplier_commitment",
+    "fallback_site"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_34683c02c92ed566daed"
+}

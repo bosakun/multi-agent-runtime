@@ -1,0 +1,175 @@
+{
+  "id": "v2-decision-hard",
+  "family": "decision",
+  "template": "veto_then_tradeoff_then_reversibility",
+  "question": "Evaluate raw and anonymized city data-sharing proposals. Establish the legal boundary, benefits, residual risk and reversibility from the records instead of averaging incompatible objectives.",
+  "instructions": {
+    "reporting_fields": [
+      "raw_benefit",
+      "raw_consent",
+      "consent_rule",
+      "anonymized_benefit",
+      "reidentification_risk",
+      "rollback",
+      "oversight"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "raw_consent",
+            "value": "missing"
+          },
+          {
+            "subject": "consent_rule",
+            "value": "veto"
+          }
+        ],
+        "conclusion": {
+          "subject": "raw_option",
+          "value": "excluded"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "anonymized_benefit",
+            "value": "adequate"
+          },
+          {
+            "subject": "reidentification_risk",
+            "value": "low"
+          }
+        ],
+        "conclusion": {
+          "subject": "alternative",
+          "value": "acceptable"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "raw_option",
+            "value": "excluded"
+          },
+          {
+            "subject": "alternative",
+            "value": "acceptable"
+          },
+          {
+            "subject": "rollback",
+            "value": "available"
+          }
+        ],
+        "conclusion": {
+          "subject": "recommendation",
+          "value": "reversible_alternative"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "raw_consent",
+            "value": "granted"
+          },
+          {
+            "subject": "raw_benefit",
+            "value": "high"
+          },
+          {
+            "subject": "consent_rule",
+            "value": "advisory"
+          }
+        ],
+        "conclusion": {
+          "subject": "recommendation",
+          "value": "raw_option"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "recommendation",
+            "value": "reversible_alternative"
+          },
+          {
+            "subject": "oversight",
+            "value": "approved"
+          }
+        ],
+        "choice": "pilot_anonymized_design"
+      },
+      {
+        "premises": [
+          {
+            "subject": "recommendation",
+            "value": "raw_option"
+          },
+          {
+            "subject": "oversight",
+            "value": "approved"
+          }
+        ],
+        "choice": "adopt_raw_design"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_e2c4e865d277",
+      "content": "Source record. Observation: old_raw_contract = permitted.\nSource routing marker: CANARY_5d71e5ed7d98ff84",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_ec638cf96b32",
+      "content": "Source record. Observation: website_traffic = high.\nSource routing marker: CANARY_6e7d53e2cac30124",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_6014643156b7",
+      "content": "Source record. Observation: oversight = approved.\nSource routing marker: CANARY_e00dc5c4b2a621d0",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_c07c45806c35",
+      "content": "Source record. Observation: reidentification_risk = low.\nSource routing marker: CANARY_ab8915259a64e8f3",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_1f2b07123fcf",
+      "content": "Source record. Observation: consent_rule = veto.\nSource routing marker: CANARY_c50b30f5b8b86dcc",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_cf3270875bb0",
+      "content": "Source record. Observation: anonymized_benefit = adequate.\nSource routing marker: CANARY_422f8f23b0c1e053",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_96753c14debd",
+      "content": "Source record. Observation: rollback = available.\nSource routing marker: CANARY_3dcc6cfa96a670ae",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a60398349ba1",
+      "content": "Source record. Observation: raw_consent = missing.\nSource routing marker: CANARY_093a8a5609add7d7",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_bc811d5428e0",
+      "content": "Source record. Observation: raw_benefit = high.\nSource routing marker: CANARY_3e5c43323ceaff5f",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_0158ff9db477",
+      "content": "Source record. Observation: vendor_brand = famous.\nSource routing marker: CANARY_8ffd31f2d54f26ee",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "veto_then_tradeoff_then_reversibility"
+}

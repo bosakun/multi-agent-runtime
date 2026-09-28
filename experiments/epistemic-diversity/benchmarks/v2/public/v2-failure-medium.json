@@ -1,0 +1,173 @@
+{
+  "id": "v2-failure-medium",
+  "family": "failure",
+  "template": "initiator_and_failed_defense",
+  "question": "Analyze a release incident using artifact, validation and rollback records. Distinguish any initiating fault, failed defense and duration amplifier rather than assigning all observations the same causal role.",
+  "instructions": {
+    "reporting_fields": [
+      "artifact",
+      "incident_start",
+      "validation",
+      "validation_capability",
+      "rollback",
+      "duration"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "artifact",
+            "value": "invalid"
+          },
+          {
+            "subject": "incident_start",
+            "value": "after_deploy"
+          }
+        ],
+        "conclusion": {
+          "subject": "primary",
+          "value": "bad_artifact"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "validation",
+            "value": "skipped"
+          },
+          {
+            "subject": "validation_capability",
+            "value": "would_detect"
+          }
+        ],
+        "conclusion": {
+          "subject": "contributor",
+          "value": "missed_barrier"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "rollback",
+            "value": "delayed"
+          },
+          {
+            "subject": "duration",
+            "value": "extended"
+          }
+        ],
+        "conclusion": {
+          "subject": "amplifier",
+          "value": "rollback_delay"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "primary",
+            "value": "bad_artifact"
+          },
+          {
+            "subject": "contributor",
+            "value": "missed_barrier"
+          },
+          {
+            "subject": "amplifier",
+            "value": "rollback_delay"
+          }
+        ],
+        "conclusion": {
+          "subject": "failure_pattern",
+          "value": "layered"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "artifact",
+            "value": "valid"
+          },
+          {
+            "subject": "incident_start",
+            "value": "before_deploy"
+          }
+        ],
+        "conclusion": {
+          "subject": "primary",
+          "value": "external"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "failure_pattern",
+            "value": "layered"
+          }
+        ],
+        "choice": "validate_artifacts_and_shorten_rollback"
+      },
+      {
+        "premises": [
+          {
+            "subject": "primary",
+            "value": "external"
+          }
+        ],
+        "choice": "investigate_external_trigger"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_43f684031d56",
+      "content": "Source record. Observation: validation_capability = would_detect.\nSource routing marker: CANARY_4c3c9d4277c50e67",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_327673e6cfbc",
+      "content": "Source record. Observation: validation = skipped.\nSource routing marker: CANARY_efff2628a4395ad6",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e89854913e0b",
+      "content": "Source record. Observation: team_size = large.\nSource routing marker: CANARY_878500635c54d9f8",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_d07d2cb5d2a5",
+      "content": "Source record. Observation: release_name = spring.\nSource routing marker: CANARY_dbb2095146f93c97",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_64213666bd6f",
+      "content": "Source record. Observation: old_incident = network.\nSource routing marker: CANARY_4b45f956fe49ceb3",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_588d9ee1510c",
+      "content": "Source record. Observation: artifact = invalid.\nSource routing marker: CANARY_7ae51ab1bfd18745",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e16f04a330f4",
+      "content": "Source record. Observation: incident_start = after_deploy.\nSource routing marker: CANARY_844f0eaee6154c2f",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_0f0695e6774e",
+      "content": "Source record. Observation: duration = extended.\nSource routing marker: CANARY_938711a58bc5171f",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_c0ccf345df9b",
+      "content": "Source record. Observation: rollback = delayed.\nSource routing marker: CANARY_5e040a9d65543157",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "medium",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "initiator_and_failed_defense"
+}

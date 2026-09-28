@@ -1,0 +1,115 @@
+{
+  "task_id": "a09",
+  "relevant_evidence_ids": [
+    "e_9ca43376d6",
+    "e_058eef68a3",
+    "e_7be1066ae3",
+    "e_d10e29c5d5",
+    "e_0a82419656",
+    "e_7c0ee1ef05"
+  ],
+  "distractor_ids": [
+    "e_8ab54169bf",
+    "e_7d0c77c622",
+    "e_247602b526"
+  ],
+  "claims": [
+    {
+      "subject": "sample_defect",
+      "value": "unconfirmed",
+      "supporting_sets": [
+        [
+          "e_9ca43376d6"
+        ]
+      ]
+    },
+    {
+      "subject": "supplier_change",
+      "value": "absent",
+      "supporting_sets": [
+        [
+          "e_058eef68a3"
+        ]
+      ]
+    },
+    {
+      "subject": "comparison_batch",
+      "value": "also_defective",
+      "supporting_sets": [
+        [
+          "e_7be1066ae3"
+        ]
+      ]
+    },
+    {
+      "subject": "replacement_stock",
+      "value": "unavailable",
+      "supporting_sets": [
+        [
+          "e_d10e29c5d5"
+        ]
+      ]
+    },
+    {
+      "subject": "traceability",
+      "value": "incomplete",
+      "supporting_sets": [
+        [
+          "e_0a82419656"
+        ]
+      ]
+    },
+    {
+      "subject": "inspection_capacity",
+      "value": "insufficient",
+      "supporting_sets": [
+        [
+          "e_7c0ee1ef05"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "material_link_supported",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_9ca43376d6",
+          "e_058eef68a3",
+          "e_7be1066ae3"
+        ]
+      ]
+    },
+    {
+      "subject": "containment_ready",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_d10e29c5d5",
+          "e_0a82419656",
+          "e_7c0ee1ef05"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "continue_sampling",
+  "constraints": [
+    "sample_defect",
+    "supplier_change",
+    "comparison_batch",
+    "replacement_stock",
+    "traceability",
+    "inspection_capacity"
+  ],
+  "failure_factors": [
+    "sample_defect",
+    "supplier_change",
+    "comparison_batch",
+    "replacement_stock",
+    "traceability",
+    "inspection_capacity"
+  ],
+  "hidden_annotation": "GOLD_ONLY_06ae6ba2e1724729eac6"
+}

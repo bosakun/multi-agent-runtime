@@ -1,0 +1,169 @@
+{
+  "id": "v2-constraints-medium",
+  "family": "constraints",
+  "template": "candidate_elimination_with_budget_and_compatibility",
+  "question": "Select a storage upgrade subject to migration compatibility and a strict spending ceiling. A faster but incompatible or over-budget option cannot be selected.",
+  "instructions": {
+    "reporting_fields": [
+      "fast_drive_cost",
+      "balanced_drive_cost",
+      "fast_compatibility",
+      "balanced_compatibility",
+      "minimum_throughput",
+      "migration_slot"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "fast_drive_cost",
+            "value": "over_budget"
+          },
+          {
+            "subject": "fast_compatibility",
+            "value": "yes"
+          }
+        ],
+        "conclusion": {
+          "subject": "fast",
+          "value": "excluded"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "balanced_drive_cost",
+            "value": "within_budget"
+          },
+          {
+            "subject": "balanced_compatibility",
+            "value": "yes"
+          },
+          {
+            "subject": "minimum_throughput",
+            "value": "balanced_sufficient"
+          }
+        ],
+        "conclusion": {
+          "subject": "balanced",
+          "value": "feasible"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "fast",
+            "value": "excluded"
+          },
+          {
+            "subject": "balanced",
+            "value": "feasible"
+          }
+        ],
+        "conclusion": {
+          "subject": "selection",
+          "value": "balanced"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "fast_drive_cost",
+            "value": "within_budget"
+          },
+          {
+            "subject": "fast_compatibility",
+            "value": "yes"
+          },
+          {
+            "subject": "minimum_throughput",
+            "value": "fast_required"
+          }
+        ],
+        "conclusion": {
+          "subject": "selection",
+          "value": "fast"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "selection",
+            "value": "balanced"
+          },
+          {
+            "subject": "migration_slot",
+            "value": "available"
+          }
+        ],
+        "choice": "install_balanced"
+      },
+      {
+        "premises": [
+          {
+            "subject": "selection",
+            "value": "fast"
+          },
+          {
+            "subject": "migration_slot",
+            "value": "available"
+          }
+        ],
+        "choice": "install_fast"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_48356f221843",
+      "content": "Source record. Observation: fast_compatibility = yes.\nSource routing marker: CANARY_1b84552115ab19cc",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_96d09490c7d9",
+      "content": "Source record. Observation: migration_slot = available.\nSource routing marker: CANARY_c8014788f9f7e70e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_7595e6f7ee49",
+      "content": "Source record. Observation: old_quote = discounted.\nSource routing marker: CANARY_9bc90d909f22b4f1",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_d746b153a9c4",
+      "content": "Source record. Observation: fast_drive_cost = over_budget.\nSource routing marker: CANARY_b2d7ac3c15e54bc4",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b2512895670a",
+      "content": "Source record. Observation: balanced_compatibility = yes.\nSource routing marker: CANARY_42a86d68ab48dd6f",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_71d87df76c2b",
+      "content": "Source record. Observation: case_lighting = premium.\nSource routing marker: CANARY_fa0ae3ee72f3c5d4",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_c446885a3427",
+      "content": "Source record. Observation: balanced_drive_cost = within_budget.\nSource routing marker: CANARY_ae6a38b029dd5d69",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_0929d9514324",
+      "content": "Source record. Observation: minimum_throughput = balanced_sufficient.\nSource routing marker: CANARY_fd90dbc70d4e6060",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_eb4c061a08fd",
+      "content": "Source record. Observation: vendor_logo = popular.\nSource routing marker: CANARY_59abab261f0a157d",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "medium",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "candidate_elimination_with_budget_and_compatibility"
+}

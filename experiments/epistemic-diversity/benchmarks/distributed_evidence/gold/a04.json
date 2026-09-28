@@ -1,0 +1,108 @@
+{
+  "task_id": "a04",
+  "relevant_evidence_ids": [
+    "e_6591cdcd1d",
+    "e_92119ea58e",
+    "e_7ed53ce670",
+    "e_77da09f202",
+    "e_8f511fd923",
+    "e_8461de4334"
+  ],
+  "distractor_ids": [
+    "e_dfa20bf3a5",
+    "e_3c5d501bdf",
+    "e_b6000c0155"
+  ],
+  "claims": [
+    {
+      "subject": "error_signal",
+      "value": "elevated",
+      "supporting_sets": [
+        [
+          "e_6591cdcd1d"
+        ]
+      ]
+    },
+    {
+      "subject": "release_overlap",
+      "value": "present",
+      "supporting_sets": [
+        [
+          "e_92119ea58e"
+        ]
+      ]
+    },
+    {
+      "subject": "control_group",
+      "value": "unaffected",
+      "supporting_sets": [
+        [
+          "e_7ed53ce670"
+        ]
+      ]
+    },
+    {
+      "subject": "rollback_probe",
+      "value": "improves",
+      "supporting_sets": [
+        [
+          "e_77da09f202"
+        ]
+      ]
+    },
+    {
+      "subject": "traffic_stability",
+      "value": "steady",
+      "supporting_sets": [
+        [
+          "e_8f511fd923"
+        ]
+      ]
+    },
+    {
+      "subject": "rollback_package",
+      "value": "ready",
+      "supporting_sets": [
+        [
+          "e_8461de4334"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "release_association",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_6591cdcd1d",
+          "e_92119ea58e",
+          "e_7ed53ce670"
+        ]
+      ]
+    },
+    {
+      "subject": "recovery_ready",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_77da09f202",
+          "e_8f511fd923",
+          "e_8461de4334"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "rollback",
+  "constraints": [
+    "error_signal",
+    "release_overlap",
+    "control_group",
+    "rollback_probe",
+    "traffic_stability",
+    "rollback_package"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_d0ffe9a685d0433fb775"
+}

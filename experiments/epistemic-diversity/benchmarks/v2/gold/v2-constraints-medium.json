@@ -1,0 +1,145 @@
+{
+  "task_id": "v2-constraints-medium",
+  "relevant_evidence_ids": [
+    "e_d746b153a9c4",
+    "e_c446885a3427",
+    "e_48356f221843",
+    "e_b2512895670a",
+    "e_0929d9514324",
+    "e_96d09490c7d9"
+  ],
+  "distractor_ids": [
+    "e_71d87df76c2b",
+    "e_7595e6f7ee49",
+    "e_eb4c061a08fd"
+  ],
+  "claims": [
+    {
+      "subject": "fast_drive_cost",
+      "value": "over_budget",
+      "supporting_sets": [
+        [
+          "e_d746b153a9c4"
+        ]
+      ]
+    },
+    {
+      "subject": "balanced_drive_cost",
+      "value": "within_budget",
+      "supporting_sets": [
+        [
+          "e_c446885a3427"
+        ]
+      ]
+    },
+    {
+      "subject": "fast_compatibility",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_48356f221843"
+        ]
+      ]
+    },
+    {
+      "subject": "balanced_compatibility",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_b2512895670a"
+        ]
+      ]
+    },
+    {
+      "subject": "minimum_throughput",
+      "value": "balanced_sufficient",
+      "supporting_sets": [
+        [
+          "e_0929d9514324"
+        ]
+      ]
+    },
+    {
+      "subject": "migration_slot",
+      "value": "available",
+      "supporting_sets": [
+        [
+          "e_96d09490c7d9"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "selection",
+      "value": "balanced",
+      "supporting_sets": [
+        [
+          "e_0929d9514324",
+          "e_48356f221843",
+          "e_b2512895670a",
+          "e_c446885a3427",
+          "e_d746b153a9c4"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "balanced",
+      "value": "feasible",
+      "supporting_sets": [
+        [
+          "e_0929d9514324",
+          "e_b2512895670a",
+          "e_c446885a3427"
+        ]
+      ]
+    },
+    {
+      "subject": "fast",
+      "value": "excluded",
+      "supporting_sets": [
+        [
+          "e_48356f221843",
+          "e_d746b153a9c4"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "install_balanced",
+  "constraints": [
+    "fast_drive_cost",
+    "balanced_drive_cost",
+    "fast_compatibility",
+    "balanced_compatibility",
+    "minimum_throughput",
+    "migration_slot"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_30e3145f43a9520a3e98",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_d746b153a9c4": 2,
+    "e_c446885a3427": 2,
+    "e_48356f221843": 2,
+    "e_b2512895670a": 2,
+    "e_0929d9514324": 2,
+    "e_96d09490c7d9": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_0929d9514324",
+      "e_48356f221843",
+      "e_96d09490c7d9",
+      "e_b2512895670a",
+      "e_c446885a3427",
+      "e_d746b153a9c4"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

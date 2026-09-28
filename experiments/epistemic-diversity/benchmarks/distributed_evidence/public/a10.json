@@ -1,0 +1,199 @@
+{
+  "id": "a10",
+  "family": "distributed_evidence",
+  "template": "quality_audit",
+  "question": "A production batch may have a material defect. Integrate laboratory, comparison, and containment evidence.",
+  "instructions": {
+    "reporting_fields": [
+      "sample_defect",
+      "supplier_change",
+      "comparison_batch",
+      "replacement_stock",
+      "traceability",
+      "inspection_capacity"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "sample_defect",
+            "value": "unconfirmed"
+          },
+          {
+            "subject": "supplier_change",
+            "value": "absent"
+          },
+          {
+            "subject": "comparison_batch",
+            "value": "also_defective"
+          }
+        ],
+        "conclusion": {
+          "subject": "material_link_supported",
+          "value": "no"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "sample_defect",
+            "value": "confirmed"
+          },
+          {
+            "subject": "supplier_change",
+            "value": "present"
+          },
+          {
+            "subject": "comparison_batch",
+            "value": "clean"
+          }
+        ],
+        "conclusion": {
+          "subject": "material_link_supported",
+          "value": "yes"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "replacement_stock",
+            "value": "unavailable"
+          },
+          {
+            "subject": "traceability",
+            "value": "incomplete"
+          },
+          {
+            "subject": "inspection_capacity",
+            "value": "insufficient"
+          }
+        ],
+        "conclusion": {
+          "subject": "containment_ready",
+          "value": "no"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "replacement_stock",
+            "value": "available"
+          },
+          {
+            "subject": "traceability",
+            "value": "complete"
+          },
+          {
+            "subject": "inspection_capacity",
+            "value": "sufficient"
+          }
+        ],
+        "conclusion": {
+          "subject": "containment_ready",
+          "value": "yes"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "material_link_supported",
+            "value": "no"
+          },
+          {
+            "subject": "containment_ready",
+            "value": "no"
+          }
+        ],
+        "choice": "continue_sampling"
+      },
+      {
+        "premises": [
+          {
+            "subject": "material_link_supported",
+            "value": "no"
+          },
+          {
+            "subject": "containment_ready",
+            "value": "yes"
+          }
+        ],
+        "choice": "prepare_containment"
+      },
+      {
+        "premises": [
+          {
+            "subject": "material_link_supported",
+            "value": "yes"
+          },
+          {
+            "subject": "containment_ready",
+            "value": "no"
+          }
+        ],
+        "choice": "investigate_material"
+      },
+      {
+        "premises": [
+          {
+            "subject": "material_link_supported",
+            "value": "yes"
+          },
+          {
+            "subject": "containment_ready",
+            "value": "yes"
+          }
+        ],
+        "choice": "isolate_and_replace"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_0e75f63039",
+      "content": "Case record 6. Observation: inspection_capacity = sufficient. This report concerns the current case.\nSource routing marker: CANARY_d828116f5ff6cfee",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_f4d5aa93a1",
+      "content": "Case record 2. Observation: supplier_change = absent. This report concerns the current case.\nSource routing marker: CANARY_33ba6988739611fc",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b00d019826",
+      "content": "Unrelated archival note. Observation: archival_2 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_ca00fb0ac1ec0f94",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_6a128eb7cd",
+      "content": "Case record 5. Observation: traceability = complete. This report concerns the current case.\nSource routing marker: CANARY_18b40d9cff63cef5",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_273a7d3d36",
+      "content": "Case record 4. Observation: replacement_stock = available. This report concerns the current case.\nSource routing marker: CANARY_ccc877d94f86dc11",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e493002f73",
+      "content": "Unrelated archival note. Observation: archival_0 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_4d0cbc80f1aeaca8",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_79e5cbf896",
+      "content": "Unrelated archival note. Observation: archival_1 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_ce7d1fd218c158c5",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_72c85bdfef",
+      "content": "Case record 3. Observation: comparison_batch = also_defective. This report concerns the current case.\nSource routing marker: CANARY_d886d624f92c9d0f",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_6d40bbe448",
+      "content": "Case record 1. Observation: sample_defect = unconfirmed. This report concerns the current case.\nSource routing marker: CANARY_7c3325c2f271718d",
+      "trust": "untrusted_data"
+    }
+  ]
+}

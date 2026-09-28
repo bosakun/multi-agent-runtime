@@ -324,6 +324,15 @@ handler. See [extension guide](docs/extensions.md).
 - Live paid-model quality and robustness require separate experiments; the HTTP
   adapter is contract-tested offline, without spending API credits.
 
+## Research / Experiments
+
+[Role Diversity vs. Epistemic Diversity](experiments/epistemic-diversity/README.md)
+is an independent research application of this runtime: five controlled conditions,
+30 versioned synthetic tasks across ten structural families, auditable context
+separation, paired analysis and reproducible figures. A frozen six-task real-pilot
+plan targets C2/C3 within 48 calls; real-model results are pending. Research code
+lives under `experiments/` and is not part of the runtime core; v1 results are retained.
+
 ## Roadmap
 
 Dynamic agent creation; richer planning and scheduling; distributed execution

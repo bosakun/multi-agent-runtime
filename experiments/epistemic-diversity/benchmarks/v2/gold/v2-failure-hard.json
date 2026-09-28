@@ -1,0 +1,170 @@
+{
+  "task_id": "v2-failure-hard",
+  "relevant_evidence_ids": [
+    "e_17b2f01025e2",
+    "e_1000b7ff3b6d",
+    "e_e32b7061b26e",
+    "e_d9abbcf9c18a",
+    "e_2375c5897292",
+    "e_90eb4ab49c12",
+    "e_6c103e024ee5"
+  ],
+  "distractor_ids": [
+    "e_051b7053cd2d",
+    "e_b81268b89ea4",
+    "e_0454d12ced6f"
+  ],
+  "claims": [
+    {
+      "subject": "channel_a",
+      "value": "failed",
+      "supporting_sets": [
+        [
+          "e_17b2f01025e2"
+        ]
+      ]
+    },
+    {
+      "subject": "channel_b",
+      "value": "failed",
+      "supporting_sets": [
+        [
+          "e_1000b7ff3b6d"
+        ]
+      ]
+    },
+    {
+      "subject": "voting_rule",
+      "value": "either_suffices",
+      "supporting_sets": [
+        [
+          "e_e32b7061b26e"
+        ]
+      ]
+    },
+    {
+      "subject": "alarm_time",
+      "value": "after_loss",
+      "supporting_sets": [
+        [
+          "e_d9abbcf9c18a"
+        ]
+      ]
+    },
+    {
+      "subject": "service_loss",
+      "value": "before_alarm",
+      "supporting_sets": [
+        [
+          "e_2375c5897292"
+        ]
+      ]
+    },
+    {
+      "subject": "maintenance",
+      "value": "shared_window",
+      "supporting_sets": [
+        [
+          "e_90eb4ab49c12"
+        ]
+      ]
+    },
+    {
+      "subject": "isolation_test",
+      "value": "omitted",
+      "supporting_sets": [
+        [
+          "e_6c103e024ee5"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "failure_pattern",
+      "value": "common_cut_set",
+      "supporting_sets": [
+        [
+          "e_1000b7ff3b6d",
+          "e_17b2f01025e2",
+          "e_2375c5897292",
+          "e_6c103e024ee5",
+          "e_90eb4ab49c12",
+          "e_d9abbcf9c18a",
+          "e_e32b7061b26e"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "alarm_role",
+      "value": "consequence",
+      "supporting_sets": [
+        [
+          "e_2375c5897292",
+          "e_d9abbcf9c18a"
+        ]
+      ]
+    },
+    {
+      "subject": "contributor",
+      "value": "common_maintenance",
+      "supporting_sets": [
+        [
+          "e_6c103e024ee5",
+          "e_90eb4ab49c12"
+        ]
+      ]
+    },
+    {
+      "subject": "primary",
+      "value": "dual_channel_loss",
+      "supporting_sets": [
+        [
+          "e_1000b7ff3b6d",
+          "e_17b2f01025e2",
+          "e_e32b7061b26e"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "stagger_maintenance_and_test_isolation",
+  "constraints": [
+    "channel_a",
+    "channel_b",
+    "voting_rule",
+    "alarm_time",
+    "service_loss",
+    "maintenance",
+    "isolation_test"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_4089f56f9eff87bd9e38",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_17b2f01025e2": 2,
+    "e_1000b7ff3b6d": 2,
+    "e_e32b7061b26e": 2,
+    "e_d9abbcf9c18a": 2,
+    "e_2375c5897292": 2,
+    "e_90eb4ab49c12": 2,
+    "e_6c103e024ee5": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_1000b7ff3b6d",
+      "e_17b2f01025e2",
+      "e_2375c5897292",
+      "e_6c103e024ee5",
+      "e_90eb4ab49c12",
+      "e_d9abbcf9c18a",
+      "e_e32b7061b26e"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

@@ -1,0 +1,187 @@
+{
+  "id": "v2-failure-hard",
+  "family": "failure",
+  "template": "minimal_fault_cut_set_with_noncausal_alarm",
+  "question": "Explain service loss in a two-channel safety system. Determine any minimal cut set, establish whether an alarm preceded or followed the loss, and assess the maintenance records independently.",
+  "instructions": {
+    "reporting_fields": [
+      "channel_a",
+      "channel_b",
+      "voting_rule",
+      "alarm_time",
+      "service_loss",
+      "maintenance",
+      "isolation_test"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "channel_a",
+            "value": "failed"
+          },
+          {
+            "subject": "channel_b",
+            "value": "failed"
+          },
+          {
+            "subject": "voting_rule",
+            "value": "either_suffices"
+          }
+        ],
+        "conclusion": {
+          "subject": "primary",
+          "value": "dual_channel_loss"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "alarm_time",
+            "value": "after_loss"
+          },
+          {
+            "subject": "service_loss",
+            "value": "before_alarm"
+          }
+        ],
+        "conclusion": {
+          "subject": "alarm_role",
+          "value": "consequence"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "maintenance",
+            "value": "shared_window"
+          },
+          {
+            "subject": "isolation_test",
+            "value": "omitted"
+          }
+        ],
+        "conclusion": {
+          "subject": "contributor",
+          "value": "common_maintenance"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "primary",
+            "value": "dual_channel_loss"
+          },
+          {
+            "subject": "alarm_role",
+            "value": "consequence"
+          },
+          {
+            "subject": "contributor",
+            "value": "common_maintenance"
+          }
+        ],
+        "conclusion": {
+          "subject": "failure_pattern",
+          "value": "common_cut_set"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "channel_a",
+            "value": "working"
+          },
+          {
+            "subject": "channel_b",
+            "value": "working"
+          },
+          {
+            "subject": "service_loss",
+            "value": "before_alarm"
+          }
+        ],
+        "conclusion": {
+          "subject": "failure_pattern",
+          "value": "downstream_fault"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "failure_pattern",
+            "value": "common_cut_set"
+          }
+        ],
+        "choice": "stagger_maintenance_and_test_isolation"
+      },
+      {
+        "premises": [
+          {
+            "subject": "failure_pattern",
+            "value": "downstream_fault"
+          }
+        ],
+        "choice": "inspect_downstream_path"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_6c103e024ee5",
+      "content": "Source record. Observation: isolation_test = omitted.\nSource routing marker: CANARY_2ff9277c226e8fad",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_90eb4ab49c12",
+      "content": "Source record. Observation: maintenance = shared_window.\nSource routing marker: CANARY_cc4a3275b9b7cbe8",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_d9abbcf9c18a",
+      "content": "Source record. Observation: alarm_time = after_loss.\nSource routing marker: CANARY_b11b18ebf90d38c5",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_1000b7ff3b6d",
+      "content": "Source record. Observation: channel_b = failed.\nSource routing marker: CANARY_d80cf70b5040a2fb",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_17b2f01025e2",
+      "content": "Source record. Observation: channel_a = failed.\nSource routing marker: CANARY_0246ea46d198d447",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e32b7061b26e",
+      "content": "Source record. Observation: voting_rule = either_suffices.\nSource routing marker: CANARY_a64b09b605c1d878",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b81268b89ea4",
+      "content": "Source record. Observation: old_channel_a = healthy.\nSource routing marker: CANARY_9bb68f6aff80478e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_0454d12ced6f",
+      "content": "Source record. Observation: panel_finish = metal.\nSource routing marker: CANARY_f821fcb73c6d16f6",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_051b7053cd2d",
+      "content": "Source record. Observation: alarm_volume = high.\nSource routing marker: CANARY_1288e8ae9e753812",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2375c5897292",
+      "content": "Source record. Observation: service_loss = before_alarm.\nSource routing marker: CANARY_90c6ac2aa6bb7498",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "minimal_fault_cut_set_with_noncausal_alarm"
+}

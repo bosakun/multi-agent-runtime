@@ -1,0 +1,112 @@
+{
+  "task_id": "a11",
+  "relevant_evidence_ids": [
+    "e_d5825fd28d",
+    "e_d4dd43a9e1",
+    "e_03b005372d",
+    "e_0e87c19ed8",
+    "e_a65f39b128",
+    "e_764de2cd28"
+  ],
+  "distractor_ids": [
+    "e_e446571433",
+    "e_818b743222",
+    "e_b4082bb1c1"
+  ],
+  "claims": [
+    {
+      "subject": "sample_defect",
+      "value": "confirmed",
+      "supporting_sets": [
+        [
+          "e_d5825fd28d"
+        ]
+      ]
+    },
+    {
+      "subject": "supplier_change",
+      "value": "present",
+      "supporting_sets": [
+        [
+          "e_d4dd43a9e1"
+        ]
+      ]
+    },
+    {
+      "subject": "comparison_batch",
+      "value": "clean",
+      "supporting_sets": [
+        [
+          "e_03b005372d"
+        ]
+      ]
+    },
+    {
+      "subject": "replacement_stock",
+      "value": "unavailable",
+      "supporting_sets": [
+        [
+          "e_0e87c19ed8"
+        ]
+      ]
+    },
+    {
+      "subject": "traceability",
+      "value": "incomplete",
+      "supporting_sets": [
+        [
+          "e_a65f39b128"
+        ]
+      ]
+    },
+    {
+      "subject": "inspection_capacity",
+      "value": "insufficient",
+      "supporting_sets": [
+        [
+          "e_764de2cd28"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "material_link_supported",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_d5825fd28d",
+          "e_d4dd43a9e1",
+          "e_03b005372d"
+        ]
+      ]
+    },
+    {
+      "subject": "containment_ready",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_0e87c19ed8",
+          "e_a65f39b128",
+          "e_764de2cd28"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "investigate_material",
+  "constraints": [
+    "sample_defect",
+    "supplier_change",
+    "comparison_batch",
+    "replacement_stock",
+    "traceability",
+    "inspection_capacity"
+  ],
+  "failure_factors": [
+    "replacement_stock",
+    "traceability",
+    "inspection_capacity"
+  ],
+  "hidden_annotation": "GOLD_ONLY_1a1e5b2b1fe65606a329"
+}

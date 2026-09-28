@@ -1,0 +1,199 @@
+{
+  "id": "a07",
+  "family": "distributed_evidence",
+  "template": "delivery_disruption",
+  "question": "A delivery network has delays. Combine route evidence with the feasibility of a detour.",
+  "instructions": {
+    "reporting_fields": [
+      "route_delay",
+      "weather_alert",
+      "alternate_route_control",
+      "detour_capacity",
+      "driver_availability",
+      "detour_clearance"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "route_delay",
+            "value": "absent"
+          },
+          {
+            "subject": "weather_alert",
+            "value": "inactive"
+          },
+          {
+            "subject": "alternate_route_control",
+            "value": "affected"
+          }
+        ],
+        "conclusion": {
+          "subject": "route_disruption_supported",
+          "value": "no"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "route_delay",
+            "value": "observed"
+          },
+          {
+            "subject": "weather_alert",
+            "value": "active"
+          },
+          {
+            "subject": "alternate_route_control",
+            "value": "unaffected"
+          }
+        ],
+        "conclusion": {
+          "subject": "route_disruption_supported",
+          "value": "yes"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "detour_capacity",
+            "value": "insufficient"
+          },
+          {
+            "subject": "driver_availability",
+            "value": "unavailable"
+          },
+          {
+            "subject": "detour_clearance",
+            "value": "pending"
+          }
+        ],
+        "conclusion": {
+          "subject": "detour_feasible",
+          "value": "no"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "detour_capacity",
+            "value": "sufficient"
+          },
+          {
+            "subject": "driver_availability",
+            "value": "available"
+          },
+          {
+            "subject": "detour_clearance",
+            "value": "approved"
+          }
+        ],
+        "conclusion": {
+          "subject": "detour_feasible",
+          "value": "yes"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "route_disruption_supported",
+            "value": "no"
+          },
+          {
+            "subject": "detour_feasible",
+            "value": "no"
+          }
+        ],
+        "choice": "monitor_routes"
+      },
+      {
+        "premises": [
+          {
+            "subject": "route_disruption_supported",
+            "value": "no"
+          },
+          {
+            "subject": "detour_feasible",
+            "value": "yes"
+          }
+        ],
+        "choice": "reserve_detour"
+      },
+      {
+        "premises": [
+          {
+            "subject": "route_disruption_supported",
+            "value": "yes"
+          },
+          {
+            "subject": "detour_feasible",
+            "value": "no"
+          }
+        ],
+        "choice": "investigate_routes"
+      },
+      {
+        "premises": [
+          {
+            "subject": "route_disruption_supported",
+            "value": "yes"
+          },
+          {
+            "subject": "detour_feasible",
+            "value": "yes"
+          }
+        ],
+        "choice": "use_detour"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_a9e5c31674",
+      "content": "Unrelated archival note. Observation: archival_0 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_7086e4502bd0351d",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_3abc9c03ec",
+      "content": "Unrelated archival note. Observation: archival_1 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_dabe6fe9458a663b",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_fd6e3a22d8",
+      "content": "Case record 1. Observation: route_delay = observed. This report concerns the current case.\nSource routing marker: CANARY_18f41fcf74376744",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e5c00c331f",
+      "content": "Unrelated archival note. Observation: archival_2 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_0f629a00cb1e7452",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_0f5fbed63b",
+      "content": "Case record 3. Observation: alternate_route_control = unaffected. This report concerns the current case.\nSource routing marker: CANARY_c0c366ce8cea85a2",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e257bcb4b3",
+      "content": "Case record 2. Observation: weather_alert = active. This report concerns the current case.\nSource routing marker: CANARY_b1512e64d2514a24",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_ed1622ec99",
+      "content": "Case record 4. Observation: detour_capacity = insufficient. This report concerns the current case.\nSource routing marker: CANARY_59891c3b81e685ce",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_c304448ed8",
+      "content": "Case record 5. Observation: driver_availability = unavailable. This report concerns the current case.\nSource routing marker: CANARY_d62003bda01a8ac1",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_4509df06be",
+      "content": "Case record 6. Observation: detour_clearance = pending. This report concerns the current case.\nSource routing marker: CANARY_ed9a7286ea4d06a8",
+      "trust": "untrusted_data"
+    }
+  ]
+}

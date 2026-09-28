@@ -1,0 +1,125 @@
+{
+  "id": "v2-diagnosis-easy",
+  "family": "diagnosis",
+  "template": "differential_diagnosis_by_negative_control",
+  "question": "Localize intermittent display failures between a power supply and a signal cable. Use the independent power measurement and a substitute-cable test, not just the visible flicker.",
+  "instructions": {
+    "reporting_fields": [
+      "display",
+      "supply_voltage",
+      "substitute_cable",
+      "load"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "display",
+            "value": "flickers"
+          },
+          {
+            "subject": "supply_voltage",
+            "value": "stable"
+          },
+          {
+            "subject": "substitute_cable",
+            "value": "fixes"
+          }
+        ],
+        "conclusion": {
+          "subject": "cause",
+          "value": "cable"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "display",
+            "value": "flickers"
+          },
+          {
+            "subject": "supply_voltage",
+            "value": "unstable"
+          },
+          {
+            "subject": "substitute_cable",
+            "value": "unchanged"
+          }
+        ],
+        "conclusion": {
+          "subject": "cause",
+          "value": "supply"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "cause",
+            "value": "cable"
+          },
+          {
+            "subject": "load",
+            "value": "unchanged"
+          }
+        ],
+        "choice": "replace_cable"
+      },
+      {
+        "premises": [
+          {
+            "subject": "cause",
+            "value": "supply"
+          },
+          {
+            "subject": "load",
+            "value": "unchanged"
+          }
+        ],
+        "choice": "replace_supply"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_5b624bc31964",
+      "content": "Source record. Observation: old_fan = replaced.\nSource routing marker: CANARY_06e845f2928c1962",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_73ba5a6d229e",
+      "content": "Source record. Observation: display = flickers.\nSource routing marker: CANARY_3e4e2bddaa8411ce",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a6a064284654",
+      "content": "Source record. Observation: supply_voltage = stable.\nSource routing marker: CANARY_b6439e456cfc2f92",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2790113fe7d9",
+      "content": "Source record. Observation: case_color = black.\nSource routing marker: CANARY_1853be884df5b0ad",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2c5a120ef114",
+      "content": "Source record. Observation: load = unchanged.\nSource routing marker: CANARY_0479c84748e4b46a",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_072b395ce0dd",
+      "content": "Source record. Observation: substitute_cable = fixes.\nSource routing marker: CANARY_d5d356261b978c29",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_d2eeca18f288",
+      "content": "Source record. Observation: desk_height = adjusted.\nSource routing marker: CANARY_630fd4b72265542f",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "easy",
+  "dependency_depth": 1,
+  "evidence_interaction_type": "differential_diagnosis_by_negative_control"
+}

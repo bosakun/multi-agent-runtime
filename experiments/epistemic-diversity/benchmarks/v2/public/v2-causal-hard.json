@@ -1,0 +1,193 @@
+{
+  "id": "v2-causal-hard",
+  "family": "causal",
+  "template": "four_stage_cascade_with_failed_barrier",
+  "question": "Trace a distribution-centre outage across power, cooling, temperature and storage protection. The backup barrier may interrupt the chain, so establish its state rather than assuming every upstream fault propagates.",
+  "instructions": {
+    "reporting_fields": [
+      "grid",
+      "backup_power",
+      "cooling",
+      "ambient",
+      "rack_temperature",
+      "thermal_shutdown",
+      "storage",
+      "staff_report"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "grid",
+            "value": "lost"
+          },
+          {
+            "subject": "backup_power",
+            "value": "failed"
+          }
+        ],
+        "conclusion": {
+          "subject": "power",
+          "value": "unavailable"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "power",
+            "value": "unavailable"
+          },
+          {
+            "subject": "cooling",
+            "value": "stopped"
+          },
+          {
+            "subject": "ambient",
+            "value": "hot"
+          }
+        ],
+        "conclusion": {
+          "subject": "heat_removal",
+          "value": "insufficient"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "heat_removal",
+            "value": "insufficient"
+          },
+          {
+            "subject": "rack_temperature",
+            "value": "critical"
+          }
+        ],
+        "conclusion": {
+          "subject": "thermal_risk",
+          "value": "realized"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "thermal_risk",
+            "value": "realized"
+          },
+          {
+            "subject": "thermal_shutdown",
+            "value": "triggered"
+          },
+          {
+            "subject": "storage",
+            "value": "offline"
+          }
+        ],
+        "conclusion": {
+          "subject": "mechanism",
+          "value": "power_cooling_shutdown"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "grid",
+            "value": "lost"
+          },
+          {
+            "subject": "backup_power",
+            "value": "working"
+          },
+          {
+            "subject": "storage",
+            "value": "offline"
+          }
+        ],
+        "conclusion": {
+          "subject": "mechanism",
+          "value": "non_power_fault"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "mechanism",
+            "value": "power_cooling_shutdown"
+          }
+        ],
+        "choice": "restore_power_then_cooling_then_storage"
+      },
+      {
+        "premises": [
+          {
+            "subject": "mechanism",
+            "value": "non_power_fault"
+          }
+        ],
+        "choice": "investigate_storage_locally"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_88b424f7d3b1",
+      "content": "Source record. Observation: thermal_shutdown = triggered.\nSource routing marker: CANARY_014bdc4f9ec96817",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b27286da986f",
+      "content": "Source record. Observation: winter_test = passed.\nSource routing marker: CANARY_33fde39bb4a787ea",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_52ac92ec2906",
+      "content": "Source record. Observation: grid = lost.\nSource routing marker: CANARY_4dc9de1d6e939085",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_eadd621aa2a2",
+      "content": "Source record. Observation: cooling = stopped.\nSource routing marker: CANARY_4211aab428596283",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_80fa8d35888c",
+      "content": "Source record. Observation: backup_power = failed.\nSource routing marker: CANARY_4138ea0ca71fd89a",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_54f7b7a8a710",
+      "content": "Source record. Observation: parking_light = broken.\nSource routing marker: CANARY_60ebfbae559fcddd",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_10d72e1812e3",
+      "content": "Source record. Observation: office_power = available.\nSource routing marker: CANARY_63beb09e5949559c",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_f8dd2cdaa0f2",
+      "content": "Source record. Observation: ambient = hot.\nSource routing marker: CANARY_f34c841f3c148837",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_834864ec7d1e",
+      "content": "Source record. Observation: rack_temperature = critical.\nSource routing marker: CANARY_b3da6c2664fbe39c",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_373d0c1e7322",
+      "content": "Source record. Observation: staff_report = power_problem.\nSource routing marker: CANARY_9e2ff9b29ad3eb2f",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_fbf4535276d8",
+      "content": "Source record. Observation: storage = offline.\nSource routing marker: CANARY_8f3f617f4fb7f2a7",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 4,
+  "evidence_interaction_type": "four_stage_cascade_with_failed_barrier"
+}

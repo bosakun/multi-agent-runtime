@@ -1,0 +1,199 @@
+{
+  "id": "b12",
+  "family": "multi_perspective",
+  "template": "data_governance",
+  "question": "Choose a data processing plan balancing joint analysis needs, authorization, quality and retention constraints.",
+  "instructions": {
+    "reporting_fields": [
+      "joint_analysis_need",
+      "access_authorization",
+      "data_quality",
+      "retention_control",
+      "audit_capacity",
+      "recovery_process"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "joint_analysis_need",
+            "value": "unclear"
+          },
+          {
+            "subject": "access_authorization",
+            "value": "missing"
+          },
+          {
+            "subject": "data_quality",
+            "value": "inadequate"
+          }
+        ],
+        "conclusion": {
+          "subject": "joint_processing_justified",
+          "value": "no"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "joint_analysis_need",
+            "value": "established"
+          },
+          {
+            "subject": "access_authorization",
+            "value": "granted"
+          },
+          {
+            "subject": "data_quality",
+            "value": "adequate"
+          }
+        ],
+        "conclusion": {
+          "subject": "joint_processing_justified",
+          "value": "yes"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "retention_control",
+            "value": "absent"
+          },
+          {
+            "subject": "audit_capacity",
+            "value": "insufficient"
+          },
+          {
+            "subject": "recovery_process",
+            "value": "untested"
+          }
+        ],
+        "conclusion": {
+          "subject": "governance_ready",
+          "value": "no"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "retention_control",
+            "value": "enforced"
+          },
+          {
+            "subject": "audit_capacity",
+            "value": "sufficient"
+          },
+          {
+            "subject": "recovery_process",
+            "value": "tested"
+          }
+        ],
+        "conclusion": {
+          "subject": "governance_ready",
+          "value": "yes"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "joint_processing_justified",
+            "value": "no"
+          },
+          {
+            "subject": "governance_ready",
+            "value": "no"
+          }
+        ],
+        "choice": "retain_separation"
+      },
+      {
+        "premises": [
+          {
+            "subject": "joint_processing_justified",
+            "value": "no"
+          },
+          {
+            "subject": "governance_ready",
+            "value": "yes"
+          }
+        ],
+        "choice": "prepare_controls"
+      },
+      {
+        "premises": [
+          {
+            "subject": "joint_processing_justified",
+            "value": "yes"
+          },
+          {
+            "subject": "governance_ready",
+            "value": "no"
+          }
+        ],
+        "choice": "resolve_governance"
+      },
+      {
+        "premises": [
+          {
+            "subject": "joint_processing_justified",
+            "value": "yes"
+          },
+          {
+            "subject": "governance_ready",
+            "value": "yes"
+          }
+        ],
+        "choice": "integrate_with_controls"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_6cc2e5b500",
+      "content": "Unrelated archival note. Observation: archival_0 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_b2a4625b117d2f5e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_31794c20c5",
+      "content": "Case record 6. Observation: recovery_process = tested. This report concerns the current case.\nSource routing marker: CANARY_938cff6c81de30aa",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_4fd7342e36",
+      "content": "Unrelated archival note. Observation: archival_1 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_ba87735693160736",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_f7bcb3ed2f",
+      "content": "Case record 5. Observation: audit_capacity = sufficient. This report concerns the current case.\nSource routing marker: CANARY_4ca0fe23e02ea4ba",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_424c5473ef",
+      "content": "Case record 1. Observation: joint_analysis_need = established. This report concerns the current case.\nSource routing marker: CANARY_b8acfa92456d008b",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_ed5c3d6666",
+      "content": "Case record 4. Observation: retention_control = enforced. This report concerns the current case.\nSource routing marker: CANARY_94032d4dd376bb64",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_dd1402ee02",
+      "content": "Case record 3. Observation: data_quality = adequate. This report concerns the current case.\nSource routing marker: CANARY_91e451eec8378d6c",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_3b7a0da4e5",
+      "content": "Case record 2. Observation: access_authorization = granted. This report concerns the current case.\nSource routing marker: CANARY_022e96fa5bf8b578",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b55f3e9235",
+      "content": "Unrelated archival note. Observation: archival_2 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_109ae41d685722a4",
+      "trust": "untrusted_data"
+    }
+  ]
+}

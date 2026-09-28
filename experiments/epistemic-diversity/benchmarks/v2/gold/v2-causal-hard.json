@@ -1,0 +1,186 @@
+{
+  "task_id": "v2-causal-hard",
+  "relevant_evidence_ids": [
+    "e_52ac92ec2906",
+    "e_80fa8d35888c",
+    "e_eadd621aa2a2",
+    "e_f8dd2cdaa0f2",
+    "e_834864ec7d1e",
+    "e_88b424f7d3b1",
+    "e_fbf4535276d8"
+  ],
+  "distractor_ids": [
+    "e_10d72e1812e3",
+    "e_b27286da986f",
+    "e_54f7b7a8a710"
+  ],
+  "claims": [
+    {
+      "subject": "grid",
+      "value": "lost",
+      "supporting_sets": [
+        [
+          "e_52ac92ec2906"
+        ]
+      ]
+    },
+    {
+      "subject": "backup_power",
+      "value": "failed",
+      "supporting_sets": [
+        [
+          "e_80fa8d35888c"
+        ]
+      ]
+    },
+    {
+      "subject": "cooling",
+      "value": "stopped",
+      "supporting_sets": [
+        [
+          "e_eadd621aa2a2"
+        ]
+      ]
+    },
+    {
+      "subject": "ambient",
+      "value": "hot",
+      "supporting_sets": [
+        [
+          "e_f8dd2cdaa0f2"
+        ]
+      ]
+    },
+    {
+      "subject": "rack_temperature",
+      "value": "critical",
+      "supporting_sets": [
+        [
+          "e_834864ec7d1e"
+        ]
+      ]
+    },
+    {
+      "subject": "thermal_shutdown",
+      "value": "triggered",
+      "supporting_sets": [
+        [
+          "e_88b424f7d3b1"
+        ]
+      ]
+    },
+    {
+      "subject": "storage",
+      "value": "offline",
+      "supporting_sets": [
+        [
+          "e_fbf4535276d8"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "mechanism",
+      "value": "power_cooling_shutdown",
+      "supporting_sets": [
+        [
+          "e_52ac92ec2906",
+          "e_80fa8d35888c",
+          "e_834864ec7d1e",
+          "e_88b424f7d3b1",
+          "e_eadd621aa2a2",
+          "e_f8dd2cdaa0f2",
+          "e_fbf4535276d8"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "heat_removal",
+      "value": "insufficient",
+      "supporting_sets": [
+        [
+          "e_52ac92ec2906",
+          "e_80fa8d35888c",
+          "e_eadd621aa2a2",
+          "e_f8dd2cdaa0f2"
+        ]
+      ]
+    },
+    {
+      "subject": "power",
+      "value": "unavailable",
+      "supporting_sets": [
+        [
+          "e_52ac92ec2906",
+          "e_80fa8d35888c"
+        ]
+      ]
+    },
+    {
+      "subject": "thermal_risk",
+      "value": "realized",
+      "supporting_sets": [
+        [
+          "e_52ac92ec2906",
+          "e_80fa8d35888c",
+          "e_834864ec7d1e",
+          "e_eadd621aa2a2",
+          "e_f8dd2cdaa0f2"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "restore_power_then_cooling_then_storage",
+  "constraints": [
+    "grid",
+    "backup_power",
+    "cooling",
+    "ambient",
+    "rack_temperature",
+    "thermal_shutdown",
+    "storage"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_f6fb148902ad59322613",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [
+    {
+      "subject": "staff_report",
+      "value": "power_problem",
+      "supporting_sets": [
+        [
+          "e_373d0c1e7322"
+        ]
+      ]
+    }
+  ],
+  "weak_evidence_ids": [
+    "e_373d0c1e7322"
+  ],
+  "evidence_importance": {
+    "e_52ac92ec2906": 2,
+    "e_80fa8d35888c": 2,
+    "e_eadd621aa2a2": 2,
+    "e_f8dd2cdaa0f2": 2,
+    "e_834864ec7d1e": 2,
+    "e_88b424f7d3b1": 2,
+    "e_fbf4535276d8": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_52ac92ec2906",
+      "e_80fa8d35888c",
+      "e_834864ec7d1e",
+      "e_88b424f7d3b1",
+      "e_eadd621aa2a2",
+      "e_f8dd2cdaa0f2",
+      "e_fbf4535276d8"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

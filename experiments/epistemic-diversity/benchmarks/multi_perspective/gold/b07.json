@@ -1,0 +1,112 @@
+{
+  "task_id": "b07",
+  "relevant_evidence_ids": [
+    "e_ae5f731318",
+    "e_6ebd0382b7",
+    "e_3a8f398e22",
+    "e_8c279b4c41",
+    "e_3ada03d7bd",
+    "e_2f192dc3d7"
+  ],
+  "distractor_ids": [
+    "e_00a3177563",
+    "e_8cb85b1468",
+    "e_51116dbe71"
+  ],
+  "claims": [
+    {
+      "subject": "demand_forecast",
+      "value": "high",
+      "supporting_sets": [
+        [
+          "e_ae5f731318"
+        ]
+      ]
+    },
+    {
+      "subject": "staffing_capacity",
+      "value": "sufficient",
+      "supporting_sets": [
+        [
+          "e_6ebd0382b7"
+        ]
+      ]
+    },
+    {
+      "subject": "access_requirement",
+      "value": "expanded",
+      "supporting_sets": [
+        [
+          "e_3a8f398e22"
+        ]
+      ]
+    },
+    {
+      "subject": "venue_budget",
+      "value": "unfunded",
+      "supporting_sets": [
+        [
+          "e_8c279b4c41"
+        ]
+      ]
+    },
+    {
+      "subject": "supplier_commitment",
+      "value": "unconfirmed",
+      "supporting_sets": [
+        [
+          "e_3ada03d7bd"
+        ]
+      ]
+    },
+    {
+      "subject": "fallback_site",
+      "value": "unavailable",
+      "supporting_sets": [
+        [
+          "e_2f192dc3d7"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "expansion_justified",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_ae5f731318",
+          "e_6ebd0382b7",
+          "e_3a8f398e22"
+        ]
+      ]
+    },
+    {
+      "subject": "expansion_feasible",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_8c279b4c41",
+          "e_3ada03d7bd",
+          "e_2f192dc3d7"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "redesign_plan",
+  "constraints": [
+    "demand_forecast",
+    "staffing_capacity",
+    "access_requirement",
+    "venue_budget",
+    "supplier_commitment",
+    "fallback_site"
+  ],
+  "failure_factors": [
+    "venue_budget",
+    "supplier_commitment",
+    "fallback_site"
+  ],
+  "hidden_annotation": "GOLD_ONLY_fab60502198d2444be45"
+}

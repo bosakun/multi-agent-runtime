@@ -1,0 +1,95 @@
+{
+  "task_id": "v2-constraints-easy",
+  "relevant_evidence_ids": [
+    "e_048bd0bdaad2",
+    "e_59b82816100f",
+    "e_5d3ea91cfd10",
+    "e_27619a58b695"
+  ],
+  "distractor_ids": [
+    "e_ef51f7ca6bac",
+    "e_05bbbdd30b6f",
+    "e_86b61dab73cd"
+  ],
+  "claims": [
+    {
+      "subject": "capacity_set",
+      "value": "oak_pine",
+      "supporting_sets": [
+        [
+          "e_048bd0bdaad2"
+        ]
+      ]
+    },
+    {
+      "subject": "access_set",
+      "value": "pine_elm",
+      "supporting_sets": [
+        [
+          "e_59b82816100f"
+        ]
+      ]
+    },
+    {
+      "subject": "time_set",
+      "value": "pine_oak",
+      "supporting_sets": [
+        [
+          "e_5d3ea91cfd10"
+        ]
+      ]
+    },
+    {
+      "subject": "booking_authority",
+      "value": "granted",
+      "supporting_sets": [
+        [
+          "e_27619a58b695"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "feasible",
+      "value": "pine",
+      "supporting_sets": [
+        [
+          "e_048bd0bdaad2",
+          "e_59b82816100f",
+          "e_5d3ea91cfd10"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "book_pine",
+  "constraints": [
+    "capacity_set",
+    "access_set",
+    "time_set",
+    "booking_authority"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_2bca090350dc46a9ca39",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_048bd0bdaad2": 2,
+    "e_59b82816100f": 2,
+    "e_5d3ea91cfd10": 2,
+    "e_27619a58b695": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_048bd0bdaad2",
+      "e_27619a58b695",
+      "e_59b82816100f",
+      "e_5d3ea91cfd10"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

@@ -1,0 +1,161 @@
+{
+  "version": "v1",
+  "tasks": [
+    {
+      "id": "a01",
+      "family": "distributed_evidence",
+      "template": "release_incident"
+    },
+    {
+      "id": "a02",
+      "family": "distributed_evidence",
+      "template": "release_incident"
+    },
+    {
+      "id": "a03",
+      "family": "distributed_evidence",
+      "template": "release_incident"
+    },
+    {
+      "id": "a04",
+      "family": "distributed_evidence",
+      "template": "release_incident"
+    },
+    {
+      "id": "a05",
+      "family": "distributed_evidence",
+      "template": "delivery_disruption"
+    },
+    {
+      "id": "a06",
+      "family": "distributed_evidence",
+      "template": "delivery_disruption"
+    },
+    {
+      "id": "a07",
+      "family": "distributed_evidence",
+      "template": "delivery_disruption"
+    },
+    {
+      "id": "a08",
+      "family": "distributed_evidence",
+      "template": "delivery_disruption"
+    },
+    {
+      "id": "a09",
+      "family": "distributed_evidence",
+      "template": "quality_audit"
+    },
+    {
+      "id": "a10",
+      "family": "distributed_evidence",
+      "template": "quality_audit"
+    },
+    {
+      "id": "a11",
+      "family": "distributed_evidence",
+      "template": "quality_audit"
+    },
+    {
+      "id": "a12",
+      "family": "distributed_evidence",
+      "template": "quality_audit"
+    },
+    {
+      "id": "b01",
+      "family": "multi_perspective",
+      "template": "service_architecture"
+    },
+    {
+      "id": "b02",
+      "family": "multi_perspective",
+      "template": "service_architecture"
+    },
+    {
+      "id": "b03",
+      "family": "multi_perspective",
+      "template": "service_architecture"
+    },
+    {
+      "id": "b04",
+      "family": "multi_perspective",
+      "template": "service_architecture"
+    },
+    {
+      "id": "b05",
+      "family": "multi_perspective",
+      "template": "resource_plan"
+    },
+    {
+      "id": "b06",
+      "family": "multi_perspective",
+      "template": "resource_plan"
+    },
+    {
+      "id": "b07",
+      "family": "multi_perspective",
+      "template": "resource_plan"
+    },
+    {
+      "id": "b08",
+      "family": "multi_perspective",
+      "template": "resource_plan"
+    },
+    {
+      "id": "b09",
+      "family": "multi_perspective",
+      "template": "data_governance"
+    },
+    {
+      "id": "b10",
+      "family": "multi_perspective",
+      "template": "data_governance"
+    },
+    {
+      "id": "b11",
+      "family": "multi_perspective",
+      "template": "data_governance"
+    },
+    {
+      "id": "b12",
+      "family": "multi_perspective",
+      "template": "data_governance"
+    }
+  ],
+  "pilot": [
+    "a01",
+    "b01"
+  ],
+  "main": [
+    "a02",
+    "a03",
+    "b02",
+    "b03"
+  ],
+  "full": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a05",
+    "a06",
+    "a07",
+    "a08",
+    "a09",
+    "a10",
+    "a11",
+    "a12",
+    "b01",
+    "b02",
+    "b03",
+    "b04",
+    "b05",
+    "b06",
+    "b07",
+    "b08",
+    "b09",
+    "b10",
+    "b11",
+    "b12"
+  ]
+}

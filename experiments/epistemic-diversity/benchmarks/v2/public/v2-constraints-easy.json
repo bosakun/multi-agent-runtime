@@ -1,0 +1,125 @@
+{
+  "id": "v2-constraints-easy",
+  "family": "constraints",
+  "template": "intersection_of_feasible_sets",
+  "question": "Choose a meeting room that satisfies capacity, accessibility and time availability together. A room meeting only two requirements is not a feasible choice.",
+  "instructions": {
+    "reporting_fields": [
+      "capacity_set",
+      "access_set",
+      "time_set",
+      "booking_authority"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "capacity_set",
+            "value": "oak_pine"
+          },
+          {
+            "subject": "access_set",
+            "value": "pine_elm"
+          },
+          {
+            "subject": "time_set",
+            "value": "pine_oak"
+          }
+        ],
+        "conclusion": {
+          "subject": "feasible",
+          "value": "pine"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "capacity_set",
+            "value": "oak_pine"
+          },
+          {
+            "subject": "access_set",
+            "value": "oak_elm"
+          },
+          {
+            "subject": "time_set",
+            "value": "pine_oak"
+          }
+        ],
+        "conclusion": {
+          "subject": "feasible",
+          "value": "oak"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "feasible",
+            "value": "pine"
+          },
+          {
+            "subject": "booking_authority",
+            "value": "granted"
+          }
+        ],
+        "choice": "book_pine"
+      },
+      {
+        "premises": [
+          {
+            "subject": "feasible",
+            "value": "oak"
+          },
+          {
+            "subject": "booking_authority",
+            "value": "granted"
+          }
+        ],
+        "choice": "book_oak"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_27619a58b695",
+      "content": "Source record. Observation: booking_authority = granted.\nSource routing marker: CANARY_22e1cb46b0427a69",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_05bbbdd30b6f",
+      "content": "Source record. Observation: old_booking = elm.\nSource routing marker: CANARY_5521d1f79b74f817",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_86b61dab73cd",
+      "content": "Source record. Observation: preferred_color = green.\nSource routing marker: CANARY_150dcec0a9534bfa",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_59b82816100f",
+      "content": "Source record. Observation: access_set = pine_elm.\nSource routing marker: CANARY_c1ccf66d7acbf237",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_048bd0bdaad2",
+      "content": "Source record. Observation: capacity_set = oak_pine.\nSource routing marker: CANARY_ae765147138c2fa8",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_5d3ea91cfd10",
+      "content": "Source record. Observation: time_set = pine_oak.\nSource routing marker: CANARY_a0ba7feba2d353e8",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_ef51f7ca6bac",
+      "content": "Source record. Observation: wall_art = oak.\nSource routing marker: CANARY_44905cec37498de6",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "easy",
+  "dependency_depth": 1,
+  "evidence_interaction_type": "intersection_of_feasible_sets"
+}

@@ -1,0 +1,161 @@
+{
+  "id": "v2-planning-medium",
+  "family": "planning",
+  "template": "parallel_preparation_then_resource_locked_join",
+  "question": "Schedule an equipment replacement. Procurement and rehearsal can proceed independently, but installation requires both, a reserved technician and a downtime window; verification follows installation.",
+  "instructions": {
+    "reporting_fields": [
+      "procurement",
+      "rehearsal",
+      "independence",
+      "technician",
+      "downtime",
+      "verification"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "procurement",
+            "value": "needed"
+          },
+          {
+            "subject": "rehearsal",
+            "value": "needed"
+          },
+          {
+            "subject": "independence",
+            "value": "confirmed"
+          }
+        ],
+        "conclusion": {
+          "subject": "preparation",
+          "value": "parallel"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "technician",
+            "value": "reserved"
+          },
+          {
+            "subject": "downtime",
+            "value": "approved"
+          }
+        ],
+        "conclusion": {
+          "subject": "installation_slot",
+          "value": "available"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "preparation",
+            "value": "parallel"
+          },
+          {
+            "subject": "installation_slot",
+            "value": "available"
+          },
+          {
+            "subject": "verification",
+            "value": "required"
+          }
+        ],
+        "conclusion": {
+          "subject": "sequence",
+          "value": "parallel_join_install_verify"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "technician",
+            "value": "unavailable"
+          },
+          {
+            "subject": "downtime",
+            "value": "approved"
+          }
+        ],
+        "conclusion": {
+          "subject": "sequence",
+          "value": "defer"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "sequence",
+            "value": "parallel_join_install_verify"
+          }
+        ],
+        "choice": "procure_and_rehearse_then_install_then_verify"
+      },
+      {
+        "premises": [
+          {
+            "subject": "sequence",
+            "value": "defer"
+          }
+        ],
+        "choice": "reserve_technician_before_scheduling"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_402bb1c36d3e",
+      "content": "Source record. Observation: procurement = needed.\nSource routing marker: CANARY_841f2f0066cd6416",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_244b874f0a23",
+      "content": "Source record. Observation: vendor_gift = offered.\nSource routing marker: CANARY_8e42a8445aa61844",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_aa80a272b193",
+      "content": "Source record. Observation: verification = required.\nSource routing marker: CANARY_7f1159820021d822",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_80a1e650c8df",
+      "content": "Source record. Observation: old_rehearsal = different_model.\nSource routing marker: CANARY_079b1d5831b48dcb",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_323ce802f524",
+      "content": "Source record. Observation: downtime = approved.\nSource routing marker: CANARY_b74edb21dde46f91",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_917029ec9c48",
+      "content": "Source record. Observation: rehearsal = needed.\nSource routing marker: CANARY_a9b3520a1d158dc1",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_64cc6209fca5",
+      "content": "Source record. Observation: independence = confirmed.\nSource routing marker: CANARY_1bf0b1079ef3d7f3",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_6f2f3419d83d",
+      "content": "Source record. Observation: room_paint = fresh.\nSource routing marker: CANARY_47b1264ce1c3ea5a",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_1a104367abe4",
+      "content": "Source record. Observation: technician = reserved.\nSource routing marker: CANARY_272fe778520e4e8c",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "medium",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "parallel_preparation_then_resource_locked_join"
+}

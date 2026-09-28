@@ -1,0 +1,112 @@
+{
+  "task_id": "b03",
+  "relevant_evidence_ids": [
+    "e_a153628cb7",
+    "e_19fa3f0478",
+    "e_d738bd4a06",
+    "e_d7e762dadb",
+    "e_d7968c16fc",
+    "e_3a30585d53"
+  ],
+  "distractor_ids": [
+    "e_fe3e2ffac5",
+    "e_6812d3cc76",
+    "e_989cc34a7f"
+  ],
+  "claims": [
+    {
+      "subject": "load_forecast",
+      "value": "high",
+      "supporting_sets": [
+        [
+          "e_a153628cb7"
+        ]
+      ]
+    },
+    {
+      "subject": "team_capacity",
+      "value": "sufficient",
+      "supporting_sets": [
+        [
+          "e_19fa3f0478"
+        ]
+      ]
+    },
+    {
+      "subject": "failure_isolation",
+      "value": "required",
+      "supporting_sets": [
+        [
+          "e_d738bd4a06"
+        ]
+      ]
+    },
+    {
+      "subject": "client_compatibility",
+      "value": "unverified",
+      "supporting_sets": [
+        [
+          "e_d7e762dadb"
+        ]
+      ]
+    },
+    {
+      "subject": "migration_window",
+      "value": "unavailable",
+      "supporting_sets": [
+        [
+          "e_d7968c16fc"
+        ]
+      ]
+    },
+    {
+      "subject": "fallback_capacity",
+      "value": "insufficient",
+      "supporting_sets": [
+        [
+          "e_3a30585d53"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "separation_justified",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_a153628cb7",
+          "e_19fa3f0478",
+          "e_d738bd4a06"
+        ]
+      ]
+    },
+    {
+      "subject": "migration_feasible",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_d7e762dadb",
+          "e_d7968c16fc",
+          "e_3a30585d53"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "prototype_separation",
+  "constraints": [
+    "load_forecast",
+    "team_capacity",
+    "failure_isolation",
+    "client_compatibility",
+    "migration_window",
+    "fallback_capacity"
+  ],
+  "failure_factors": [
+    "client_compatibility",
+    "migration_window",
+    "fallback_capacity"
+  ],
+  "hidden_annotation": "GOLD_ONLY_bbd42e12af1714c47c1b"
+}

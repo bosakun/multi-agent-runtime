@@ -1,0 +1,5143 @@
+{
+  "benchmark_version": "2.0.0",
+  "passed": true,
+  "errors": [],
+  "tasks": 30,
+  "families": {
+    "synthesis": 3,
+    "diagnosis": 3,
+    "constraints": 3,
+    "contradiction": 3,
+    "missing": 3,
+    "causal": 3,
+    "decision": 3,
+    "failure": 3,
+    "planning": 3,
+    "ranking": 3
+  },
+  "difficulty_counts": {
+    "easy": 10,
+    "medium": 10,
+    "hard": 10
+  },
+  "entries": [
+    {
+      "id": "v2-synthesis-easy",
+      "family": "synthesis",
+      "difficulty": "easy",
+      "minimum_decision_documents": 4,
+      "source_count": 7,
+      "structure": "independent_corroboration",
+      "structural_signature": "cead8279c371",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-synthesis-medium",
+      "family": "synthesis",
+      "difficulty": "medium",
+      "minimum_decision_documents": 5,
+      "source_count": 9,
+      "structure": "alternative_support_and_confirmation",
+      "structural_signature": "f094ed56bb52",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.4,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.4,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.4,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.4,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.4,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.4,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-synthesis-hard",
+      "family": "synthesis",
+      "difficulty": "hard",
+      "minimum_decision_documents": 6,
+      "source_count": 10,
+      "structure": "fork_join_evidence_coverage",
+      "structural_signature": "a717ab9e75b9",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-diagnosis-easy",
+      "family": "diagnosis",
+      "difficulty": "easy",
+      "minimum_decision_documents": 4,
+      "source_count": 7,
+      "structure": "differential_diagnosis_by_negative_control",
+      "structural_signature": "e5cd4f3a2c2e",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-diagnosis-medium",
+      "family": "diagnosis",
+      "difficulty": "medium",
+      "minimum_decision_documents": 6,
+      "source_count": 9,
+      "structure": "intervention_and_matched_control",
+      "structural_signature": "7b2d5e3c8ed9",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-diagnosis-hard",
+      "family": "diagnosis",
+      "difficulty": "hard",
+      "minimum_decision_documents": 7,
+      "source_count": 10,
+      "structure": "confounder_elimination_with_two_interventions",
+      "structural_signature": "cd26e9cf3b8d",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-constraints-easy",
+      "family": "constraints",
+      "difficulty": "easy",
+      "minimum_decision_documents": 4,
+      "source_count": 7,
+      "structure": "intersection_of_feasible_sets",
+      "structural_signature": "e5cd4f3a2c2e",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-constraints-medium",
+      "family": "constraints",
+      "difficulty": "medium",
+      "minimum_decision_documents": 6,
+      "source_count": 9,
+      "structure": "candidate_elimination_with_budget_and_compatibility",
+      "structural_signature": "60b1541ca869",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-constraints-hard",
+      "family": "constraints",
+      "difficulty": "hard",
+      "minimum_decision_documents": 4,
+      "source_count": 10,
+      "structure": "infeasibility_certificate",
+      "structural_signature": "3030b7d7646e",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-contradiction-easy",
+      "family": "contradiction",
+      "difficulty": "easy",
+      "minimum_decision_documents": 4,
+      "source_count": 7,
+      "structure": "temporal_revision",
+      "structural_signature": "a33d2f482177",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-contradiction-medium",
+      "family": "contradiction",
+      "difficulty": "medium",
+      "minimum_decision_documents": 6,
+      "source_count": 9,
+      "structure": "scope_disambiguation",
+      "structural_signature": "f86d6d1710c6",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-contradiction-hard",
+      "family": "contradiction",
+      "difficulty": "hard",
+      "minimum_decision_documents": 7,
+      "source_count": 11,
+      "structure": "reliability_condition_and_time_precedence",
+      "structural_signature": "e7b555b45c9d",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-missing-easy",
+      "family": "missing",
+      "difficulty": "easy",
+      "minimum_decision_documents": 4,
+      "source_count": 7,
+      "structure": "required_measurement_gap",
+      "structural_signature": "697e23ffb243",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-missing-medium",
+      "family": "missing",
+      "difficulty": "medium",
+      "minimum_decision_documents": 6,
+      "source_count": 9,
+      "structure": "causal_identifiability_gap",
+      "structural_signature": "b0daae5cdf5a",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-missing-hard",
+      "family": "missing",
+      "difficulty": "hard",
+      "minimum_decision_documents": 7,
+      "source_count": 10,
+      "structure": "incomparable_options_without_preference_weights",
+      "structural_signature": "6617a27ba849",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-causal-easy",
+      "family": "causal",
+      "difficulty": "easy",
+      "minimum_decision_documents": 4,
+      "source_count": 7,
+      "structure": "two_stage_mechanism",
+      "structural_signature": "4d6da591f39f",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-causal-medium",
+      "family": "causal",
+      "difficulty": "medium",
+      "minimum_decision_documents": 6,
+      "source_count": 9,
+      "structure": "three_stage_propagation_with_gate",
+      "structural_signature": "8640a5378185",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-causal-hard",
+      "family": "causal",
+      "difficulty": "hard",
+      "minimum_decision_documents": 7,
+      "source_count": 11,
+      "structure": "four_stage_cascade_with_failed_barrier",
+      "structural_signature": "b56be03b7d36",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-decision-easy",
+      "family": "decision",
+      "difficulty": "easy",
+      "minimum_decision_documents": 4,
+      "source_count": 7,
+      "structure": "benefit_risk_tradeoff_with_explicit_priority",
+      "structural_signature": "cead8279c371",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-decision-medium",
+      "family": "decision",
+      "difficulty": "medium",
+      "minimum_decision_documents": 5,
+      "source_count": 9,
+      "structure": "pareto_dominance_before_preferences",
+      "structural_signature": "58bc92eb10df",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.4,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.4,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.4,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.4,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.4,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.4,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-decision-hard",
+      "family": "decision",
+      "difficulty": "hard",
+      "minimum_decision_documents": 6,
+      "source_count": 10,
+      "structure": "veto_then_tradeoff_then_reversibility",
+      "structural_signature": "0950da793957",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-failure-easy",
+      "family": "failure",
+      "difficulty": "easy",
+      "minimum_decision_documents": 4,
+      "source_count": 7,
+      "structure": "trigger_versus_amplifier",
+      "structural_signature": "76b0cfeb50a2",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-failure-medium",
+      "family": "failure",
+      "difficulty": "medium",
+      "minimum_decision_documents": 6,
+      "source_count": 9,
+      "structure": "initiator_and_failed_defense",
+      "structural_signature": "6bd8c99fb69b",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-failure-hard",
+      "family": "failure",
+      "difficulty": "hard",
+      "minimum_decision_documents": 7,
+      "source_count": 10,
+      "structure": "minimal_fault_cut_set_with_noncausal_alarm",
+      "structural_signature": "fa5c21b20f95",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-planning-easy",
+      "family": "planning",
+      "difficulty": "easy",
+      "minimum_decision_documents": 4,
+      "source_count": 7,
+      "structure": "ordered_preconditions",
+      "structural_signature": "d47f277d0b1c",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-planning-medium",
+      "family": "planning",
+      "difficulty": "medium",
+      "minimum_decision_documents": 6,
+      "source_count": 9,
+      "structure": "parallel_preparation_then_resource_locked_join",
+      "structural_signature": "bb1ee4eea627",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 0,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-planning-hard",
+      "family": "planning",
+      "difficulty": "hard",
+      "minimum_decision_documents": 7,
+      "source_count": 10,
+      "structure": "rollback_branch_and_irreversible_commit",
+      "structural_signature": "e1819ac6f0a1",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-ranking-easy",
+      "family": "ranking",
+      "difficulty": "easy",
+      "minimum_decision_documents": 4,
+      "source_count": 8,
+      "structure": "direct_measurement_over_hearsay",
+      "structural_signature": "99bd348be7a8",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 3
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 3
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 3
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 3
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_2": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 3
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 2
+            },
+            "worker_1": {
+              "relevant": 1,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 3
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.5,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-ranking-medium",
+      "family": "ranking",
+      "difficulty": "medium",
+      "minimum_decision_documents": 6,
+      "source_count": 11,
+      "structure": "source_independence_not_vote_count",
+      "structural_signature": "062f512fc7fc",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 5
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 1,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 5
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 1,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 5
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 1,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 5
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 1,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 5
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 1,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 5
+            }
+          },
+          "max_decision_support_share": 0.3333333333333333,
+          "importance_range": 1,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    },
+    {
+      "id": "v2-ranking-hard",
+      "family": "ranking",
+      "difficulty": "hard",
+      "minimum_decision_documents": 7,
+      "source_count": 12,
+      "structure": "diagnostic_intervention_over_recency_and_popularity",
+      "structural_signature": "1a93ce9b00b1",
+      "partitions": [
+        {
+          "seed": 20260928,
+          "workers": {
+            "worker_0": {
+              "relevant": 3,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 5
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 20260929,
+          "workers": {
+            "worker_0": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_2": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 5
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 0,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 5
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 5
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 42,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 5
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        },
+        {
+          "seed": 1729,
+          "workers": {
+            "worker_0": {
+              "relevant": 2,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 4
+            },
+            "worker_1": {
+              "relevant": 2,
+              "weak": 0,
+              "distractors": 1,
+              "importance": 5
+            },
+            "worker_2": {
+              "relevant": 3,
+              "weak": 1,
+              "distractors": 1,
+              "importance": 6
+            }
+          },
+          "max_decision_support_share": 0.42857142857142855,
+          "importance_range": 2,
+          "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+        }
+      ]
+    }
+  ],
+  "near_duplicate_threshold": 0.65,
+  "top_text_similarities": [
+    {
+      "a": "v2-synthesis-easy",
+      "b": "v2-constraints-easy",
+      "trigram_jaccard": 0.011627906976744186
+    },
+    {
+      "a": "v2-synthesis-easy",
+      "b": "v2-planning-easy",
+      "trigram_jaccard": 0.011627906976744186
+    },
+    {
+      "a": "v2-constraints-easy",
+      "b": "v2-planning-easy",
+      "trigram_jaccard": 0.011494252873563218
+    },
+    {
+      "a": "v2-causal-medium",
+      "b": "v2-decision-hard",
+      "trigram_jaccard": 0.00980392156862745
+    },
+    {
+      "a": "v2-missing-easy",
+      "b": "v2-missing-medium",
+      "trigram_jaccard": 0.009615384615384616
+    },
+    {
+      "a": "v2-decision-hard",
+      "b": "v2-ranking-hard",
+      "trigram_jaccard": 0.00909090909090909
+    },
+    {
+      "a": "v2-causal-hard",
+      "b": "v2-planning-hard",
+      "trigram_jaccard": 0.008771929824561403
+    },
+    {
+      "a": "v2-contradiction-medium",
+      "b": "v2-contradiction-hard",
+      "trigram_jaccard": 0.008695652173913044
+    },
+    {
+      "a": "v2-contradiction-medium",
+      "b": "v2-planning-hard",
+      "trigram_jaccard": 0.008695652173913044
+    },
+    {
+      "a": "v2-contradiction-medium",
+      "b": "v2-causal-hard",
+      "trigram_jaccard": 0.008620689655172414
+    }
+  ],
+  "structural_signatures": 28,
+  "shared_structural_signatures": [
+    [
+      "v2-synthesis-easy",
+      "v2-decision-easy"
+    ],
+    [
+      "v2-diagnosis-easy",
+      "v2-constraints-easy"
+    ]
+  ],
+  "runtime_candidate_positions": {
+    "seed": 20260928,
+    "full": {
+      "0": 16,
+      "1": 14
+    },
+    "pilot": {
+      "0": 4,
+      "1": 2
+    },
+    "per_task": {
+      "v2-synthesis-easy": 0,
+      "v2-synthesis-medium": 0,
+      "v2-synthesis-hard": 0,
+      "v2-diagnosis-easy": 1,
+      "v2-diagnosis-medium": 1,
+      "v2-diagnosis-hard": 1,
+      "v2-constraints-easy": 0,
+      "v2-constraints-medium": 0,
+      "v2-constraints-hard": 0,
+      "v2-contradiction-easy": 0,
+      "v2-contradiction-medium": 0,
+      "v2-contradiction-hard": 1,
+      "v2-missing-easy": 0,
+      "v2-missing-medium": 1,
+      "v2-missing-hard": 0,
+      "v2-causal-easy": 0,
+      "v2-causal-medium": 1,
+      "v2-causal-hard": 0,
+      "v2-decision-easy": 0,
+      "v2-decision-medium": 0,
+      "v2-decision-hard": 1,
+      "v2-failure-easy": 1,
+      "v2-failure-medium": 1,
+      "v2-failure-hard": 1,
+      "v2-planning-easy": 1,
+      "v2-planning-medium": 0,
+      "v2-planning-hard": 1,
+      "v2-ranking-easy": 0,
+      "v2-ranking-medium": 1,
+      "v2-ranking-hard": 1
+    }
+  },
+  "review_note": "Lexical/degree signatures are screens, not a proof of semantic independence. Shared simple conjunction controls are retained; stronger cases differ in topology. Public prompts were manually reviewed to remove case-specific answer hints."
+}

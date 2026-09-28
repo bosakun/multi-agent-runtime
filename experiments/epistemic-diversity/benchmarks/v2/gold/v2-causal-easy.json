@@ -1,0 +1,107 @@
+{
+  "task_id": "v2-causal-easy",
+  "relevant_evidence_ids": [
+    "e_a5100e08a39c",
+    "e_bbc26891c118",
+    "e_88a4d020bf13",
+    "e_7a53d04a17e3"
+  ],
+  "distractor_ids": [
+    "e_55415bc24628",
+    "e_89c2f8d053c3",
+    "e_5c5d296bb0f0"
+  ],
+  "claims": [
+    {
+      "subject": "inlet_filter",
+      "value": "blocked",
+      "supporting_sets": [
+        [
+          "e_a5100e08a39c"
+        ]
+      ]
+    },
+    {
+      "subject": "bypass",
+      "value": "closed",
+      "supporting_sets": [
+        [
+          "e_bbc26891c118"
+        ]
+      ]
+    },
+    {
+      "subject": "flow_sensor",
+      "value": "low",
+      "supporting_sets": [
+        [
+          "e_88a4d020bf13"
+        ]
+      ]
+    },
+    {
+      "subject": "level_sensor",
+      "value": "low",
+      "supporting_sets": [
+        [
+          "e_7a53d04a17e3"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "mechanism",
+      "value": "starvation",
+      "supporting_sets": [
+        [
+          "e_7a53d04a17e3",
+          "e_88a4d020bf13",
+          "e_a5100e08a39c",
+          "e_bbc26891c118"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "inflow",
+      "value": "restricted",
+      "supporting_sets": [
+        [
+          "e_a5100e08a39c",
+          "e_bbc26891c118"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "clear_filter",
+  "constraints": [
+    "inlet_filter",
+    "bypass",
+    "flow_sensor",
+    "level_sensor"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_c59019cbd5776a76eacf",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_a5100e08a39c": 2,
+    "e_bbc26891c118": 2,
+    "e_88a4d020bf13": 2,
+    "e_7a53d04a17e3": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_7a53d04a17e3",
+      "e_88a4d020bf13",
+      "e_a5100e08a39c",
+      "e_bbc26891c118"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

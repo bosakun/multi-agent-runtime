@@ -1,0 +1,199 @@
+{
+  "id": "b02",
+  "family": "multi_perspective",
+  "template": "service_architecture",
+  "question": "Choose a service migration approach under reliability, staffing, compatibility, and capacity constraints.",
+  "instructions": {
+    "reporting_fields": [
+      "load_forecast",
+      "team_capacity",
+      "failure_isolation",
+      "client_compatibility",
+      "migration_window",
+      "fallback_capacity"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "load_forecast",
+            "value": "low"
+          },
+          {
+            "subject": "team_capacity",
+            "value": "insufficient"
+          },
+          {
+            "subject": "failure_isolation",
+            "value": "optional"
+          }
+        ],
+        "conclusion": {
+          "subject": "separation_justified",
+          "value": "no"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "load_forecast",
+            "value": "high"
+          },
+          {
+            "subject": "team_capacity",
+            "value": "sufficient"
+          },
+          {
+            "subject": "failure_isolation",
+            "value": "required"
+          }
+        ],
+        "conclusion": {
+          "subject": "separation_justified",
+          "value": "yes"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "client_compatibility",
+            "value": "unverified"
+          },
+          {
+            "subject": "migration_window",
+            "value": "unavailable"
+          },
+          {
+            "subject": "fallback_capacity",
+            "value": "insufficient"
+          }
+        ],
+        "conclusion": {
+          "subject": "migration_feasible",
+          "value": "no"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "client_compatibility",
+            "value": "verified"
+          },
+          {
+            "subject": "migration_window",
+            "value": "available"
+          },
+          {
+            "subject": "fallback_capacity",
+            "value": "sufficient"
+          }
+        ],
+        "conclusion": {
+          "subject": "migration_feasible",
+          "value": "yes"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "separation_justified",
+            "value": "no"
+          },
+          {
+            "subject": "migration_feasible",
+            "value": "no"
+          }
+        ],
+        "choice": "retain_and_measure"
+      },
+      {
+        "premises": [
+          {
+            "subject": "separation_justified",
+            "value": "no"
+          },
+          {
+            "subject": "migration_feasible",
+            "value": "yes"
+          }
+        ],
+        "choice": "prepare_migration"
+      },
+      {
+        "premises": [
+          {
+            "subject": "separation_justified",
+            "value": "yes"
+          },
+          {
+            "subject": "migration_feasible",
+            "value": "no"
+          }
+        ],
+        "choice": "prototype_separation"
+      },
+      {
+        "premises": [
+          {
+            "subject": "separation_justified",
+            "value": "yes"
+          },
+          {
+            "subject": "migration_feasible",
+            "value": "yes"
+          }
+        ],
+        "choice": "migrate_in_stages"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_a8e87f09fc",
+      "content": "Case record 5. Observation: migration_window = available. This report concerns the current case.\nSource routing marker: CANARY_dea977c8514f470c",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_32690e6254",
+      "content": "Case record 3. Observation: failure_isolation = optional. This report concerns the current case.\nSource routing marker: CANARY_bf58b0667cda6497",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_838693d01f",
+      "content": "Case record 6. Observation: fallback_capacity = sufficient. This report concerns the current case.\nSource routing marker: CANARY_3cd240887ce09a95",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a864d64e11",
+      "content": "Unrelated archival note. Observation: archival_0 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_e243f71f7b5be5b3",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_5e0327aa54",
+      "content": "Unrelated archival note. Observation: archival_1 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_d503faef0ecb142a",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e0a9ba8851",
+      "content": "Case record 2. Observation: team_capacity = insufficient. This report concerns the current case.\nSource routing marker: CANARY_0dcd8104572bfbff",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_f5092994ae",
+      "content": "Unrelated archival note. Observation: archival_2 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_0775bf616748996a",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_ae6f2fabc2",
+      "content": "Case record 4. Observation: client_compatibility = verified. This report concerns the current case.\nSource routing marker: CANARY_6d651cb87f6f01d2",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_1f7d241203",
+      "content": "Case record 1. Observation: load_forecast = low. This report concerns the current case.\nSource routing marker: CANARY_406b96086f03ff20",
+      "trust": "untrusted_data"
+    }
+  ]
+}

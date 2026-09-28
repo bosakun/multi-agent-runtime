@@ -1,0 +1,121 @@
+{
+  "id": "v2-missing-easy",
+  "family": "missing",
+  "template": "required_measurement_gap",
+  "question": "Assess whether a lift can carry a shipment. Check whether the manifest supplies all measurements required by the lifting rule; explicitly identify any information gap instead of substituting an unrelated measurement.",
+  "instructions": {
+    "reporting_fields": [
+      "rated_capacity",
+      "item_mass",
+      "manifest",
+      "lifting_rule"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "item_mass",
+            "value": "not_reported"
+          },
+          {
+            "subject": "manifest",
+            "value": "complete_inventory"
+          },
+          {
+            "subject": "lifting_rule",
+            "value": "mass_required"
+          }
+        ],
+        "conclusion": {
+          "subject": "information_gap",
+          "value": "item_mass"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "rated_capacity",
+            "value": "known"
+          },
+          {
+            "subject": "item_mass",
+            "value": "below_capacity"
+          },
+          {
+            "subject": "lifting_rule",
+            "value": "mass_required"
+          }
+        ],
+        "conclusion": {
+          "subject": "load_status",
+          "value": "safe"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "information_gap",
+            "value": "item_mass"
+          },
+          {
+            "subject": "rated_capacity",
+            "value": "known"
+          }
+        ],
+        "choice": "undetermined"
+      },
+      {
+        "premises": [
+          {
+            "subject": "load_status",
+            "value": "safe"
+          }
+        ],
+        "choice": "authorize_lift"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_afdb9fc83747",
+      "content": "Source record. Observation: old_shipment_mass = light.\nSource routing marker: CANARY_4d50515afeedd6c6",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_47fa4bb5c694",
+      "content": "Source record. Observation: route_length = short.\nSource routing marker: CANARY_275759f80a7c75c8",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_4d9cada6c23e",
+      "content": "Source record. Observation: crate_color = red.\nSource routing marker: CANARY_c9a5606ebaf0e761",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_9f921c004c6b",
+      "content": "Source record. Observation: item_mass = not_reported.\nSource routing marker: CANARY_1d61a01fe1eadb88",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a699c5508e97",
+      "content": "Source record. Observation: manifest = complete_inventory.\nSource routing marker: CANARY_9892d0e57d8b306d",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_ccf7822250eb",
+      "content": "Source record. Observation: lifting_rule = mass_required.\nSource routing marker: CANARY_8a6b11587c38cefc",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b0eec04ef11c",
+      "content": "Source record. Observation: rated_capacity = known.\nSource routing marker: CANARY_cafb0e2c4012e77e",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "easy",
+  "dependency_depth": 1,
+  "evidence_interaction_type": "required_measurement_gap"
+}

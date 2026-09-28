@@ -1,0 +1,115 @@
+{
+  "task_id": "b09",
+  "relevant_evidence_ids": [
+    "e_1716f76191",
+    "e_52e70a3b76",
+    "e_cbbb5ec645",
+    "e_f5622dccab",
+    "e_624f5b3c23",
+    "e_91d9bfaef8"
+  ],
+  "distractor_ids": [
+    "e_ccde4c3fd7",
+    "e_193cbfb975",
+    "e_8a11fb481c"
+  ],
+  "claims": [
+    {
+      "subject": "joint_analysis_need",
+      "value": "unclear",
+      "supporting_sets": [
+        [
+          "e_1716f76191"
+        ]
+      ]
+    },
+    {
+      "subject": "access_authorization",
+      "value": "missing",
+      "supporting_sets": [
+        [
+          "e_52e70a3b76"
+        ]
+      ]
+    },
+    {
+      "subject": "data_quality",
+      "value": "inadequate",
+      "supporting_sets": [
+        [
+          "e_cbbb5ec645"
+        ]
+      ]
+    },
+    {
+      "subject": "retention_control",
+      "value": "absent",
+      "supporting_sets": [
+        [
+          "e_f5622dccab"
+        ]
+      ]
+    },
+    {
+      "subject": "audit_capacity",
+      "value": "insufficient",
+      "supporting_sets": [
+        [
+          "e_624f5b3c23"
+        ]
+      ]
+    },
+    {
+      "subject": "recovery_process",
+      "value": "untested",
+      "supporting_sets": [
+        [
+          "e_91d9bfaef8"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "joint_processing_justified",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_1716f76191",
+          "e_52e70a3b76",
+          "e_cbbb5ec645"
+        ]
+      ]
+    },
+    {
+      "subject": "governance_ready",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_f5622dccab",
+          "e_624f5b3c23",
+          "e_91d9bfaef8"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "retain_separation",
+  "constraints": [
+    "joint_analysis_need",
+    "access_authorization",
+    "data_quality",
+    "retention_control",
+    "audit_capacity",
+    "recovery_process"
+  ],
+  "failure_factors": [
+    "joint_analysis_need",
+    "access_authorization",
+    "data_quality",
+    "retention_control",
+    "audit_capacity",
+    "recovery_process"
+  ],
+  "hidden_annotation": "GOLD_ONLY_850bca8a4387e5623885"
+}

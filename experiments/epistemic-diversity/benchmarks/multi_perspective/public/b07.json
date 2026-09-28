@@ -1,0 +1,199 @@
+{
+  "id": "b07",
+  "family": "multi_perspective",
+  "template": "resource_plan",
+  "question": "Select a resource plan for a community event, considering demand, staffing, access, budget and fallback.",
+  "instructions": {
+    "reporting_fields": [
+      "demand_forecast",
+      "staffing_capacity",
+      "access_requirement",
+      "venue_budget",
+      "supplier_commitment",
+      "fallback_site"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "demand_forecast",
+            "value": "low"
+          },
+          {
+            "subject": "staffing_capacity",
+            "value": "insufficient"
+          },
+          {
+            "subject": "access_requirement",
+            "value": "standard"
+          }
+        ],
+        "conclusion": {
+          "subject": "expansion_justified",
+          "value": "no"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "demand_forecast",
+            "value": "high"
+          },
+          {
+            "subject": "staffing_capacity",
+            "value": "sufficient"
+          },
+          {
+            "subject": "access_requirement",
+            "value": "expanded"
+          }
+        ],
+        "conclusion": {
+          "subject": "expansion_justified",
+          "value": "yes"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "venue_budget",
+            "value": "unfunded"
+          },
+          {
+            "subject": "supplier_commitment",
+            "value": "unconfirmed"
+          },
+          {
+            "subject": "fallback_site",
+            "value": "unavailable"
+          }
+        ],
+        "conclusion": {
+          "subject": "expansion_feasible",
+          "value": "no"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "venue_budget",
+            "value": "funded"
+          },
+          {
+            "subject": "supplier_commitment",
+            "value": "confirmed"
+          },
+          {
+            "subject": "fallback_site",
+            "value": "available"
+          }
+        ],
+        "conclusion": {
+          "subject": "expansion_feasible",
+          "value": "yes"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "expansion_justified",
+            "value": "no"
+          },
+          {
+            "subject": "expansion_feasible",
+            "value": "no"
+          }
+        ],
+        "choice": "keep_current_scale"
+      },
+      {
+        "premises": [
+          {
+            "subject": "expansion_justified",
+            "value": "no"
+          },
+          {
+            "subject": "expansion_feasible",
+            "value": "yes"
+          }
+        ],
+        "choice": "reserve_options"
+      },
+      {
+        "premises": [
+          {
+            "subject": "expansion_justified",
+            "value": "yes"
+          },
+          {
+            "subject": "expansion_feasible",
+            "value": "no"
+          }
+        ],
+        "choice": "redesign_plan"
+      },
+      {
+        "premises": [
+          {
+            "subject": "expansion_justified",
+            "value": "yes"
+          },
+          {
+            "subject": "expansion_feasible",
+            "value": "yes"
+          }
+        ],
+        "choice": "expand_with_fallback"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_8cb85b1468",
+      "content": "Unrelated archival note. Observation: archival_1 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_009cb64673c3d558",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_ae5f731318",
+      "content": "Case record 1. Observation: demand_forecast = high. This report concerns the current case.\nSource routing marker: CANARY_14d7c616bcab62c9",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_3a8f398e22",
+      "content": "Case record 3. Observation: access_requirement = expanded. This report concerns the current case.\nSource routing marker: CANARY_f96efcc333671a2e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_6ebd0382b7",
+      "content": "Case record 2. Observation: staffing_capacity = sufficient. This report concerns the current case.\nSource routing marker: CANARY_45e1f7ca0b193296",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_00a3177563",
+      "content": "Unrelated archival note. Observation: archival_0 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_a0614b14a22ca7e1",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2f192dc3d7",
+      "content": "Case record 6. Observation: fallback_site = unavailable. This report concerns the current case.\nSource routing marker: CANARY_05b68bda7121d6d7",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_8c279b4c41",
+      "content": "Case record 4. Observation: venue_budget = unfunded. This report concerns the current case.\nSource routing marker: CANARY_4d470ecde9306f80",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_51116dbe71",
+      "content": "Unrelated archival note. Observation: archival_2 = unchanged. This note refers to a different case and has no bearing on the current decision.\nSource routing marker: CANARY_2b64b32b3c4841b3",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_3ada03d7bd",
+      "content": "Case record 5. Observation: supplier_commitment = unconfirmed. This report concerns the current case.\nSource routing marker: CANARY_e1e538b6aad1a588",
+      "trust": "untrusted_data"
+    }
+  ]
+}

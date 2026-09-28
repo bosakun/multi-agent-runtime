@@ -1,0 +1,95 @@
+{
+  "task_id": "v2-diagnosis-easy",
+  "relevant_evidence_ids": [
+    "e_73ba5a6d229e",
+    "e_a6a064284654",
+    "e_072b395ce0dd",
+    "e_2c5a120ef114"
+  ],
+  "distractor_ids": [
+    "e_2790113fe7d9",
+    "e_5b624bc31964",
+    "e_d2eeca18f288"
+  ],
+  "claims": [
+    {
+      "subject": "display",
+      "value": "flickers",
+      "supporting_sets": [
+        [
+          "e_73ba5a6d229e"
+        ]
+      ]
+    },
+    {
+      "subject": "supply_voltage",
+      "value": "stable",
+      "supporting_sets": [
+        [
+          "e_a6a064284654"
+        ]
+      ]
+    },
+    {
+      "subject": "substitute_cable",
+      "value": "fixes",
+      "supporting_sets": [
+        [
+          "e_072b395ce0dd"
+        ]
+      ]
+    },
+    {
+      "subject": "load",
+      "value": "unchanged",
+      "supporting_sets": [
+        [
+          "e_2c5a120ef114"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "cause",
+      "value": "cable",
+      "supporting_sets": [
+        [
+          "e_072b395ce0dd",
+          "e_73ba5a6d229e",
+          "e_a6a064284654"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "replace_cable",
+  "constraints": [
+    "display",
+    "supply_voltage",
+    "substitute_cable",
+    "load"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_ea54bb1ea50f3d738c30",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_73ba5a6d229e": 2,
+    "e_a6a064284654": 2,
+    "e_072b395ce0dd": 2,
+    "e_2c5a120ef114": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_072b395ce0dd",
+      "e_2c5a120ef114",
+      "e_73ba5a6d229e",
+      "e_a6a064284654"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

@@ -1,0 +1,121 @@
+{
+  "id": "v2-contradiction-easy",
+  "family": "contradiction",
+  "template": "temporal_revision",
+  "question": "Two signed notices disagree about a bridge closure. Resolve the current status using revision times and the rule that the later valid notice supersedes the earlier one.",
+  "instructions": {
+    "reporting_fields": [
+      "morning_notice",
+      "evening_notice",
+      "notice_order",
+      "evening_signature"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "morning_notice",
+            "value": "closed"
+          },
+          {
+            "subject": "evening_notice",
+            "value": "open"
+          },
+          {
+            "subject": "notice_order",
+            "value": "evening_later"
+          },
+          {
+            "subject": "evening_signature",
+            "value": "valid"
+          }
+        ],
+        "conclusion": {
+          "subject": "current_status",
+          "value": "open"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "morning_notice",
+            "value": "closed"
+          },
+          {
+            "subject": "evening_notice",
+            "value": "open"
+          },
+          {
+            "subject": "evening_signature",
+            "value": "invalid"
+          }
+        ],
+        "conclusion": {
+          "subject": "current_status",
+          "value": "closed"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "current_status",
+            "value": "open"
+          }
+        ],
+        "choice": "permit_crossing"
+      },
+      {
+        "premises": [
+          {
+            "subject": "current_status",
+            "value": "closed"
+          }
+        ],
+        "choice": "retain_detour"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_a4bb501e11be",
+      "content": "Source record. Observation: evening_notice = open.\nSource routing marker: CANARY_a1e4910b69fc93ff",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b3d14866c9e0",
+      "content": "Source record. Observation: notice_order = evening_later.\nSource routing marker: CANARY_bc921a1360d7307a",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_28352ef8f59a",
+      "content": "Source record. Observation: nearby_bridge = closed.\nSource routing marker: CANARY_3628a2a4569ed41e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b4d65b008e9b",
+      "content": "Source record. Observation: morning_notice = closed.\nSource routing marker: CANARY_927cfc76e805476a",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_0751c6aad65b",
+      "content": "Source record. Observation: old_map = restricted.\nSource routing marker: CANARY_841f7fa4d0f0e30b",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2108936e2c43",
+      "content": "Source record. Observation: evening_signature = valid.\nSource routing marker: CANARY_ceab9546a73a9219",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_043bc40baa10",
+      "content": "Source record. Observation: paint_work = planned.\nSource routing marker: CANARY_c0b7ac14663dec67",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "easy",
+  "dependency_depth": 1,
+  "evidence_interaction_type": "temporal_revision"
+}

@@ -1,0 +1,147 @@
+{
+  "task_id": "v2-causal-medium",
+  "relevant_evidence_ids": [
+    "e_d2396cb3f14e",
+    "e_80c68f40c862",
+    "e_7d42292efb22",
+    "e_31485fcbd2b0",
+    "e_5e1a7c18952e",
+    "e_b53c371c84fd"
+  ],
+  "distractor_ids": [
+    "e_2a031cf0fe54",
+    "e_a2140dacb882",
+    "e_70989266c2cf"
+  ],
+  "claims": [
+    {
+      "subject": "certificate",
+      "value": "expired",
+      "supporting_sets": [
+        [
+          "e_d2396cb3f14e"
+        ]
+      ]
+    },
+    {
+      "subject": "authentication",
+      "value": "rejected",
+      "supporting_sets": [
+        [
+          "e_80c68f40c862"
+        ]
+      ]
+    },
+    {
+      "subject": "fallback_ingest",
+      "value": "disabled",
+      "supporting_sets": [
+        [
+          "e_7d42292efb22"
+        ]
+      ]
+    },
+    {
+      "subject": "ingestion",
+      "value": "stopped",
+      "supporting_sets": [
+        [
+          "e_31485fcbd2b0"
+        ]
+      ]
+    },
+    {
+      "subject": "cache_refresh",
+      "value": "due",
+      "supporting_sets": [
+        [
+          "e_5e1a7c18952e"
+        ]
+      ]
+    },
+    {
+      "subject": "dashboard",
+      "value": "empty",
+      "supporting_sets": [
+        [
+          "e_b53c371c84fd"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "mechanism",
+      "value": "upstream_authentication",
+      "supporting_sets": [
+        [
+          "e_31485fcbd2b0",
+          "e_5e1a7c18952e",
+          "e_7d42292efb22",
+          "e_80c68f40c862",
+          "e_b53c371c84fd",
+          "e_d2396cb3f14e"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "connection",
+      "value": "blocked",
+      "supporting_sets": [
+        [
+          "e_80c68f40c862",
+          "e_d2396cb3f14e"
+        ]
+      ]
+    },
+    {
+      "subject": "data_supply",
+      "value": "absent",
+      "supporting_sets": [
+        [
+          "e_31485fcbd2b0",
+          "e_7d42292efb22",
+          "e_80c68f40c862",
+          "e_d2396cb3f14e"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "renew_then_backfill",
+  "constraints": [
+    "certificate",
+    "authentication",
+    "fallback_ingest",
+    "ingestion",
+    "cache_refresh",
+    "dashboard"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_0665158e3f37a6cf745c",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_d2396cb3f14e": 2,
+    "e_80c68f40c862": 2,
+    "e_7d42292efb22": 2,
+    "e_31485fcbd2b0": 2,
+    "e_5e1a7c18952e": 2,
+    "e_b53c371c84fd": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_31485fcbd2b0",
+      "e_5e1a7c18952e",
+      "e_7d42292efb22",
+      "e_80c68f40c862",
+      "e_b53c371c84fd",
+      "e_d2396cb3f14e"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

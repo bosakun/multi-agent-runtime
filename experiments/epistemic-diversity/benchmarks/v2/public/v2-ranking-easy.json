@@ -1,0 +1,131 @@
+{
+  "id": "v2-ranking-easy",
+  "family": "ranking",
+  "template": "direct_measurement_over_hearsay",
+  "question": "Rank the evidence about water pressure at the target valve. Prefer a calibrated local measurement to hearsay, and do not treat an unrelated upstream reading as a measurement at this valve.",
+  "instructions": {
+    "reporting_fields": [
+      "local_gauge",
+      "gauge_calibration",
+      "gauge_scope",
+      "inspection_time",
+      "hearsay"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "local_gauge",
+            "value": "low"
+          },
+          {
+            "subject": "gauge_calibration",
+            "value": "valid"
+          },
+          {
+            "subject": "gauge_scope",
+            "value": "target_valve"
+          }
+        ],
+        "conclusion": {
+          "subject": "strongest_evidence",
+          "value": "local_gauge"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "local_gauge",
+            "value": "normal"
+          },
+          {
+            "subject": "gauge_calibration",
+            "value": "valid"
+          },
+          {
+            "subject": "gauge_scope",
+            "value": "target_valve"
+          }
+        ],
+        "conclusion": {
+          "subject": "strongest_evidence",
+          "value": "normal_local_reading"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "strongest_evidence",
+            "value": "local_gauge"
+          },
+          {
+            "subject": "inspection_time",
+            "value": "current"
+          }
+        ],
+        "choice": "prioritize_local_low_reading"
+      },
+      {
+        "premises": [
+          {
+            "subject": "strongest_evidence",
+            "value": "normal_local_reading"
+          },
+          {
+            "subject": "inspection_time",
+            "value": "current"
+          }
+        ],
+        "choice": "prioritize_local_normal_reading"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_0da96abd81a6",
+      "content": "Source record. Observation: local_gauge = low.\nSource routing marker: CANARY_ce93d101ab56b92b",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_5ed9360c65f5",
+      "content": "Source record. Observation: upstream_gauge = normal.\nSource routing marker: CANARY_0bdf2b43eb841342",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_f1e735bbf51d",
+      "content": "Source record. Observation: hearsay = normal.\nSource routing marker: CANARY_ba51c7c562bf6940",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_4e86584adf42",
+      "content": "Source record. Observation: gauge_calibration = valid.\nSource routing marker: CANARY_35013f36f2364f7e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_d05f3e6eb674",
+      "content": "Source record. Observation: inspection_time = current.\nSource routing marker: CANARY_2f68e8775eef6c10",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_f27cc161bdab",
+      "content": "Source record. Observation: pipe_paint = blue.\nSource routing marker: CANARY_ac96409fd0247a05",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_d69fa48cccd2",
+      "content": "Source record. Observation: gauge_scope = target_valve.\nSource routing marker: CANARY_f091d3b16bea59f9",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_0e125ac9366d",
+      "content": "Source record. Observation: old_valve_test = normal.\nSource routing marker: CANARY_d4869bcb5d1b3cea",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "easy",
+  "dependency_depth": 1,
+  "evidence_interaction_type": "direct_measurement_over_hearsay"
+}

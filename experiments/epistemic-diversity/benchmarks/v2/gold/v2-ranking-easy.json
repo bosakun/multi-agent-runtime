@@ -1,0 +1,107 @@
+{
+  "task_id": "v2-ranking-easy",
+  "relevant_evidence_ids": [
+    "e_0da96abd81a6",
+    "e_4e86584adf42",
+    "e_d69fa48cccd2",
+    "e_d05f3e6eb674"
+  ],
+  "distractor_ids": [
+    "e_5ed9360c65f5",
+    "e_0e125ac9366d",
+    "e_f27cc161bdab"
+  ],
+  "claims": [
+    {
+      "subject": "local_gauge",
+      "value": "low",
+      "supporting_sets": [
+        [
+          "e_0da96abd81a6"
+        ]
+      ]
+    },
+    {
+      "subject": "gauge_calibration",
+      "value": "valid",
+      "supporting_sets": [
+        [
+          "e_4e86584adf42"
+        ]
+      ]
+    },
+    {
+      "subject": "gauge_scope",
+      "value": "target_valve",
+      "supporting_sets": [
+        [
+          "e_d69fa48cccd2"
+        ]
+      ]
+    },
+    {
+      "subject": "inspection_time",
+      "value": "current",
+      "supporting_sets": [
+        [
+          "e_d05f3e6eb674"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "strongest_evidence",
+      "value": "local_gauge",
+      "supporting_sets": [
+        [
+          "e_0da96abd81a6",
+          "e_4e86584adf42",
+          "e_d69fa48cccd2"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "prioritize_local_low_reading",
+  "constraints": [
+    "local_gauge",
+    "gauge_calibration",
+    "gauge_scope",
+    "inspection_time"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_3e67100a2139fcebe91d",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [
+    {
+      "subject": "hearsay",
+      "value": "normal",
+      "supporting_sets": [
+        [
+          "e_f1e735bbf51d"
+        ]
+      ]
+    }
+  ],
+  "weak_evidence_ids": [
+    "e_f1e735bbf51d"
+  ],
+  "evidence_importance": {
+    "e_0da96abd81a6": 3,
+    "e_4e86584adf42": 2,
+    "e_d69fa48cccd2": 2,
+    "e_d05f3e6eb674": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_0da96abd81a6",
+      "e_4e86584adf42",
+      "e_d05f3e6eb674",
+      "e_d69fa48cccd2"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

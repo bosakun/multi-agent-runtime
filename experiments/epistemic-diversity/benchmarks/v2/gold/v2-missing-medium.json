@@ -1,0 +1,139 @@
+{
+  "task_id": "v2-missing-medium",
+  "relevant_evidence_ids": [
+    "e_93f108b7b19b",
+    "e_7aed890b6832",
+    "e_13b68e10fd68",
+    "e_7dcd3975d5d2",
+    "e_3dea101e5290",
+    "e_d1c4019464fd"
+  ],
+  "distractor_ids": [
+    "e_b4ad561d86fe",
+    "e_f2b6b0e6003d",
+    "e_e56b2af9a906"
+  ],
+  "claims": [
+    {
+      "subject": "participants",
+      "value": "improved",
+      "supporting_sets": [
+        [
+          "e_93f108b7b19b"
+        ]
+      ]
+    },
+    {
+      "subject": "assignment",
+      "value": "self_selected",
+      "supporting_sets": [
+        [
+          "e_7aed890b6832"
+        ]
+      ]
+    },
+    {
+      "subject": "baseline",
+      "value": "different",
+      "supporting_sets": [
+        [
+          "e_13b68e10fd68"
+        ]
+      ]
+    },
+    {
+      "subject": "control_outcome",
+      "value": "unobserved",
+      "supporting_sets": [
+        [
+          "e_7dcd3975d5d2"
+        ]
+      ]
+    },
+    {
+      "subject": "other_change",
+      "value": "possible",
+      "supporting_sets": [
+        [
+          "e_3dea101e5290"
+        ]
+      ]
+    },
+    {
+      "subject": "study_inventory",
+      "value": "complete",
+      "supporting_sets": [
+        [
+          "e_d1c4019464fd"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "information_gap",
+      "value": "counterfactual",
+      "supporting_sets": [
+        [
+          "e_13b68e10fd68",
+          "e_3dea101e5290",
+          "e_7aed890b6832",
+          "e_7dcd3975d5d2",
+          "e_d1c4019464fd"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "confounding",
+      "value": "unresolved",
+      "supporting_sets": [
+        [
+          "e_13b68e10fd68",
+          "e_3dea101e5290",
+          "e_7aed890b6832"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "undetermined",
+  "constraints": [
+    "participants",
+    "assignment",
+    "baseline",
+    "control_outcome",
+    "other_change",
+    "study_inventory"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_a922b0ac1d3ccbe82a97",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_93f108b7b19b": 2,
+    "e_7aed890b6832": 2,
+    "e_13b68e10fd68": 2,
+    "e_7dcd3975d5d2": 2,
+    "e_3dea101e5290": 2,
+    "e_d1c4019464fd": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_13b68e10fd68",
+      "e_3dea101e5290",
+      "e_7aed890b6832",
+      "e_7dcd3975d5d2",
+      "e_93f108b7b19b",
+      "e_d1c4019464fd"
+    ]
+  ],
+  "allowed_uncertainty": [
+    "counterfactual"
+  ],
+  "required_unknowns": [
+    "counterfactual"
+  ],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

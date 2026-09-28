@@ -1,0 +1,137 @@
+{
+  "id": "v2-planning-easy",
+  "family": "planning",
+  "template": "ordered_preconditions",
+  "question": "Plan a safe local data migration. Order the actions using backup and quiescence prerequisites; a list containing the right actions in the wrong order is not a valid plan.",
+  "instructions": {
+    "reporting_fields": [
+      "backup",
+      "writes",
+      "target",
+      "approval"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "backup",
+            "value": "absent"
+          },
+          {
+            "subject": "writes",
+            "value": "active"
+          }
+        ],
+        "conclusion": {
+          "subject": "preparation",
+          "value": "backup_then_quiesce"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "preparation",
+            "value": "backup_then_quiesce"
+          },
+          {
+            "subject": "target",
+            "value": "ready"
+          }
+        ],
+        "conclusion": {
+          "subject": "sequence",
+          "value": "backup_quiesce_migrate"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "backup",
+            "value": "verified"
+          },
+          {
+            "subject": "writes",
+            "value": "paused"
+          },
+          {
+            "subject": "target",
+            "value": "ready"
+          }
+        ],
+        "conclusion": {
+          "subject": "sequence",
+          "value": "migrate_verify"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "sequence",
+            "value": "backup_quiesce_migrate"
+          },
+          {
+            "subject": "approval",
+            "value": "granted"
+          }
+        ],
+        "choice": "backup_then_quiesce_then_migrate_then_verify"
+      },
+      {
+        "premises": [
+          {
+            "subject": "sequence",
+            "value": "migrate_verify"
+          },
+          {
+            "subject": "approval",
+            "value": "granted"
+          }
+        ],
+        "choice": "migrate_then_verify"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_99f28868abae",
+      "content": "Source record. Observation: archive_label = blue.\nSource routing marker: CANARY_6b670390c8e76852",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_ff13d0d0f955",
+      "content": "Source record. Observation: backup = absent.\nSource routing marker: CANARY_2a041e1816552d97",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_7e1e5735d8b9",
+      "content": "Source record. Observation: target = ready.\nSource routing marker: CANARY_2ca7df084d9f360d",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a063c5911140",
+      "content": "Source record. Observation: old_backup = expired.\nSource routing marker: CANARY_3995d0e59ac45a5b",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_56e26b61a154",
+      "content": "Source record. Observation: approval = granted.\nSource routing marker: CANARY_e7edfbfba5fe1222",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_5cfb040b8ffa",
+      "content": "Source record. Observation: writes = active.\nSource routing marker: CANARY_f1132c029fac7e7b",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_cafcbbe79c2c",
+      "content": "Source record. Observation: desk_calendar = updated.\nSource routing marker: CANARY_0a453fff268932e4",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "easy",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "ordered_preconditions"
+}
