@@ -128,6 +128,15 @@ class ModelSettings(Model):
     temperature: float = Field(default=0, ge=0, le=2)
     max_output_tokens: int = Field(default=2048, ge=256)
     timeout_seconds: float = Field(default=90, gt=0)
+    execution_profile: Literal["standard", "local_ollama"] = "standard"
+
+    @model_validator(mode="after")
+    def local_execution_invariants(self) -> "ModelSettings":
+        if self.execution_profile == "local_ollama" and (
+            self.timeout_seconds != 300 or self.temperature != 0 or self.max_output_tokens != 2048
+        ):
+            raise ValueError("Local Ollama requires timeout 300, temperature 0, output limit 2048")
+        return self
 
 
 class Assignment(Model):

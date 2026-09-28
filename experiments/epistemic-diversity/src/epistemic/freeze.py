@@ -9,7 +9,7 @@ from epistemic.benchmark_v2 import PILOT_IDS, SEED, VERSION
 from epistemic.models import ModelSettings
 from epistemic.paths import REPO, ROOT, digest, read_json, write_json
 
-FREEZE_PATH = ROOT / "freezes/benchmark-2.0.0-protocol-2.1.json"
+FREEZE_PATH = ROOT / "freezes/benchmark-2.0.0-protocol-2.2.json"
 CONTROL_DOCUMENTS = [
     "v2-design-amendment.md",
     "experiment-freeze.md",
@@ -21,6 +21,8 @@ CONTROL_DOCUMENTS = [
     "methodology.md",
     "limitations.md",
     "protocol-2.1-amendment.md",
+    "protocol-2.2-amendment.md",
+    "qwen3-14b-operational-failure.md",
 ]
 
 
@@ -52,7 +54,15 @@ def seal(path: Path = FREEZE_PATH) -> dict[str, Any]:
         raise ValueError("Benchmark audit failed")
     payload = {
         "benchmark_version": VERSION,
-        "protocol_version": "pilot-2.1",
+        "protocol_version": "pilot-2.2",
+        "execution_profiles": {
+            "standard": {"worker_concurrency": 3, "timeout_seconds": 90},
+            "local_ollama": {
+                "worker_concurrency": 1,
+                "model_concurrency": 1,
+                "timeout_seconds": 300,
+            },
+        },
         "metrics_version": "2.0.0",
         "task_ids": PILOT_IDS,
         "conditions": ["C2", "C3"],
@@ -77,6 +87,7 @@ def verify(path: Path = FREEZE_PATH) -> dict[str, Any]:
         )
     if (
         payload["benchmark_version"] != VERSION
+        or payload.get("protocol_version") != "pilot-2.2"
         or payload["task_ids"] != PILOT_IDS
         or payload["conditions"] != ["C2", "C3"]
     ):
@@ -96,16 +107,37 @@ def validate_endpoint(endpoint: str) -> str:
 
 
 def bind_model(
-    path: Path, model: str, endpoint: str, freeze_path: Path = FREEZE_PATH
+    path: Path,
+    model: str,
+    endpoint: str,
+    freeze_path: Path = FREEZE_PATH,
+    *,
+    execution_profile: str = "standard",
+    campaign: Path | None = None,
 ) -> dict[str, Any]:
     frozen = verify(freeze_path)
     if path.exists():
         raise ValueError("Model binding already exists; do not overwrite")
     if not model.strip() or "mock" in model.lower():
         raise ValueError("Specify a real model ID; no default paid model is selected")
-    settings = ModelSettings(provider="real", model=model)
+    settings = ModelSettings.model_validate(
+        {
+            "provider": "real",
+            "model": model,
+            "execution_profile": execution_profile,
+            "timeout_seconds": 300 if execution_profile == "local_ollama" else 90,
+        }
+    )
+    validate_execution_endpoint(settings, endpoint)
+    if settings.execution_profile == "local_ollama":
+        if campaign is None or campaign.exists():
+            raise ValueError("Local Ollama binding requires a new, nonexistent --campaign path")
+        if path.resolve().parent != campaign.resolve():
+            raise ValueError("Local binding must be written at its new campaign root")
     payload = {
         "benchmark_version": VERSION,
+        "protocol_version": "pilot-2.2",
+        "campaign_path": str(campaign.resolve()) if campaign is not None else None,
         "freeze_sha256": frozen["freeze_sha256"],
         "settings": settings.model_dump(),
         "endpoint": validate_endpoint(endpoint),
@@ -120,10 +152,34 @@ def bind_model(
     return payload
 
 
+def validate_execution_endpoint(settings: ModelSettings, endpoint: str) -> None:
+    """Keep local resource accommodations specific to the loopback Ollama endpoint."""
+    parsed = urlsplit(validate_endpoint(endpoint))
+    local = parsed.hostname in {"localhost", "127.0.0.1"} and parsed.port == 11434
+    if settings.execution_profile == "local_ollama":
+        if not local or parsed.path.rstrip("/") != "/v1":
+            raise ValueError("Local Ollama profile requires loopback port 11434 /v1 endpoint")
+    elif local:
+        raise ValueError("Local Ollama endpoint requires the local_ollama execution profile")
+
+
+def validate_local_campaign(binding: dict[str, Any], campaign: Path, path: Path) -> None:
+    """Refuse reuse before creating any budget, phase, or result artifact."""
+    root = campaign.resolve()
+    binding_file = path.resolve()
+    if binding.get("campaign_path") != str(root):
+        raise ValueError("Local Ollama requires the new campaign named in its binding")
+    if binding_file.parent != root:
+        raise ValueError("Local binding must be at the new campaign root")
+    if any(p.is_file() and p.resolve() != binding_file for p in root.rglob("*")):
+        raise ValueError("Local campaign already contains artifacts; choose a new campaign")
+
+
 def validate_binding(
     path: Path, settings: ModelSettings, endpoint: str, seed: int, freeze_path: Path = FREEZE_PATH
 ) -> dict[str, Any]:
     frozen = verify(freeze_path)
+    validate_execution_endpoint(settings, endpoint)
     binding: dict[str, Any] = read_json(path)
     content = {k: v for k, v in binding.items() if k != "binding_sha256"}
     if (
@@ -139,6 +195,7 @@ def validate_binding(
         raise ValueError("Generation settings/endpoint/seed differ from the pre-run binding")
     if (
         binding["task_ids"] != PILOT_IDS
+        or binding.get("protocol_version") != "pilot-2.2"
         or binding["conditions"] != ["C2", "C3"]
         or binding["repetitions"] != 1
     ):

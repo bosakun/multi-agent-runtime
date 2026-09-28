@@ -1,4 +1,8 @@
-# Research plan — current protocol pilot-2.1 / benchmark 2.0.0
+# Research plan — current protocol pilot-2.2 / benchmark 2.0.0
+
+Protocol 2.2 adjusts only local Ollama scheduling (worker/model concurrency 1)
+and per-invocation timeout (300s) following the preserved operational failure.
+All local conditions share this setting. See protocol-2.2-amendment.md.
 
 The [protocol 2.1 amendment](protocol-2.1-amendment.md) adds common seeded
 candidate/rule-order randomization after identifying an author-order shortcut.

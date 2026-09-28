@@ -1,6 +1,35 @@
 # Status
 
-## Current: READY FOR REAL PILOT (content/software); model binding and credentials pending
+## Current: protocol 2.2 local recovery prepared; new binding and run authorization pending
+
+Benchmark 2.0.0, six pilot task IDs, C2/C3, temperature 0 and output limit 2048
+are unchanged. Local Ollama worker/model dispatch concurrency is 1 and timeout
+300 seconds. Standard non-Ollama scheduling retains 3 workers and timeout 90.
+New content seal: `freezes/benchmark-2.0.0-protocol-2.2.json`, hash
+`64123f9c62f55a6c26dff30a582472fffbc8b02ede9a42a3c607fd8896a12154`.
+
+The failed qwen3:14b protocol-2.1 campaign remains byte-for-byte intact: one
+attempted run, three calls, 90036.417 ms, two agent_timeout failures and two
+CancelledError journal records. It is an operational failure with no paired
+research outcome. See docs/qwen3-14b-operational-failure.md and the 2.2 amendment.
+
+Current mock regression: standard and local profiles each executed 12 runs /
+48 calls (24 runs / 96 mock calls total). All succeeded; paired final outputs,
+assignments, quality and boundary metrics match. No observed literal leaks.
+These are offline checks, not additional real-model attempts. Results live in
+results/mock-v2p22-standard and results/mock-v2p22-local.
+
+Validation: **161 passed / 3 skipped** (94 research + 67 runtime).
+Formatter, lint, strict typing and new freeze verification pass. Existing app/
+is unchanged. All 14 failed-campaign files and all 63 benchmark-v2 files retain
+their prior SHA256 hashes. Existing .DS_Store files were left untouched.
+
+No protocol-2.2 real run or real binding was created here. Local real launch
+requires a new binding referencing this seal and a fresh campaign root;
+old bindings, mismatched roots and existing artifacts are refused before dispatch.
+See READY_FOR_REAL_PILOT.md for commands, which require approval before generation.
+
+## Historical protocol 2.1 preparation and mock validation
 
 Benchmark **2.0.0 / protocol 2.1**: **30 tasks / ten structural families**, ten each easy/medium/hard.
 Fixed six-family C2/C3 pilot: **12 runs / 48 calls**, default ceiling **60**.

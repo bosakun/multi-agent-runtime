@@ -119,7 +119,7 @@ def build_condition(
     workflow = WorkflowDefinition(
         id="epistemic-study-v1",
         description="Controlled role/access comparison",
-        max_parallel=3,
+        max_parallel=1 if settings.execution_profile == "local_ollama" else 3,
         mode="single" if single else "isolated" if config.separated_evidence else "shared",
         nodes=[Node(id=key, agent_id=key, final=single or key == "synthesizer") for key in agents],
         edges=[] if single else [Edge(source=key, target="synthesizer") for key in roles],
