@@ -1,9 +1,15 @@
-# Experiment freeze — content protocol pilot-2.1 / benchmark 2.0.0
+# Experiment freeze — content protocol pilot-2.2 / benchmark 2.0.0
+
+Protocol 2.2 adds only the local Ollama execution profile after the preserved
+operational failure. Local worker/model concurrency is 1 and timeout is 300s;
+other endpoints retain the standard 3-worker/90s profile. New bindings and fresh
+local campaign roots are mandatory. See protocol-2.2-amendment.md and
+qwen3-14b-operational-failure.md. No protocol-2.2 real run is authorized here.
 
 Prepared 2026-09-28 JST. Protocol 2.1 adds a pre-real candidate-order correction,
 documented in protocol-2.1-amendment.md. The old mock cohort/seal remain archived.
-The current seal precedes named protocol-2.1 runs and all real execution.
-The machine-readable seal is `freezes/benchmark-2.0.0-protocol-2.1.json`; `verify-freeze` checks
+The current seal precedes named protocol-2.2 runs.
+The machine-readable seal is `freezes/benchmark-2.0.0-protocol-2.2.json`; `verify-freeze` checks
 its own digest and all listed current file contents before v2 execution. Existing
 seals cannot be overwritten. Any post-freeze scientific change requires a new
 dated protocol/benchmark version and disclosure, not a favorable-outcome edit.
@@ -48,7 +54,8 @@ C2 and C3 only; one repetition; seed **20260928**; 48 calls, default ceiling 60.
 No automatic main experiment or extra ablation. All-condition mock validation is
 separate and cannot answer the LLM question. Model ID/endpoint remain unbound
 until explicitly chosen, then must be sealed with `bind-model` before paid calls.
-Temperature 0, completion limit 2048, timeout 90s, one attempt/turn and zero tools
+Temperature 0, completion limit 2048, timeout 90s standard / 300s local Ollama,
+one attempt/turn and zero tools
 are already fixed. Model binding and content hash are saved with each campaign.
 
 ## Fixed endpoints / comparisons / analysis

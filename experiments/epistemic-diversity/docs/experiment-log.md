@@ -1,5 +1,31 @@
 # Research log
 
+## 2026-09-28 — protocol 2.2 local Ollama operational recovery
+
+- Inspected preserved runs/qwen3-14b only with read-only checks: 1 C2 run on
+  v2-synthesis-easy, 3 calls, ~90.04s, 2 agent_timeout and 2 CancelledError journal
+  entries. Recorded as operational failure; no paired research outcome claimed.
+- Recorded protocol-2.2-amendment.md before named runs. Benchmark version/data,
+  selected tasks, conditions, temperature/output tokens, prompts and seeds fixed.
+- Added local-only worker scheduling and provider dispatch concurrency 1, timeout
+  300s. Independent workers have no sibling context access or dependency edges;
+  both C2 and C3 share scheduling. Latency/load effects remain disclosed.
+- New local binding requires a nonexistent campaign root. Launch checks current
+  freeze, bound root, profile/endpoint/settings and absence of prior artifacts.
+  Prior seal/binding/failed campaign are preserved; no automatic resume.
+- Tests initially exposed an async test-double mismatch with the synchronous
+  MockProvider responder contract. Replaced the test double; Runtime unchanged.
+- Final suite: 161 passed / 3 optional external-service checks skipped.
+  Formatter/lint and both strict typing checks pass. Fake HTTP adapter tests
+  verify the serial 48-call path at 300s, without accessing any real endpoint.
+- New content seal created before named mock runs:
+  64123f9c62f55a6c26dff30a582472fffbc8b02ede9a42a3c607fd8896a12154.
+- Ran standard and local mock pilots separately, 12 runs / 48 calls each.
+  Paired final outputs, assignments, quality and boundary metrics match. All
+  succeeded. No inference about qwen3:14b quality follows from mock behavior.
+- Compared all 77 saved file hashes: failed campaign (14 files) and benchmark-v2
+  (63 files) unchanged byte-for-byte. No new real-model execution or binding.
+
 ## 2026-09-28 JST — protocol 2.1 pre-real correction and final validation
 
 - Final review discovered that all canonical correct decision candidates were

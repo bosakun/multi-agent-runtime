@@ -37,6 +37,10 @@ def main() -> None:
     )
     binding.add_argument("--output", required=True, type=Path)
     binding.add_argument("--freeze", type=Path, default=FREEZE_PATH)
+    binding.add_argument(
+        "--execution-profile", choices=["standard", "local_ollama"], default="standard"
+    )
+    binding.add_argument("--campaign", type=Path)
     for command in ("plan", "run"):
         action = sub.add_parser(command)
         action.add_argument("--phase", choices=["pilot", "main", "full"], default="pilot")
@@ -50,7 +54,10 @@ def main() -> None:
             action.add_argument("--model", default="public-rule-mock-v2")
             action.add_argument("--temperature", type=float, default=0)
             action.add_argument("--max-output-tokens", type=int, default=2048)
-            action.add_argument("--timeout", type=float, default=90)
+            action.add_argument("--timeout", type=float)
+            action.add_argument(
+                "--execution-profile", choices=["standard", "local_ollama"], default="standard"
+            )
             action.add_argument("--seed", type=int, default=SEED)
             action.add_argument("--campaign", required=True, type=Path)
             action.add_argument("--binding", type=Path)
@@ -81,7 +88,16 @@ def main() -> None:
         elif args.command == "verify-freeze":
             print(verify(args.freeze)["freeze_sha256"])
         elif args.command == "bind-model":
-            print(bind_model(args.output, args.model, args.endpoint, args.freeze)["binding_sha256"])
+            print(
+                bind_model(
+                    args.output,
+                    args.model,
+                    args.endpoint,
+                    args.freeze,
+                    execution_profile=args.execution_profile,
+                    campaign=args.campaign,
+                )["binding_sha256"]
+            )
         elif args.command == "plan":
             print(
                 json.dumps(
@@ -97,7 +113,10 @@ def main() -> None:
                 model=args.model,
                 temperature=args.temperature,
                 max_output_tokens=args.max_output_tokens,
-                timeout_seconds=args.timeout,
+                timeout_seconds=args.timeout
+                if args.timeout is not None
+                else (300 if args.execution_profile == "local_ollama" else 90),
+                execution_profile=args.execution_profile,
             )
             result = asyncio.run(
                 execute_campaign(

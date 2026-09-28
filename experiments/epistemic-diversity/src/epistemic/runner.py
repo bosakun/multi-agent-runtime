@@ -23,7 +23,14 @@ from app.tools.gateway import ToolRegistry
 from epistemic.benchmark import load_task, partition, selected_tasks
 from epistemic.benchmark_v2 import VERSION, partition_stats
 from epistemic.conditions import build_condition, configurations, schemas
-from epistemic.freeze import FREEZE_PATH, validate_binding, validate_endpoint, verify
+from epistemic.freeze import (
+    FREEZE_PATH,
+    validate_binding,
+    validate_endpoint,
+    validate_execution_endpoint,
+    validate_local_campaign,
+    verify,
+)
 from epistemic.metrics import audit, evaluate
 from epistemic.mock import respond
 from epistemic.models import ConditionConfig, ModelSettings
@@ -257,6 +264,9 @@ async def execute_campaign(
         if binding_path is None:
             raise ValueError("A pre-run --binding is required for real pilot")
         binding = validate_binding(binding_path, settings, endpoint, seed, freeze_path)
+        validate_execution_endpoint(settings, endpoint)
+        if settings.execution_profile == "local_ollama":
+            validate_local_campaign(binding, campaign, binding_path)
     frozen = verify(freeze_path) if version == VERSION else None
     budget = CallBudget(campaign / "budget.sqlite", limit)
     plan = make_plan(phase, repetitions, limit - budget.used, version)
@@ -275,6 +285,10 @@ async def execute_campaign(
         "seed": seed,
         "benchmark_version": version,
         "metrics_version": "2.0.0",
+        "protocol_version": frozen["protocol_version"] if frozen else "legacy",
+        "execution_profile": settings.execution_profile,
+        "worker_concurrency": 1 if settings.execution_profile == "local_ollama" else 3,
+        "model_concurrency": 1 if settings.execution_profile == "local_ollama" else 3,
         "freeze_sha256": frozen["freeze_sha256"] if frozen else None,
         "model_binding": binding,
         "endpoint": endpoint if settings.provider == "real" else "offline-mock",
@@ -302,7 +316,12 @@ async def execute_campaign(
                 if settings.provider == "mock"
                 else OpenAICompatibleProvider(client, os.environ["OPENAI_API_KEY"])
             )
-            provider = AuditedProvider(base, budget, output_dir / "call-journal")
+            provider = AuditedProvider(
+                base,
+                budget,
+                output_dir / "call-journal",
+                max_concurrency=1 if settings.execution_profile == "local_ollama" else None,
+            )
             stop = False
             for task_id, repetition in plan["blocks"]:
                 if stop:

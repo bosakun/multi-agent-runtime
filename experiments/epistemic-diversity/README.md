@@ -1,6 +1,13 @@
 # Role Diversity vs. Epistemic Diversity
 
-**Benchmark 2.0.0 / protocol 2.1: 30 tasks / 10 structural families. Real-model results pending.**
+**Benchmark 2.0.0 / protocol 2.2: 30 tasks / 10 structural families.**
+
+The qwen3:14b local protocol-2.1 pilot ended in an operational failure: one run,
+three calls, approximately 90s, two agent timeouts and CancelledError journals.
+[The preserved failure](docs/qwen3-14b-operational-failure.md) has no paired research
+outcome. [Protocol 2.2](docs/protocol-2.2-amendment.md) adds local Ollama concurrency
+1 and timeout 300s, with new freeze/binding/campaign guards. A new real run requires
+human authorization; the changes themselves do not launch it.
 
 How does epistemic diversity created by information separation compare with
 prompt-level role diversity in LLM multi-agent systems?
@@ -91,7 +98,7 @@ freeze instead of reusing 2.0.0. Legacy generation requires
 The [experiment freeze](docs/experiment-freeze.md) fixes the question, hypotheses,
 conditions, benchmark/tasks, metrics, comparisons, analysis, settings and exclusions.
 The [pilot plan](docs/real-pilot-plan.md) fixes six task IDs, seed and stopping rules.
-`freezes/benchmark-2.0.0-protocol-2.1.json` hashes public/gold files, audit, source, prompts,
+`freezes/benchmark-2.0.0-protocol-2.2.json` hashes public/gold files, audit, source, prompts,
 protocol documents, runtime source and dependency lock. Any change blocks launch.
 The [protocol 2.1 amendment](docs/protocol-2.1-amendment.md) documents a discovered
 answer-position shortcut and common seeded criteria-order randomization. The old
@@ -99,14 +106,16 @@ protocol-2 seal, archived source and mock results remain intact; do not pool coh
 
 Model ID and endpoint are deliberately **not silently chosen**. Before a paid
 call, `bind-model` records them together with fixed temperature 0, 2048 completion
-tokens, 90s timeout, one attempt/turn, no tools and seed 20260928. Launch must match
+tokens, 90s standard / 300s local timeout, one attempt/turn, no tools and seed 20260928.
+Local Ollama additionally binds a fresh campaign root and serial worker/model dispatch.
+Launch must match
 the sealed binding. See [READY_FOR_REAL_PILOT.md](READY_FOR_REAL_PILOT.md) for exact
 environment variables and commands. No credentials are stored; no `.env` is
 automatically loaded. API usage is separate from ChatGPT/Codex subscription usage.
 
-There are no real-provider credentials in the current environment, so no paid
-experiment has been performed. Real-provider code is contract-tested through fake
-HTTP transport; those fixtures are not real-model research results.
+The preserved local pilot is the sole observed real-model attempt discussed here.
+No protocol-2.2 real run has been executed. Adapter regressions use fake HTTP;
+those fixtures do not contact Ollama or an external provider.
 
 ## Outputs and human inspection
 

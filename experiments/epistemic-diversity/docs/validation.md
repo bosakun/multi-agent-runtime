@@ -1,5 +1,48 @@
 # Validation record
 
+## Current: protocol 2.2 local recovery
+
+Final suite **161 passed / 3 skipped**: 94 research and 67 runtime tests passed.
+Formatter/lint, runtime typing (44 files), research typing (18 files) pass.
+MockTransport fixtures verify HTTP timeout 300, output limit 2048, temperature 0,
+one active request, complete 48-call pilot, old-seal rejection, fresh-root checks
+and failure/cancellation accounting. No fixture contacts Ollama or an external API.
+
+Content seal (before named runs):
+`64123f9c62f55a6c26dff30a582472fffbc8b02ede9a42a3c607fd8896a12154`.
+Named standard and local mock pilots: 12 runs / 48 calls each, 24 / 96 total.
+All succeed; paired final outputs, assignments and quality/boundary metrics match.
+Worker contexts contain no sibling artifacts; synthesizer receives three artifacts
+and no raw knowledge. Resource timing is not asserted equal across profiles.
+
+The failed qwen3:14b directory (14 files) and Benchmark 2.0.0 v2 directory
+(63 files) match SHA256 hashes captured before edits. No app/ change, no new
+real execution, no new real binding, and no modification of earlier results.
+
+```bash
+.venv/bin/python experiments/epistemic-diversity/run.py verify-freeze
+.venv/bin/python experiments/epistemic-diversity/run.py run \
+  --provider mock --phase pilot --max-model-calls 60 \
+  --campaign experiments/epistemic-diversity/runs/mock-v2p22-standard
+.venv/bin/python experiments/epistemic-diversity/run.py run \
+  --provider mock --execution-profile local_ollama --phase pilot --max-model-calls 60 \
+  --campaign experiments/epistemic-diversity/runs/mock-v2p22-local
+.venv/bin/python experiments/epistemic-diversity/run.py analyze \
+  experiments/epistemic-diversity/runs/mock-v2p22-standard/pilot/results.json \
+  --output experiments/epistemic-diversity/results/mock-v2p22-standard
+.venv/bin/python experiments/epistemic-diversity/run.py analyze \
+  experiments/epistemic-diversity/runs/mock-v2p22-local/pilot/results.json \
+  --output experiments/epistemic-diversity/results/mock-v2p22-local
+.venv/bin/ruff format --check .
+.venv/bin/ruff check .
+.venv/bin/mypy
+MYPYPATH=experiments/epistemic-diversity/src .venv/bin/mypy --strict \
+  experiments/epistemic-diversity/src experiments/epistemic-diversity/run.py
+.venv/bin/pytest -q tests experiments/epistemic-diversity/tests
+```
+
+Use fresh mock names to reproduce; existing campaigns refuse overwrite.
+
 ## Current: protocol 2.1 / benchmark 2.0.0 — 2026-09-28 JST
 
 The pre-real candidate-order correction is described in protocol-2.1-amendment.md.

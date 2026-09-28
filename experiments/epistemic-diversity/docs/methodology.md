@@ -1,6 +1,11 @@
 # Methodology — v2 amendments and retained v1 record
 
-Current execution protocol is pilot-2.1. Public rule and candidate order is
+Current execution protocol is pilot-2.2. For local Ollama, independent workers
+execute sequentially and provider dispatch is limited to one in-flight call.
+Agent/client timeout is 300 seconds. The preserved 90-second failure is operational.
+See protocol-2.2-amendment.md for scheduling assumptions and fresh-path rules.
+
+Public rule and candidate order is
 randomized identically across all conditions for each task/seed, without gold.
 The benchmark's canonical stored order is not the provider-facing order. This
 corrects an author-order shortcut; see protocol-2.1-amendment.md. Old protocol-2

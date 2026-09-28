@@ -1,15 +1,48 @@
 # READY FOR REAL PILOT — software/content ready; credentials and model binding required
 
-Real-model results pending. No real-provider credentials were available during
-preparation. No paid experiment or main experiment has been executed.
+Comparative real-model results pending. The preserved qwen3:14b protocol-2.1
+attempt failed operationally; see docs/qwen3-14b-operational-failure.md.
+No protocol-2.2 real run has been executed or authorized during this implementation.
 
-Content: benchmark 2.0.0 / protocol 2.1, 30 tasks / ten families. Fixed pilot: six tasks, C2/C3,
+Content: benchmark 2.0.0 / protocol 2.2, 30 tasks / ten families. Fixed pilot: six tasks, C2/C3,
 one repetition, seed 20260928, **48 calls** / 12 runs. Default ceiling **60**.
 Exact selection/reasons: [real-pilot-plan.md](docs/real-pilot-plan.md).
 No automatic retries, judge calls, regeneration ablations or main execution.
-Current seal: `freezes/benchmark-2.0.0-protocol-2.1.json`. The superseded protocol-2
+Current seal: `freezes/benchmark-2.0.0-protocol-2.2.json`. The superseded protocol-2/2.1
 seal is archival, not the current executable freeze. Candidate-order correction
 is documented in [the amendment](docs/protocol-2.1-amendment.md).
+
+## Local Ollama recovery (requires authorization to run)
+
+The local profile pins worker/model concurrency 1, timeout 300s, temperature 0
+and maximum output 2048. Binding requires a new campaign root that does not yet
+exist. Do not reuse `runs/qwen3-14b` or its binding. Example setup/binding below
+performs no model generation; launch is a separate explicitly authorized step.
+
+```bash
+export MODEL_BASE_URL="http://127.0.0.1:11434/v1/"
+export OPENAI_API_KEY="ollama"
+uv run python experiments/epistemic-diversity/run.py verify-freeze
+uv run python experiments/epistemic-diversity/run.py bind-model \
+  --model qwen3:14b --execution-profile local_ollama \
+  --campaign experiments/epistemic-diversity/runs/qwen3-14b-protocol22 \
+  --output experiments/epistemic-diversity/runs/qwen3-14b-protocol22/binding.json
+```
+
+The key here is a local compatibility placeholder, not a cloud credential.
+After explicit approval, the exact launch command is:
+
+```bash
+uv run python experiments/epistemic-diversity/run.py run \
+  --provider real --model qwen3:14b --execution-profile local_ollama \
+  --phase pilot --timeout 300 --temperature 0 --max-output-tokens 2048 \
+  --binding experiments/epistemic-diversity/runs/qwen3-14b-protocol22/binding.json \
+  --campaign experiments/epistemic-diversity/runs/qwen3-14b-protocol22
+```
+
+An existing root, stale seal/binding, different bound root or prior artifacts
+block execution. No command above has been executed for the real model here.
+The generic commands below apply to the standard profile at non-Ollama endpoints.
 
 ## Required environment
 

@@ -1,5 +1,11 @@
 # Limitations and threats to validity
 
+Protocol 2.2: sequential local scheduling changes wall time and backend load/cache
+effects. Worker role/access factors are preserved because there is no sibling
+information dependency; real output invariance is not guaranteed. The 300-second
+deadline does not guarantee completion. The failed cohort has no paired quality
+contrast. Protocol-2.1 and 2.2 cohorts must not be pooled.
+
 Protocol 2.1 corrects an answer-position hint found after mock validation: author
 order put the correct decision first in all files. Provider-facing candidate and
 rule order is now independently seeded but common to each condition pair. Pilot

@@ -1,5 +1,6 @@
 """Durable cross-process call budget and boundary audit (synthetic data only)."""
 
+import asyncio
 import sqlite3
 import time
 from pathlib import Path
@@ -42,14 +43,26 @@ class CallBudget:
 
 class AuditedProvider:
     def __init__(
-        self, provider: ModelProvider, budget: CallBudget, journal: Path | None = None
+        self,
+        provider: ModelProvider,
+        budget: CallBudget,
+        journal: Path | None = None,
+        *,
+        max_concurrency: int | None = None,
     ) -> None:
         self.provider = provider
         self.budget = budget
         self.calls: list[CallRecord] = []
         self.journal = journal
+        self._semaphore = asyncio.Semaphore(max_concurrency) if max_concurrency else None
 
     async def generate(self, request: ModelRequest) -> ModelResponse:
+        if self._semaphore is not None:
+            async with self._semaphore:
+                return await self._generate(request)
+        return await self._generate(request)
+
+    async def _generate(self, request: ModelRequest) -> ModelResponse:
         self.budget.reserve()
         record = CallRecord(
             run_id=request.context.run_id,
