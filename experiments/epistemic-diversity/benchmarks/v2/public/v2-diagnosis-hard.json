@@ -1,0 +1,175 @@
+{
+  "id": "v2-diagnosis-hard",
+  "family": "diagnosis",
+  "template": "confounder_elimination_with_two_interventions",
+  "question": "Diagnose a packaging-line failure using environmental, firmware and intervention records. Distinguish coincidence from cause; do not infer that the most recent change is necessarily responsible.",
+  "instructions": {
+    "reporting_fields": [
+      "failure",
+      "humidity",
+      "firmware",
+      "drying_test",
+      "firmware_revert",
+      "sensor_check",
+      "material"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "firmware",
+            "value": "new"
+          },
+          {
+            "subject": "firmware_revert",
+            "value": "unchanged"
+          },
+          {
+            "subject": "sensor_check",
+            "value": "valid"
+          }
+        ],
+        "conclusion": {
+          "subject": "firmware_link",
+          "value": "excluded"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "humidity",
+            "value": "high"
+          },
+          {
+            "subject": "drying_test",
+            "value": "restores"
+          },
+          {
+            "subject": "material",
+            "value": "moisture_sensitive"
+          }
+        ],
+        "conclusion": {
+          "subject": "humidity_link",
+          "value": "supported"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "firmware_link",
+            "value": "excluded"
+          },
+          {
+            "subject": "humidity_link",
+            "value": "supported"
+          },
+          {
+            "subject": "failure",
+            "value": "present"
+          }
+        ],
+        "conclusion": {
+          "subject": "cause",
+          "value": "moisture"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "firmware",
+            "value": "new"
+          },
+          {
+            "subject": "firmware_revert",
+            "value": "restores"
+          },
+          {
+            "subject": "drying_test",
+            "value": "unchanged"
+          }
+        ],
+        "conclusion": {
+          "subject": "cause",
+          "value": "firmware"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "cause",
+            "value": "moisture"
+          }
+        ],
+        "choice": "control_humidity"
+      },
+      {
+        "premises": [
+          {
+            "subject": "cause",
+            "value": "firmware"
+          }
+        ],
+        "choice": "revert_firmware"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_437e995cde7a",
+      "content": "Source record. Observation: material = moisture_sensitive.\nSource routing marker: CANARY_cc3fc666195c33e6",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_8c7b1404d9ea",
+      "content": "Source record. Observation: shift_uniform = new.\nSource routing marker: CANARY_8dd941067ba2bf4e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e512d6ca3df1",
+      "content": "Source record. Observation: drying_test = restores.\nSource routing marker: CANARY_b190f0000016adc7",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2823d4d98851",
+      "content": "Source record. Observation: firmware = new.\nSource routing marker: CANARY_8bc45c4cb6ecda79",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2a05d90bbf76",
+      "content": "Source record. Observation: humidity = high.\nSource routing marker: CANARY_899e627984aefd29",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_cd056efdcd9f",
+      "content": "Source record. Observation: firmware_revert = unchanged.\nSource routing marker: CANARY_8e2f73bdc9cdc0ea",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2685e9abeb29",
+      "content": "Source record. Observation: failure = present.\nSource routing marker: CANARY_3d14f3c174a1716b",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_4df5bd53326f",
+      "content": "Source record. Observation: delivery_route = shortened.\nSource routing marker: CANARY_69b68ece9d3d7a76",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_1af6d5b6d84b",
+      "content": "Source record. Observation: sensor_check = valid.\nSource routing marker: CANARY_c9121d7461dcf960",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_28af2fb7f07f",
+      "content": "Source record. Observation: previous_line = firmware_issue.\nSource routing marker: CANARY_27ae75b3168c4ac3",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "confounder_elimination_with_two_interventions"
+}

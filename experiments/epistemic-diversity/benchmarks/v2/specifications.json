@@ -1,0 +1,309 @@
+[
+  {
+    "id":"v2-synthesis-easy", "family":"synthesis", "difficulty":"easy",
+    "structure":"independent_corroboration", "depth":1,
+    "prompt":"A cooperative must decide whether to release a stored batch. Combine independent origin, inspection and cold-chain records; an attractive label alone is not a release criterion.",
+    "observations":{"origin":"verified","inspection":"pass","cold_chain":"intact","recipient":"registered"},
+    "distractors":{"label_color":"blue","warehouse_sign":"new","old_batch":"recalled"},
+    "rules":["origin=verified & inspection=pass & cold_chain=intact -> release_basis=complete","inspection=fail & origin=verified -> release_basis=blocked"],
+    "decisions":["release_basis=complete & recipient=registered -> release_batch","release_basis=blocked & recipient=registered -> quarantine_batch"],
+    "required":{"release_basis=complete":["origin","inspection","cold_chain"]}, "expected":"release_batch"
+  },
+  {
+    "id":"v2-synthesis-medium", "family":"synthesis", "difficulty":"medium",
+    "structure":"alternative_support_and_confirmation", "depth":2,
+    "prompt":"Reconstruct whether a remote field station opened on schedule. A direct signed record or two independent observers can establish opening, but a clock calibration and receiver identity must also agree.",
+    "observations":{"signed_record":"missing","observer_east":"opened","observer_west":"opened","clock":"calibrated","receiver":"matched","schedule":"due"},
+    "distractors":{"weather_forecast":"cloudy","station_paint":"renewed","neighbor_clock":"broken"},
+    "rules":["signed_record=present -> opening_observation=present","observer_east=opened & observer_west=opened -> opening_observation=present","opening_observation=present & clock=calibrated & receiver=matched -> opening_validation=valid","observer_east=closed & observer_west=closed -> opening_observation=absent"],
+    "decisions":["opening_validation=valid & schedule=due -> confirm_opening","opening_observation=absent & schedule=due -> report_missed_opening"],
+    "required":{"opening_validation=valid":["observer_east","observer_west","clock","receiver"]}, "expected":"confirm_opening"
+  },
+  {
+    "id":"v2-synthesis-hard", "family":"synthesis", "difficulty":"hard",
+    "structure":"fork_join_evidence_coverage", "depth":2,
+    "prompt":"Assess a cross-site data transfer. A source completeness certificate and a destination completeness certificate must converge on the same mapping before reconciliation. A successful network ping is insufficient.",
+    "observations":{"source_count":"matched","source_checksum":"matched","destination_count":"matched","destination_checksum":"mismatch","mapping":"same","window":"closed"},
+    "weak":{"ping":"successful"},
+    "distractors":{"old_transfer":"passed","router_badge":"green","operator_shift":"night"},
+    "rules":["source_count=matched & source_checksum=matched -> source=complete","destination_count=matched & destination_checksum=matched -> destination=complete","destination_count=matched & destination_checksum=mismatch -> destination=corrupt","source=complete & destination=complete & mapping=same -> reconciliation=valid","source=complete & destination=corrupt & mapping=same -> reconciliation=invalid"],
+    "decisions":["reconciliation=valid & window=closed -> accept_transfer","reconciliation=invalid & window=closed -> repeat_destination_verification"],
+    "required":{"reconciliation=invalid":["source_count","source_checksum","destination_count","destination_checksum","mapping"]}, "expected":"repeat_destination_verification"
+  },
+  {
+    "id":"v2-diagnosis-easy", "family":"diagnosis", "difficulty":"easy",
+    "structure":"differential_diagnosis_by_negative_control", "depth":1,
+    "prompt":"Localize intermittent display failures between a power supply and a signal cable. Use the independent power measurement and a substitute-cable test, not just the visible flicker.",
+    "observations":{"display":"flickers","supply_voltage":"stable","substitute_cable":"fixes","load":"unchanged"},
+    "distractors":{"case_color":"black","old_fan":"replaced","desk_height":"adjusted"},
+    "rules":["display=flickers & supply_voltage=stable & substitute_cable=fixes -> cause=cable","display=flickers & supply_voltage=unstable & substitute_cable=unchanged -> cause=supply"],
+    "decisions":["cause=cable & load=unchanged -> replace_cable","cause=supply & load=unchanged -> replace_supply"],
+    "required":{"cause=cable":["display","supply_voltage","substitute_cable"]}, "expected":"replace_cable"
+  },
+  {
+    "id":"v2-diagnosis-medium", "family":"diagnosis", "difficulty":"medium",
+    "structure":"intervention_and_matched_control", "depth":2,
+    "prompt":"Diagnose an API slowdown. Distinguish retry amplification from database pressure using intervention and control-cluster records. Establish the states of the controls from evidence; temporal coincidence is not enough.",
+    "observations":{"slowdown":"present","retry_setting":"raised","database_queue":"normal","control_cluster":"healthy","rollback":"restores","request_mix":"stable"},
+    "distractors":{"dashboard_theme":"changed","old_outage":"database","office_link":"slow"},
+    "rules":["slowdown=present & retry_setting=raised & database_queue=normal -> candidate=retry","candidate=retry & control_cluster=healthy & rollback=restores -> cause=retry_amplification","slowdown=present & database_queue=saturated & rollback=unchanged -> cause=database_pressure"],
+    "decisions":["cause=retry_amplification & request_mix=stable -> cap_retries","cause=database_pressure & request_mix=stable -> relieve_database"],
+    "required":{"cause=retry_amplification":["slowdown","retry_setting","database_queue","control_cluster","rollback"]}, "expected":"cap_retries"
+  },
+  {
+    "id":"v2-diagnosis-hard", "family":"diagnosis", "difficulty":"hard",
+    "structure":"confounder_elimination_with_two_interventions", "depth":2,
+    "prompt":"Diagnose a packaging-line failure using environmental, firmware and intervention records. Distinguish coincidence from cause; do not infer that the most recent change is necessarily responsible.",
+    "observations":{"failure":"present","humidity":"high","firmware":"new","drying_test":"restores","firmware_revert":"unchanged","sensor_check":"valid","material":"moisture_sensitive"},
+    "distractors":{"shift_uniform":"new","previous_line":"firmware_issue","delivery_route":"shortened"},
+    "rules":["firmware=new & firmware_revert=unchanged & sensor_check=valid -> firmware_link=excluded","humidity=high & drying_test=restores & material=moisture_sensitive -> humidity_link=supported","firmware_link=excluded & humidity_link=supported & failure=present -> cause=moisture","firmware=new & firmware_revert=restores & drying_test=unchanged -> cause=firmware"],
+    "decisions":["cause=moisture -> control_humidity","cause=firmware -> revert_firmware"],
+    "required":{"cause=moisture":["failure","humidity","firmware","drying_test","firmware_revert","sensor_check","material"]}, "expected":"control_humidity"
+  },
+  {
+    "id":"v2-constraints-easy", "family":"constraints", "difficulty":"easy",
+    "structure":"intersection_of_feasible_sets", "depth":1,
+    "prompt":"Choose a meeting room that satisfies capacity, accessibility and time availability together. A room meeting only two requirements is not a feasible choice.",
+    "observations":{"capacity_set":"oak_pine","access_set":"pine_elm","time_set":"pine_oak","booking_authority":"granted"},
+    "distractors":{"wall_art":"oak","old_booking":"elm","preferred_color":"green"},
+    "rules":["capacity_set=oak_pine & access_set=pine_elm & time_set=pine_oak -> feasible=pine","capacity_set=oak_pine & access_set=oak_elm & time_set=pine_oak -> feasible=oak"],
+    "decisions":["feasible=pine & booking_authority=granted -> book_pine","feasible=oak & booking_authority=granted -> book_oak"],
+    "required":{"feasible=pine":["capacity_set","access_set","time_set"]}, "expected":"book_pine"
+  },
+  {
+    "id":"v2-constraints-medium", "family":"constraints", "difficulty":"medium",
+    "structure":"candidate_elimination_with_budget_and_compatibility", "depth":2,
+    "prompt":"Select a storage upgrade subject to migration compatibility and a strict spending ceiling. A faster but incompatible or over-budget option cannot be selected.",
+    "observations":{"fast_drive_cost":"over_budget","balanced_drive_cost":"within_budget","fast_compatibility":"yes","balanced_compatibility":"yes","minimum_throughput":"balanced_sufficient","migration_slot":"available"},
+    "distractors":{"case_lighting":"premium","old_quote":"discounted","vendor_logo":"popular"},
+    "rules":["fast_drive_cost=over_budget & fast_compatibility=yes -> fast=excluded","balanced_drive_cost=within_budget & balanced_compatibility=yes & minimum_throughput=balanced_sufficient -> balanced=feasible","fast=excluded & balanced=feasible -> selection=balanced","fast_drive_cost=within_budget & fast_compatibility=yes & minimum_throughput=fast_required -> selection=fast"],
+    "decisions":["selection=balanced & migration_slot=available -> install_balanced","selection=fast & migration_slot=available -> install_fast"],
+    "required":{"selection=balanced":["fast_drive_cost","fast_compatibility","balanced_drive_cost","balanced_compatibility","minimum_throughput"]}, "expected":"install_balanced"
+  },
+  {
+    "id":"v2-constraints-hard", "family":"constraints", "difficulty":"hard",
+    "structure":"infeasibility_certificate", "depth":2,
+    "prompt":"Determine whether either of two suppliers can satisfy the delivery contract. Reject a forced choice when each supplier violates a different mandatory constraint; optional preferences cannot override the contract.",
+    "observations":{"supplier_a_capacity":"sufficient","supplier_a_deadline":"late","supplier_b_deadline":"on_time","supplier_b_certification":"missing","deadline_rule":"mandatory","certification_rule":"mandatory"},
+    "weak":{"supplier_a_reputation":"good"},
+    "distractors":{"catalog_design":"modern","old_contract":"flexible","sales_award":"gold"},
+    "rules":["supplier_a_deadline=late & deadline_rule=mandatory -> supplier_a=infeasible","supplier_b_certification=missing & certification_rule=mandatory -> supplier_b=infeasible","supplier_a=infeasible & supplier_b=infeasible -> feasible=none","supplier_a_capacity=sufficient & supplier_a_deadline=on_time & deadline_rule=mandatory -> feasible=a"],
+    "decisions":["feasible=none -> renegotiate_contract","feasible=a -> choose_supplier_a"],
+    "required":{"feasible=none":["supplier_a_deadline","deadline_rule","supplier_b_certification","certification_rule"]}, "expected":"renegotiate_contract"
+  },
+  {
+    "id":"v2-contradiction-easy", "family":"contradiction", "difficulty":"easy",
+    "structure":"temporal_revision", "depth":1,
+    "prompt":"Two signed notices disagree about a bridge closure. Resolve the current status using revision times and the rule that the later valid notice supersedes the earlier one.",
+    "observations":{"morning_notice":"closed","evening_notice":"open","notice_order":"evening_later","evening_signature":"valid"},
+    "distractors":{"nearby_bridge":"closed","old_map":"restricted","paint_work":"planned"},
+    "rules":["morning_notice=closed & evening_notice=open & notice_order=evening_later & evening_signature=valid -> current_status=open","morning_notice=closed & evening_notice=open & evening_signature=invalid -> current_status=closed"],
+    "decisions":["current_status=open -> permit_crossing","current_status=closed -> retain_detour"],
+    "required":{"current_status=open":["morning_notice","evening_notice","notice_order","evening_signature"]}, "expected":"permit_crossing"
+  },
+  {
+    "id":"v2-contradiction-medium", "family":"contradiction", "difficulty":"medium",
+    "structure":"scope_disambiguation", "depth":2,
+    "prompt":"Reconcile regional and local service reports. Determine the status for the requested tenant using the target and scope records rather than assuming that a regional summary applies to every tenant.",
+    "observations":{"regional_report":"healthy","regional_scope":"all_other_tenants","local_report":"failing","local_scope":"tenant_m","target":"tenant_m","local_probe":"verified"},
+    "distractors":{"tenant_n_theme":"changed","old_local_probe":"healthy","provider_award":"received"},
+    "rules":["regional_report=healthy & regional_scope=all_other_tenants -> regional_applicability=not_target","local_report=failing & local_scope=tenant_m & target=tenant_m & local_probe=verified -> target_status=failing","regional_applicability=not_target & target_status=failing -> apparent_conflict=scope_resolved","local_report=healthy & local_scope=tenant_m & target=tenant_m & local_probe=verified -> target_status=healthy"],
+    "decisions":["apparent_conflict=scope_resolved -> investigate_tenant_m","target_status=healthy -> monitor_tenant_m"],
+    "required":{"apparent_conflict=scope_resolved":["regional_report","regional_scope","local_report","local_scope","target","local_probe"]}, "expected":"investigate_tenant_m"
+  },
+  {
+    "id":"v2-contradiction-hard", "family":"contradiction", "difficulty":"hard",
+    "structure":"reliability_condition_and_time_precedence", "depth":3,
+    "prompt":"Resolve apparently conflicting pump-safety reports for the requested operation. Establish which source applies using the condition, calibration and temporal-order records, without automatically trusting either source.",
+    "observations":{"dashboard":"safe","dashboard_condition":"unloaded","test":"unsafe","test_condition":"loaded","target_condition":"loaded","calibration":"valid","sample_order":"test_newer"},
+    "weak":{"operator_memory":"usually_safe"},
+    "distractors":{"backup_pump":"safe","paint_temperature":"normal","old_training":"complete"},
+    "rules":["test_condition=loaded & target_condition=loaded & dashboard_condition=unloaded -> applicable_source=test","applicable_source=test & calibration=valid & sample_order=test_newer -> preferred_source=test","preferred_source=test & test=unsafe & dashboard=safe -> resolved_safety=unsafe","preferred_source=test & test=safe -> resolved_safety=safe"],
+    "decisions":["resolved_safety=unsafe -> stop_loaded_operation","resolved_safety=safe -> continue_loaded_operation"],
+    "required":{"resolved_safety=unsafe":["dashboard","dashboard_condition","test","test_condition","target_condition","calibration","sample_order"]}, "expected":"stop_loaded_operation"
+  },
+  {
+    "id":"v2-missing-easy", "family":"missing", "difficulty":"easy",
+    "structure":"required_measurement_gap", "depth":1,
+    "prompt":"Assess whether a lift can carry a shipment. Check whether the manifest supplies all measurements required by the lifting rule; explicitly identify any information gap instead of substituting an unrelated measurement.",
+    "observations":{"rated_capacity":"known","item_mass":"not_reported","manifest":"complete_inventory","lifting_rule":"mass_required"},
+    "distractors":{"crate_color":"red","route_length":"short","old_shipment_mass":"light"},
+    "rules":["item_mass=not_reported & manifest=complete_inventory & lifting_rule=mass_required -> information_gap=item_mass","rated_capacity=known & item_mass=below_capacity & lifting_rule=mass_required -> load_status=safe"],
+    "decisions":["information_gap=item_mass & rated_capacity=known -> undetermined","load_status=safe -> authorize_lift"],
+    "required":{"information_gap=item_mass":["item_mass","manifest","lifting_rule"]}, "expected":"undetermined", "unknowns":["item_mass"]
+  },
+  {
+    "id":"v2-missing-medium", "family":"missing", "difficulty":"medium",
+    "structure":"causal_identifiability_gap", "depth":2,
+    "prompt":"Assess whether a training program has an identifiable causal effect. Examine the study design, participant outcomes and available comparisons; request additional information if the design cannot distinguish causation from selection.",
+    "observations":{"participants":"improved","assignment":"self_selected","baseline":"different","control_outcome":"unobserved","other_change":"possible","study_inventory":"complete"},
+    "distractors":{"course_logo":"updated","old_survey":"positive","room_layout":"new"},
+    "rules":["assignment=self_selected & baseline=different & other_change=possible -> confounding=unresolved","confounding=unresolved & control_outcome=unobserved & study_inventory=complete -> information_gap=counterfactual","assignment=randomized & control_outcome=measured & participants=improved -> effect=identifiable"],
+    "decisions":["information_gap=counterfactual & participants=improved -> undetermined","effect=identifiable -> estimate_training_effect"],
+    "required":{"information_gap=counterfactual":["assignment","baseline","other_change","control_outcome","study_inventory"]}, "expected":"undetermined", "unknowns":["counterfactual"]
+  },
+  {
+    "id":"v2-missing-hard", "family":"missing", "difficulty":"hard",
+    "structure":"incomparable_options_without_preference_weights", "depth":2,
+    "prompt":"Compare two transport policies on cost and accessibility. Determine whether a unique recommendation follows from the mandates and preference records. Do not invent decision-maker values if those records are insufficient.",
+    "observations":{"option_a_cost":"lower","option_b_access":"better","cost_mandate":"soft","access_mandate":"soft","preference_weights":"absent","preference_owner":"council","policy_inventory":"complete"},
+    "distractors":{"bus_color":"yellow","last_year_vote":"different_issue","poster_style":"modern"},
+    "rules":["option_a_cost=lower & option_b_access=better -> dominance=neither","cost_mandate=soft & access_mandate=soft -> priority=unfixed","dominance=neither & priority=unfixed & preference_weights=absent & policy_inventory=complete -> information_gap=tradeoff_weights","dominance=neither & preference_weights=access_first -> preference=b"],
+    "decisions":["information_gap=tradeoff_weights & preference_owner=council -> undetermined","preference=b & preference_owner=council -> recommend_option_b"],
+    "required":{"information_gap=tradeoff_weights":["option_a_cost","option_b_access","cost_mandate","access_mandate","preference_weights","policy_inventory"]}, "expected":"undetermined", "unknowns":["tradeoff_weights"]
+  },
+  {
+    "id":"v2-causal-easy", "family":"causal", "difficulty":"easy",
+    "structure":"two_stage_mechanism", "depth":2,
+    "prompt":"Explain an irrigation reservoir's filling problem. Trace the inlet, bypass, flow and level records to distinguish an actual supply mechanism from a measurement fault.",
+    "observations":{"inlet_filter":"blocked","bypass":"closed","flow_sensor":"low","level_sensor":"low"},
+    "distractors":{"gauge_color":"white","old_valve":"replaced","field_sign":"damaged"},
+    "rules":["inlet_filter=blocked & bypass=closed -> inflow=restricted","inflow=restricted & flow_sensor=low & level_sensor=low -> mechanism=starvation","inlet_filter=clear & flow_sensor=normal & level_sensor=low -> mechanism=level_measurement_fault"],
+    "decisions":["mechanism=starvation -> clear_filter","mechanism=level_measurement_fault -> check_level_sensor"],
+    "required":{"mechanism=starvation":["inlet_filter","bypass","flow_sensor","level_sensor"]}, "expected":"clear_filter"
+  },
+  {
+    "id":"v2-causal-medium", "family":"causal", "difficulty":"medium",
+    "structure":"three_stage_propagation_with_gate", "depth":3,
+    "prompt":"Explain an empty analytics dashboard by tracing authentication, ingestion and cache refresh. Check the certificate and fallback records instead of presuming that an upstream problem propagated through every stage.",
+    "observations":{"certificate":"expired","authentication":"rejected","fallback_ingest":"disabled","ingestion":"stopped","cache_refresh":"due","dashboard":"empty"},
+    "distractors":{"desktop_certificate":"valid","chart_palette":"changed","old_cache_test":"passed"},
+    "rules":["certificate=expired & authentication=rejected -> connection=blocked","connection=blocked & fallback_ingest=disabled & ingestion=stopped -> data_supply=absent","data_supply=absent & cache_refresh=due & dashboard=empty -> mechanism=upstream_authentication","ingestion=running & dashboard=empty & cache_refresh=overdue -> mechanism=cache_delay"],
+    "decisions":["mechanism=upstream_authentication -> renew_then_backfill","mechanism=cache_delay -> refresh_cache"],
+    "required":{"mechanism=upstream_authentication":["certificate","authentication","fallback_ingest","ingestion","cache_refresh","dashboard"]}, "expected":"renew_then_backfill"
+  },
+  {
+    "id":"v2-causal-hard", "family":"causal", "difficulty":"hard",
+    "structure":"four_stage_cascade_with_failed_barrier", "depth":4,
+    "prompt":"Trace a distribution-centre outage across power, cooling, temperature and storage protection. The backup barrier may interrupt the chain, so establish its state rather than assuming every upstream fault propagates.",
+    "observations":{"grid":"lost","backup_power":"failed","cooling":"stopped","ambient":"hot","rack_temperature":"critical","thermal_shutdown":"triggered","storage":"offline"},
+    "weak":{"staff_report":"power_problem"},
+    "distractors":{"office_power":"available","winter_test":"passed","parking_light":"broken"},
+    "rules":["grid=lost & backup_power=failed -> power=unavailable","power=unavailable & cooling=stopped & ambient=hot -> heat_removal=insufficient","heat_removal=insufficient & rack_temperature=critical -> thermal_risk=realized","thermal_risk=realized & thermal_shutdown=triggered & storage=offline -> mechanism=power_cooling_shutdown","grid=lost & backup_power=working & storage=offline -> mechanism=non_power_fault"],
+    "decisions":["mechanism=power_cooling_shutdown -> restore_power_then_cooling_then_storage","mechanism=non_power_fault -> investigate_storage_locally"],
+    "required":{"mechanism=power_cooling_shutdown":["grid","backup_power","cooling","ambient","rack_temperature","thermal_shutdown","storage"]}, "expected":"restore_power_then_cooling_then_storage"
+  },
+  {
+    "id":"v2-decision-easy", "family":"decision", "difficulty":"easy",
+    "structure":"benefit_risk_tradeoff_with_explicit_priority", "depth":1,
+    "prompt":"Choose between a fast service launch and an accessible staged launch. Use the stated decision-maker priority rather than treating speed as the only objective.",
+    "observations":{"fast_launch":"excludes_users","staged_launch":"accessible","priority":"access_first","deadline":"flexible"},
+    "distractors":{"campaign_color":"orange","old_deadline":"strict","competitor_slogan":"fast"},
+    "rules":["fast_launch=excludes_users & staged_launch=accessible & priority=access_first -> preference=staged","fast_launch=accessible & priority=speed_first -> preference=fast"],
+    "decisions":["preference=staged & deadline=flexible -> launch_in_stages","preference=fast & deadline=strict -> launch_immediately"],
+    "required":{"preference=staged":["fast_launch","staged_launch","priority"]}, "expected":"launch_in_stages"
+  },
+  {
+    "id":"v2-decision-medium", "family":"decision", "difficulty":"medium",
+    "structure":"pareto_dominance_before_preferences", "depth":2,
+    "prompt":"Compare an established design with a modular replacement on cost, reliability and migration burden. Check whether either option dominates before using the recorded preference; respect the safety and authorization constraints.",
+    "observations":{"modular_cost":"lower","modular_reliability":"higher","migration_burden":"equal","incumbent_preference":"strong","safety_floor":"met","owner_authorization":"granted"},
+    "distractors":{"repository_stars":"incumbent_high","old_migration":"difficult","logo_shape":"familiar"},
+    "rules":["modular_cost=lower & modular_reliability=higher & migration_burden=equal -> dominance=modular","dominance=modular & safety_floor=met -> recommendation=modular","modular_cost=higher & modular_reliability=equal & migration_burden=higher -> recommendation=incumbent"],
+    "decisions":["recommendation=modular & owner_authorization=granted -> adopt_modular","recommendation=incumbent & owner_authorization=granted -> retain_incumbent"],
+    "required":{"recommendation=modular":["modular_cost","modular_reliability","migration_burden","safety_floor"]}, "expected":"adopt_modular"
+  },
+  {
+    "id":"v2-decision-hard", "family":"decision", "difficulty":"hard",
+    "structure":"veto_then_tradeoff_then_reversibility", "depth":2,
+    "prompt":"Evaluate raw and anonymized city data-sharing proposals. Establish the legal boundary, benefits, residual risk and reversibility from the records instead of averaging incompatible objectives.",
+    "observations":{"raw_benefit":"high","raw_consent":"missing","consent_rule":"veto","anonymized_benefit":"adequate","reidentification_risk":"low","rollback":"available","oversight":"approved"},
+    "distractors":{"vendor_brand":"famous","old_raw_contract":"permitted","website_traffic":"high"},
+    "rules":["raw_consent=missing & consent_rule=veto -> raw_option=excluded","anonymized_benefit=adequate & reidentification_risk=low -> alternative=acceptable","raw_option=excluded & alternative=acceptable & rollback=available -> recommendation=reversible_alternative","raw_consent=granted & raw_benefit=high & consent_rule=advisory -> recommendation=raw_option"],
+    "decisions":["recommendation=reversible_alternative & oversight=approved -> pilot_anonymized_design","recommendation=raw_option & oversight=approved -> adopt_raw_design"],
+    "required":{"recommendation=reversible_alternative":["raw_consent","consent_rule","anonymized_benefit","reidentification_risk","rollback"]}, "expected":"pilot_anonymized_design"
+  },
+  {
+    "id":"v2-failure-easy", "family":"failure", "difficulty":"easy",
+    "structure":"trigger_versus_amplifier", "depth":1,
+    "prompt":"Separate the initiating fault from recovery amplifiers in a failed rehearsal. Use component tests and event order before assigning causal roles to a connector, switching procedure or notification system.",
+    "observations":{"connector_test":"failed","signal_loss":"before_alert","notification":"delayed","backup_link":"unavailable"},
+    "distractors":{"stage_lighting":"bright","old_alert_test":"passed","audience_size":"small"},
+    "rules":["connector_test=failed & signal_loss=before_alert -> primary=connector","notification=delayed & backup_link=unavailable -> contributor=recovery_delay","connector_test=passed & signal_loss=after_switch -> primary=switching"],
+    "decisions":["primary=connector & contributor=recovery_delay -> replace_connector_and_improve_recovery","primary=switching -> correct_switching_procedure"],
+    "required":{"primary=connector":["connector_test","signal_loss"],"contributor=recovery_delay":["notification","backup_link"]}, "expected":"replace_connector_and_improve_recovery"
+  },
+  {
+    "id":"v2-failure-medium", "family":"failure", "difficulty":"medium",
+    "structure":"initiator_and_failed_defense", "depth":2,
+    "prompt":"Analyze a release incident using artifact, validation and rollback records. Distinguish any initiating fault, failed defense and duration amplifier rather than assigning all observations the same causal role.",
+    "observations":{"artifact":"invalid","incident_start":"after_deploy","validation":"skipped","validation_capability":"would_detect","rollback":"delayed","duration":"extended"},
+    "distractors":{"release_name":"spring","old_incident":"network","team_size":"large"},
+    "rules":["artifact=invalid & incident_start=after_deploy -> primary=bad_artifact","validation=skipped & validation_capability=would_detect -> contributor=missed_barrier","rollback=delayed & duration=extended -> amplifier=rollback_delay","primary=bad_artifact & contributor=missed_barrier & amplifier=rollback_delay -> failure_pattern=layered","artifact=valid & incident_start=before_deploy -> primary=external"],
+    "decisions":["failure_pattern=layered -> validate_artifacts_and_shorten_rollback","primary=external -> investigate_external_trigger"],
+    "required":{"primary=bad_artifact":["artifact","incident_start"],"contributor=missed_barrier":["validation","validation_capability"],"amplifier=rollback_delay":["rollback","duration"]}, "expected":"validate_artifacts_and_shorten_rollback"
+  },
+  {
+    "id":"v2-failure-hard", "family":"failure", "difficulty":"hard",
+    "structure":"minimal_fault_cut_set_with_noncausal_alarm", "depth":2,
+    "prompt":"Explain service loss in a two-channel safety system. Determine any minimal cut set, establish whether an alarm preceded or followed the loss, and assess the maintenance records independently.",
+    "observations":{"channel_a":"failed","channel_b":"failed","voting_rule":"either_suffices","alarm_time":"after_loss","service_loss":"before_alarm","maintenance":"shared_window","isolation_test":"omitted"},
+    "distractors":{"alarm_volume":"high","old_channel_a":"healthy","panel_finish":"metal"},
+    "rules":["channel_a=failed & channel_b=failed & voting_rule=either_suffices -> primary=dual_channel_loss","alarm_time=after_loss & service_loss=before_alarm -> alarm_role=consequence","maintenance=shared_window & isolation_test=omitted -> contributor=common_maintenance","primary=dual_channel_loss & alarm_role=consequence & contributor=common_maintenance -> failure_pattern=common_cut_set","channel_a=working & channel_b=working & service_loss=before_alarm -> failure_pattern=downstream_fault"],
+    "decisions":["failure_pattern=common_cut_set -> stagger_maintenance_and_test_isolation","failure_pattern=downstream_fault -> inspect_downstream_path"],
+    "required":{"failure_pattern=common_cut_set":["channel_a","channel_b","voting_rule","alarm_time","service_loss","maintenance","isolation_test"]}, "expected":"stagger_maintenance_and_test_isolation"
+  },
+  {
+    "id":"v2-planning-easy", "family":"planning", "difficulty":"easy",
+    "structure":"ordered_preconditions", "depth":2,
+    "prompt":"Plan a safe local data migration. Order the actions using backup and quiescence prerequisites; a list containing the right actions in the wrong order is not a valid plan.",
+    "observations":{"backup":"absent","writes":"active","target":"ready","approval":"granted"},
+    "distractors":{"archive_label":"blue","old_backup":"expired","desk_calendar":"updated"},
+    "rules":["backup=absent & writes=active -> preparation=backup_then_quiesce","preparation=backup_then_quiesce & target=ready -> sequence=backup_quiesce_migrate","backup=verified & writes=paused & target=ready -> sequence=migrate_verify"],
+    "decisions":["sequence=backup_quiesce_migrate & approval=granted -> backup_then_quiesce_then_migrate_then_verify","sequence=migrate_verify & approval=granted -> migrate_then_verify"],
+    "required":{"sequence=backup_quiesce_migrate":["backup","writes","target"]}, "expected":"backup_then_quiesce_then_migrate_then_verify"
+  },
+  {
+    "id":"v2-planning-medium", "family":"planning", "difficulty":"medium",
+    "structure":"parallel_preparation_then_resource_locked_join", "depth":2,
+    "prompt":"Schedule an equipment replacement. Procurement and rehearsal can proceed independently, but installation requires both, a reserved technician and a downtime window; verification follows installation.",
+    "observations":{"procurement":"needed","rehearsal":"needed","independence":"confirmed","technician":"reserved","downtime":"approved","verification":"required"},
+    "distractors":{"vendor_gift":"offered","old_rehearsal":"different_model","room_paint":"fresh"},
+    "rules":["procurement=needed & rehearsal=needed & independence=confirmed -> preparation=parallel","technician=reserved & downtime=approved -> installation_slot=available","preparation=parallel & installation_slot=available & verification=required -> sequence=parallel_join_install_verify","technician=unavailable & downtime=approved -> sequence=defer"],
+    "decisions":["sequence=parallel_join_install_verify -> procure_and_rehearse_then_install_then_verify","sequence=defer -> reserve_technician_before_scheduling"],
+    "required":{"sequence=parallel_join_install_verify":["procurement","rehearsal","independence","technician","downtime","verification"]}, "expected":"procure_and_rehearse_then_install_then_verify"
+  },
+  {
+    "id":"v2-planning-hard", "family":"planning", "difficulty":"hard",
+    "structure":"rollback_branch_and_irreversible_commit", "depth":4,
+    "prompt":"Plan the next stages of a service cutover. Use canary, rollback and cleanup records to choose the success or recovery branch, respecting the final decommission gate rather than assuming deployment succeeded.",
+    "observations":{"snapshot":"verified","new_service":"started","canary":"failed","old_service":"available","writes":"reversible","cleanup":"irreversible","success_gate":"not_met"},
+    "distractors":{"launch_banner":"published","old_dry_run":"passed","dashboard_skin":"new"},
+    "rules":["snapshot=verified & new_service=started -> cutover=staged","cutover=staged & canary=failed -> branch=rollback","branch=rollback & old_service=available & writes=reversible -> recovery=restore_old","recovery=restore_old & cleanup=irreversible & success_gate=not_met -> sequence=rollback_without_cleanup","cutover=staged & canary=passed & success_gate=met -> sequence=commit_then_cleanup"],
+    "decisions":["sequence=rollback_without_cleanup -> stop_canary_then_restore_old_then_verify_keep_snapshot","sequence=commit_then_cleanup -> commit_then_verify_then_decommission"],
+    "required":{"sequence=rollback_without_cleanup":["snapshot","new_service","canary","old_service","writes","cleanup","success_gate"]}, "expected":"stop_canary_then_restore_old_then_verify_keep_snapshot"
+  },
+  {
+    "id":"v2-ranking-easy", "family":"ranking", "difficulty":"easy",
+    "structure":"direct_measurement_over_hearsay", "depth":1,
+    "prompt":"Rank the evidence about water pressure at the target valve. Prefer a calibrated local measurement to hearsay, and do not treat an unrelated upstream reading as a measurement at this valve.",
+    "observations":{"local_gauge":"low","gauge_calibration":"valid","gauge_scope":"target_valve","inspection_time":"current"},
+    "weak":{"hearsay":"normal"},
+    "distractors":{"upstream_gauge":"normal","old_valve_test":"normal","pipe_paint":"blue"},
+    "rules":["local_gauge=low & gauge_calibration=valid & gauge_scope=target_valve -> strongest_evidence=local_gauge","local_gauge=normal & gauge_calibration=valid & gauge_scope=target_valve -> strongest_evidence=normal_local_reading"],
+    "decisions":["strongest_evidence=local_gauge & inspection_time=current -> prioritize_local_low_reading","strongest_evidence=normal_local_reading & inspection_time=current -> prioritize_local_normal_reading"],
+    "required":{"strongest_evidence=local_gauge":["local_gauge","gauge_calibration","gauge_scope"]}, "expected":"prioritize_local_low_reading", "importance":{"local_gauge":3,"gauge_calibration":2,"gauge_scope":2}
+  },
+  {
+    "id":"v2-ranking-medium", "family":"ranking", "difficulty":"medium",
+    "structure":"source_independence_not_vote_count", "depth":2,
+    "prompt":"Rank bulletin reports and a laboratory assay concerning possible contamination. Check source independence, sample scope and assay controls instead of counting repeated reports as independent votes.",
+    "observations":{"reports_origin":"one_bulletin","bulletin_verification":"absent","independent_assay":"negative","assay_control":"valid","assay_scope":"same_batch","sample_chain":"intact"},
+    "weak":{"bulletin_claim":"positive","social_count":"three_reposts"},
+    "distractors":{"neighbor_batch":"positive","old_assay":"positive","press_photo":"dramatic"},
+    "rules":["reports_origin=one_bulletin & bulletin_verification=absent -> apparent_majority=dependent","independent_assay=negative & assay_control=valid & assay_scope=same_batch & sample_chain=intact -> assay=strong_negative","apparent_majority=dependent & assay=strong_negative -> ranking=assay_first","independent_assay=positive & assay_control=valid & sample_chain=intact -> ranking=positive_assay_first"],
+    "decisions":["ranking=assay_first -> prioritize_negative_assay_over_reposts","ranking=positive_assay_first -> prioritize_positive_assay"],
+    "required":{"ranking=assay_first":["reports_origin","bulletin_verification","independent_assay","assay_control","assay_scope","sample_chain"]}, "expected":"prioritize_negative_assay_over_reposts", "importance":{"independent_assay":3,"assay_control":2,"sample_chain":2}
+  },
+  {
+    "id":"v2-ranking-hard", "family":"ranking", "difficulty":"hard",
+    "structure":"diagnostic_intervention_over_recency_and_popularity", "depth":2,
+    "prompt":"Rank intervention and opinion evidence for a performance regression. Establish intervention validity, workload scope, replication and recency from the records; popularity alone does not establish diagnostic value.",
+    "observations":{"reversal_result":"restores","reversal_control":"matched","hardware_state":"unchanged","workload_scope":"same","opinion_recency":"newer","opinion_test":"none","replication":"independent"},
+    "weak":{"popular_opinion":"hardware","endorsements":"many"},
+    "distractors":{"other_workload":"hardware_bound","old_purchase":"expensive","benchmark_logo":"familiar"},
+    "rules":["reversal_result=restores & reversal_control=matched & hardware_state=unchanged & workload_scope=same -> intervention=diagnostic","opinion_recency=newer & opinion_test=none -> recency_advantage=non_diagnostic","intervention=diagnostic & replication=independent & recency_advantage=non_diagnostic -> ranking=intervention_first","reversal_result=unchanged & reversal_control=matched & replication=failed -> ranking=collect_more_tests"],
+    "decisions":["ranking=intervention_first -> prioritize_controlled_reversal","ranking=collect_more_tests -> withhold_causal_ranking"],
+    "required":{"ranking=intervention_first":["reversal_result","reversal_control","hardware_state","workload_scope","opinion_recency","opinion_test","replication"]}, "expected":"prioritize_controlled_reversal", "importance":{"reversal_result":3,"reversal_control":2,"replication":2}
+  }
+]

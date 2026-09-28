@@ -1,0 +1,156 @@
+{
+  "task_id": "v2-synthesis-hard",
+  "relevant_evidence_ids": [
+    "e_358b2806c5da",
+    "e_9e133e185dbb",
+    "e_b229020929e7",
+    "e_bf5d0eda1892",
+    "e_c2fe36c5aa5e",
+    "e_a5cd7d0f72d0"
+  ],
+  "distractor_ids": [
+    "e_6ee326a2ae7b",
+    "e_0a02179a68bd",
+    "e_7c0ee87f2a31"
+  ],
+  "claims": [
+    {
+      "subject": "source_count",
+      "value": "matched",
+      "supporting_sets": [
+        [
+          "e_358b2806c5da"
+        ]
+      ]
+    },
+    {
+      "subject": "source_checksum",
+      "value": "matched",
+      "supporting_sets": [
+        [
+          "e_9e133e185dbb"
+        ]
+      ]
+    },
+    {
+      "subject": "destination_count",
+      "value": "matched",
+      "supporting_sets": [
+        [
+          "e_b229020929e7"
+        ]
+      ]
+    },
+    {
+      "subject": "destination_checksum",
+      "value": "mismatch",
+      "supporting_sets": [
+        [
+          "e_bf5d0eda1892"
+        ]
+      ]
+    },
+    {
+      "subject": "mapping",
+      "value": "same",
+      "supporting_sets": [
+        [
+          "e_c2fe36c5aa5e"
+        ]
+      ]
+    },
+    {
+      "subject": "window",
+      "value": "closed",
+      "supporting_sets": [
+        [
+          "e_a5cd7d0f72d0"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "reconciliation",
+      "value": "invalid",
+      "supporting_sets": [
+        [
+          "e_358b2806c5da",
+          "e_9e133e185dbb",
+          "e_b229020929e7",
+          "e_bf5d0eda1892",
+          "e_c2fe36c5aa5e"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "destination",
+      "value": "corrupt",
+      "supporting_sets": [
+        [
+          "e_b229020929e7",
+          "e_bf5d0eda1892"
+        ]
+      ]
+    },
+    {
+      "subject": "source",
+      "value": "complete",
+      "supporting_sets": [
+        [
+          "e_358b2806c5da",
+          "e_9e133e185dbb"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "repeat_destination_verification",
+  "constraints": [
+    "source_count",
+    "source_checksum",
+    "destination_count",
+    "destination_checksum",
+    "mapping",
+    "window"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_668ce4ceb9f41e9a0615",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [
+    {
+      "subject": "ping",
+      "value": "successful",
+      "supporting_sets": [
+        [
+          "e_1660a16fe0d5"
+        ]
+      ]
+    }
+  ],
+  "weak_evidence_ids": [
+    "e_1660a16fe0d5"
+  ],
+  "evidence_importance": {
+    "e_358b2806c5da": 2,
+    "e_9e133e185dbb": 2,
+    "e_b229020929e7": 2,
+    "e_bf5d0eda1892": 2,
+    "e_c2fe36c5aa5e": 2,
+    "e_a5cd7d0f72d0": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_358b2806c5da",
+      "e_9e133e185dbb",
+      "e_a5cd7d0f72d0",
+      "e_b229020929e7",
+      "e_bf5d0eda1892",
+      "e_c2fe36c5aa5e"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

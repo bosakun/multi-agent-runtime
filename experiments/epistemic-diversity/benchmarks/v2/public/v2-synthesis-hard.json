@@ -1,0 +1,191 @@
+{
+  "id": "v2-synthesis-hard",
+  "family": "synthesis",
+  "template": "fork_join_evidence_coverage",
+  "question": "Assess a cross-site data transfer. A source completeness certificate and a destination completeness certificate must converge on the same mapping before reconciliation. A successful network ping is insufficient.",
+  "instructions": {
+    "reporting_fields": [
+      "source_count",
+      "source_checksum",
+      "destination_count",
+      "destination_checksum",
+      "mapping",
+      "window",
+      "ping"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "source_count",
+            "value": "matched"
+          },
+          {
+            "subject": "source_checksum",
+            "value": "matched"
+          }
+        ],
+        "conclusion": {
+          "subject": "source",
+          "value": "complete"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "destination_count",
+            "value": "matched"
+          },
+          {
+            "subject": "destination_checksum",
+            "value": "matched"
+          }
+        ],
+        "conclusion": {
+          "subject": "destination",
+          "value": "complete"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "destination_count",
+            "value": "matched"
+          },
+          {
+            "subject": "destination_checksum",
+            "value": "mismatch"
+          }
+        ],
+        "conclusion": {
+          "subject": "destination",
+          "value": "corrupt"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "source",
+            "value": "complete"
+          },
+          {
+            "subject": "destination",
+            "value": "complete"
+          },
+          {
+            "subject": "mapping",
+            "value": "same"
+          }
+        ],
+        "conclusion": {
+          "subject": "reconciliation",
+          "value": "valid"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "source",
+            "value": "complete"
+          },
+          {
+            "subject": "destination",
+            "value": "corrupt"
+          },
+          {
+            "subject": "mapping",
+            "value": "same"
+          }
+        ],
+        "conclusion": {
+          "subject": "reconciliation",
+          "value": "invalid"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "reconciliation",
+            "value": "valid"
+          },
+          {
+            "subject": "window",
+            "value": "closed"
+          }
+        ],
+        "choice": "accept_transfer"
+      },
+      {
+        "premises": [
+          {
+            "subject": "reconciliation",
+            "value": "invalid"
+          },
+          {
+            "subject": "window",
+            "value": "closed"
+          }
+        ],
+        "choice": "repeat_destination_verification"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_0a02179a68bd",
+      "content": "Source record. Observation: router_badge = green.\nSource routing marker: CANARY_a3aabceecbbd6c6c",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_6ee326a2ae7b",
+      "content": "Source record. Observation: old_transfer = passed.\nSource routing marker: CANARY_be339d72b5b56367",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b229020929e7",
+      "content": "Source record. Observation: destination_count = matched.\nSource routing marker: CANARY_3551a0248f2c0358",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a5cd7d0f72d0",
+      "content": "Source record. Observation: window = closed.\nSource routing marker: CANARY_502a474ad9fafd86",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_7c0ee87f2a31",
+      "content": "Source record. Observation: operator_shift = night.\nSource routing marker: CANARY_72d995ae62ed48a6",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_358b2806c5da",
+      "content": "Source record. Observation: source_count = matched.\nSource routing marker: CANARY_ae759b118d6bdd75",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_9e133e185dbb",
+      "content": "Source record. Observation: source_checksum = matched.\nSource routing marker: CANARY_f4c13ac162f85871",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_bf5d0eda1892",
+      "content": "Source record. Observation: destination_checksum = mismatch.\nSource routing marker: CANARY_b9e95956225ab9e8",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_c2fe36c5aa5e",
+      "content": "Source record. Observation: mapping = same.\nSource routing marker: CANARY_a1970fdd738f6014",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_1660a16fe0d5",
+      "content": "Source record. Observation: ping = successful.\nSource routing marker: CANARY_aa4d9e82b06a8c39",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "fork_join_evidence_coverage"
+}

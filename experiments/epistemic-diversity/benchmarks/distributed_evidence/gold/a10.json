@@ -1,0 +1,112 @@
+{
+  "task_id": "a10",
+  "relevant_evidence_ids": [
+    "e_6d40bbe448",
+    "e_f4d5aa93a1",
+    "e_72c85bdfef",
+    "e_273a7d3d36",
+    "e_6a128eb7cd",
+    "e_0e75f63039"
+  ],
+  "distractor_ids": [
+    "e_e493002f73",
+    "e_79e5cbf896",
+    "e_b00d019826"
+  ],
+  "claims": [
+    {
+      "subject": "sample_defect",
+      "value": "unconfirmed",
+      "supporting_sets": [
+        [
+          "e_6d40bbe448"
+        ]
+      ]
+    },
+    {
+      "subject": "supplier_change",
+      "value": "absent",
+      "supporting_sets": [
+        [
+          "e_f4d5aa93a1"
+        ]
+      ]
+    },
+    {
+      "subject": "comparison_batch",
+      "value": "also_defective",
+      "supporting_sets": [
+        [
+          "e_72c85bdfef"
+        ]
+      ]
+    },
+    {
+      "subject": "replacement_stock",
+      "value": "available",
+      "supporting_sets": [
+        [
+          "e_273a7d3d36"
+        ]
+      ]
+    },
+    {
+      "subject": "traceability",
+      "value": "complete",
+      "supporting_sets": [
+        [
+          "e_6a128eb7cd"
+        ]
+      ]
+    },
+    {
+      "subject": "inspection_capacity",
+      "value": "sufficient",
+      "supporting_sets": [
+        [
+          "e_0e75f63039"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "material_link_supported",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_6d40bbe448",
+          "e_f4d5aa93a1",
+          "e_72c85bdfef"
+        ]
+      ]
+    },
+    {
+      "subject": "containment_ready",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_273a7d3d36",
+          "e_6a128eb7cd",
+          "e_0e75f63039"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "prepare_containment",
+  "constraints": [
+    "sample_defect",
+    "supplier_change",
+    "comparison_batch",
+    "replacement_stock",
+    "traceability",
+    "inspection_capacity"
+  ],
+  "failure_factors": [
+    "sample_defect",
+    "supplier_change",
+    "comparison_batch"
+  ],
+  "hidden_annotation": "GOLD_ONLY_725823c759dd1f306943"
+}

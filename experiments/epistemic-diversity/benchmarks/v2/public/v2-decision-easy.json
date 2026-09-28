@@ -1,0 +1,121 @@
+{
+  "id": "v2-decision-easy",
+  "family": "decision",
+  "template": "benefit_risk_tradeoff_with_explicit_priority",
+  "question": "Choose between a fast service launch and an accessible staged launch. Use the stated decision-maker priority rather than treating speed as the only objective.",
+  "instructions": {
+    "reporting_fields": [
+      "fast_launch",
+      "staged_launch",
+      "priority",
+      "deadline"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "fast_launch",
+            "value": "excludes_users"
+          },
+          {
+            "subject": "staged_launch",
+            "value": "accessible"
+          },
+          {
+            "subject": "priority",
+            "value": "access_first"
+          }
+        ],
+        "conclusion": {
+          "subject": "preference",
+          "value": "staged"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "fast_launch",
+            "value": "accessible"
+          },
+          {
+            "subject": "priority",
+            "value": "speed_first"
+          }
+        ],
+        "conclusion": {
+          "subject": "preference",
+          "value": "fast"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "preference",
+            "value": "staged"
+          },
+          {
+            "subject": "deadline",
+            "value": "flexible"
+          }
+        ],
+        "choice": "launch_in_stages"
+      },
+      {
+        "premises": [
+          {
+            "subject": "preference",
+            "value": "fast"
+          },
+          {
+            "subject": "deadline",
+            "value": "strict"
+          }
+        ],
+        "choice": "launch_immediately"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_50f2e694c137",
+      "content": "Source record. Observation: deadline = flexible.\nSource routing marker: CANARY_65306b7945d701ab",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e15b21d7764a",
+      "content": "Source record. Observation: old_deadline = strict.\nSource routing marker: CANARY_9a3a38500b26b8be",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2c2ee70add3f",
+      "content": "Source record. Observation: campaign_color = orange.\nSource routing marker: CANARY_3d8bd595b8bec648",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_ccb0795fade0",
+      "content": "Source record. Observation: fast_launch = excludes_users.\nSource routing marker: CANARY_89e7d2890a99ee8b",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_d793d92dc520",
+      "content": "Source record. Observation: priority = access_first.\nSource routing marker: CANARY_455ce29d14429b9a",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_0cf07ac3369f",
+      "content": "Source record. Observation: staged_launch = accessible.\nSource routing marker: CANARY_95ecc064914945ef",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_f993484dceb7",
+      "content": "Source record. Observation: competitor_slogan = fast.\nSource routing marker: CANARY_150392beecbb4787",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "easy",
+  "dependency_depth": 1,
+  "evidence_interaction_type": "benefit_risk_tradeoff_with_explicit_priority"
+}

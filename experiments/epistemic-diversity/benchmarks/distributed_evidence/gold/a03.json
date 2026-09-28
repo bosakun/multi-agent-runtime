@@ -1,0 +1,112 @@
+{
+  "task_id": "a03",
+  "relevant_evidence_ids": [
+    "e_326ad0ef78",
+    "e_430f23bf21",
+    "e_7e384a31ce",
+    "e_f9e7be7ed4",
+    "e_4f5b266049",
+    "e_faaa015d40"
+  ],
+  "distractor_ids": [
+    "e_767bfb63c0",
+    "e_2b2d2daaca",
+    "e_560946a47b"
+  ],
+  "claims": [
+    {
+      "subject": "error_signal",
+      "value": "elevated",
+      "supporting_sets": [
+        [
+          "e_326ad0ef78"
+        ]
+      ]
+    },
+    {
+      "subject": "release_overlap",
+      "value": "present",
+      "supporting_sets": [
+        [
+          "e_430f23bf21"
+        ]
+      ]
+    },
+    {
+      "subject": "control_group",
+      "value": "unaffected",
+      "supporting_sets": [
+        [
+          "e_7e384a31ce"
+        ]
+      ]
+    },
+    {
+      "subject": "rollback_probe",
+      "value": "unchanged",
+      "supporting_sets": [
+        [
+          "e_f9e7be7ed4"
+        ]
+      ]
+    },
+    {
+      "subject": "traffic_stability",
+      "value": "varying",
+      "supporting_sets": [
+        [
+          "e_4f5b266049"
+        ]
+      ]
+    },
+    {
+      "subject": "rollback_package",
+      "value": "missing",
+      "supporting_sets": [
+        [
+          "e_faaa015d40"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "release_association",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_326ad0ef78",
+          "e_430f23bf21",
+          "e_7e384a31ce"
+        ]
+      ]
+    },
+    {
+      "subject": "recovery_ready",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_f9e7be7ed4",
+          "e_4f5b266049",
+          "e_faaa015d40"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "investigate_release",
+  "constraints": [
+    "error_signal",
+    "release_overlap",
+    "control_group",
+    "rollback_probe",
+    "traffic_stability",
+    "rollback_package"
+  ],
+  "failure_factors": [
+    "rollback_probe",
+    "traffic_stability",
+    "rollback_package"
+  ],
+  "hidden_annotation": "GOLD_ONLY_4305418879e89934c082"
+}

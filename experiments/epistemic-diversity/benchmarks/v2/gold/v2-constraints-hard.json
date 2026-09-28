@@ -1,0 +1,153 @@
+{
+  "task_id": "v2-constraints-hard",
+  "relevant_evidence_ids": [
+    "e_e6c609e04c4c",
+    "e_b57ab4a36636",
+    "e_bdadbdb0cb2e",
+    "e_cb29062fd45e",
+    "e_a2962642b82c",
+    "e_147739401c04"
+  ],
+  "distractor_ids": [
+    "e_3a10d2758577",
+    "e_697932f96554",
+    "e_340ae241e1c6"
+  ],
+  "claims": [
+    {
+      "subject": "supplier_a_capacity",
+      "value": "sufficient",
+      "supporting_sets": [
+        [
+          "e_e6c609e04c4c"
+        ]
+      ]
+    },
+    {
+      "subject": "supplier_a_deadline",
+      "value": "late",
+      "supporting_sets": [
+        [
+          "e_b57ab4a36636"
+        ]
+      ]
+    },
+    {
+      "subject": "supplier_b_deadline",
+      "value": "on_time",
+      "supporting_sets": [
+        [
+          "e_bdadbdb0cb2e"
+        ]
+      ]
+    },
+    {
+      "subject": "supplier_b_certification",
+      "value": "missing",
+      "supporting_sets": [
+        [
+          "e_cb29062fd45e"
+        ]
+      ]
+    },
+    {
+      "subject": "deadline_rule",
+      "value": "mandatory",
+      "supporting_sets": [
+        [
+          "e_a2962642b82c"
+        ]
+      ]
+    },
+    {
+      "subject": "certification_rule",
+      "value": "mandatory",
+      "supporting_sets": [
+        [
+          "e_147739401c04"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "feasible",
+      "value": "none",
+      "supporting_sets": [
+        [
+          "e_147739401c04",
+          "e_a2962642b82c",
+          "e_b57ab4a36636",
+          "e_cb29062fd45e"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "supplier_a",
+      "value": "infeasible",
+      "supporting_sets": [
+        [
+          "e_a2962642b82c",
+          "e_b57ab4a36636"
+        ]
+      ]
+    },
+    {
+      "subject": "supplier_b",
+      "value": "infeasible",
+      "supporting_sets": [
+        [
+          "e_147739401c04",
+          "e_cb29062fd45e"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "renegotiate_contract",
+  "constraints": [
+    "supplier_a_capacity",
+    "supplier_a_deadline",
+    "supplier_b_deadline",
+    "supplier_b_certification",
+    "deadline_rule",
+    "certification_rule"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_ca677a16bca2b75645f6",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [
+    {
+      "subject": "supplier_a_reputation",
+      "value": "good",
+      "supporting_sets": [
+        [
+          "e_519e0c1299e7"
+        ]
+      ]
+    }
+  ],
+  "weak_evidence_ids": [
+    "e_519e0c1299e7"
+  ],
+  "evidence_importance": {
+    "e_e6c609e04c4c": 2,
+    "e_b57ab4a36636": 2,
+    "e_bdadbdb0cb2e": 2,
+    "e_cb29062fd45e": 2,
+    "e_a2962642b82c": 2,
+    "e_147739401c04": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_147739401c04",
+      "e_a2962642b82c",
+      "e_b57ab4a36636",
+      "e_cb29062fd45e"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

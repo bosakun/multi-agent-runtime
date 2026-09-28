@@ -1,0 +1,121 @@
+{
+  "id": "v2-synthesis-easy",
+  "family": "synthesis",
+  "template": "independent_corroboration",
+  "question": "A cooperative must decide whether to release a stored batch. Combine independent origin, inspection and cold-chain records; an attractive label alone is not a release criterion.",
+  "instructions": {
+    "reporting_fields": [
+      "origin",
+      "inspection",
+      "cold_chain",
+      "recipient"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "origin",
+            "value": "verified"
+          },
+          {
+            "subject": "inspection",
+            "value": "pass"
+          },
+          {
+            "subject": "cold_chain",
+            "value": "intact"
+          }
+        ],
+        "conclusion": {
+          "subject": "release_basis",
+          "value": "complete"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "inspection",
+            "value": "fail"
+          },
+          {
+            "subject": "origin",
+            "value": "verified"
+          }
+        ],
+        "conclusion": {
+          "subject": "release_basis",
+          "value": "blocked"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "release_basis",
+            "value": "complete"
+          },
+          {
+            "subject": "recipient",
+            "value": "registered"
+          }
+        ],
+        "choice": "release_batch"
+      },
+      {
+        "premises": [
+          {
+            "subject": "release_basis",
+            "value": "blocked"
+          },
+          {
+            "subject": "recipient",
+            "value": "registered"
+          }
+        ],
+        "choice": "quarantine_batch"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_45bef06ab0f2",
+      "content": "Source record. Observation: inspection = pass.\nSource routing marker: CANARY_69d31e12fa42b9e4",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2790a67d08aa",
+      "content": "Source record. Observation: cold_chain = intact.\nSource routing marker: CANARY_09ef7a4ed6124fa6",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_9344ac0c4e4e",
+      "content": "Source record. Observation: origin = verified.\nSource routing marker: CANARY_70f9144effb897eb",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e365284caa2a",
+      "content": "Source record. Observation: recipient = registered.\nSource routing marker: CANARY_2c64a7cf6f1579ee",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_0e97f105fe27",
+      "content": "Source record. Observation: label_color = blue.\nSource routing marker: CANARY_c21cde805d1246d7",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_91be7aafc057",
+      "content": "Source record. Observation: warehouse_sign = new.\nSource routing marker: CANARY_1ba23140a07e808c",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2c409eca7714",
+      "content": "Source record. Observation: old_batch = recalled.\nSource routing marker: CANARY_26d402692b2f7eff",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "easy",
+  "dependency_depth": 1,
+  "evidence_interaction_type": "independent_corroboration"
+}

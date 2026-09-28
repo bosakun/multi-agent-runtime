@@ -1,0 +1,165 @@
+{
+  "id": "v2-causal-medium",
+  "family": "causal",
+  "template": "three_stage_propagation_with_gate",
+  "question": "Explain an empty analytics dashboard by tracing authentication, ingestion and cache refresh. Check the certificate and fallback records instead of presuming that an upstream problem propagated through every stage.",
+  "instructions": {
+    "reporting_fields": [
+      "certificate",
+      "authentication",
+      "fallback_ingest",
+      "ingestion",
+      "cache_refresh",
+      "dashboard"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "certificate",
+            "value": "expired"
+          },
+          {
+            "subject": "authentication",
+            "value": "rejected"
+          }
+        ],
+        "conclusion": {
+          "subject": "connection",
+          "value": "blocked"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "connection",
+            "value": "blocked"
+          },
+          {
+            "subject": "fallback_ingest",
+            "value": "disabled"
+          },
+          {
+            "subject": "ingestion",
+            "value": "stopped"
+          }
+        ],
+        "conclusion": {
+          "subject": "data_supply",
+          "value": "absent"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "data_supply",
+            "value": "absent"
+          },
+          {
+            "subject": "cache_refresh",
+            "value": "due"
+          },
+          {
+            "subject": "dashboard",
+            "value": "empty"
+          }
+        ],
+        "conclusion": {
+          "subject": "mechanism",
+          "value": "upstream_authentication"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "ingestion",
+            "value": "running"
+          },
+          {
+            "subject": "dashboard",
+            "value": "empty"
+          },
+          {
+            "subject": "cache_refresh",
+            "value": "overdue"
+          }
+        ],
+        "conclusion": {
+          "subject": "mechanism",
+          "value": "cache_delay"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "mechanism",
+            "value": "upstream_authentication"
+          }
+        ],
+        "choice": "renew_then_backfill"
+      },
+      {
+        "premises": [
+          {
+            "subject": "mechanism",
+            "value": "cache_delay"
+          }
+        ],
+        "choice": "refresh_cache"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_31485fcbd2b0",
+      "content": "Source record. Observation: ingestion = stopped.\nSource routing marker: CANARY_589302ef04c30471",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a2140dacb882",
+      "content": "Source record. Observation: chart_palette = changed.\nSource routing marker: CANARY_2d1a343cdd0af46d",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_80c68f40c862",
+      "content": "Source record. Observation: authentication = rejected.\nSource routing marker: CANARY_fe61940f6015f946",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b53c371c84fd",
+      "content": "Source record. Observation: dashboard = empty.\nSource routing marker: CANARY_57bef84dd565c897",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2a031cf0fe54",
+      "content": "Source record. Observation: desktop_certificate = valid.\nSource routing marker: CANARY_8681e23e6e98550a",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_d2396cb3f14e",
+      "content": "Source record. Observation: certificate = expired.\nSource routing marker: CANARY_54855cea5670c80a",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_7d42292efb22",
+      "content": "Source record. Observation: fallback_ingest = disabled.\nSource routing marker: CANARY_5913f5092e4fb6bd",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_5e1a7c18952e",
+      "content": "Source record. Observation: cache_refresh = due.\nSource routing marker: CANARY_b4c67816423542c5",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_70989266c2cf",
+      "content": "Source record. Observation: old_cache_test = passed.\nSource routing marker: CANARY_bdb7a138450916e2",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "medium",
+  "dependency_depth": 3,
+  "evidence_interaction_type": "three_stage_propagation_with_gate"
+}

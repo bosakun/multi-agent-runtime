@@ -1,0 +1,132 @@
+{
+  "task_id": "v2-synthesis-medium",
+  "relevant_evidence_ids": [
+    "e_d0b357eae5c9",
+    "e_2df32adb89ea",
+    "e_62ae81e76c95",
+    "e_c912eda52593",
+    "e_b0e26510e4de",
+    "e_551cf54952aa"
+  ],
+  "distractor_ids": [
+    "e_41f821c8afb4",
+    "e_751a721994f4",
+    "e_9f911acd02d9"
+  ],
+  "claims": [
+    {
+      "subject": "signed_record",
+      "value": "missing",
+      "supporting_sets": [
+        [
+          "e_d0b357eae5c9"
+        ]
+      ]
+    },
+    {
+      "subject": "observer_east",
+      "value": "opened",
+      "supporting_sets": [
+        [
+          "e_2df32adb89ea"
+        ]
+      ]
+    },
+    {
+      "subject": "observer_west",
+      "value": "opened",
+      "supporting_sets": [
+        [
+          "e_62ae81e76c95"
+        ]
+      ]
+    },
+    {
+      "subject": "clock",
+      "value": "calibrated",
+      "supporting_sets": [
+        [
+          "e_c912eda52593"
+        ]
+      ]
+    },
+    {
+      "subject": "receiver",
+      "value": "matched",
+      "supporting_sets": [
+        [
+          "e_b0e26510e4de"
+        ]
+      ]
+    },
+    {
+      "subject": "schedule",
+      "value": "due",
+      "supporting_sets": [
+        [
+          "e_551cf54952aa"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "opening_validation",
+      "value": "valid",
+      "supporting_sets": [
+        [
+          "e_2df32adb89ea",
+          "e_62ae81e76c95",
+          "e_b0e26510e4de",
+          "e_c912eda52593"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "opening_observation",
+      "value": "present",
+      "supporting_sets": [
+        [
+          "e_2df32adb89ea",
+          "e_62ae81e76c95"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "confirm_opening",
+  "constraints": [
+    "signed_record",
+    "observer_east",
+    "observer_west",
+    "clock",
+    "receiver",
+    "schedule"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_3baf636e4d56e8022846",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_d0b357eae5c9": 2,
+    "e_2df32adb89ea": 2,
+    "e_62ae81e76c95": 2,
+    "e_c912eda52593": 2,
+    "e_b0e26510e4de": 2,
+    "e_551cf54952aa": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_2df32adb89ea",
+      "e_551cf54952aa",
+      "e_62ae81e76c95",
+      "e_b0e26510e4de",
+      "e_c912eda52593"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

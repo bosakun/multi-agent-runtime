@@ -1,0 +1,177 @@
+{
+  "id": "v2-ranking-medium",
+  "family": "ranking",
+  "template": "source_independence_not_vote_count",
+  "question": "Rank bulletin reports and a laboratory assay concerning possible contamination. Check source independence, sample scope and assay controls instead of counting repeated reports as independent votes.",
+  "instructions": {
+    "reporting_fields": [
+      "reports_origin",
+      "bulletin_verification",
+      "independent_assay",
+      "assay_control",
+      "assay_scope",
+      "sample_chain",
+      "bulletin_claim",
+      "social_count"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "reports_origin",
+            "value": "one_bulletin"
+          },
+          {
+            "subject": "bulletin_verification",
+            "value": "absent"
+          }
+        ],
+        "conclusion": {
+          "subject": "apparent_majority",
+          "value": "dependent"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "independent_assay",
+            "value": "negative"
+          },
+          {
+            "subject": "assay_control",
+            "value": "valid"
+          },
+          {
+            "subject": "assay_scope",
+            "value": "same_batch"
+          },
+          {
+            "subject": "sample_chain",
+            "value": "intact"
+          }
+        ],
+        "conclusion": {
+          "subject": "assay",
+          "value": "strong_negative"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "apparent_majority",
+            "value": "dependent"
+          },
+          {
+            "subject": "assay",
+            "value": "strong_negative"
+          }
+        ],
+        "conclusion": {
+          "subject": "ranking",
+          "value": "assay_first"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "independent_assay",
+            "value": "positive"
+          },
+          {
+            "subject": "assay_control",
+            "value": "valid"
+          },
+          {
+            "subject": "sample_chain",
+            "value": "intact"
+          }
+        ],
+        "conclusion": {
+          "subject": "ranking",
+          "value": "positive_assay_first"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "ranking",
+            "value": "assay_first"
+          }
+        ],
+        "choice": "prioritize_negative_assay_over_reposts"
+      },
+      {
+        "premises": [
+          {
+            "subject": "ranking",
+            "value": "positive_assay_first"
+          }
+        ],
+        "choice": "prioritize_positive_assay"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_3a68b2c26ea3",
+      "content": "Source record. Observation: bulletin_verification = absent.\nSource routing marker: CANARY_5d89f6dc53109808",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_9126493cd15f",
+      "content": "Source record. Observation: old_assay = positive.\nSource routing marker: CANARY_45b94e31f3e266b1",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_6bb8d812fe62",
+      "content": "Source record. Observation: assay_scope = same_batch.\nSource routing marker: CANARY_0305ab46958bbb98",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_926359f21353",
+      "content": "Source record. Observation: neighbor_batch = positive.\nSource routing marker: CANARY_f1a4082be17bc4bb",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_eeda6fddbd2e",
+      "content": "Source record. Observation: social_count = three_reposts.\nSource routing marker: CANARY_7022011e462d2c90",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_f07830a12e02",
+      "content": "Source record. Observation: reports_origin = one_bulletin.\nSource routing marker: CANARY_926e5fbc1467fbed",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_240877bb98e3",
+      "content": "Source record. Observation: independent_assay = negative.\nSource routing marker: CANARY_c2472307b79cef7e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_c4899d26bf95",
+      "content": "Source record. Observation: bulletin_claim = positive.\nSource routing marker: CANARY_09340878d0ed1a03",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_4f7ee5cf38ed",
+      "content": "Source record. Observation: sample_chain = intact.\nSource routing marker: CANARY_2b817c5af2a4c020",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a5d5d1061a5f",
+      "content": "Source record. Observation: press_photo = dramatic.\nSource routing marker: CANARY_914691e0e9040443",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_4a71bcddba4b",
+      "content": "Source record. Observation: assay_control = valid.\nSource routing marker: CANARY_2162bb37419c8602",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "medium",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "source_independence_not_vote_count"
+}

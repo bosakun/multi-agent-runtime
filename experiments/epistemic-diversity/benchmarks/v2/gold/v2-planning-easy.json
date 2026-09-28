@@ -1,0 +1,106 @@
+{
+  "task_id": "v2-planning-easy",
+  "relevant_evidence_ids": [
+    "e_ff13d0d0f955",
+    "e_5cfb040b8ffa",
+    "e_7e1e5735d8b9",
+    "e_56e26b61a154"
+  ],
+  "distractor_ids": [
+    "e_99f28868abae",
+    "e_a063c5911140",
+    "e_cafcbbe79c2c"
+  ],
+  "claims": [
+    {
+      "subject": "backup",
+      "value": "absent",
+      "supporting_sets": [
+        [
+          "e_ff13d0d0f955"
+        ]
+      ]
+    },
+    {
+      "subject": "writes",
+      "value": "active",
+      "supporting_sets": [
+        [
+          "e_5cfb040b8ffa"
+        ]
+      ]
+    },
+    {
+      "subject": "target",
+      "value": "ready",
+      "supporting_sets": [
+        [
+          "e_7e1e5735d8b9"
+        ]
+      ]
+    },
+    {
+      "subject": "approval",
+      "value": "granted",
+      "supporting_sets": [
+        [
+          "e_56e26b61a154"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "sequence",
+      "value": "backup_quiesce_migrate",
+      "supporting_sets": [
+        [
+          "e_5cfb040b8ffa",
+          "e_7e1e5735d8b9",
+          "e_ff13d0d0f955"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "preparation",
+      "value": "backup_then_quiesce",
+      "supporting_sets": [
+        [
+          "e_5cfb040b8ffa",
+          "e_ff13d0d0f955"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "backup_then_quiesce_then_migrate_then_verify",
+  "constraints": [
+    "backup",
+    "writes",
+    "target",
+    "approval"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_dff2035782399aed0019",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_ff13d0d0f955": 2,
+    "e_5cfb040b8ffa": 2,
+    "e_7e1e5735d8b9": 2,
+    "e_56e26b61a154": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_56e26b61a154",
+      "e_5cfb040b8ffa",
+      "e_7e1e5735d8b9",
+      "e_ff13d0d0f955"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

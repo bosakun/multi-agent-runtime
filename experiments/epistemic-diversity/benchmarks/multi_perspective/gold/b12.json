@@ -1,0 +1,108 @@
+{
+  "task_id": "b12",
+  "relevant_evidence_ids": [
+    "e_424c5473ef",
+    "e_3b7a0da4e5",
+    "e_dd1402ee02",
+    "e_ed5c3d6666",
+    "e_f7bcb3ed2f",
+    "e_31794c20c5"
+  ],
+  "distractor_ids": [
+    "e_6cc2e5b500",
+    "e_4fd7342e36",
+    "e_b55f3e9235"
+  ],
+  "claims": [
+    {
+      "subject": "joint_analysis_need",
+      "value": "established",
+      "supporting_sets": [
+        [
+          "e_424c5473ef"
+        ]
+      ]
+    },
+    {
+      "subject": "access_authorization",
+      "value": "granted",
+      "supporting_sets": [
+        [
+          "e_3b7a0da4e5"
+        ]
+      ]
+    },
+    {
+      "subject": "data_quality",
+      "value": "adequate",
+      "supporting_sets": [
+        [
+          "e_dd1402ee02"
+        ]
+      ]
+    },
+    {
+      "subject": "retention_control",
+      "value": "enforced",
+      "supporting_sets": [
+        [
+          "e_ed5c3d6666"
+        ]
+      ]
+    },
+    {
+      "subject": "audit_capacity",
+      "value": "sufficient",
+      "supporting_sets": [
+        [
+          "e_f7bcb3ed2f"
+        ]
+      ]
+    },
+    {
+      "subject": "recovery_process",
+      "value": "tested",
+      "supporting_sets": [
+        [
+          "e_31794c20c5"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "joint_processing_justified",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_424c5473ef",
+          "e_3b7a0da4e5",
+          "e_dd1402ee02"
+        ]
+      ]
+    },
+    {
+      "subject": "governance_ready",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_ed5c3d6666",
+          "e_f7bcb3ed2f",
+          "e_31794c20c5"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "integrate_with_controls",
+  "constraints": [
+    "joint_analysis_need",
+    "access_authorization",
+    "data_quality",
+    "retention_control",
+    "audit_capacity",
+    "recovery_process"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_128bc189b0aea9ed97c2"
+}

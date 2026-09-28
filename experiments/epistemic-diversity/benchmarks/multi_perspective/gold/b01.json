@@ -1,0 +1,115 @@
+{
+  "task_id": "b01",
+  "relevant_evidence_ids": [
+    "e_cd83550428",
+    "e_6f73a97da1",
+    "e_48deea8a7b",
+    "e_fd45889d63",
+    "e_eacf2ab309",
+    "e_02e11aff56"
+  ],
+  "distractor_ids": [
+    "e_9331e198ea",
+    "e_c2702b0bc1",
+    "e_6b521120fb"
+  ],
+  "claims": [
+    {
+      "subject": "load_forecast",
+      "value": "low",
+      "supporting_sets": [
+        [
+          "e_cd83550428"
+        ]
+      ]
+    },
+    {
+      "subject": "team_capacity",
+      "value": "insufficient",
+      "supporting_sets": [
+        [
+          "e_6f73a97da1"
+        ]
+      ]
+    },
+    {
+      "subject": "failure_isolation",
+      "value": "optional",
+      "supporting_sets": [
+        [
+          "e_48deea8a7b"
+        ]
+      ]
+    },
+    {
+      "subject": "client_compatibility",
+      "value": "unverified",
+      "supporting_sets": [
+        [
+          "e_fd45889d63"
+        ]
+      ]
+    },
+    {
+      "subject": "migration_window",
+      "value": "unavailable",
+      "supporting_sets": [
+        [
+          "e_eacf2ab309"
+        ]
+      ]
+    },
+    {
+      "subject": "fallback_capacity",
+      "value": "insufficient",
+      "supporting_sets": [
+        [
+          "e_02e11aff56"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "separation_justified",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_cd83550428",
+          "e_6f73a97da1",
+          "e_48deea8a7b"
+        ]
+      ]
+    },
+    {
+      "subject": "migration_feasible",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_fd45889d63",
+          "e_eacf2ab309",
+          "e_02e11aff56"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "retain_and_measure",
+  "constraints": [
+    "load_forecast",
+    "team_capacity",
+    "failure_isolation",
+    "client_compatibility",
+    "migration_window",
+    "fallback_capacity"
+  ],
+  "failure_factors": [
+    "load_forecast",
+    "team_capacity",
+    "failure_isolation",
+    "client_compatibility",
+    "migration_window",
+    "fallback_capacity"
+  ],
+  "hidden_annotation": "GOLD_ONLY_062e9b4815033bacbdb3"
+}

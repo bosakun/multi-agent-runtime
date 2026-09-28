@@ -1,0 +1,175 @@
+{
+  "id": "v2-missing-hard",
+  "family": "missing",
+  "template": "incomparable_options_without_preference_weights",
+  "question": "Compare two transport policies on cost and accessibility. Determine whether a unique recommendation follows from the mandates and preference records. Do not invent decision-maker values if those records are insufficient.",
+  "instructions": {
+    "reporting_fields": [
+      "option_a_cost",
+      "option_b_access",
+      "cost_mandate",
+      "access_mandate",
+      "preference_weights",
+      "preference_owner",
+      "policy_inventory"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "option_a_cost",
+            "value": "lower"
+          },
+          {
+            "subject": "option_b_access",
+            "value": "better"
+          }
+        ],
+        "conclusion": {
+          "subject": "dominance",
+          "value": "neither"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "cost_mandate",
+            "value": "soft"
+          },
+          {
+            "subject": "access_mandate",
+            "value": "soft"
+          }
+        ],
+        "conclusion": {
+          "subject": "priority",
+          "value": "unfixed"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "dominance",
+            "value": "neither"
+          },
+          {
+            "subject": "priority",
+            "value": "unfixed"
+          },
+          {
+            "subject": "preference_weights",
+            "value": "absent"
+          },
+          {
+            "subject": "policy_inventory",
+            "value": "complete"
+          }
+        ],
+        "conclusion": {
+          "subject": "information_gap",
+          "value": "tradeoff_weights"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "dominance",
+            "value": "neither"
+          },
+          {
+            "subject": "preference_weights",
+            "value": "access_first"
+          }
+        ],
+        "conclusion": {
+          "subject": "preference",
+          "value": "b"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "information_gap",
+            "value": "tradeoff_weights"
+          },
+          {
+            "subject": "preference_owner",
+            "value": "council"
+          }
+        ],
+        "choice": "undetermined"
+      },
+      {
+        "premises": [
+          {
+            "subject": "preference",
+            "value": "b"
+          },
+          {
+            "subject": "preference_owner",
+            "value": "council"
+          }
+        ],
+        "choice": "recommend_option_b"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_f7229f079283",
+      "content": "Source record. Observation: poster_style = modern.\nSource routing marker: CANARY_e56cb507c6ff1bf4",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e2c1834d86b9",
+      "content": "Source record. Observation: option_b_access = better.\nSource routing marker: CANARY_a3fdc5c3fb6bc438",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_0fb3a2b0bb60",
+      "content": "Source record. Observation: access_mandate = soft.\nSource routing marker: CANARY_80d81f12152605f3",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_105bd35be796",
+      "content": "Source record. Observation: last_year_vote = different_issue.\nSource routing marker: CANARY_0f9edb925402b0f9",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a792860e654e",
+      "content": "Source record. Observation: cost_mandate = soft.\nSource routing marker: CANARY_40eb1467e525f1f8",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_25547d639215",
+      "content": "Source record. Observation: policy_inventory = complete.\nSource routing marker: CANARY_4f13970738dd4c45",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_6e6034edd0a7",
+      "content": "Source record. Observation: bus_color = yellow.\nSource routing marker: CANARY_85cd18a69a3019aa",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_264b35605976",
+      "content": "Source record. Observation: preference_weights = absent.\nSource routing marker: CANARY_12b30b3c6d47cd62",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_0baaf68f8126",
+      "content": "Source record. Observation: preference_owner = council.\nSource routing marker: CANARY_55d8f070ab015e80",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_c17ded4d8818",
+      "content": "Source record. Observation: option_a_cost = lower.\nSource routing marker: CANARY_8e57e7a21b319069",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "incomparable_options_without_preference_weights"
+}

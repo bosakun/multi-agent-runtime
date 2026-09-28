@@ -1,0 +1,6 @@
+{
+  "neutral": "Give balanced attention to the available evidence and its implications.",
+  "analytical": "Prioritize causal premises and whether the evidence supports an inference.",
+  "skeptical": "Prioritize alternative explanations and evidence that could falsify a conclusion.",
+  "systems": "Prioritize interactions, dependencies, and consequences across constraints."
+}

@@ -1,0 +1,112 @@
+{
+  "task_id": "b11",
+  "relevant_evidence_ids": [
+    "e_bbd26bcea9",
+    "e_188ce8376d",
+    "e_e6bceb254e",
+    "e_91bbb81060",
+    "e_2f106652cf",
+    "e_ac2adc5d49"
+  ],
+  "distractor_ids": [
+    "e_3d37bff5fe",
+    "e_c85c4fb747",
+    "e_153917a27b"
+  ],
+  "claims": [
+    {
+      "subject": "joint_analysis_need",
+      "value": "established",
+      "supporting_sets": [
+        [
+          "e_bbd26bcea9"
+        ]
+      ]
+    },
+    {
+      "subject": "access_authorization",
+      "value": "granted",
+      "supporting_sets": [
+        [
+          "e_188ce8376d"
+        ]
+      ]
+    },
+    {
+      "subject": "data_quality",
+      "value": "adequate",
+      "supporting_sets": [
+        [
+          "e_e6bceb254e"
+        ]
+      ]
+    },
+    {
+      "subject": "retention_control",
+      "value": "absent",
+      "supporting_sets": [
+        [
+          "e_91bbb81060"
+        ]
+      ]
+    },
+    {
+      "subject": "audit_capacity",
+      "value": "insufficient",
+      "supporting_sets": [
+        [
+          "e_2f106652cf"
+        ]
+      ]
+    },
+    {
+      "subject": "recovery_process",
+      "value": "untested",
+      "supporting_sets": [
+        [
+          "e_ac2adc5d49"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "joint_processing_justified",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_bbd26bcea9",
+          "e_188ce8376d",
+          "e_e6bceb254e"
+        ]
+      ]
+    },
+    {
+      "subject": "governance_ready",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_91bbb81060",
+          "e_2f106652cf",
+          "e_ac2adc5d49"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "resolve_governance",
+  "constraints": [
+    "joint_analysis_need",
+    "access_authorization",
+    "data_quality",
+    "retention_control",
+    "audit_capacity",
+    "recovery_process"
+  ],
+  "failure_factors": [
+    "retention_control",
+    "audit_capacity",
+    "recovery_process"
+  ],
+  "hidden_annotation": "GOLD_ONLY_14fde2ef3a03586d75ed"
+}

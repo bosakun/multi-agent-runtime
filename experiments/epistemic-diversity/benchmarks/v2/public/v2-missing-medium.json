@@ -1,0 +1,153 @@
+{
+  "id": "v2-missing-medium",
+  "family": "missing",
+  "template": "causal_identifiability_gap",
+  "question": "Assess whether a training program has an identifiable causal effect. Examine the study design, participant outcomes and available comparisons; request additional information if the design cannot distinguish causation from selection.",
+  "instructions": {
+    "reporting_fields": [
+      "participants",
+      "assignment",
+      "baseline",
+      "control_outcome",
+      "other_change",
+      "study_inventory"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "assignment",
+            "value": "self_selected"
+          },
+          {
+            "subject": "baseline",
+            "value": "different"
+          },
+          {
+            "subject": "other_change",
+            "value": "possible"
+          }
+        ],
+        "conclusion": {
+          "subject": "confounding",
+          "value": "unresolved"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "confounding",
+            "value": "unresolved"
+          },
+          {
+            "subject": "control_outcome",
+            "value": "unobserved"
+          },
+          {
+            "subject": "study_inventory",
+            "value": "complete"
+          }
+        ],
+        "conclusion": {
+          "subject": "information_gap",
+          "value": "counterfactual"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "assignment",
+            "value": "randomized"
+          },
+          {
+            "subject": "control_outcome",
+            "value": "measured"
+          },
+          {
+            "subject": "participants",
+            "value": "improved"
+          }
+        ],
+        "conclusion": {
+          "subject": "effect",
+          "value": "identifiable"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "information_gap",
+            "value": "counterfactual"
+          },
+          {
+            "subject": "participants",
+            "value": "improved"
+          }
+        ],
+        "choice": "undetermined"
+      },
+      {
+        "premises": [
+          {
+            "subject": "effect",
+            "value": "identifiable"
+          }
+        ],
+        "choice": "estimate_training_effect"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_7dcd3975d5d2",
+      "content": "Source record. Observation: control_outcome = unobserved.\nSource routing marker: CANARY_91be984147ae7eef",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e56b2af9a906",
+      "content": "Source record. Observation: room_layout = new.\nSource routing marker: CANARY_122a92d4b25b1e5d",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_93f108b7b19b",
+      "content": "Source record. Observation: participants = improved.\nSource routing marker: CANARY_e39ab57c93100763",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_13b68e10fd68",
+      "content": "Source record. Observation: baseline = different.\nSource routing marker: CANARY_49c4f679e85820ae",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_f2b6b0e6003d",
+      "content": "Source record. Observation: old_survey = positive.\nSource routing marker: CANARY_7c929b958f3d3625",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_7aed890b6832",
+      "content": "Source record. Observation: assignment = self_selected.\nSource routing marker: CANARY_d0d8ed8a48a57514",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b4ad561d86fe",
+      "content": "Source record. Observation: course_logo = updated.\nSource routing marker: CANARY_fb6c632a3d756b34",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_3dea101e5290",
+      "content": "Source record. Observation: other_change = possible.\nSource routing marker: CANARY_92c43de32edfb99f",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_d1c4019464fd",
+      "content": "Source record. Observation: study_inventory = complete.\nSource routing marker: CANARY_3359c7e013059338",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "medium",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "causal_identifiability_gap"
+}

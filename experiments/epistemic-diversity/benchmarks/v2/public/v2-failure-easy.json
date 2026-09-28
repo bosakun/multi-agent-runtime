@@ -1,0 +1,129 @@
+{
+  "id": "v2-failure-easy",
+  "family": "failure",
+  "template": "trigger_versus_amplifier",
+  "question": "Separate the initiating fault from recovery amplifiers in a failed rehearsal. Use component tests and event order before assigning causal roles to a connector, switching procedure or notification system.",
+  "instructions": {
+    "reporting_fields": [
+      "connector_test",
+      "signal_loss",
+      "notification",
+      "backup_link"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "connector_test",
+            "value": "failed"
+          },
+          {
+            "subject": "signal_loss",
+            "value": "before_alert"
+          }
+        ],
+        "conclusion": {
+          "subject": "primary",
+          "value": "connector"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "notification",
+            "value": "delayed"
+          },
+          {
+            "subject": "backup_link",
+            "value": "unavailable"
+          }
+        ],
+        "conclusion": {
+          "subject": "contributor",
+          "value": "recovery_delay"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "connector_test",
+            "value": "passed"
+          },
+          {
+            "subject": "signal_loss",
+            "value": "after_switch"
+          }
+        ],
+        "conclusion": {
+          "subject": "primary",
+          "value": "switching"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "primary",
+            "value": "connector"
+          },
+          {
+            "subject": "contributor",
+            "value": "recovery_delay"
+          }
+        ],
+        "choice": "replace_connector_and_improve_recovery"
+      },
+      {
+        "premises": [
+          {
+            "subject": "primary",
+            "value": "switching"
+          }
+        ],
+        "choice": "correct_switching_procedure"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_94e95c54e29d",
+      "content": "Source record. Observation: notification = delayed.\nSource routing marker: CANARY_ed8ec1b9403e0362",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_5f7d528a7032",
+      "content": "Source record. Observation: connector_test = failed.\nSource routing marker: CANARY_d1c258caeb46f76a",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_af376059637d",
+      "content": "Source record. Observation: audience_size = small.\nSource routing marker: CANARY_034ddc3beb55bfb7",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_f8ff9119d242",
+      "content": "Source record. Observation: signal_loss = before_alert.\nSource routing marker: CANARY_c4a3ab31366733e3",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_8ed77d6438b1",
+      "content": "Source record. Observation: old_alert_test = passed.\nSource routing marker: CANARY_849a3caf67b42b01",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_5eb08e84c32e",
+      "content": "Source record. Observation: stage_lighting = bright.\nSource routing marker: CANARY_64754009da5a8f4f",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b769e35b0512",
+      "content": "Source record. Observation: backup_link = unavailable.\nSource routing marker: CANARY_eb151c866447336b",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "easy",
+  "dependency_depth": 1,
+  "evidence_interaction_type": "trigger_versus_amplifier"
+}

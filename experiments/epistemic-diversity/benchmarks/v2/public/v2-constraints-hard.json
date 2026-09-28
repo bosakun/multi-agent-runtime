@@ -1,0 +1,163 @@
+{
+  "id": "v2-constraints-hard",
+  "family": "constraints",
+  "template": "infeasibility_certificate",
+  "question": "Determine whether either of two suppliers can satisfy the delivery contract. Reject a forced choice when each supplier violates a different mandatory constraint; optional preferences cannot override the contract.",
+  "instructions": {
+    "reporting_fields": [
+      "supplier_a_capacity",
+      "supplier_a_deadline",
+      "supplier_b_deadline",
+      "supplier_b_certification",
+      "deadline_rule",
+      "certification_rule",
+      "supplier_a_reputation"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "supplier_a_deadline",
+            "value": "late"
+          },
+          {
+            "subject": "deadline_rule",
+            "value": "mandatory"
+          }
+        ],
+        "conclusion": {
+          "subject": "supplier_a",
+          "value": "infeasible"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "supplier_b_certification",
+            "value": "missing"
+          },
+          {
+            "subject": "certification_rule",
+            "value": "mandatory"
+          }
+        ],
+        "conclusion": {
+          "subject": "supplier_b",
+          "value": "infeasible"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "supplier_a",
+            "value": "infeasible"
+          },
+          {
+            "subject": "supplier_b",
+            "value": "infeasible"
+          }
+        ],
+        "conclusion": {
+          "subject": "feasible",
+          "value": "none"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "supplier_a_capacity",
+            "value": "sufficient"
+          },
+          {
+            "subject": "supplier_a_deadline",
+            "value": "on_time"
+          },
+          {
+            "subject": "deadline_rule",
+            "value": "mandatory"
+          }
+        ],
+        "conclusion": {
+          "subject": "feasible",
+          "value": "a"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "feasible",
+            "value": "none"
+          }
+        ],
+        "choice": "renegotiate_contract"
+      },
+      {
+        "premises": [
+          {
+            "subject": "feasible",
+            "value": "a"
+          }
+        ],
+        "choice": "choose_supplier_a"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_3a10d2758577",
+      "content": "Source record. Observation: catalog_design = modern.\nSource routing marker: CANARY_13b03b9489b91e17",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_697932f96554",
+      "content": "Source record. Observation: old_contract = flexible.\nSource routing marker: CANARY_4d8980b99241fbf0",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_340ae241e1c6",
+      "content": "Source record. Observation: sales_award = gold.\nSource routing marker: CANARY_797b269ad326eb69",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_519e0c1299e7",
+      "content": "Source record. Observation: supplier_a_reputation = good.\nSource routing marker: CANARY_02a770b9b33f2094",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_bdadbdb0cb2e",
+      "content": "Source record. Observation: supplier_b_deadline = on_time.\nSource routing marker: CANARY_1aeeb6e93f772972",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_147739401c04",
+      "content": "Source record. Observation: certification_rule = mandatory.\nSource routing marker: CANARY_b53d3e7b13ee6784",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b57ab4a36636",
+      "content": "Source record. Observation: supplier_a_deadline = late.\nSource routing marker: CANARY_2047508b812821d4",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_cb29062fd45e",
+      "content": "Source record. Observation: supplier_b_certification = missing.\nSource routing marker: CANARY_a0f40d148788fefc",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e6c609e04c4c",
+      "content": "Source record. Observation: supplier_a_capacity = sufficient.\nSource routing marker: CANARY_790dccfbd888e594",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a2962642b82c",
+      "content": "Source record. Observation: deadline_rule = mandatory.\nSource routing marker: CANARY_ee3f256124936019",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "infeasibility_certificate"
+}

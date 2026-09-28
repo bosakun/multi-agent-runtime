@@ -1,0 +1,156 @@
+{
+  "task_id": "v2-decision-hard",
+  "relevant_evidence_ids": [
+    "e_bc811d5428e0",
+    "e_a60398349ba1",
+    "e_1f2b07123fcf",
+    "e_cf3270875bb0",
+    "e_c07c45806c35",
+    "e_96753c14debd",
+    "e_6014643156b7"
+  ],
+  "distractor_ids": [
+    "e_0158ff9db477",
+    "e_e2c4e865d277",
+    "e_ec638cf96b32"
+  ],
+  "claims": [
+    {
+      "subject": "raw_benefit",
+      "value": "high",
+      "supporting_sets": [
+        [
+          "e_bc811d5428e0"
+        ]
+      ]
+    },
+    {
+      "subject": "raw_consent",
+      "value": "missing",
+      "supporting_sets": [
+        [
+          "e_a60398349ba1"
+        ]
+      ]
+    },
+    {
+      "subject": "consent_rule",
+      "value": "veto",
+      "supporting_sets": [
+        [
+          "e_1f2b07123fcf"
+        ]
+      ]
+    },
+    {
+      "subject": "anonymized_benefit",
+      "value": "adequate",
+      "supporting_sets": [
+        [
+          "e_cf3270875bb0"
+        ]
+      ]
+    },
+    {
+      "subject": "reidentification_risk",
+      "value": "low",
+      "supporting_sets": [
+        [
+          "e_c07c45806c35"
+        ]
+      ]
+    },
+    {
+      "subject": "rollback",
+      "value": "available",
+      "supporting_sets": [
+        [
+          "e_96753c14debd"
+        ]
+      ]
+    },
+    {
+      "subject": "oversight",
+      "value": "approved",
+      "supporting_sets": [
+        [
+          "e_6014643156b7"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "recommendation",
+      "value": "reversible_alternative",
+      "supporting_sets": [
+        [
+          "e_1f2b07123fcf",
+          "e_96753c14debd",
+          "e_a60398349ba1",
+          "e_c07c45806c35",
+          "e_cf3270875bb0"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "alternative",
+      "value": "acceptable",
+      "supporting_sets": [
+        [
+          "e_c07c45806c35",
+          "e_cf3270875bb0"
+        ]
+      ]
+    },
+    {
+      "subject": "raw_option",
+      "value": "excluded",
+      "supporting_sets": [
+        [
+          "e_1f2b07123fcf",
+          "e_a60398349ba1"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "pilot_anonymized_design",
+  "constraints": [
+    "raw_benefit",
+    "raw_consent",
+    "consent_rule",
+    "anonymized_benefit",
+    "reidentification_risk",
+    "rollback",
+    "oversight"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_596aa8d65e84c933713c",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_bc811d5428e0": 2,
+    "e_a60398349ba1": 2,
+    "e_1f2b07123fcf": 2,
+    "e_cf3270875bb0": 2,
+    "e_c07c45806c35": 2,
+    "e_96753c14debd": 2,
+    "e_6014643156b7": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_1f2b07123fcf",
+      "e_6014643156b7",
+      "e_96753c14debd",
+      "e_a60398349ba1",
+      "e_c07c45806c35",
+      "e_cf3270875bb0"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

@@ -1,0 +1,96 @@
+{
+  "task_id": "v2-contradiction-easy",
+  "relevant_evidence_ids": [
+    "e_b4d65b008e9b",
+    "e_a4bb501e11be",
+    "e_b3d14866c9e0",
+    "e_2108936e2c43"
+  ],
+  "distractor_ids": [
+    "e_28352ef8f59a",
+    "e_0751c6aad65b",
+    "e_043bc40baa10"
+  ],
+  "claims": [
+    {
+      "subject": "morning_notice",
+      "value": "closed",
+      "supporting_sets": [
+        [
+          "e_b4d65b008e9b"
+        ]
+      ]
+    },
+    {
+      "subject": "evening_notice",
+      "value": "open",
+      "supporting_sets": [
+        [
+          "e_a4bb501e11be"
+        ]
+      ]
+    },
+    {
+      "subject": "notice_order",
+      "value": "evening_later",
+      "supporting_sets": [
+        [
+          "e_b3d14866c9e0"
+        ]
+      ]
+    },
+    {
+      "subject": "evening_signature",
+      "value": "valid",
+      "supporting_sets": [
+        [
+          "e_2108936e2c43"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "current_status",
+      "value": "open",
+      "supporting_sets": [
+        [
+          "e_2108936e2c43",
+          "e_a4bb501e11be",
+          "e_b3d14866c9e0",
+          "e_b4d65b008e9b"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "permit_crossing",
+  "constraints": [
+    "morning_notice",
+    "evening_notice",
+    "notice_order",
+    "evening_signature"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_89da0ac6f1f30074193b",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_b4d65b008e9b": 2,
+    "e_a4bb501e11be": 2,
+    "e_b3d14866c9e0": 2,
+    "e_2108936e2c43": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_2108936e2c43",
+      "e_a4bb501e11be",
+      "e_b3d14866c9e0",
+      "e_b4d65b008e9b"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

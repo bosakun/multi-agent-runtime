@@ -1,0 +1,133 @@
+{
+  "id": "v2-causal-easy",
+  "family": "causal",
+  "template": "two_stage_mechanism",
+  "question": "Explain an irrigation reservoir's filling problem. Trace the inlet, bypass, flow and level records to distinguish an actual supply mechanism from a measurement fault.",
+  "instructions": {
+    "reporting_fields": [
+      "inlet_filter",
+      "bypass",
+      "flow_sensor",
+      "level_sensor"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "inlet_filter",
+            "value": "blocked"
+          },
+          {
+            "subject": "bypass",
+            "value": "closed"
+          }
+        ],
+        "conclusion": {
+          "subject": "inflow",
+          "value": "restricted"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "inflow",
+            "value": "restricted"
+          },
+          {
+            "subject": "flow_sensor",
+            "value": "low"
+          },
+          {
+            "subject": "level_sensor",
+            "value": "low"
+          }
+        ],
+        "conclusion": {
+          "subject": "mechanism",
+          "value": "starvation"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "inlet_filter",
+            "value": "clear"
+          },
+          {
+            "subject": "flow_sensor",
+            "value": "normal"
+          },
+          {
+            "subject": "level_sensor",
+            "value": "low"
+          }
+        ],
+        "conclusion": {
+          "subject": "mechanism",
+          "value": "level_measurement_fault"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "mechanism",
+            "value": "starvation"
+          }
+        ],
+        "choice": "clear_filter"
+      },
+      {
+        "premises": [
+          {
+            "subject": "mechanism",
+            "value": "level_measurement_fault"
+          }
+        ],
+        "choice": "check_level_sensor"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_88a4d020bf13",
+      "content": "Source record. Observation: flow_sensor = low.\nSource routing marker: CANARY_5b9d83c7e1cea6f6",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_7a53d04a17e3",
+      "content": "Source record. Observation: level_sensor = low.\nSource routing marker: CANARY_2ac1919f21821b7e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_a5100e08a39c",
+      "content": "Source record. Observation: inlet_filter = blocked.\nSource routing marker: CANARY_17f89e9520ab4c4c",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_55415bc24628",
+      "content": "Source record. Observation: gauge_color = white.\nSource routing marker: CANARY_4cd0cf85769dfd28",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_5c5d296bb0f0",
+      "content": "Source record. Observation: field_sign = damaged.\nSource routing marker: CANARY_a3ad273564612796",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_89c2f8d053c3",
+      "content": "Source record. Observation: old_valve = replaced.\nSource routing marker: CANARY_da3cace0bbff090f",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_bbc26891c118",
+      "content": "Source record. Observation: bypass = closed.\nSource routing marker: CANARY_9c1418cbe82a73de",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "easy",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "two_stage_mechanism"
+}

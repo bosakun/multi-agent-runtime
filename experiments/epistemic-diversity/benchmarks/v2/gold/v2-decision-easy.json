@@ -1,0 +1,95 @@
+{
+  "task_id": "v2-decision-easy",
+  "relevant_evidence_ids": [
+    "e_ccb0795fade0",
+    "e_0cf07ac3369f",
+    "e_d793d92dc520",
+    "e_50f2e694c137"
+  ],
+  "distractor_ids": [
+    "e_2c2ee70add3f",
+    "e_e15b21d7764a",
+    "e_f993484dceb7"
+  ],
+  "claims": [
+    {
+      "subject": "fast_launch",
+      "value": "excludes_users",
+      "supporting_sets": [
+        [
+          "e_ccb0795fade0"
+        ]
+      ]
+    },
+    {
+      "subject": "staged_launch",
+      "value": "accessible",
+      "supporting_sets": [
+        [
+          "e_0cf07ac3369f"
+        ]
+      ]
+    },
+    {
+      "subject": "priority",
+      "value": "access_first",
+      "supporting_sets": [
+        [
+          "e_d793d92dc520"
+        ]
+      ]
+    },
+    {
+      "subject": "deadline",
+      "value": "flexible",
+      "supporting_sets": [
+        [
+          "e_50f2e694c137"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "preference",
+      "value": "staged",
+      "supporting_sets": [
+        [
+          "e_0cf07ac3369f",
+          "e_ccb0795fade0",
+          "e_d793d92dc520"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "launch_in_stages",
+  "constraints": [
+    "fast_launch",
+    "staged_launch",
+    "priority",
+    "deadline"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_46c95600d6b4a8fa2332",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_ccb0795fade0": 2,
+    "e_0cf07ac3369f": 2,
+    "e_d793d92dc520": 2,
+    "e_50f2e694c137": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_0cf07ac3369f",
+      "e_50f2e694c137",
+      "e_ccb0795fade0",
+      "e_d793d92dc520"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

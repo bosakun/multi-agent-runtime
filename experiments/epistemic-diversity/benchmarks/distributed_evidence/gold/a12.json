@@ -1,0 +1,108 @@
+{
+  "task_id": "a12",
+  "relevant_evidence_ids": [
+    "e_2228dba39e",
+    "e_7986cfc481",
+    "e_fb1fce43da",
+    "e_622aab873b",
+    "e_fb2e1c16db",
+    "e_ce58fb99fa"
+  ],
+  "distractor_ids": [
+    "e_663c911d3d",
+    "e_92701d7433",
+    "e_ddbf9e40f2"
+  ],
+  "claims": [
+    {
+      "subject": "sample_defect",
+      "value": "confirmed",
+      "supporting_sets": [
+        [
+          "e_2228dba39e"
+        ]
+      ]
+    },
+    {
+      "subject": "supplier_change",
+      "value": "present",
+      "supporting_sets": [
+        [
+          "e_7986cfc481"
+        ]
+      ]
+    },
+    {
+      "subject": "comparison_batch",
+      "value": "clean",
+      "supporting_sets": [
+        [
+          "e_fb1fce43da"
+        ]
+      ]
+    },
+    {
+      "subject": "replacement_stock",
+      "value": "available",
+      "supporting_sets": [
+        [
+          "e_622aab873b"
+        ]
+      ]
+    },
+    {
+      "subject": "traceability",
+      "value": "complete",
+      "supporting_sets": [
+        [
+          "e_fb2e1c16db"
+        ]
+      ]
+    },
+    {
+      "subject": "inspection_capacity",
+      "value": "sufficient",
+      "supporting_sets": [
+        [
+          "e_ce58fb99fa"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "material_link_supported",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_2228dba39e",
+          "e_7986cfc481",
+          "e_fb1fce43da"
+        ]
+      ]
+    },
+    {
+      "subject": "containment_ready",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_622aab873b",
+          "e_fb2e1c16db",
+          "e_ce58fb99fa"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "isolate_and_replace",
+  "constraints": [
+    "sample_defect",
+    "supplier_change",
+    "comparison_batch",
+    "replacement_stock",
+    "traceability",
+    "inspection_capacity"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_b3850534935b15e8b0b8"
+}

@@ -1,0 +1,187 @@
+{
+  "id": "v2-planning-hard",
+  "family": "planning",
+  "template": "rollback_branch_and_irreversible_commit",
+  "question": "Plan the next stages of a service cutover. Use canary, rollback and cleanup records to choose the success or recovery branch, respecting the final decommission gate rather than assuming deployment succeeded.",
+  "instructions": {
+    "reporting_fields": [
+      "snapshot",
+      "new_service",
+      "canary",
+      "old_service",
+      "writes",
+      "cleanup",
+      "success_gate"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "snapshot",
+            "value": "verified"
+          },
+          {
+            "subject": "new_service",
+            "value": "started"
+          }
+        ],
+        "conclusion": {
+          "subject": "cutover",
+          "value": "staged"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "cutover",
+            "value": "staged"
+          },
+          {
+            "subject": "canary",
+            "value": "failed"
+          }
+        ],
+        "conclusion": {
+          "subject": "branch",
+          "value": "rollback"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "branch",
+            "value": "rollback"
+          },
+          {
+            "subject": "old_service",
+            "value": "available"
+          },
+          {
+            "subject": "writes",
+            "value": "reversible"
+          }
+        ],
+        "conclusion": {
+          "subject": "recovery",
+          "value": "restore_old"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "recovery",
+            "value": "restore_old"
+          },
+          {
+            "subject": "cleanup",
+            "value": "irreversible"
+          },
+          {
+            "subject": "success_gate",
+            "value": "not_met"
+          }
+        ],
+        "conclusion": {
+          "subject": "sequence",
+          "value": "rollback_without_cleanup"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "cutover",
+            "value": "staged"
+          },
+          {
+            "subject": "canary",
+            "value": "passed"
+          },
+          {
+            "subject": "success_gate",
+            "value": "met"
+          }
+        ],
+        "conclusion": {
+          "subject": "sequence",
+          "value": "commit_then_cleanup"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "sequence",
+            "value": "rollback_without_cleanup"
+          }
+        ],
+        "choice": "stop_canary_then_restore_old_then_verify_keep_snapshot"
+      },
+      {
+        "premises": [
+          {
+            "subject": "sequence",
+            "value": "commit_then_cleanup"
+          }
+        ],
+        "choice": "commit_then_verify_then_decommission"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_b65932580629",
+      "content": "Source record. Observation: new_service = started.\nSource routing marker: CANARY_9ee70ff67ad47a70",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_5146f03d1c80",
+      "content": "Source record. Observation: old_dry_run = passed.\nSource routing marker: CANARY_71e4122a1737a7d4",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e337873558c1",
+      "content": "Source record. Observation: dashboard_skin = new.\nSource routing marker: CANARY_ca94eafa3a4f3adf",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e96071464211",
+      "content": "Source record. Observation: canary = failed.\nSource routing marker: CANARY_cabc10038e496e04",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_d94371a7a154",
+      "content": "Source record. Observation: writes = reversible.\nSource routing marker: CANARY_c53c194d5268b868",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_3310df54cb84",
+      "content": "Source record. Observation: cleanup = irreversible.\nSource routing marker: CANARY_42fc881e1d67f864",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e17ebdc40f95",
+      "content": "Source record. Observation: snapshot = verified.\nSource routing marker: CANARY_b9bb1212d92f80c6",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_dd19afb5e5ce",
+      "content": "Source record. Observation: launch_banner = published.\nSource routing marker: CANARY_4c43a1a2f7c6e2f0",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_e88ba7d526e3",
+      "content": "Source record. Observation: old_service = available.\nSource routing marker: CANARY_789bd7c3d2096476",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_81d437381b5a",
+      "content": "Source record. Observation: success_gate = not_met.\nSource routing marker: CANARY_af0566d8644dc50a",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 4,
+  "evidence_interaction_type": "rollback_branch_and_irreversible_commit"
+}

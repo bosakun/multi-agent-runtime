@@ -1,0 +1,108 @@
+{
+  "task_id": "b04",
+  "relevant_evidence_ids": [
+    "e_137820d22b",
+    "e_13bff157b8",
+    "e_3ed11c9afd",
+    "e_08f6509d94",
+    "e_afbbdead02",
+    "e_4d0e4e9bd6"
+  ],
+  "distractor_ids": [
+    "e_585b6a7689",
+    "e_db9abf323d",
+    "e_1f4c1ca5ff"
+  ],
+  "claims": [
+    {
+      "subject": "load_forecast",
+      "value": "high",
+      "supporting_sets": [
+        [
+          "e_137820d22b"
+        ]
+      ]
+    },
+    {
+      "subject": "team_capacity",
+      "value": "sufficient",
+      "supporting_sets": [
+        [
+          "e_13bff157b8"
+        ]
+      ]
+    },
+    {
+      "subject": "failure_isolation",
+      "value": "required",
+      "supporting_sets": [
+        [
+          "e_3ed11c9afd"
+        ]
+      ]
+    },
+    {
+      "subject": "client_compatibility",
+      "value": "verified",
+      "supporting_sets": [
+        [
+          "e_08f6509d94"
+        ]
+      ]
+    },
+    {
+      "subject": "migration_window",
+      "value": "available",
+      "supporting_sets": [
+        [
+          "e_afbbdead02"
+        ]
+      ]
+    },
+    {
+      "subject": "fallback_capacity",
+      "value": "sufficient",
+      "supporting_sets": [
+        [
+          "e_4d0e4e9bd6"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "separation_justified",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_137820d22b",
+          "e_13bff157b8",
+          "e_3ed11c9afd"
+        ]
+      ]
+    },
+    {
+      "subject": "migration_feasible",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_08f6509d94",
+          "e_afbbdead02",
+          "e_4d0e4e9bd6"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "migrate_in_stages",
+  "constraints": [
+    "load_forecast",
+    "team_capacity",
+    "failure_isolation",
+    "client_compatibility",
+    "migration_window",
+    "fallback_capacity"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_8a3d0d7dd99e1e260688"
+}

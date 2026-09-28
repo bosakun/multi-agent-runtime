@@ -1,0 +1,261 @@
+{
+  "benchmark_version": "2.0.0",
+  "tasks": [
+    {
+      "id": "v2-synthesis-easy",
+      "family": "synthesis",
+      "difficulty": "easy",
+      "structure": "independent_corroboration",
+      "dependency_depth": 1
+    },
+    {
+      "id": "v2-synthesis-medium",
+      "family": "synthesis",
+      "difficulty": "medium",
+      "structure": "alternative_support_and_confirmation",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-synthesis-hard",
+      "family": "synthesis",
+      "difficulty": "hard",
+      "structure": "fork_join_evidence_coverage",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-diagnosis-easy",
+      "family": "diagnosis",
+      "difficulty": "easy",
+      "structure": "differential_diagnosis_by_negative_control",
+      "dependency_depth": 1
+    },
+    {
+      "id": "v2-diagnosis-medium",
+      "family": "diagnosis",
+      "difficulty": "medium",
+      "structure": "intervention_and_matched_control",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-diagnosis-hard",
+      "family": "diagnosis",
+      "difficulty": "hard",
+      "structure": "confounder_elimination_with_two_interventions",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-constraints-easy",
+      "family": "constraints",
+      "difficulty": "easy",
+      "structure": "intersection_of_feasible_sets",
+      "dependency_depth": 1
+    },
+    {
+      "id": "v2-constraints-medium",
+      "family": "constraints",
+      "difficulty": "medium",
+      "structure": "candidate_elimination_with_budget_and_compatibility",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-constraints-hard",
+      "family": "constraints",
+      "difficulty": "hard",
+      "structure": "infeasibility_certificate",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-contradiction-easy",
+      "family": "contradiction",
+      "difficulty": "easy",
+      "structure": "temporal_revision",
+      "dependency_depth": 1
+    },
+    {
+      "id": "v2-contradiction-medium",
+      "family": "contradiction",
+      "difficulty": "medium",
+      "structure": "scope_disambiguation",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-contradiction-hard",
+      "family": "contradiction",
+      "difficulty": "hard",
+      "structure": "reliability_condition_and_time_precedence",
+      "dependency_depth": 3
+    },
+    {
+      "id": "v2-missing-easy",
+      "family": "missing",
+      "difficulty": "easy",
+      "structure": "required_measurement_gap",
+      "dependency_depth": 1
+    },
+    {
+      "id": "v2-missing-medium",
+      "family": "missing",
+      "difficulty": "medium",
+      "structure": "causal_identifiability_gap",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-missing-hard",
+      "family": "missing",
+      "difficulty": "hard",
+      "structure": "incomparable_options_without_preference_weights",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-causal-easy",
+      "family": "causal",
+      "difficulty": "easy",
+      "structure": "two_stage_mechanism",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-causal-medium",
+      "family": "causal",
+      "difficulty": "medium",
+      "structure": "three_stage_propagation_with_gate",
+      "dependency_depth": 3
+    },
+    {
+      "id": "v2-causal-hard",
+      "family": "causal",
+      "difficulty": "hard",
+      "structure": "four_stage_cascade_with_failed_barrier",
+      "dependency_depth": 4
+    },
+    {
+      "id": "v2-decision-easy",
+      "family": "decision",
+      "difficulty": "easy",
+      "structure": "benefit_risk_tradeoff_with_explicit_priority",
+      "dependency_depth": 1
+    },
+    {
+      "id": "v2-decision-medium",
+      "family": "decision",
+      "difficulty": "medium",
+      "structure": "pareto_dominance_before_preferences",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-decision-hard",
+      "family": "decision",
+      "difficulty": "hard",
+      "structure": "veto_then_tradeoff_then_reversibility",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-failure-easy",
+      "family": "failure",
+      "difficulty": "easy",
+      "structure": "trigger_versus_amplifier",
+      "dependency_depth": 1
+    },
+    {
+      "id": "v2-failure-medium",
+      "family": "failure",
+      "difficulty": "medium",
+      "structure": "initiator_and_failed_defense",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-failure-hard",
+      "family": "failure",
+      "difficulty": "hard",
+      "structure": "minimal_fault_cut_set_with_noncausal_alarm",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-planning-easy",
+      "family": "planning",
+      "difficulty": "easy",
+      "structure": "ordered_preconditions",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-planning-medium",
+      "family": "planning",
+      "difficulty": "medium",
+      "structure": "parallel_preparation_then_resource_locked_join",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-planning-hard",
+      "family": "planning",
+      "difficulty": "hard",
+      "structure": "rollback_branch_and_irreversible_commit",
+      "dependency_depth": 4
+    },
+    {
+      "id": "v2-ranking-easy",
+      "family": "ranking",
+      "difficulty": "easy",
+      "structure": "direct_measurement_over_hearsay",
+      "dependency_depth": 1
+    },
+    {
+      "id": "v2-ranking-medium",
+      "family": "ranking",
+      "difficulty": "medium",
+      "structure": "source_independence_not_vote_count",
+      "dependency_depth": 2
+    },
+    {
+      "id": "v2-ranking-hard",
+      "family": "ranking",
+      "difficulty": "hard",
+      "structure": "diagnostic_intervention_over_recency_and_popularity",
+      "dependency_depth": 2
+    }
+  ],
+  "pilot": [
+    "v2-synthesis-easy",
+    "v2-diagnosis-medium",
+    "v2-constraints-medium",
+    "v2-contradiction-hard",
+    "v2-missing-easy",
+    "v2-causal-hard"
+  ],
+  "full": [
+    "v2-synthesis-easy",
+    "v2-synthesis-medium",
+    "v2-synthesis-hard",
+    "v2-diagnosis-easy",
+    "v2-diagnosis-medium",
+    "v2-diagnosis-hard",
+    "v2-constraints-easy",
+    "v2-constraints-medium",
+    "v2-constraints-hard",
+    "v2-contradiction-easy",
+    "v2-contradiction-medium",
+    "v2-contradiction-hard",
+    "v2-missing-easy",
+    "v2-missing-medium",
+    "v2-missing-hard",
+    "v2-causal-easy",
+    "v2-causal-medium",
+    "v2-causal-hard",
+    "v2-decision-easy",
+    "v2-decision-medium",
+    "v2-decision-hard",
+    "v2-failure-easy",
+    "v2-failure-medium",
+    "v2-failure-hard",
+    "v2-planning-easy",
+    "v2-planning-medium",
+    "v2-planning-hard",
+    "v2-ranking-easy",
+    "v2-ranking-medium",
+    "v2-ranking-hard"
+  ],
+  "main": [],
+  "pilot_conditions": [
+    "C2",
+    "C3"
+  ],
+  "seed": 20260928
+}

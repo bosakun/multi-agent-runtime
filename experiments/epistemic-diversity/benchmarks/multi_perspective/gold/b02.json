@@ -1,0 +1,112 @@
+{
+  "task_id": "b02",
+  "relevant_evidence_ids": [
+    "e_1f7d241203",
+    "e_e0a9ba8851",
+    "e_32690e6254",
+    "e_ae6f2fabc2",
+    "e_a8e87f09fc",
+    "e_838693d01f"
+  ],
+  "distractor_ids": [
+    "e_a864d64e11",
+    "e_5e0327aa54",
+    "e_f5092994ae"
+  ],
+  "claims": [
+    {
+      "subject": "load_forecast",
+      "value": "low",
+      "supporting_sets": [
+        [
+          "e_1f7d241203"
+        ]
+      ]
+    },
+    {
+      "subject": "team_capacity",
+      "value": "insufficient",
+      "supporting_sets": [
+        [
+          "e_e0a9ba8851"
+        ]
+      ]
+    },
+    {
+      "subject": "failure_isolation",
+      "value": "optional",
+      "supporting_sets": [
+        [
+          "e_32690e6254"
+        ]
+      ]
+    },
+    {
+      "subject": "client_compatibility",
+      "value": "verified",
+      "supporting_sets": [
+        [
+          "e_ae6f2fabc2"
+        ]
+      ]
+    },
+    {
+      "subject": "migration_window",
+      "value": "available",
+      "supporting_sets": [
+        [
+          "e_a8e87f09fc"
+        ]
+      ]
+    },
+    {
+      "subject": "fallback_capacity",
+      "value": "sufficient",
+      "supporting_sets": [
+        [
+          "e_838693d01f"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "separation_justified",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_1f7d241203",
+          "e_e0a9ba8851",
+          "e_32690e6254"
+        ]
+      ]
+    },
+    {
+      "subject": "migration_feasible",
+      "value": "yes",
+      "supporting_sets": [
+        [
+          "e_ae6f2fabc2",
+          "e_a8e87f09fc",
+          "e_838693d01f"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "prepare_migration",
+  "constraints": [
+    "load_forecast",
+    "team_capacity",
+    "failure_isolation",
+    "client_compatibility",
+    "migration_window",
+    "fallback_capacity"
+  ],
+  "failure_factors": [
+    "load_forecast",
+    "team_capacity",
+    "failure_isolation"
+  ],
+  "hidden_annotation": "GOLD_ONLY_b3f51b93adf2861dc22e"
+}

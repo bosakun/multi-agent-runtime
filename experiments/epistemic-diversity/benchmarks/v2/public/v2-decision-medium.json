@@ -1,0 +1,153 @@
+{
+  "id": "v2-decision-medium",
+  "family": "decision",
+  "template": "pareto_dominance_before_preferences",
+  "question": "Compare an established design with a modular replacement on cost, reliability and migration burden. Check whether either option dominates before using the recorded preference; respect the safety and authorization constraints.",
+  "instructions": {
+    "reporting_fields": [
+      "modular_cost",
+      "modular_reliability",
+      "migration_burden",
+      "incumbent_preference",
+      "safety_floor",
+      "owner_authorization"
+    ],
+    "inference_rules": [
+      {
+        "premises": [
+          {
+            "subject": "modular_cost",
+            "value": "lower"
+          },
+          {
+            "subject": "modular_reliability",
+            "value": "higher"
+          },
+          {
+            "subject": "migration_burden",
+            "value": "equal"
+          }
+        ],
+        "conclusion": {
+          "subject": "dominance",
+          "value": "modular"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "dominance",
+            "value": "modular"
+          },
+          {
+            "subject": "safety_floor",
+            "value": "met"
+          }
+        ],
+        "conclusion": {
+          "subject": "recommendation",
+          "value": "modular"
+        }
+      },
+      {
+        "premises": [
+          {
+            "subject": "modular_cost",
+            "value": "higher"
+          },
+          {
+            "subject": "modular_reliability",
+            "value": "equal"
+          },
+          {
+            "subject": "migration_burden",
+            "value": "higher"
+          }
+        ],
+        "conclusion": {
+          "subject": "recommendation",
+          "value": "incumbent"
+        }
+      }
+    ],
+    "decision_rules": [
+      {
+        "premises": [
+          {
+            "subject": "recommendation",
+            "value": "modular"
+          },
+          {
+            "subject": "owner_authorization",
+            "value": "granted"
+          }
+        ],
+        "choice": "adopt_modular"
+      },
+      {
+        "premises": [
+          {
+            "subject": "recommendation",
+            "value": "incumbent"
+          },
+          {
+            "subject": "owner_authorization",
+            "value": "granted"
+          }
+        ],
+        "choice": "retain_incumbent"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "e_a86514d82be2",
+      "content": "Source record. Observation: repository_stars = incumbent_high.\nSource routing marker: CANARY_2b7ff03310e81676",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_7b9af5165155",
+      "content": "Source record. Observation: incumbent_preference = strong.\nSource routing marker: CANARY_8e170a1e5b60e52e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_c35a49463a23",
+      "content": "Source record. Observation: logo_shape = familiar.\nSource routing marker: CANARY_e161307ccf96dc30",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_2e206cf61c10",
+      "content": "Source record. Observation: modular_reliability = higher.\nSource routing marker: CANARY_4611aba53cbefbe6",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_b89f746f49cb",
+      "content": "Source record. Observation: safety_floor = met.\nSource routing marker: CANARY_0f40944c22fe7b6e",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_442d4bc0744f",
+      "content": "Source record. Observation: modular_cost = lower.\nSource routing marker: CANARY_28d9d9683f169264",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_65afbfa6d38f",
+      "content": "Source record. Observation: old_migration = difficult.\nSource routing marker: CANARY_3e68b995a05f561f",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_c57ebd34d926",
+      "content": "Source record. Observation: owner_authorization = granted.\nSource routing marker: CANARY_2e95953dbc5b16da",
+      "trust": "untrusted_data"
+    },
+    {
+      "id": "e_cb4386284262",
+      "content": "Source record. Observation: migration_burden = equal.\nSource routing marker: CANARY_7d7b2132a5d4a2cd",
+      "trust": "untrusted_data"
+    }
+  ],
+  "benchmark_version": "2.0.0",
+  "difficulty": "medium",
+  "dependency_depth": 2,
+  "evidence_interaction_type": "pareto_dominance_before_preferences"
+}

@@ -1,0 +1,173 @@
+{
+  "task_id": "v2-planning-hard",
+  "relevant_evidence_ids": [
+    "e_e17ebdc40f95",
+    "e_b65932580629",
+    "e_e96071464211",
+    "e_e88ba7d526e3",
+    "e_d94371a7a154",
+    "e_3310df54cb84",
+    "e_81d437381b5a"
+  ],
+  "distractor_ids": [
+    "e_dd19afb5e5ce",
+    "e_5146f03d1c80",
+    "e_e337873558c1"
+  ],
+  "claims": [
+    {
+      "subject": "snapshot",
+      "value": "verified",
+      "supporting_sets": [
+        [
+          "e_e17ebdc40f95"
+        ]
+      ]
+    },
+    {
+      "subject": "new_service",
+      "value": "started",
+      "supporting_sets": [
+        [
+          "e_b65932580629"
+        ]
+      ]
+    },
+    {
+      "subject": "canary",
+      "value": "failed",
+      "supporting_sets": [
+        [
+          "e_e96071464211"
+        ]
+      ]
+    },
+    {
+      "subject": "old_service",
+      "value": "available",
+      "supporting_sets": [
+        [
+          "e_e88ba7d526e3"
+        ]
+      ]
+    },
+    {
+      "subject": "writes",
+      "value": "reversible",
+      "supporting_sets": [
+        [
+          "e_d94371a7a154"
+        ]
+      ]
+    },
+    {
+      "subject": "cleanup",
+      "value": "irreversible",
+      "supporting_sets": [
+        [
+          "e_3310df54cb84"
+        ]
+      ]
+    },
+    {
+      "subject": "success_gate",
+      "value": "not_met",
+      "supporting_sets": [
+        [
+          "e_81d437381b5a"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "sequence",
+      "value": "rollback_without_cleanup",
+      "supporting_sets": [
+        [
+          "e_3310df54cb84",
+          "e_81d437381b5a",
+          "e_b65932580629",
+          "e_d94371a7a154",
+          "e_e17ebdc40f95",
+          "e_e88ba7d526e3",
+          "e_e96071464211"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [
+    {
+      "subject": "branch",
+      "value": "rollback",
+      "supporting_sets": [
+        [
+          "e_b65932580629",
+          "e_e17ebdc40f95",
+          "e_e96071464211"
+        ]
+      ]
+    },
+    {
+      "subject": "cutover",
+      "value": "staged",
+      "supporting_sets": [
+        [
+          "e_b65932580629",
+          "e_e17ebdc40f95"
+        ]
+      ]
+    },
+    {
+      "subject": "recovery",
+      "value": "restore_old",
+      "supporting_sets": [
+        [
+          "e_b65932580629",
+          "e_d94371a7a154",
+          "e_e17ebdc40f95",
+          "e_e88ba7d526e3",
+          "e_e96071464211"
+        ]
+      ]
+    }
+  ],
+  "expected_conclusion": "stop_canary_then_restore_old_then_verify_keep_snapshot",
+  "constraints": [
+    "snapshot",
+    "new_service",
+    "canary",
+    "old_service",
+    "writes",
+    "cleanup",
+    "success_gate"
+  ],
+  "failure_factors": [],
+  "hidden_annotation": "GOLD_ONLY_780ee0d4535e6d41534c",
+  "benchmark_version": "2.0.0",
+  "optional_claims": [],
+  "weak_evidence_ids": [],
+  "evidence_importance": {
+    "e_e17ebdc40f95": 2,
+    "e_b65932580629": 2,
+    "e_e96071464211": 2,
+    "e_e88ba7d526e3": 2,
+    "e_d94371a7a154": 2,
+    "e_3310df54cb84": 2,
+    "e_81d437381b5a": 2
+  },
+  "decision_supporting_sets": [
+    [
+      "e_3310df54cb84",
+      "e_81d437381b5a",
+      "e_b65932580629",
+      "e_d94371a7a154",
+      "e_e17ebdc40f95",
+      "e_e88ba7d526e3",
+      "e_e96071464211"
+    ]
+  ],
+  "allowed_uncertainty": [],
+  "required_unknowns": [],
+  "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+}

@@ -1,0 +1,115 @@
+{
+  "task_id": "a05",
+  "relevant_evidence_ids": [
+    "e_6f3d100bf5",
+    "e_19da217135",
+    "e_d19f91570d",
+    "e_49f23b9607",
+    "e_5a6a298218",
+    "e_c993c52b19"
+  ],
+  "distractor_ids": [
+    "e_6ba31d1e7c",
+    "e_08c6decac5",
+    "e_638ea033e4"
+  ],
+  "claims": [
+    {
+      "subject": "route_delay",
+      "value": "absent",
+      "supporting_sets": [
+        [
+          "e_6f3d100bf5"
+        ]
+      ]
+    },
+    {
+      "subject": "weather_alert",
+      "value": "inactive",
+      "supporting_sets": [
+        [
+          "e_19da217135"
+        ]
+      ]
+    },
+    {
+      "subject": "alternate_route_control",
+      "value": "affected",
+      "supporting_sets": [
+        [
+          "e_d19f91570d"
+        ]
+      ]
+    },
+    {
+      "subject": "detour_capacity",
+      "value": "insufficient",
+      "supporting_sets": [
+        [
+          "e_49f23b9607"
+        ]
+      ]
+    },
+    {
+      "subject": "driver_availability",
+      "value": "unavailable",
+      "supporting_sets": [
+        [
+          "e_5a6a298218"
+        ]
+      ]
+    },
+    {
+      "subject": "detour_clearance",
+      "value": "pending",
+      "supporting_sets": [
+        [
+          "e_c993c52b19"
+        ]
+      ]
+    }
+  ],
+  "required_insights": [
+    {
+      "subject": "route_disruption_supported",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_6f3d100bf5",
+          "e_19da217135",
+          "e_d19f91570d"
+        ]
+      ]
+    },
+    {
+      "subject": "detour_feasible",
+      "value": "no",
+      "supporting_sets": [
+        [
+          "e_49f23b9607",
+          "e_5a6a298218",
+          "e_c993c52b19"
+        ]
+      ]
+    }
+  ],
+  "optional_insights": [],
+  "expected_conclusion": "monitor_routes",
+  "constraints": [
+    "route_delay",
+    "weather_alert",
+    "alternate_route_control",
+    "detour_capacity",
+    "driver_availability",
+    "detour_clearance"
+  ],
+  "failure_factors": [
+    "route_delay",
+    "weather_alert",
+    "alternate_route_control",
+    "detour_capacity",
+    "driver_availability",
+    "detour_clearance"
+  ],
+  "hidden_annotation": "GOLD_ONLY_4c47fdde0920a8f9b974"
+}
