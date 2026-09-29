@@ -53,10 +53,34 @@ async def test_http_contract_and_tool_continuation():
     assert result.output["findings"] == []
     assert result.usage.input_tokens == 30
     assert seen[0]["model"] == "configured-model"
+    assert seen[0]["max_completion_tokens"] == model_request.config.max_output_tokens
+    assert "max_tokens" not in seen[0]
     assert "Ignore prior" not in seen[0]["messages"][0]["content"]
     assert "Ignore prior" in seen[0]["messages"][1]["content"]
     assert seen[0]["messages"][-1]["tool_call_id"] == "c1"
     assert seen[0]["response_format"]["json_schema"]["strict"] is True
+
+
+async def test_explicit_legacy_limit_changes_only_parameter_name():
+    seen = []
+
+    def handler(req):
+        seen.append(json.loads(req.content))
+        return httpx.Response(
+            200, json={"choices": [{"message": {"content": "{}"}, "finish_reason": "stop"}]}
+        )
+
+    async with httpx.AsyncClient(
+        base_url="https://provider.test/v1/", transport=httpx.MockTransport(handler)
+    ) as client:
+        await OpenAICompatibleProvider(client, "key").generate(request())
+        await OpenAICompatibleProvider(client, "key", token_limit_parameter="max_tokens").generate(
+            request()
+        )
+    standard, legacy = seen
+    assert standard.pop("max_completion_tokens") == legacy.pop("max_tokens") == 2048
+    assert standard == legacy
+    assert not {"think", "reasoning", "reasoning_effort"} & standard.keys()
 
 
 @pytest.mark.parametrize("status,retryable", [(401, False), (400, False), (429, True), (503, True)])

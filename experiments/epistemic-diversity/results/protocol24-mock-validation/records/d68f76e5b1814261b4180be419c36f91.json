@@ -1,0 +1,656 @@
+{
+  "experiment_id": "782673072af042bd9ca1ff77f0ae0c25",
+  "run_id": "d68f76e5b1814261b4180be419c36f91",
+  "timestamp": "2026-09-29T01:25:56.324122+00:00",
+  "condition": "C3",
+  "task_id": "v2-contradiction-hard",
+  "family": "contradiction",
+  "template": "reliability_condition_and_time_precedence",
+  "seed": 20260928,
+  "repetition": 0,
+  "model_settings": {
+    "provider": "mock",
+    "model": "qwen3:14b",
+    "temperature": 0,
+    "max_output_tokens": 4096,
+    "timeout_seconds": 1200,
+    "execution_profile": "local_ollama"
+  },
+  "backend_token_limit_parameter": "max_tokens",
+  "assignment": {
+    "roles": {
+      "worker_0": "neutral",
+      "worker_1": "neutral",
+      "worker_2": "neutral"
+    },
+    "partitions": {
+      "worker_0": [
+        "e_8f26fb7ab3e6",
+        "e_a6ffa433a2a3",
+        "e_776a13a3f006"
+      ],
+      "worker_1": [
+        "e_89893e78d219",
+        "e_d0640a52ba7d",
+        "e_cc0aae90b4e6",
+        "e_66806cd423ad",
+        "e_ad7411770ee1"
+      ],
+      "worker_2": [
+        "e_a94cd5a160b9",
+        "e_14d55888f9bc",
+        "e_e83053d8bd81"
+      ]
+    },
+    "seed": 20260928
+  },
+  "protocol_fingerprint": "780926d9fb0ad8182d6cbee907c0c2f93615c95f572ef659684ab1e52310ca2c",
+  "git_commit": "b8c5fa8fb95606f2a7e7f37d95b1d50807232ee9",
+  "source_sha256": "0b461896964c3b0fde4215111edd0efa63407a567a723f13d57696005a96412a",
+  "source_dirty": true,
+  "prompt_version": "v2",
+  "benchmark_version": "2.0.0",
+  "metrics_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 3,
+  "benchmark_sha256": "5588ea90e24448d2e5fd50e3fc05a3ebf441ed5e713e75a059dabbd6550dd212",
+  "status": "succeeded",
+  "output": [
+    {
+      "claims": [
+        {
+          "subject": "calibration",
+          "value": "valid",
+          "evidence_ids": [
+            "e_8f26fb7ab3e6"
+          ]
+        },
+        {
+          "subject": "dashboard",
+          "value": "safe",
+          "evidence_ids": [
+            "e_a94cd5a160b9"
+          ]
+        },
+        {
+          "subject": "dashboard_condition",
+          "value": "unloaded",
+          "evidence_ids": [
+            "e_cc0aae90b4e6"
+          ]
+        },
+        {
+          "subject": "operator_memory",
+          "value": "usually_safe",
+          "evidence_ids": [
+            "e_d0640a52ba7d"
+          ]
+        },
+        {
+          "subject": "sample_order",
+          "value": "test_newer",
+          "evidence_ids": [
+            "e_89893e78d219"
+          ]
+        },
+        {
+          "subject": "target_condition",
+          "value": "loaded",
+          "evidence_ids": [
+            "e_14d55888f9bc"
+          ]
+        },
+        {
+          "subject": "test",
+          "value": "unsafe",
+          "evidence_ids": [
+            "e_776a13a3f006"
+          ]
+        },
+        {
+          "subject": "test_condition",
+          "value": "loaded",
+          "evidence_ids": [
+            "e_66806cd423ad"
+          ]
+        }
+      ],
+      "insights": [
+        {
+          "subject": "applicable_source",
+          "value": "test",
+          "evidence_ids": [
+            "e_14d55888f9bc",
+            "e_66806cd423ad",
+            "e_cc0aae90b4e6"
+          ]
+        },
+        {
+          "subject": "preferred_source",
+          "value": "test",
+          "evidence_ids": [
+            "e_14d55888f9bc",
+            "e_66806cd423ad",
+            "e_89893e78d219",
+            "e_8f26fb7ab3e6",
+            "e_cc0aae90b4e6"
+          ]
+        },
+        {
+          "subject": "resolved_safety",
+          "value": "unsafe",
+          "evidence_ids": [
+            "e_14d55888f9bc",
+            "e_66806cd423ad",
+            "e_776a13a3f006",
+            "e_89893e78d219",
+            "e_8f26fb7ab3e6",
+            "e_a94cd5a160b9",
+            "e_cc0aae90b4e6"
+          ]
+        }
+      ],
+      "uncertainty": {
+        "confidence": null,
+        "assumptions": [],
+        "evidence_ids": [
+          "e_14d55888f9bc",
+          "e_66806cd423ad",
+          "e_776a13a3f006",
+          "e_89893e78d219",
+          "e_8f26fb7ab3e6",
+          "e_a94cd5a160b9",
+          "e_cc0aae90b4e6",
+          "e_d0640a52ba7d"
+        ],
+        "unknowns": []
+      },
+      "conclusion": "stop_loaded_operation",
+      "decision_summary": "Public rules evaluated over available observations."
+    }
+  ],
+  "metrics": {
+    "task_success": 1,
+    "gold_claim_coverage": 1.0,
+    "required_insight_coverage": 1.0,
+    "worker_evidence_coverage": 1.0,
+    "final_evidence_coverage": 1.0,
+    "worker_distinct_insights": 0,
+    "worker_contradictions": 0,
+    "final_contradictions": 0,
+    "unsupported_claims": 0,
+    "worker_unsupported_claims": 0,
+    "agent_failures": 0,
+    "collective_evidence_coverage_gain": 0.5714285714285714,
+    "collective_claim_coverage_gain": 0.5714285714285714,
+    "collective_insight_coverage_gain": 0.0,
+    "marginal_final_support_loss_mean": 0.3333333333333333,
+    "marginal_final_support_loss_max": 0.4285714285714286,
+    "evidence_unique": 1.0,
+    "evidence_redundancy": 0.0,
+    "evidence_jaccard": 0.0,
+    "claim_unique": 1.0,
+    "claim_redundancy": 0.0,
+    "claim_jaccard": 0.0,
+    "insight_unique": 0,
+    "insight_redundancy": 0,
+    "insight_jaccard": null,
+    "context_leaks": 0,
+    "result_leaks": 0,
+    "gold_leaks": 0,
+    "raw_exposure_outside_partition": 0,
+    "input_tokens": 4964,
+    "output_tokens": 693,
+    "total_tokens": 5657,
+    "model_calls": 4,
+    "latency_ms": 189.99879201874137,
+    "cost_usd": null
+  },
+  "usage_kind": "character-quarter estimate",
+  "errors": [],
+  "diagnostics": {
+    "missing_claims": [],
+    "missing_insights": [],
+    "worker_valid_keys": [
+      [
+        "calibration=valid",
+        "test=unsafe"
+      ],
+      [
+        "dashboard_condition=unloaded",
+        "sample_order=test_newer",
+        "test_condition=loaded"
+      ],
+      [
+        "dashboard=safe",
+        "target_condition=loaded"
+      ]
+    ],
+    "worker_evidence": [
+      [
+        "e_776a13a3f006",
+        "e_8f26fb7ab3e6"
+      ],
+      [
+        "e_66806cd423ad",
+        "e_89893e78d219",
+        "e_cc0aae90b4e6"
+      ],
+      [
+        "e_14d55888f9bc",
+        "e_a94cd5a160b9"
+      ]
+    ],
+    "worker_required_insights": [
+      [],
+      [],
+      []
+    ],
+    "marginal_final_claim_support": [
+      {
+        "supported_final_coverage_without": 0.7142857142857143,
+        "drop": 0.2857142857142857
+      },
+      {
+        "supported_final_coverage_without": 0.5714285714285714,
+        "drop": 0.4285714285714286
+      },
+      {
+        "supported_final_coverage_without": 0.7142857142857143,
+        "drop": 0.2857142857142857
+      }
+    ],
+    "marginal_final_insight_support": [
+      {
+        "supported_final_coverage_without": 0.0,
+        "drop": 1.0
+      },
+      {
+        "supported_final_coverage_without": 0.0,
+        "drop": 1.0
+      },
+      {
+        "supported_final_coverage_without": 0.0,
+        "drop": 1.0
+      }
+    ],
+    "marginal_method": "fixed final-output provenance support loss; no re-generation",
+    "expected_conclusion": "stop_loaded_operation",
+    "actual_conclusion": "stop_loaded_operation"
+  },
+  "trace_file": "traces/d68f76e5b1814261b4180be419c36f91.json",
+  "human_review": {
+    "task": "Resolve apparently conflicting pump-safety reports for the requested operation. Establish which source applies using the condition, calibration and temporal-order records, without automatically trusting either source.",
+    "gold": {
+      "task_id": "v2-contradiction-hard",
+      "relevant_evidence_ids": [
+        "e_a94cd5a160b9",
+        "e_cc0aae90b4e6",
+        "e_776a13a3f006",
+        "e_66806cd423ad",
+        "e_14d55888f9bc",
+        "e_8f26fb7ab3e6",
+        "e_89893e78d219"
+      ],
+      "distractor_ids": [
+        "e_a6ffa433a2a3",
+        "e_e83053d8bd81",
+        "e_ad7411770ee1"
+      ],
+      "claims": [
+        {
+          "subject": "dashboard",
+          "value": "safe",
+          "supporting_sets": [
+            [
+              "e_a94cd5a160b9"
+            ]
+          ]
+        },
+        {
+          "subject": "dashboard_condition",
+          "value": "unloaded",
+          "supporting_sets": [
+            [
+              "e_cc0aae90b4e6"
+            ]
+          ]
+        },
+        {
+          "subject": "test",
+          "value": "unsafe",
+          "supporting_sets": [
+            [
+              "e_776a13a3f006"
+            ]
+          ]
+        },
+        {
+          "subject": "test_condition",
+          "value": "loaded",
+          "supporting_sets": [
+            [
+              "e_66806cd423ad"
+            ]
+          ]
+        },
+        {
+          "subject": "target_condition",
+          "value": "loaded",
+          "supporting_sets": [
+            [
+              "e_14d55888f9bc"
+            ]
+          ]
+        },
+        {
+          "subject": "calibration",
+          "value": "valid",
+          "supporting_sets": [
+            [
+              "e_8f26fb7ab3e6"
+            ]
+          ]
+        },
+        {
+          "subject": "sample_order",
+          "value": "test_newer",
+          "supporting_sets": [
+            [
+              "e_89893e78d219"
+            ]
+          ]
+        }
+      ],
+      "required_insights": [
+        {
+          "subject": "resolved_safety",
+          "value": "unsafe",
+          "supporting_sets": [
+            [
+              "e_14d55888f9bc",
+              "e_66806cd423ad",
+              "e_776a13a3f006",
+              "e_89893e78d219",
+              "e_8f26fb7ab3e6",
+              "e_a94cd5a160b9",
+              "e_cc0aae90b4e6"
+            ]
+          ]
+        }
+      ],
+      "optional_insights": [
+        {
+          "subject": "applicable_source",
+          "value": "test",
+          "supporting_sets": [
+            [
+              "e_14d55888f9bc",
+              "e_66806cd423ad",
+              "e_cc0aae90b4e6"
+            ]
+          ]
+        },
+        {
+          "subject": "preferred_source",
+          "value": "test",
+          "supporting_sets": [
+            [
+              "e_14d55888f9bc",
+              "e_66806cd423ad",
+              "e_89893e78d219",
+              "e_8f26fb7ab3e6",
+              "e_cc0aae90b4e6"
+            ]
+          ]
+        }
+      ],
+      "expected_conclusion": "stop_loaded_operation",
+      "constraints": [
+        "dashboard",
+        "dashboard_condition",
+        "test",
+        "test_condition",
+        "target_condition",
+        "calibration",
+        "sample_order"
+      ],
+      "failure_factors": [],
+      "hidden_annotation": "GOLD_ONLY_5ce6499f2edac8a51eeb",
+      "benchmark_version": "2.0.0",
+      "optional_claims": [
+        {
+          "subject": "operator_memory",
+          "value": "usually_safe",
+          "supporting_sets": [
+            [
+              "e_d0640a52ba7d"
+            ]
+          ]
+        }
+      ],
+      "weak_evidence_ids": [
+        "e_d0640a52ba7d"
+      ],
+      "evidence_importance": {
+        "e_a94cd5a160b9": 2,
+        "e_cc0aae90b4e6": 2,
+        "e_776a13a3f006": 2,
+        "e_66806cd423ad": 2,
+        "e_14d55888f9bc": 2,
+        "e_8f26fb7ab3e6": 2,
+        "e_89893e78d219": 2
+      },
+      "decision_supporting_sets": [
+        [
+          "e_14d55888f9bc",
+          "e_66806cd423ad",
+          "e_776a13a3f006",
+          "e_89893e78d219",
+          "e_8f26fb7ab3e6",
+          "e_a94cd5a160b9",
+          "e_cc0aae90b4e6"
+        ]
+      ],
+      "allowed_uncertainty": [],
+      "required_unknowns": [],
+      "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+    },
+    "workers": [
+      {
+        "id": "3bfbd20e4b1446f283bde2ad363da125",
+        "name": "worker_0",
+        "version": 1,
+        "producer": "worker_0",
+        "node_id": "worker_0",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "calibration",
+              "value": "valid",
+              "evidence_ids": [
+                "e_8f26fb7ab3e6"
+              ]
+            },
+            {
+              "subject": "test",
+              "value": "unsafe",
+              "evidence_ids": [
+                "e_776a13a3f006"
+              ]
+            }
+          ],
+          "insights": [],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_776a13a3f006",
+              "e_8f26fb7ab3e6"
+            ],
+            "unknowns": [
+              "dashboard",
+              "dashboard_condition",
+              "test_condition",
+              "target_condition",
+              "sample_order",
+              "operator_memory"
+            ]
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_776a13a3f006",
+          "e_8f26fb7ab3e6"
+        ],
+        "created_at": "2026-09-29T01:25:56.357952Z"
+      },
+      {
+        "id": "aa2332cc4e5f494fa9dc71b1fce217de",
+        "name": "worker_1",
+        "version": 1,
+        "producer": "worker_1",
+        "node_id": "worker_1",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "dashboard_condition",
+              "value": "unloaded",
+              "evidence_ids": [
+                "e_cc0aae90b4e6"
+              ]
+            },
+            {
+              "subject": "operator_memory",
+              "value": "usually_safe",
+              "evidence_ids": [
+                "e_d0640a52ba7d"
+              ]
+            },
+            {
+              "subject": "sample_order",
+              "value": "test_newer",
+              "evidence_ids": [
+                "e_89893e78d219"
+              ]
+            },
+            {
+              "subject": "test_condition",
+              "value": "loaded",
+              "evidence_ids": [
+                "e_66806cd423ad"
+              ]
+            }
+          ],
+          "insights": [],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_66806cd423ad",
+              "e_89893e78d219",
+              "e_cc0aae90b4e6",
+              "e_d0640a52ba7d"
+            ],
+            "unknowns": [
+              "dashboard",
+              "test",
+              "target_condition",
+              "calibration"
+            ]
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_66806cd423ad",
+          "e_89893e78d219",
+          "e_cc0aae90b4e6",
+          "e_d0640a52ba7d"
+        ],
+        "created_at": "2026-09-29T01:25:56.393965Z"
+      },
+      {
+        "id": "12a2b40995b243b6bafdd4be3ff54688",
+        "name": "worker_2",
+        "version": 1,
+        "producer": "worker_2",
+        "node_id": "worker_2",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "dashboard",
+              "value": "safe",
+              "evidence_ids": [
+                "e_a94cd5a160b9"
+              ]
+            },
+            {
+              "subject": "target_condition",
+              "value": "loaded",
+              "evidence_ids": [
+                "e_14d55888f9bc"
+              ]
+            }
+          ],
+          "insights": [],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_14d55888f9bc",
+              "e_a94cd5a160b9"
+            ],
+            "unknowns": [
+              "dashboard_condition",
+              "test",
+              "test_condition",
+              "calibration",
+              "sample_order",
+              "operator_memory"
+            ]
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_14d55888f9bc",
+          "e_a94cd5a160b9"
+        ],
+        "created_at": "2026-09-29T01:25:56.436767Z"
+      }
+    ]
+  },
+  "partition_diagnostics": {
+    "workers": {
+      "worker_0": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      },
+      "worker_1": {
+        "relevant": 3,
+        "weak": 1,
+        "distractors": 1,
+        "importance": 6
+      },
+      "worker_2": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      }
+    },
+    "max_decision_support_share": 0.42857142857142855,
+    "importance_range": 2,
+    "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+  }
+}

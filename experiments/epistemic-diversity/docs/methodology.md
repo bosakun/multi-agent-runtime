@@ -1,9 +1,14 @@
 # Methodology — v2 amendments and retained v1 record
 
-Current execution protocol is pilot-2.2. For local Ollama, independent workers
+Current execution protocol is pilot-2.3. For local Ollama, independent workers
 execute sequentially and provider dispatch is limited to one in-flight call.
-Agent/client timeout is 300 seconds. The preserved 90-second failure is operational.
-See protocol-2.2-amendment.md for scheduling assumptions and fresh-path rules.
+Agent/client timeout is 600 seconds, and its unchanged 2048 semantic limit is
+translated explicitly to `max_tokens`. Standard timeout stays 90 seconds and its
+request field stays `max_completion_tokens`. Actual wire fields are checked and
+journaled before transmission; thinking remains model-default with no override.
+The preserved 90-second and 300-second failures are operational, not performance
+results. See protocol-2.3-amendment.md for the two corrections, scheduling
+assumptions, fresh-path rules and prohibition on pooling 2.1/2.2/2.3 cohorts.
 
 Public rule and candidate order is
 randomized identically across all conditions for each task/seed, without gold.
@@ -73,8 +78,9 @@ flowchart LR
 Its policy objects declare document visibility and allowed artifact producers.
 It never loads annotations. The host-only assignment code uses relevance strata
 to balance partitions; this is oracle routing, disclosed rather than hidden.
-`app/` imports no research module. There are no experiment-specific runtime
-branches. Both demos and the new experiment use the same generic runtime.
+`app/` imports no research module. Its HTTP adapter offers a generic explicit
+token-limit field, defaulting to its existing behavior. There are no experiment-
+or model-specific runtime branches. Both demos and the experiment use that runtime.
 
 Worker context contains task, public reporting fields/alternative decision rules,
 and its allowed knowledge documents. It contains no other artifacts or memory.

@@ -1,0 +1,135 @@
+{
+  "version": "1.0.0",
+  "origin": "human-readable authored synthetic fixtures; no benchmark or failed-case replay",
+  "fixtures": [
+    {
+      "id": "diag-direct",
+      "purpose": "Basic evidence-to-JSON completion and metadata control",
+      "prompt_kind": "worker",
+      "output_schema_id": "worker.v1",
+      "context": {
+        "agent_id": "worker_0",
+        "run_id": "11111111111111111111111111111111",
+        "task": "Report the observed gallery-room readiness fields. Do not infer any event plan.",
+        "inputs": {
+          "reporting_fields": ["west_room_lighting", "east_room_signage"],
+          "inference_rules": [],
+          "decision_rules": []
+        },
+        "knowledge": [
+          {"id": "diag-light", "content": "Inspection observation: west_room_lighting = ready.", "trust": "untrusted_data"},
+          {"id": "diag-sign", "content": "Inspection observation: east_room_signage = pending.", "trust": "untrusted_data"}
+        ],
+        "artifacts": [],
+        "messages": [],
+        "private_memory": {},
+        "shared_memory": {},
+        "long_term_memory": {}
+      }
+    },
+    {
+      "id": "diag-partial",
+      "purpose": "Missing-local-information handling without access to withheld facts",
+      "prompt_kind": "worker",
+      "output_schema_id": "worker.v1",
+      "context": {
+        "agent_id": "worker_0",
+        "run_id": "22222222222222222222222222222222",
+        "task": "Assess the supplied setup observations against the public opening criteria. Report supported facts and unknown fields; do not invent missing observations.",
+        "inputs": {
+          "reporting_fields": ["north_display_ready", "south_display_ready", "aisle_clear"],
+          "inference_rules": [
+            {
+              "premises": [
+                {"subject": "north_display_ready", "value": "yes"},
+                {"subject": "south_display_ready", "value": "yes"},
+                {"subject": "aisle_clear", "value": "yes"}
+              ],
+              "conclusion": {"subject": "opening_readiness", "value": "ready"}
+            }
+          ],
+          "decision_rules": []
+        },
+        "knowledge": [
+          {"id": "diag-north", "content": "Inspection observation: north_display_ready = yes.", "trust": "untrusted_data"},
+          {"id": "diag-aisle", "content": "Inspection observation: aisle_clear = yes.", "trust": "untrusted_data"}
+        ],
+        "artifacts": [],
+        "messages": [],
+        "private_memory": {},
+        "shared_memory": {},
+        "long_term_memory": {}
+      }
+    },
+    {
+      "id": "diag-artifacts",
+      "purpose": "Structured-artifact synthesis into the final JSON schema",
+      "prompt_kind": "synthesizer",
+      "output_schema_id": "final.v1",
+      "context": {
+        "agent_id": "synthesizer",
+        "run_id": "33333333333333333333333333333333",
+        "task": "Summarize the published installation observations and apply the public readiness criteria. Use only these synthetic published artifacts, not raw inspection records.",
+        "inputs": {
+          "reporting_fields": ["mounts_checked", "labels_checked", "walkway_checked"],
+          "inference_rules": [
+            {
+              "premises": [
+                {"subject": "mounts_checked", "value": "yes"},
+                {"subject": "labels_checked", "value": "yes"},
+                {"subject": "walkway_checked", "value": "yes"}
+              ],
+              "conclusion": {"subject": "installation_readiness", "value": "ready"}
+            }
+          ],
+          "decision_rules": [
+            {
+              "premises": [{"subject": "installation_readiness", "value": "ready"}],
+              "choice": "publish_installation_summary"
+            }
+          ]
+        },
+        "knowledge": [],
+        "artifacts": [
+          {
+            "id": "diag-artifact-0", "name": "Synthetic mount note", "version": 1,
+            "producer": "worker_0", "node_id": "worker_0", "schema_id": "worker.v1",
+            "readers": ["synthesizer"], "evidence_ids": ["diag-mount"],
+            "created_at": "2026-09-29T00:00:00Z",
+            "payload": {
+              "claims": [{"subject": "mounts_checked", "value": "yes", "evidence_ids": ["diag-mount"]}],
+              "insights": [],
+              "uncertainty": {"confidence": null, "assumptions": [], "evidence_ids": ["diag-mount"], "unknowns": []}
+            }
+          },
+          {
+            "id": "diag-artifact-1", "name": "Synthetic label note", "version": 1,
+            "producer": "worker_1", "node_id": "worker_1", "schema_id": "worker.v1",
+            "readers": ["synthesizer"], "evidence_ids": ["diag-label"],
+            "created_at": "2026-09-29T00:00:00Z",
+            "payload": {
+              "claims": [{"subject": "labels_checked", "value": "yes", "evidence_ids": ["diag-label"]}],
+              "insights": [],
+              "uncertainty": {"confidence": null, "assumptions": [], "evidence_ids": ["diag-label"], "unknowns": []}
+            }
+          },
+          {
+            "id": "diag-artifact-2", "name": "Synthetic walkway note", "version": 1,
+            "producer": "worker_2", "node_id": "worker_2", "schema_id": "worker.v1",
+            "readers": ["synthesizer"], "evidence_ids": ["diag-walkway"],
+            "created_at": "2026-09-29T00:00:00Z",
+            "payload": {
+              "claims": [{"subject": "walkway_checked", "value": "yes", "evidence_ids": ["diag-walkway"]}],
+              "insights": [],
+              "uncertainty": {"confidence": null, "assumptions": [], "evidence_ids": ["diag-walkway"], "unknowns": []}
+            }
+          }
+        ],
+        "messages": [],
+        "private_memory": {},
+        "shared_memory": {},
+        "long_term_memory": {}
+      }
+    }
+  ]
+}

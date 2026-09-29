@@ -1,0 +1,61 @@
+{
+  "plan_id": "ollama-token-budget-diagnostic-v1",
+  "plan_version": "1.0.0",
+  "status": "planning_only; implementation_and_real_launch_require_separate_approval",
+  "kind": "operational_compatibility_diagnostic; not a research pilot",
+  "historical_protocol": "pilot-2.3",
+  "historical_freeze_sha256": "fb661f49dd4b98276ae1594ded53b3aca53ac92b91d01e6b9d26a5913872e361",
+  "provider": "OpenAICompatibleProvider",
+  "model": "qwen3:14b",
+  "endpoint": "http://127.0.0.1:11434/v1/",
+  "temperature": 0,
+  "thinking": "model_default; no override sent",
+  "timeout_seconds": 600,
+  "worker_concurrency": 1,
+  "model_concurrency": 1,
+  "token_limit_parameter": "max_tokens",
+  "generation_limits": [2048, 4096],
+  "repetitions_per_cell": 1,
+  "tools": [],
+  "max_attempts_per_cell": 1,
+  "ordering_seed": 20260928,
+  "backend_generation_seed": "absent; preserve existing provider request behavior",
+  "planned_calls": 6,
+  "hard_call_limit": 6,
+  "maximum_generated_tokens_if_limits_enforced": 18432,
+  "maximum_generation_wait_seconds": 3600,
+  "future_campaign": "runs/qwen3-14b-token-budget-diag-v1",
+  "future_binding": "runs/qwen3-14b-token-budget-diag-v1/binding.json",
+  "future_seal": "diagnostics/token-budget-v1/seal.json",
+  "inputs_file": "diagnostics/token-budget-v1/inputs.json",
+  "prompt_refs": {
+    "worker": "prompts/worker_v2.txt",
+    "worker_role": "prompts/roles_v1.json#neutral",
+    "synthesizer": "prompts/synthesizer_v2.txt"
+  },
+  "schema_refs": {
+    "worker.v1": "epistemic.models.WorkerOutput",
+    "final.v1": "epistemic.models.FinalOutput"
+  },
+  "schedule": [
+    {"cell_id": "cell-01", "fixture_id": "diag-direct", "max_output_tokens": 4096},
+    {"cell_id": "cell-02", "fixture_id": "diag-direct", "max_output_tokens": 2048},
+    {"cell_id": "cell-03", "fixture_id": "diag-partial", "max_output_tokens": 2048},
+    {"cell_id": "cell-04", "fixture_id": "diag-partial", "max_output_tokens": 4096},
+    {"cell_id": "cell-05", "fixture_id": "diag-artifacts", "max_output_tokens": 2048},
+    {"cell_id": "cell-06", "fixture_id": "diag-artifacts", "max_output_tokens": 4096}
+  ],
+  "expected_diagnostic_failure": ["provider_output_truncated"],
+  "stop_on": [
+    "timeout", "transport_error", "http_error", "provider_refusal",
+    "non_length_schema_or_envelope_failure", "missing_required_usage_metadata",
+    "unexpected_finish_reason", "observer_or_persistence_failure",
+    "request_limit_or_thinking_override_mismatch", "budget_or_binding_failure"
+  ],
+  "forbidden": [
+    "real_call_without_explicit_launch_approval", "benchmark_input_or_gold_access",
+    "old_campaign_or_binding_reuse", "retry", "resume", "continuation",
+    "json_repair", "hidden_reasoning_logging", "automatic_limit_escalation",
+    "automatic_pilot_launch", "automatic_protocol24_creation"
+  ]
+}

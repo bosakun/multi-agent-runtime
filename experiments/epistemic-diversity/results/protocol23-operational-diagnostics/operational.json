@@ -1,0 +1,484 @@
+{
+  "kind": "operational_failure_audit; not performance analysis",
+  "protocol": "pilot-2.3",
+  "executed_runs": 5,
+  "records": 5,
+  "budget_used_after": 19,
+  "journal_count": 19,
+  "stopped_reason": "runtime/schema/transport/boundary failure; retain all attempted records",
+  "record_statuses": [
+    {
+      "task_id": "v2-synthesis-easy",
+      "condition": "C2",
+      "status": "succeeded",
+      "errors": [],
+      "model_calls": 4
+    },
+    {
+      "task_id": "v2-synthesis-easy",
+      "condition": "C3",
+      "status": "succeeded",
+      "errors": [],
+      "model_calls": 4
+    },
+    {
+      "task_id": "v2-diagnosis-medium",
+      "condition": "C2",
+      "status": "succeeded",
+      "errors": [],
+      "model_calls": 4
+    },
+    {
+      "task_id": "v2-diagnosis-medium",
+      "condition": "C3",
+      "status": "succeeded",
+      "errors": [],
+      "model_calls": 4
+    },
+    {
+      "task_id": "v2-constraints-medium",
+      "condition": "C3",
+      "status": "partial",
+      "errors": [
+        "provider_output_truncated",
+        "RuntimeFault"
+      ],
+      "model_calls": 3
+    }
+  ],
+  "failures": [
+    {
+      "task_id": "v2-constraints-medium",
+      "condition": "C3",
+      "run_id": "e14b05fe11754953a75d6010dc002060",
+      "errors": [
+        "provider_output_truncated",
+        "RuntimeFault"
+      ],
+      "trace": "traces/e14b05fe11754953a75d6010dc002060.json",
+      "run_latency_seconds": 863.3450690830359,
+      "failed_nodes": [
+        {
+          "node_id": "worker_0",
+          "error": {
+            "code": "provider_output_truncated",
+            "retryable": true
+          },
+          "attempts": 1,
+          "latency_seconds": 431.3516207910143
+        }
+      ],
+      "synthesizer_executed": false
+    }
+  ],
+  "leakage": {
+    "context_leaks": 0,
+    "result_leaks": 0,
+    "gold_leaks": 0
+  },
+  "unknown_usage_calls": 1,
+  "known_input_tokens_subtotal": 19116,
+  "known_generated_tokens_subtotal": 19007,
+  "calls": [
+    {
+      "journal": "call-journal/0001_3c984a7e37f649039285f9caf73d260b_worker_0.json",
+      "run_id": "3c984a7e37f649039285f9caf73d260b",
+      "agent_id": "worker_0",
+      "error": null,
+      "latency_seconds": 55.50626337504946,
+      "input_tokens": 852,
+      "generated_tokens": 654,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 1394,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0002_3c984a7e37f649039285f9caf73d260b_worker_1.json",
+      "run_id": "3c984a7e37f649039285f9caf73d260b",
+      "agent_id": "worker_1",
+      "error": null,
+      "latency_seconds": 53.68908654095139,
+      "input_tokens": 854,
+      "generated_tokens": 642,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 1406,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0003_3c984a7e37f649039285f9caf73d260b_worker_2.json",
+      "run_id": "3c984a7e37f649039285f9caf73d260b",
+      "agent_id": "worker_2",
+      "error": null,
+      "latency_seconds": 83.84678070805967,
+      "input_tokens": 853,
+      "generated_tokens": 774,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 1274,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0004_3c984a7e37f649039285f9caf73d260b_synthesizer.json",
+      "run_id": "3c984a7e37f649039285f9caf73d260b",
+      "agent_id": "synthesizer",
+      "error": null,
+      "latency_seconds": 87.430727875093,
+      "input_tokens": 1932,
+      "generated_tokens": 630,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 1418,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0005_1252c8300fbe433988b56515964140de_worker_0.json",
+      "run_id": "1252c8300fbe433988b56515964140de",
+      "agent_id": "worker_0",
+      "error": null,
+      "latency_seconds": 89.19738558295649,
+      "input_tokens": 573,
+      "generated_tokens": 673,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 1375,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0006_1252c8300fbe433988b56515964140de_worker_1.json",
+      "run_id": "1252c8300fbe433988b56515964140de",
+      "agent_id": "worker_1",
+      "error": null,
+      "latency_seconds": 89.93235308304429,
+      "input_tokens": 629,
+      "generated_tokens": 721,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 1327,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0007_1252c8300fbe433988b56515964140de_worker_2.json",
+      "run_id": "1252c8300fbe433988b56515964140de",
+      "agent_id": "worker_2",
+      "error": null,
+      "latency_seconds": 75.63696866703685,
+      "input_tokens": 573,
+      "generated_tokens": 605,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 1443,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0008_1252c8300fbe433988b56515964140de_synthesizer.json",
+      "run_id": "1252c8300fbe433988b56515964140de",
+      "agent_id": "synthesizer",
+      "error": null,
+      "latency_seconds": 277.99970724992454,
+      "input_tokens": 1606,
+      "generated_tokens": 2033,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 15,
+      "near_limit": true,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0009_e60bba92b3024c7bb4cc5ed9d49758c6_worker_0.json",
+      "run_id": "e60bba92b3024c7bb4cc5ed9d49758c6",
+      "agent_id": "worker_0",
+      "error": null,
+      "latency_seconds": 144.6871478749672,
+      "input_tokens": 1036,
+      "generated_tokens": 1038,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 1010,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0010_e60bba92b3024c7bb4cc5ed9d49758c6_worker_1.json",
+      "run_id": "e60bba92b3024c7bb4cc5ed9d49758c6",
+      "agent_id": "worker_1",
+      "error": null,
+      "latency_seconds": 176.42455516709015,
+      "input_tokens": 1034,
+      "generated_tokens": 1269,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 779,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0011_e60bba92b3024c7bb4cc5ed9d49758c6_worker_2.json",
+      "run_id": "e60bba92b3024c7bb4cc5ed9d49758c6",
+      "agent_id": "worker_2",
+      "error": null,
+      "latency_seconds": 187.34832170896698,
+      "input_tokens": 1035,
+      "generated_tokens": 1290,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 758,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0012_e60bba92b3024c7bb4cc5ed9d49758c6_synthesizer.json",
+      "run_id": "e60bba92b3024c7bb4cc5ed9d49758c6",
+      "agent_id": "synthesizer",
+      "error": null,
+      "latency_seconds": 196.60433537501376,
+      "input_tokens": 2524,
+      "generated_tokens": 1159,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 889,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0013_59971e54891b41ab9e71b95cc593635f_worker_0.json",
+      "run_id": "59971e54891b41ab9e71b95cc593635f",
+      "agent_id": "worker_0",
+      "error": null,
+      "latency_seconds": 137.84600799996406,
+      "input_tokens": 706,
+      "generated_tokens": 958,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 1090,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0014_59971e54891b41ab9e71b95cc593635f_worker_1.json",
+      "run_id": "59971e54891b41ab9e71b95cc593635f",
+      "agent_id": "worker_1",
+      "error": null,
+      "latency_seconds": 166.04047762497794,
+      "input_tokens": 702,
+      "generated_tokens": 1183,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 865,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0015_59971e54891b41ab9e71b95cc593635f_worker_2.json",
+      "run_id": "59971e54891b41ab9e71b95cc593635f",
+      "agent_id": "worker_2",
+      "error": null,
+      "latency_seconds": 161.9511860839557,
+      "input_tokens": 706,
+      "generated_tokens": 889,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 1159,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0016_59971e54891b41ab9e71b95cc593635f_synthesizer.json",
+      "run_id": "59971e54891b41ab9e71b95cc593635f",
+      "agent_id": "synthesizer",
+      "error": null,
+      "latency_seconds": 524.3735091249691,
+      "input_tokens": 2018,
+      "generated_tokens": 1334,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 714,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0017_e14b05fe11754953a75d6010dc002060_worker_0.json",
+      "run_id": "e14b05fe11754953a75d6010dc002060",
+      "agent_id": "worker_0",
+      "error": "RuntimeFault",
+      "latency_seconds": 431.3440007499885,
+      "input_tokens": null,
+      "generated_tokens": null,
+      "declared_limit": 2048,
+      "reported_limit_headroom": null,
+      "near_limit": null,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0018_e14b05fe11754953a75d6010dc002060_worker_1.json",
+      "run_id": "e14b05fe11754953a75d6010dc002060",
+      "agent_id": "worker_1",
+      "error": null,
+      "latency_seconds": 273.41149858303834,
+      "input_tokens": 741,
+      "generated_tokens": 2025,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 23,
+      "near_limit": true,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    },
+    {
+      "journal": "call-journal/0019_e14b05fe11754953a75d6010dc002060_worker_2.json",
+      "run_id": "e14b05fe11754953a75d6010dc002060",
+      "agent_id": "worker_2",
+      "error": null,
+      "latency_seconds": 158.51832995796576,
+      "input_tokens": 742,
+      "generated_tokens": 1130,
+      "declared_limit": 2048,
+      "reported_limit_headroom": 918,
+      "near_limit": false,
+      "backend_request": {
+        "token_limit_parameter": "max_tokens",
+        "token_limit_fields": {
+          "max_tokens": 2048
+        },
+        "thinking_fields": []
+      }
+    }
+  ],
+  "source_json_sha256": {
+    "call-journal/0001_3c984a7e37f649039285f9caf73d260b_worker_0.json": "4d376586d5320edea279441ab26268e63158c9d619abfa8b195a4499876df7c1",
+    "call-journal/0002_3c984a7e37f649039285f9caf73d260b_worker_1.json": "107903aba91f21fa0af260c90c01cfbd3dcc75814536ca308a0fa3614d168a33",
+    "call-journal/0003_3c984a7e37f649039285f9caf73d260b_worker_2.json": "6703cbdd5192e9f0bb533ae6421e109301614defb9e7d3b78a97b3bb3d790558",
+    "call-journal/0004_3c984a7e37f649039285f9caf73d260b_synthesizer.json": "ea540e343b8c62587ed6b2b80652271a1acd6f1cc01987676fe06462b84fc6e2",
+    "call-journal/0005_1252c8300fbe433988b56515964140de_worker_0.json": "cb4f7be6757228ae4c176643d1e165f46b8c132853fe8e64e985b11125455c74",
+    "call-journal/0006_1252c8300fbe433988b56515964140de_worker_1.json": "17f5e7c369fe90870199b56538ab11ebb837e685a4cc08db66959ed672ae6ab1",
+    "call-journal/0007_1252c8300fbe433988b56515964140de_worker_2.json": "056b875b41ad35a03cba44d5f7cea520366d920fce7607528c0f3116bbb119bc",
+    "call-journal/0008_1252c8300fbe433988b56515964140de_synthesizer.json": "9e3ccd0a31ffb3657ec3130a9e1957e9dc847048fa912cfb6b9f9286b1fa0bb1",
+    "call-journal/0009_e60bba92b3024c7bb4cc5ed9d49758c6_worker_0.json": "a41459d5ebc1d3138e84bdac28ee878be13dbb7d18d20a0fd214c8be04f6de34",
+    "call-journal/0010_e60bba92b3024c7bb4cc5ed9d49758c6_worker_1.json": "4d9db9d87c4a7cda1dd608dc31eecf9ac75a86989212e67fa552894b0f80df48",
+    "call-journal/0011_e60bba92b3024c7bb4cc5ed9d49758c6_worker_2.json": "622e2e72771af4bc4ce090100d84dca92b28d89a346e0770a36ea2946cb670db",
+    "call-journal/0012_e60bba92b3024c7bb4cc5ed9d49758c6_synthesizer.json": "a5c81eaec3cfa071e93527faa233dc0debc007fce9376718f908e98cea01e0c9",
+    "call-journal/0013_59971e54891b41ab9e71b95cc593635f_worker_0.json": "1e3ce95e1d4c40dd1014887465262c484ee5f5bdee1735bda6bdcbc4ae4affef",
+    "call-journal/0014_59971e54891b41ab9e71b95cc593635f_worker_1.json": "b1fe20fe9fd9faa4336b64479c8606c2bb0a72867eab79298398ddcaa8dcad32",
+    "call-journal/0015_59971e54891b41ab9e71b95cc593635f_worker_2.json": "bf9d4a1dce1bb56cb6995eadb910e71eee05d62eeaa3844063dbbaf47ff5e23b",
+    "call-journal/0016_59971e54891b41ab9e71b95cc593635f_synthesizer.json": "e533c7055c92fce99cbbae7966f8c846cfbd29f6efb60b683d8b323ddd66c087",
+    "call-journal/0017_e14b05fe11754953a75d6010dc002060_worker_0.json": "74d15bf7cc01d48728af2918a69c0ab268a1eea942a3ddfe762a95727e902104",
+    "call-journal/0018_e14b05fe11754953a75d6010dc002060_worker_1.json": "aed2bae0fef4c58243f8187c08ec80804c90d32b09cd0565b64b3e384f07ffb2",
+    "call-journal/0019_e14b05fe11754953a75d6010dc002060_worker_2.json": "2839b58ca6f33e0aeaf136f1306f5dbd33802611ac9fd896ced5ad4cdb3455b0",
+    "manifest.json": "039e8bc512bd4dba6f98362d730ce521d0c2d6f00609cd41d3fede2cc1425e47",
+    "records/1252c8300fbe433988b56515964140de.json": "eca6a702505ce27c45f6cf32363610d6388af70cd13867ab581fe4bfa959d3dd",
+    "records/3c984a7e37f649039285f9caf73d260b.json": "b4638d4cb14621ad5f3de9111106c60168d289046ecbe03e0a562420c3e055a0",
+    "records/59971e54891b41ab9e71b95cc593635f.json": "56f25275a7321f38f76630f27d89f2c0f41566d262207eafddca15eb7b02f7f5",
+    "records/e14b05fe11754953a75d6010dc002060.json": "cbe9f9c9b23984ba37cd707dfad48de7321aa3980cf231e75f65346387d36fe7",
+    "records/e60bba92b3024c7bb4cc5ed9d49758c6.json": "703f1a209911dd638f079b3738437d6d14f12b6b5029171fc61b5bc0db347f07",
+    "results.json": "c4adcd339ced272a4445464318c6170b6b55f3380232588ce9a9ffe85ae99104",
+    "traces/1252c8300fbe433988b56515964140de.json": "6c307d86f3b937f955f38c861892d7a524869502daa0a1f376f04a9f5c06e129",
+    "traces/3c984a7e37f649039285f9caf73d260b.json": "4d9398303a1b080c00a2dc3d90c71856a142486b6c77f339d4881c2aac37cc18",
+    "traces/59971e54891b41ab9e71b95cc593635f.json": "fc10e3c18e202c669e3b00dc2fbb95621d50c2aa18e43749b0766433525a3c0b",
+    "traces/e14b05fe11754953a75d6010dc002060.json": "afedfe8d237fbef3226d82e360266f6f2f0207688b0409e38a6f7a8b70c99992",
+    "traces/e60bba92b3024c7bb4cc5ed9d49758c6.json": "87ea5dc69962073d89fd6167110f7bc6ef30e5ad243f2e2b46b341201a00798c"
+  },
+  "limitations": [
+    "Old normalized journals cannot recover finish_reason or hidden reasoning lengths.",
+    "Generated-token counts are not final-answer-only tokens or character counts.",
+    "Unknown failed usage is not zero and subtotals are not whole-campaign usage.",
+    "Near-limit flags (95%) are diagnostic heuristics, never research exclusion rules."
+  ]
+}

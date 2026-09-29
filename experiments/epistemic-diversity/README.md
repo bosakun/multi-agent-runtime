@@ -1,18 +1,35 @@
 # Role Diversity vs. Epistemic Diversity
 
-**Benchmark 2.0.0 / protocol 2.2: 30 tasks / 10 structural families.**
+**Benchmark 2.0.0 / protocol 2.3: 30 tasks / 10 structural families.**
+
+**Current operational status:** the authorized Protocol 2.3 Qwen3 pilot stopped
+after **5 runs / 19 calls** with worker output truncation, not a timeout.
+No C2/C3 performance comparison follows. See the
+[failure investigation and bounded diagnostic improvement](docs/qwen3-14b-protocol23-operational-failure.md).
+Do not rerun its binding/campaign. Real-model reliability remains unestablished;
+all prospective model/settings changes require a separately approved protocol.
+
+The separate [six-call synthetic diagnostic](docs/token-budget-diagnostic-results.md)
+has now actually completed: both 2048/4096 had 3/3 schema-valid completions, with
+Thinking unchanged. Truncation was not reproduced, so doubling the limit is not
+established as a fix. This is not a replacement research Pilot or permission to
+launch one. [Predeclared plan](docs/token-budget-diagnostic-plan.md).
 
 The qwen3:14b local protocol-2.1 pilot ended in an operational failure: one run,
 three calls, approximately 90s, two agent timeouts and CancelledError journals.
 [The preserved failure](docs/qwen3-14b-operational-failure.md) has no paired research
-outcome. [Protocol 2.2](docs/protocol-2.2-amendment.md) adds local Ollama concurrency
-1 and timeout 300s, with new freeze/binding/campaign guards. A new real run requires
-human authorization; the changes themselves do not launch it.
+outcome. The subsequent [protocol-2.2 failure](docs/qwen3-14b-protocol22-operational-failure.md)
+stopped at run 4 / call 16 with a synthesizer deadline failure.
+[Protocol 2.3](docs/protocol-2.3-amendment.md) makes exactly two local operational
+corrections: 600s deadline and explicit `max_tokens=2048` compatibility translation.
+Concurrency stays 1/1, thinking stays model-default, and scientific factors stay fixed.
+That preparation preceded the preserved failed launch; it is not permission to rerun it.
 
 How does epistemic diversity created by information separation compare with
 prompt-level role diversity in LLM multi-agent systems?
 
-This research application imports the existing runtime; `app/` is unchanged.
+This research application imports the existing runtime. Protocol 2.3 adds one
+generic optional token-limit field to its HTTP adapter; the default behavior is unchanged.
 V1's 24-task benchmark and 250 mock runs are retained unchanged under their old
 paths. Do not pool those records with v2. The [v1 README](docs/archive/README-v1.md)
 is historical; its real-main commands are no longer enabled.
@@ -98,7 +115,7 @@ freeze instead of reusing 2.0.0. Legacy generation requires
 The [experiment freeze](docs/experiment-freeze.md) fixes the question, hypotheses,
 conditions, benchmark/tasks, metrics, comparisons, analysis, settings and exclusions.
 The [pilot plan](docs/real-pilot-plan.md) fixes six task IDs, seed and stopping rules.
-`freezes/benchmark-2.0.0-protocol-2.2.json` hashes public/gold files, audit, source, prompts,
+`freezes/benchmark-2.0.0-protocol-2.3.json` hashes public/gold files, audit, source, prompts,
 protocol documents, runtime source and dependency lock. Any change blocks launch.
 The [protocol 2.1 amendment](docs/protocol-2.1-amendment.md) documents a discovered
 answer-position shortcut and common seeded criteria-order randomization. The old
@@ -106,15 +123,18 @@ protocol-2 seal, archived source and mock results remain intact; do not pool coh
 
 Model ID and endpoint are deliberately **not silently chosen**. Before a paid
 call, `bind-model` records them together with fixed temperature 0, 2048 completion
-tokens, 90s standard / 300s local timeout, one attempt/turn, no tools and seed 20260928.
+tokens, 90s standard / 600s local timeout, one attempt/turn, no tools and seed 20260928.
 Local Ollama additionally binds a fresh campaign root and serial worker/model dispatch.
+The binding names `max_tokens`; journals verify and record the actual serialized
+parameter before dispatch. Standard endpoints retain `max_completion_tokens`.
+Neither profile adds thinking/reasoning overrides or parameter fallback.
 Launch must match
 the sealed binding. See [READY_FOR_REAL_PILOT.md](READY_FOR_REAL_PILOT.md) for exact
 environment variables and commands. No credentials are stored; no `.env` is
 automatically loaded. API usage is separate from ChatGPT/Codex subscription usage.
 
-The preserved local pilot is the sole observed real-model attempt discussed here.
-No protocol-2.2 real run has been executed. Adapter regressions use fake HTTP;
+Both failed local cohorts are preserved, never pooled. No protocol-2.3 real run
+has been executed. Adapter regressions use fake HTTP;
 those fixtures do not contact Ollama or an external provider.
 
 ## Outputs and human inspection
@@ -166,3 +186,11 @@ counts, not planned claims. [Research plan](docs/research-plan.md),
 [methodology](docs/methodology.md), [related work](docs/related-work.md) and
 [paper outline](paper/outline.md) distinguish protocol, software validation and
 still-pending empirical research. No main experiment or paper conclusion is added.
+
+## Operational recovery status
+
+The latest representative recovery diagnostic succeeded, but the new real pilot
+stopped after four runs when a worker cited an evidence ID outside its context.
+The runtime rejected it; no performance comparison is valid. See the
+[Protocol 2.4 incident](docs/qwen3-14b-protocol24-operational-failure.md) and
+[failure investigation](docs/operational-recovery.md).

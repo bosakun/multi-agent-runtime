@@ -1,10 +1,14 @@
 """Durable cross-process call budget and boundary audit (synthetic data only)."""
 
 import asyncio
+import json
 import sqlite3
 import time
 from pathlib import Path
 
+import httpx
+
+from app.llm.openai_provider import TokenLimitParameter
 from app.llm.provider import ModelProvider, ModelRequest, ModelResponse
 from epistemic.models import CallRecord
 from epistemic.paths import write_json
@@ -49,12 +53,52 @@ class AuditedProvider:
         journal: Path | None = None,
         *,
         max_concurrency: int | None = None,
+        token_limit_parameter: TokenLimitParameter | None = None,
     ) -> None:
         self.provider = provider
         self.budget = budget
         self.calls: list[CallRecord] = []
         self.journal = journal
         self._semaphore = asyncio.Semaphore(max_concurrency) if max_concurrency else None
+        self._token_limit_parameter = token_limit_parameter
+
+    async def audit_http_request(self, request: httpx.Request) -> None:
+        """Verify/journal serialized limit fields before HTTP transport sees the request."""
+        body = json.loads(request.content)
+        context = json.loads(body["messages"][1]["content"])
+        records = [
+            call
+            for call in self.calls
+            if call.run_id == context["run_id"]
+            and call.agent_id == context["agent_id"]
+            and call.backend_request is None
+        ]
+        if len(records) != 1 or self._token_limit_parameter is None:
+            raise ValueError("HTTP request has no unique reserved call/explicit limit strategy")
+        record = records[0]
+        parameter = self._token_limit_parameter
+        limits = {key: body[key] for key in ("max_tokens", "max_completion_tokens") if key in body}
+        record.backend_request = {
+            "token_limit_parameter": parameter,
+            "token_limit_fields": limits,
+            "thinking_fields": [
+                key for key in ("think", "reasoning", "reasoning_effort") if key in body
+            ],
+        }
+        self._checkpoint(record)
+        config = record.request["config"]
+        if not isinstance(config, dict) or limits != {parameter: config["max_output_tokens"]}:
+            raise ValueError("Serialized token limit differs from the declared strategy/limit")
+        if record.backend_request["thinking_fields"]:
+            raise ValueError("Protocol must preserve model-default thinking without override")
+
+    def _checkpoint(self, record: CallRecord) -> None:
+        if self.journal is not None:
+            index = self.calls.index(record) + 1
+            write_json(
+                self.journal / f"{index:04}_{record.run_id}_{record.agent_id}.json",
+                record.model_dump(mode="json"),
+            )
 
     async def generate(self, request: ModelRequest) -> ModelResponse:
         if self._semaphore is not None:
@@ -70,13 +114,7 @@ class AuditedProvider:
             request=request.model_dump(mode="json"),
         )
         self.calls.append(record)
-        journal_path = (
-            (self.journal / f"{len(self.calls):04}_{record.run_id}_{record.agent_id}.json")
-            if self.journal
-            else None
-        )
-        if journal_path:
-            write_json(journal_path, record.model_dump(mode="json"))
+        self._checkpoint(record)
         started = time.perf_counter()
         try:
             response = await self.provider.generate(request)
@@ -88,5 +126,4 @@ class AuditedProvider:
             raise
         finally:
             record.latency_ms = (time.perf_counter() - started) * 1000
-            if journal_path:
-                write_json(journal_path, record.model_dump(mode="json"))
+            self._checkpoint(record)

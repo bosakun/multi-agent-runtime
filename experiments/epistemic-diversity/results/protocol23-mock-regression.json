@@ -1,0 +1,96 @@
+{
+  "label": "MOCK VALIDATION — NOT LLM RESULTS",
+  "before_protocol": "pilot-2.2",
+  "after_protocol": "pilot-2.3",
+  "executed_runs": 12,
+  "calls": 48,
+  "after_results": "runs/mock-v2p23-local/pilot/results.json",
+  "archived_reference": "results/mock-v2p22-local/records.json",
+  "freeze_sha256": "fb661f49dd4b98276ae1594ded53b3aca53ac92b91d01e6b9d26a5913872e361",
+  "case_checks": [
+    {
+      "task_id": "v2-synthesis-easy",
+      "condition": "C2",
+      "outputs_assignments_status_order_match": true,
+      "metrics_match": true,
+      "worker_payloads_match": true
+    },
+    {
+      "task_id": "v2-synthesis-easy",
+      "condition": "C3",
+      "outputs_assignments_status_order_match": true,
+      "metrics_match": true,
+      "worker_payloads_match": true
+    },
+    {
+      "task_id": "v2-diagnosis-medium",
+      "condition": "C2",
+      "outputs_assignments_status_order_match": true,
+      "metrics_match": true,
+      "worker_payloads_match": true
+    },
+    {
+      "task_id": "v2-diagnosis-medium",
+      "condition": "C3",
+      "outputs_assignments_status_order_match": true,
+      "metrics_match": true,
+      "worker_payloads_match": true
+    },
+    {
+      "task_id": "v2-constraints-medium",
+      "condition": "C3",
+      "outputs_assignments_status_order_match": true,
+      "metrics_match": true,
+      "worker_payloads_match": true
+    },
+    {
+      "task_id": "v2-constraints-medium",
+      "condition": "C2",
+      "outputs_assignments_status_order_match": true,
+      "metrics_match": true,
+      "worker_payloads_match": true
+    },
+    {
+      "task_id": "v2-contradiction-hard",
+      "condition": "C2",
+      "outputs_assignments_status_order_match": true,
+      "metrics_match": true,
+      "worker_payloads_match": true
+    },
+    {
+      "task_id": "v2-contradiction-hard",
+      "condition": "C3",
+      "outputs_assignments_status_order_match": true,
+      "metrics_match": true,
+      "worker_payloads_match": true
+    },
+    {
+      "task_id": "v2-missing-easy",
+      "condition": "C2",
+      "outputs_assignments_status_order_match": true,
+      "metrics_match": true,
+      "worker_payloads_match": true
+    },
+    {
+      "task_id": "v2-missing-easy",
+      "condition": "C3",
+      "outputs_assignments_status_order_match": true,
+      "metrics_match": true,
+      "worker_payloads_match": true
+    },
+    {
+      "task_id": "v2-causal-hard",
+      "condition": "C3",
+      "outputs_assignments_status_order_match": true,
+      "metrics_match": true,
+      "worker_payloads_match": true
+    },
+    {
+      "task_id": "v2-causal-hard",
+      "condition": "C2",
+      "outputs_assignments_status_order_match": true,
+      "metrics_match": true,
+      "worker_payloads_match": true
+    }
+  ]
+}

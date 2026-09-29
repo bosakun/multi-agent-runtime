@@ -1,11 +1,13 @@
-# Real pilot plan — pilot-2.2 / benchmark 2.0.0
+# Real pilot plan — pilot-2.3 / benchmark 2.0.0
 
 The preserved qwen3:14b protocol-2.1 attempt was an operational failure (1 run,
-3 calls, ~90s, 2 agent_timeout, 2 CancelledError). Protocol 2.2 requires the
+3 calls, ~90s, 2 agent_timeout, 2 CancelledError). Protocol 2.2 then stopped at
+four runs / 16 calls with a C3 diagnosis synthesizer timeout at 300s. Protocol 2.3 requires the
 local_ollama profile at the loopback Ollama endpoint: worker/model concurrency 1,
-300s agent/client timeout, a current freeze, new binding and a fresh campaign.
+600s agent/client timeout, explicit `max_tokens=2048`, a current freeze, new
+binding and a fresh campaign. Thinking remains model-default.
 All selection and scientific factors below remain fixed. See
-protocol-2.2-amendment.md. No new real execution is authorized by these edits.
+protocol-2.3-amendment.md. No new real execution is authorized by these edits.
 
 Protocol 2.1 preserves all choices below and adds task/seed-dependent common
 randomization of public inference-rule and decision-candidate order. See
@@ -51,18 +53,22 @@ automatically spent. The budget is persisted per campaign; failed calls count.
 
 One Chat Completions-compatible provider/endpoint and one explicit model ID for
 every worker and synthesizer across conditions. Temperature 0, maximum completion
-tokens 2048, timeout 90s standard / 300s local Ollama, max attempts 1,
+tokens 2048, timeout 90s standard / 600s local Ollama, max attempts 1,
 max model turns 1, no tools. Same worker
 output schema, same final schema, same task/global evidence and same synthesizer.
 Only the role factor changes role text; only the access factor changes visibility.
 
-The old qwen3:14b binding remains historical. Readiness requires current content
+Both old qwen3:14b bindings remain historical. Readiness requires current content
 freeze, then a new immutable
 `bind-model` file with actual model ID and normalized endpoint **before any paid
 call**. Generation settings/seed/endpoint must match that binding at launch.
 The binding contains no API key. `MODEL_NAME` is a shell convenience, not an
 automatically selected provider. Unsupported schema/temperature parameters cause
 the pilot to stop; there is no silent fallback to different generation settings.
+Local binding records `backend_token_limit_parameter=max_tokens`, while standard
+remains `max_completion_tokens`. Wire-level key/value is checked and journaled.
+No thinking/reasoning override is sent. Twelve successful runs / 48 calls, no
+errors and no boundary leaks are required before performance analysis/figures.
 
 ## Stopping and failure policy
 

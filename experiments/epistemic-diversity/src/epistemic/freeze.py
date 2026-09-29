@@ -9,7 +9,21 @@ from epistemic.benchmark_v2 import PILOT_IDS, SEED, VERSION
 from epistemic.models import ModelSettings
 from epistemic.paths import REPO, ROOT, digest, read_json, write_json
 
-FREEZE_PATH = ROOT / "freezes/benchmark-2.0.0-protocol-2.2.json"
+PROTOCOL_VERSION = "pilot-2.3"
+FREEZE_PATH = ROOT / "freezes/benchmark-2.0.0-protocol-2.3.json"
+EXECUTION_PROFILES = {
+    "standard": {
+        "worker_concurrency": 3,
+        "timeout_seconds": 90,
+        "backend_token_limit_parameter": "max_completion_tokens",
+    },
+    "local_ollama": {
+        "worker_concurrency": 1,
+        "model_concurrency": 1,
+        "timeout_seconds": 600,
+        "backend_token_limit_parameter": "max_tokens",
+    },
+}
 CONTROL_DOCUMENTS = [
     "v2-design-amendment.md",
     "experiment-freeze.md",
@@ -22,7 +36,9 @@ CONTROL_DOCUMENTS = [
     "limitations.md",
     "protocol-2.1-amendment.md",
     "protocol-2.2-amendment.md",
+    "protocol-2.3-amendment.md",
     "qwen3-14b-operational-failure.md",
+    "qwen3-14b-protocol22-operational-failure.md",
 ]
 
 
@@ -54,14 +70,12 @@ def seal(path: Path = FREEZE_PATH) -> dict[str, Any]:
         raise ValueError("Benchmark audit failed")
     payload = {
         "benchmark_version": VERSION,
-        "protocol_version": "pilot-2.2",
-        "execution_profiles": {
-            "standard": {"worker_concurrency": 3, "timeout_seconds": 90},
-            "local_ollama": {
-                "worker_concurrency": 1,
-                "model_concurrency": 1,
-                "timeout_seconds": 300,
-            },
+        "protocol_version": PROTOCOL_VERSION,
+        "execution_profiles": EXECUTION_PROFILES,
+        "generation_controls": {
+            "temperature": 0,
+            "max_output_tokens": 2048,
+            "thinking": "model_default; no override sent",
         },
         "metrics_version": "2.0.0",
         "task_ids": PILOT_IDS,
@@ -80,6 +94,8 @@ def seal(path: Path = FREEZE_PATH) -> dict[str, Any]:
 
 def verify(path: Path = FREEZE_PATH) -> dict[str, Any]:
     payload: dict[str, Any] = read_json(path)
+    if payload.get("protocol_version") != PROTOCOL_VERSION:
+        raise ValueError("Unexpected frozen pilot protocol; historical freezes are archival only")
     content = {k: v for k, v in payload.items() if k != "freeze_sha256"}
     if digest(content) != payload["freeze_sha256"] or frozen_files() != payload["files"]:
         raise ValueError(
@@ -87,12 +103,30 @@ def verify(path: Path = FREEZE_PATH) -> dict[str, Any]:
         )
     if (
         payload["benchmark_version"] != VERSION
-        or payload.get("protocol_version") != "pilot-2.2"
         or payload["task_ids"] != PILOT_IDS
         or payload["conditions"] != ["C2", "C3"]
+        or payload["seed"] != SEED
+        or payload["repetitions"] != 1
+        or payload["planned_calls"] != 48
+        or payload["execution_profiles"] != EXECUTION_PROFILES
+        or payload["generation_controls"]
+        != {
+            "temperature": 0,
+            "max_output_tokens": 2048,
+            "thinking": "model_default; no override sent",
+        }
     ):
         raise ValueError("Unexpected frozen pilot protocol")
     return payload
+
+
+def reject_historical_path(path: Path) -> None:
+    """Protect failed cohorts even if someone supplies a newly signed binding."""
+    root = path.resolve()
+    for name in ("qwen3-14b", "qwen3-14b-protocol22"):
+        historical = (ROOT / "runs" / name).resolve()
+        if root == historical or root.is_relative_to(historical):
+            raise ValueError("Historical campaign is protected; use a new protocol-2.3 campaign")
 
 
 def validate_endpoint(endpoint: str) -> str:
@@ -116,6 +150,9 @@ def bind_model(
     campaign: Path | None = None,
 ) -> dict[str, Any]:
     frozen = verify(freeze_path)
+    reject_historical_path(path)
+    if campaign is not None:
+        reject_historical_path(campaign)
     if path.exists():
         raise ValueError("Model binding already exists; do not overwrite")
     if not model.strip() or "mock" in model.lower():
@@ -125,7 +162,7 @@ def bind_model(
             "provider": "real",
             "model": model,
             "execution_profile": execution_profile,
-            "timeout_seconds": 300 if execution_profile == "local_ollama" else 90,
+            "timeout_seconds": 600 if execution_profile == "local_ollama" else 90,
         }
     )
     validate_execution_endpoint(settings, endpoint)
@@ -136,10 +173,12 @@ def bind_model(
             raise ValueError("Local binding must be written at its new campaign root")
     payload = {
         "benchmark_version": VERSION,
-        "protocol_version": "pilot-2.2",
+        "protocol_version": PROTOCOL_VERSION,
         "campaign_path": str(campaign.resolve()) if campaign is not None else None,
         "freeze_sha256": frozen["freeze_sha256"],
         "settings": settings.model_dump(),
+        "backend_token_limit_parameter": settings.backend_token_limit_parameter,
+        "execution_controls": EXECUTION_PROFILES[settings.execution_profile],
         "endpoint": validate_endpoint(endpoint),
         "seed": SEED,
         "task_ids": PILOT_IDS,
@@ -166,6 +205,7 @@ def validate_execution_endpoint(settings: ModelSettings, endpoint: str) -> None:
 def validate_local_campaign(binding: dict[str, Any], campaign: Path, path: Path) -> None:
     """Refuse reuse before creating any budget, phase, or result artifact."""
     root = campaign.resolve()
+    reject_historical_path(root)
     binding_file = path.resolve()
     if binding.get("campaign_path") != str(root):
         raise ValueError("Local Ollama requires the new campaign named in its binding")
@@ -189,15 +229,18 @@ def validate_binding(
         raise ValueError("Model binding does not match verified freeze")
     if (
         binding["settings"] != settings.model_dump()
+        or binding.get("backend_token_limit_parameter") != settings.backend_token_limit_parameter
+        or binding.get("execution_controls") != EXECUTION_PROFILES[settings.execution_profile]
         or binding["endpoint"] != validate_endpoint(endpoint)
         or binding["seed"] != seed
     ):
         raise ValueError("Generation settings/endpoint/seed differ from the pre-run binding")
     if (
         binding["task_ids"] != PILOT_IDS
-        or binding.get("protocol_version") != "pilot-2.2"
+        or binding.get("protocol_version") != PROTOCOL_VERSION
         or binding["conditions"] != ["C2", "C3"]
         or binding["repetitions"] != 1
+        or binding["planned_calls"] != 48
     ):
         raise ValueError("Binding changed the frozen pilot selection")
     return binding

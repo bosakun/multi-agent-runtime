@@ -1,0 +1,747 @@
+{
+  "experiment_id": "782673072af042bd9ca1ff77f0ae0c25",
+  "run_id": "5eab7a3f3ace4789b1333e970544136c",
+  "timestamp": "2026-09-29T01:25:55.300527+00:00",
+  "condition": "C2",
+  "task_id": "v2-diagnosis-medium",
+  "family": "diagnosis",
+  "template": "intervention_and_matched_control",
+  "seed": 20260928,
+  "repetition": 0,
+  "model_settings": {
+    "provider": "mock",
+    "model": "qwen3:14b",
+    "temperature": 0,
+    "max_output_tokens": 4096,
+    "timeout_seconds": 1200,
+    "execution_profile": "local_ollama"
+  },
+  "backend_token_limit_parameter": "max_tokens",
+  "assignment": {
+    "roles": {
+      "worker_0": "skeptical",
+      "worker_1": "systems",
+      "worker_2": "analytical"
+    },
+    "partitions": {
+      "worker_0": [
+        "e_d763d32b097c",
+        "e_2e7fdc63a03f",
+        "e_179221beb5c4"
+      ],
+      "worker_1": [
+        "e_b295c4348c4b",
+        "e_d62eee5aad19",
+        "e_9c8fb7649713"
+      ],
+      "worker_2": [
+        "e_c09b3193ee51",
+        "e_ad6549f71bd0",
+        "e_33d1b3dd49e1"
+      ]
+    },
+    "seed": 20260928
+  },
+  "protocol_fingerprint": "780926d9fb0ad8182d6cbee907c0c2f93615c95f572ef659684ab1e52310ca2c",
+  "git_commit": "b8c5fa8fb95606f2a7e7f37d95b1d50807232ee9",
+  "source_sha256": "0b461896964c3b0fde4215111edd0efa63407a567a723f13d57696005a96412a",
+  "source_dirty": true,
+  "prompt_version": "v2",
+  "benchmark_version": "2.0.0",
+  "metrics_version": "2.0.0",
+  "difficulty": "medium",
+  "dependency_depth": 2,
+  "benchmark_sha256": "1bdfac21373746ff64825b502fe21d16b3ff4392275b6864573cb14c1851b3c2",
+  "status": "succeeded",
+  "output": [
+    {
+      "claims": [
+        {
+          "subject": "control_cluster",
+          "value": "healthy",
+          "evidence_ids": [
+            "e_d763d32b097c"
+          ]
+        },
+        {
+          "subject": "database_queue",
+          "value": "normal",
+          "evidence_ids": [
+            "e_b295c4348c4b"
+          ]
+        },
+        {
+          "subject": "request_mix",
+          "value": "stable",
+          "evidence_ids": [
+            "e_ad6549f71bd0"
+          ]
+        },
+        {
+          "subject": "retry_setting",
+          "value": "raised",
+          "evidence_ids": [
+            "e_9c8fb7649713"
+          ]
+        },
+        {
+          "subject": "rollback",
+          "value": "restores",
+          "evidence_ids": [
+            "e_33d1b3dd49e1"
+          ]
+        },
+        {
+          "subject": "slowdown",
+          "value": "present",
+          "evidence_ids": [
+            "e_2e7fdc63a03f"
+          ]
+        }
+      ],
+      "insights": [
+        {
+          "subject": "candidate",
+          "value": "retry",
+          "evidence_ids": [
+            "e_2e7fdc63a03f",
+            "e_9c8fb7649713",
+            "e_b295c4348c4b"
+          ]
+        },
+        {
+          "subject": "cause",
+          "value": "retry_amplification",
+          "evidence_ids": [
+            "e_2e7fdc63a03f",
+            "e_33d1b3dd49e1",
+            "e_9c8fb7649713",
+            "e_b295c4348c4b",
+            "e_d763d32b097c"
+          ]
+        }
+      ],
+      "uncertainty": {
+        "confidence": null,
+        "assumptions": [],
+        "evidence_ids": [
+          "e_2e7fdc63a03f",
+          "e_33d1b3dd49e1",
+          "e_9c8fb7649713",
+          "e_ad6549f71bd0",
+          "e_b295c4348c4b",
+          "e_d763d32b097c"
+        ],
+        "unknowns": []
+      },
+      "conclusion": "cap_retries",
+      "decision_summary": "Public rules evaluated over available observations."
+    }
+  ],
+  "metrics": {
+    "task_success": 1,
+    "gold_claim_coverage": 1.0,
+    "required_insight_coverage": 1.0,
+    "worker_evidence_coverage": 1.0,
+    "final_evidence_coverage": 1.0,
+    "worker_distinct_insights": 1,
+    "worker_contradictions": 0,
+    "final_contradictions": 0,
+    "unsupported_claims": 0,
+    "worker_unsupported_claims": 0,
+    "agent_failures": 0,
+    "collective_evidence_coverage_gain": 0.0,
+    "collective_claim_coverage_gain": 0.0,
+    "collective_insight_coverage_gain": 0.0,
+    "marginal_final_support_loss_mean": 0.0,
+    "marginal_final_support_loss_max": 0.0,
+    "evidence_unique": 0.0,
+    "evidence_redundancy": 0.6666666666666666,
+    "evidence_jaccard": 1.0,
+    "claim_unique": 0.0,
+    "claim_redundancy": 0.6666666666666666,
+    "claim_jaccard": 1.0,
+    "insight_unique": 0.0,
+    "insight_redundancy": 0.6666666666666666,
+    "insight_jaccard": 1.0,
+    "context_leaks": 0,
+    "result_leaks": 0,
+    "gold_leaks": 0,
+    "raw_exposure_outside_partition": 18,
+    "input_tokens": 5886,
+    "output_tokens": 961,
+    "total_tokens": 6847,
+    "model_calls": 4,
+    "latency_ms": 165.94404098577797,
+    "cost_usd": null
+  },
+  "usage_kind": "character-quarter estimate",
+  "errors": [],
+  "diagnostics": {
+    "missing_claims": [],
+    "missing_insights": [],
+    "worker_valid_keys": [
+      [
+        "control_cluster=healthy",
+        "database_queue=normal",
+        "request_mix=stable",
+        "retry_setting=raised",
+        "rollback=restores",
+        "slowdown=present"
+      ],
+      [
+        "control_cluster=healthy",
+        "database_queue=normal",
+        "request_mix=stable",
+        "retry_setting=raised",
+        "rollback=restores",
+        "slowdown=present"
+      ],
+      [
+        "control_cluster=healthy",
+        "database_queue=normal",
+        "request_mix=stable",
+        "retry_setting=raised",
+        "rollback=restores",
+        "slowdown=present"
+      ]
+    ],
+    "worker_evidence": [
+      [
+        "e_2e7fdc63a03f",
+        "e_33d1b3dd49e1",
+        "e_9c8fb7649713",
+        "e_ad6549f71bd0",
+        "e_b295c4348c4b",
+        "e_d763d32b097c"
+      ],
+      [
+        "e_2e7fdc63a03f",
+        "e_33d1b3dd49e1",
+        "e_9c8fb7649713",
+        "e_ad6549f71bd0",
+        "e_b295c4348c4b",
+        "e_d763d32b097c"
+      ],
+      [
+        "e_2e7fdc63a03f",
+        "e_33d1b3dd49e1",
+        "e_9c8fb7649713",
+        "e_ad6549f71bd0",
+        "e_b295c4348c4b",
+        "e_d763d32b097c"
+      ]
+    ],
+    "worker_required_insights": [
+      [
+        "cause=retry_amplification"
+      ],
+      [
+        "cause=retry_amplification"
+      ],
+      [
+        "cause=retry_amplification"
+      ]
+    ],
+    "marginal_final_claim_support": [
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      }
+    ],
+    "marginal_final_insight_support": [
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      }
+    ],
+    "marginal_method": "fixed final-output provenance support loss; no re-generation",
+    "expected_conclusion": "cap_retries",
+    "actual_conclusion": "cap_retries"
+  },
+  "trace_file": "traces/5eab7a3f3ace4789b1333e970544136c.json",
+  "human_review": {
+    "task": "Diagnose an API slowdown. Distinguish retry amplification from database pressure using intervention and control-cluster records. Establish the states of the controls from evidence; temporal coincidence is not enough.",
+    "gold": {
+      "task_id": "v2-diagnosis-medium",
+      "relevant_evidence_ids": [
+        "e_2e7fdc63a03f",
+        "e_9c8fb7649713",
+        "e_b295c4348c4b",
+        "e_d763d32b097c",
+        "e_33d1b3dd49e1",
+        "e_ad6549f71bd0"
+      ],
+      "distractor_ids": [
+        "e_c09b3193ee51",
+        "e_d62eee5aad19",
+        "e_179221beb5c4"
+      ],
+      "claims": [
+        {
+          "subject": "slowdown",
+          "value": "present",
+          "supporting_sets": [
+            [
+              "e_2e7fdc63a03f"
+            ]
+          ]
+        },
+        {
+          "subject": "retry_setting",
+          "value": "raised",
+          "supporting_sets": [
+            [
+              "e_9c8fb7649713"
+            ]
+          ]
+        },
+        {
+          "subject": "database_queue",
+          "value": "normal",
+          "supporting_sets": [
+            [
+              "e_b295c4348c4b"
+            ]
+          ]
+        },
+        {
+          "subject": "control_cluster",
+          "value": "healthy",
+          "supporting_sets": [
+            [
+              "e_d763d32b097c"
+            ]
+          ]
+        },
+        {
+          "subject": "rollback",
+          "value": "restores",
+          "supporting_sets": [
+            [
+              "e_33d1b3dd49e1"
+            ]
+          ]
+        },
+        {
+          "subject": "request_mix",
+          "value": "stable",
+          "supporting_sets": [
+            [
+              "e_ad6549f71bd0"
+            ]
+          ]
+        }
+      ],
+      "required_insights": [
+        {
+          "subject": "cause",
+          "value": "retry_amplification",
+          "supporting_sets": [
+            [
+              "e_2e7fdc63a03f",
+              "e_33d1b3dd49e1",
+              "e_9c8fb7649713",
+              "e_b295c4348c4b",
+              "e_d763d32b097c"
+            ]
+          ]
+        }
+      ],
+      "optional_insights": [
+        {
+          "subject": "candidate",
+          "value": "retry",
+          "supporting_sets": [
+            [
+              "e_2e7fdc63a03f",
+              "e_9c8fb7649713",
+              "e_b295c4348c4b"
+            ]
+          ]
+        }
+      ],
+      "expected_conclusion": "cap_retries",
+      "constraints": [
+        "slowdown",
+        "retry_setting",
+        "database_queue",
+        "control_cluster",
+        "rollback",
+        "request_mix"
+      ],
+      "failure_factors": [],
+      "hidden_annotation": "GOLD_ONLY_c1ce004cd90b2248f521",
+      "benchmark_version": "2.0.0",
+      "optional_claims": [],
+      "weak_evidence_ids": [],
+      "evidence_importance": {
+        "e_2e7fdc63a03f": 2,
+        "e_9c8fb7649713": 2,
+        "e_b295c4348c4b": 2,
+        "e_d763d32b097c": 2,
+        "e_33d1b3dd49e1": 2,
+        "e_ad6549f71bd0": 2
+      },
+      "decision_supporting_sets": [
+        [
+          "e_2e7fdc63a03f",
+          "e_33d1b3dd49e1",
+          "e_9c8fb7649713",
+          "e_ad6549f71bd0",
+          "e_b295c4348c4b",
+          "e_d763d32b097c"
+        ]
+      ],
+      "allowed_uncertainty": [],
+      "required_unknowns": [],
+      "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+    },
+    "workers": [
+      {
+        "id": "91656edc3f8f4bf5b5a5d3bec8c78d56",
+        "name": "worker_0",
+        "version": 1,
+        "producer": "worker_0",
+        "node_id": "worker_0",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "control_cluster",
+              "value": "healthy",
+              "evidence_ids": [
+                "e_d763d32b097c"
+              ]
+            },
+            {
+              "subject": "database_queue",
+              "value": "normal",
+              "evidence_ids": [
+                "e_b295c4348c4b"
+              ]
+            },
+            {
+              "subject": "request_mix",
+              "value": "stable",
+              "evidence_ids": [
+                "e_ad6549f71bd0"
+              ]
+            },
+            {
+              "subject": "retry_setting",
+              "value": "raised",
+              "evidence_ids": [
+                "e_9c8fb7649713"
+              ]
+            },
+            {
+              "subject": "rollback",
+              "value": "restores",
+              "evidence_ids": [
+                "e_33d1b3dd49e1"
+              ]
+            },
+            {
+              "subject": "slowdown",
+              "value": "present",
+              "evidence_ids": [
+                "e_2e7fdc63a03f"
+              ]
+            }
+          ],
+          "insights": [
+            {
+              "subject": "candidate",
+              "value": "retry",
+              "evidence_ids": [
+                "e_2e7fdc63a03f",
+                "e_9c8fb7649713",
+                "e_b295c4348c4b"
+              ]
+            },
+            {
+              "subject": "cause",
+              "value": "retry_amplification",
+              "evidence_ids": [
+                "e_2e7fdc63a03f",
+                "e_33d1b3dd49e1",
+                "e_9c8fb7649713",
+                "e_b295c4348c4b",
+                "e_d763d32b097c"
+              ]
+            }
+          ],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_2e7fdc63a03f",
+              "e_33d1b3dd49e1",
+              "e_9c8fb7649713",
+              "e_ad6549f71bd0",
+              "e_b295c4348c4b",
+              "e_d763d32b097c"
+            ],
+            "unknowns": []
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_2e7fdc63a03f",
+          "e_33d1b3dd49e1",
+          "e_9c8fb7649713",
+          "e_ad6549f71bd0",
+          "e_b295c4348c4b",
+          "e_d763d32b097c"
+        ],
+        "created_at": "2026-09-29T01:25:55.329379Z"
+      },
+      {
+        "id": "630dc6e22dff45c1bd8820e24a1309ec",
+        "name": "worker_1",
+        "version": 1,
+        "producer": "worker_1",
+        "node_id": "worker_1",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "control_cluster",
+              "value": "healthy",
+              "evidence_ids": [
+                "e_d763d32b097c"
+              ]
+            },
+            {
+              "subject": "database_queue",
+              "value": "normal",
+              "evidence_ids": [
+                "e_b295c4348c4b"
+              ]
+            },
+            {
+              "subject": "request_mix",
+              "value": "stable",
+              "evidence_ids": [
+                "e_ad6549f71bd0"
+              ]
+            },
+            {
+              "subject": "retry_setting",
+              "value": "raised",
+              "evidence_ids": [
+                "e_9c8fb7649713"
+              ]
+            },
+            {
+              "subject": "rollback",
+              "value": "restores",
+              "evidence_ids": [
+                "e_33d1b3dd49e1"
+              ]
+            },
+            {
+              "subject": "slowdown",
+              "value": "present",
+              "evidence_ids": [
+                "e_2e7fdc63a03f"
+              ]
+            }
+          ],
+          "insights": [
+            {
+              "subject": "candidate",
+              "value": "retry",
+              "evidence_ids": [
+                "e_2e7fdc63a03f",
+                "e_9c8fb7649713",
+                "e_b295c4348c4b"
+              ]
+            },
+            {
+              "subject": "cause",
+              "value": "retry_amplification",
+              "evidence_ids": [
+                "e_2e7fdc63a03f",
+                "e_33d1b3dd49e1",
+                "e_9c8fb7649713",
+                "e_b295c4348c4b",
+                "e_d763d32b097c"
+              ]
+            }
+          ],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_2e7fdc63a03f",
+              "e_33d1b3dd49e1",
+              "e_9c8fb7649713",
+              "e_ad6549f71bd0",
+              "e_b295c4348c4b",
+              "e_d763d32b097c"
+            ],
+            "unknowns": []
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_2e7fdc63a03f",
+          "e_33d1b3dd49e1",
+          "e_9c8fb7649713",
+          "e_ad6549f71bd0",
+          "e_b295c4348c4b",
+          "e_d763d32b097c"
+        ],
+        "created_at": "2026-09-29T01:25:55.360551Z"
+      },
+      {
+        "id": "304f786e7cae43ef86ad6518a245f14f",
+        "name": "worker_2",
+        "version": 1,
+        "producer": "worker_2",
+        "node_id": "worker_2",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "control_cluster",
+              "value": "healthy",
+              "evidence_ids": [
+                "e_d763d32b097c"
+              ]
+            },
+            {
+              "subject": "database_queue",
+              "value": "normal",
+              "evidence_ids": [
+                "e_b295c4348c4b"
+              ]
+            },
+            {
+              "subject": "request_mix",
+              "value": "stable",
+              "evidence_ids": [
+                "e_ad6549f71bd0"
+              ]
+            },
+            {
+              "subject": "retry_setting",
+              "value": "raised",
+              "evidence_ids": [
+                "e_9c8fb7649713"
+              ]
+            },
+            {
+              "subject": "rollback",
+              "value": "restores",
+              "evidence_ids": [
+                "e_33d1b3dd49e1"
+              ]
+            },
+            {
+              "subject": "slowdown",
+              "value": "present",
+              "evidence_ids": [
+                "e_2e7fdc63a03f"
+              ]
+            }
+          ],
+          "insights": [
+            {
+              "subject": "candidate",
+              "value": "retry",
+              "evidence_ids": [
+                "e_2e7fdc63a03f",
+                "e_9c8fb7649713",
+                "e_b295c4348c4b"
+              ]
+            },
+            {
+              "subject": "cause",
+              "value": "retry_amplification",
+              "evidence_ids": [
+                "e_2e7fdc63a03f",
+                "e_33d1b3dd49e1",
+                "e_9c8fb7649713",
+                "e_b295c4348c4b",
+                "e_d763d32b097c"
+              ]
+            }
+          ],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_2e7fdc63a03f",
+              "e_33d1b3dd49e1",
+              "e_9c8fb7649713",
+              "e_ad6549f71bd0",
+              "e_b295c4348c4b",
+              "e_d763d32b097c"
+            ],
+            "unknowns": []
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_2e7fdc63a03f",
+          "e_33d1b3dd49e1",
+          "e_9c8fb7649713",
+          "e_ad6549f71bd0",
+          "e_b295c4348c4b",
+          "e_d763d32b097c"
+        ],
+        "created_at": "2026-09-29T01:25:55.395232Z"
+      }
+    ]
+  },
+  "partition_diagnostics": {
+    "workers": {
+      "worker_0": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      },
+      "worker_1": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      },
+      "worker_2": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      }
+    },
+    "max_decision_support_share": 0.3333333333333333,
+    "importance_range": 0,
+    "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+  }
+}

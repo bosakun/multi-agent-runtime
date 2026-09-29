@@ -1,0 +1,676 @@
+{
+  "experiment_id": "782673072af042bd9ca1ff77f0ae0c25",
+  "run_id": "2a722a560e644b26a34e2994edfa2686",
+  "timestamp": "2026-09-29T01:25:56.885374+00:00",
+  "condition": "C3",
+  "task_id": "v2-causal-hard",
+  "family": "causal",
+  "template": "four_stage_cascade_with_failed_barrier",
+  "seed": 20260928,
+  "repetition": 0,
+  "model_settings": {
+    "provider": "mock",
+    "model": "qwen3:14b",
+    "temperature": 0,
+    "max_output_tokens": 4096,
+    "timeout_seconds": 1200,
+    "execution_profile": "local_ollama"
+  },
+  "backend_token_limit_parameter": "max_tokens",
+  "assignment": {
+    "roles": {
+      "worker_0": "neutral",
+      "worker_1": "neutral",
+      "worker_2": "neutral"
+    },
+    "partitions": {
+      "worker_0": [
+        "e_373d0c1e7322",
+        "e_54f7b7a8a710",
+        "e_80fa8d35888c",
+        "e_fbf4535276d8"
+      ],
+      "worker_1": [
+        "e_834864ec7d1e",
+        "e_eadd621aa2a2",
+        "e_10d72e1812e3"
+      ],
+      "worker_2": [
+        "e_f8dd2cdaa0f2",
+        "e_b27286da986f",
+        "e_88b424f7d3b1",
+        "e_52ac92ec2906"
+      ]
+    },
+    "seed": 20260928
+  },
+  "protocol_fingerprint": "780926d9fb0ad8182d6cbee907c0c2f93615c95f572ef659684ab1e52310ca2c",
+  "git_commit": "b8c5fa8fb95606f2a7e7f37d95b1d50807232ee9",
+  "source_sha256": "0b461896964c3b0fde4215111edd0efa63407a567a723f13d57696005a96412a",
+  "source_dirty": true,
+  "prompt_version": "v2",
+  "benchmark_version": "2.0.0",
+  "metrics_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 4,
+  "benchmark_sha256": "f5a9122ce2dcbd98863b9af547205cae8c39f5176772e2b92e596c82259c3565",
+  "status": "succeeded",
+  "output": [
+    {
+      "claims": [
+        {
+          "subject": "ambient",
+          "value": "hot",
+          "evidence_ids": [
+            "e_f8dd2cdaa0f2"
+          ]
+        },
+        {
+          "subject": "backup_power",
+          "value": "failed",
+          "evidence_ids": [
+            "e_80fa8d35888c"
+          ]
+        },
+        {
+          "subject": "cooling",
+          "value": "stopped",
+          "evidence_ids": [
+            "e_eadd621aa2a2"
+          ]
+        },
+        {
+          "subject": "grid",
+          "value": "lost",
+          "evidence_ids": [
+            "e_52ac92ec2906"
+          ]
+        },
+        {
+          "subject": "rack_temperature",
+          "value": "critical",
+          "evidence_ids": [
+            "e_834864ec7d1e"
+          ]
+        },
+        {
+          "subject": "staff_report",
+          "value": "power_problem",
+          "evidence_ids": [
+            "e_373d0c1e7322"
+          ]
+        },
+        {
+          "subject": "storage",
+          "value": "offline",
+          "evidence_ids": [
+            "e_fbf4535276d8"
+          ]
+        },
+        {
+          "subject": "thermal_shutdown",
+          "value": "triggered",
+          "evidence_ids": [
+            "e_88b424f7d3b1"
+          ]
+        }
+      ],
+      "insights": [
+        {
+          "subject": "heat_removal",
+          "value": "insufficient",
+          "evidence_ids": [
+            "e_52ac92ec2906",
+            "e_80fa8d35888c",
+            "e_eadd621aa2a2",
+            "e_f8dd2cdaa0f2"
+          ]
+        },
+        {
+          "subject": "mechanism",
+          "value": "power_cooling_shutdown",
+          "evidence_ids": [
+            "e_52ac92ec2906",
+            "e_80fa8d35888c",
+            "e_834864ec7d1e",
+            "e_88b424f7d3b1",
+            "e_eadd621aa2a2",
+            "e_f8dd2cdaa0f2",
+            "e_fbf4535276d8"
+          ]
+        },
+        {
+          "subject": "power",
+          "value": "unavailable",
+          "evidence_ids": [
+            "e_52ac92ec2906",
+            "e_80fa8d35888c"
+          ]
+        },
+        {
+          "subject": "thermal_risk",
+          "value": "realized",
+          "evidence_ids": [
+            "e_52ac92ec2906",
+            "e_80fa8d35888c",
+            "e_834864ec7d1e",
+            "e_eadd621aa2a2",
+            "e_f8dd2cdaa0f2"
+          ]
+        }
+      ],
+      "uncertainty": {
+        "confidence": null,
+        "assumptions": [],
+        "evidence_ids": [
+          "e_373d0c1e7322",
+          "e_52ac92ec2906",
+          "e_80fa8d35888c",
+          "e_834864ec7d1e",
+          "e_88b424f7d3b1",
+          "e_eadd621aa2a2",
+          "e_f8dd2cdaa0f2",
+          "e_fbf4535276d8"
+        ],
+        "unknowns": []
+      },
+      "conclusion": "restore_power_then_cooling_then_storage",
+      "decision_summary": "Public rules evaluated over available observations."
+    }
+  ],
+  "metrics": {
+    "task_success": 1,
+    "gold_claim_coverage": 1.0,
+    "required_insight_coverage": 1.0,
+    "worker_evidence_coverage": 1.0,
+    "final_evidence_coverage": 1.0,
+    "worker_distinct_insights": 0,
+    "worker_contradictions": 0,
+    "final_contradictions": 0,
+    "unsupported_claims": 0,
+    "worker_unsupported_claims": 0,
+    "agent_failures": 0,
+    "collective_evidence_coverage_gain": 0.5714285714285714,
+    "collective_claim_coverage_gain": 0.5714285714285714,
+    "collective_insight_coverage_gain": 0.0,
+    "marginal_final_support_loss_mean": 0.3333333333333333,
+    "marginal_final_support_loss_max": 0.4285714285714286,
+    "evidence_unique": 1.0,
+    "evidence_redundancy": 0.0,
+    "evidence_jaccard": 0.0,
+    "claim_unique": 1.0,
+    "claim_redundancy": 0.0,
+    "claim_jaccard": 0.0,
+    "insight_unique": 0,
+    "insight_redundancy": 0,
+    "insight_jaccard": null,
+    "context_leaks": 0,
+    "result_leaks": 0,
+    "gold_leaks": 0,
+    "raw_exposure_outside_partition": 0,
+    "input_tokens": 5113,
+    "output_tokens": 709,
+    "total_tokens": 5822,
+    "model_calls": 4,
+    "latency_ms": 166.07279097661376,
+    "cost_usd": null
+  },
+  "usage_kind": "character-quarter estimate",
+  "errors": [],
+  "diagnostics": {
+    "missing_claims": [],
+    "missing_insights": [],
+    "worker_valid_keys": [
+      [
+        "backup_power=failed",
+        "storage=offline"
+      ],
+      [
+        "cooling=stopped",
+        "rack_temperature=critical"
+      ],
+      [
+        "ambient=hot",
+        "grid=lost",
+        "thermal_shutdown=triggered"
+      ]
+    ],
+    "worker_evidence": [
+      [
+        "e_80fa8d35888c",
+        "e_fbf4535276d8"
+      ],
+      [
+        "e_834864ec7d1e",
+        "e_eadd621aa2a2"
+      ],
+      [
+        "e_52ac92ec2906",
+        "e_88b424f7d3b1",
+        "e_f8dd2cdaa0f2"
+      ]
+    ],
+    "worker_required_insights": [
+      [],
+      [],
+      []
+    ],
+    "marginal_final_claim_support": [
+      {
+        "supported_final_coverage_without": 0.7142857142857143,
+        "drop": 0.2857142857142857
+      },
+      {
+        "supported_final_coverage_without": 0.7142857142857143,
+        "drop": 0.2857142857142857
+      },
+      {
+        "supported_final_coverage_without": 0.5714285714285714,
+        "drop": 0.4285714285714286
+      }
+    ],
+    "marginal_final_insight_support": [
+      {
+        "supported_final_coverage_without": 0.0,
+        "drop": 1.0
+      },
+      {
+        "supported_final_coverage_without": 0.0,
+        "drop": 1.0
+      },
+      {
+        "supported_final_coverage_without": 0.0,
+        "drop": 1.0
+      }
+    ],
+    "marginal_method": "fixed final-output provenance support loss; no re-generation",
+    "expected_conclusion": "restore_power_then_cooling_then_storage",
+    "actual_conclusion": "restore_power_then_cooling_then_storage"
+  },
+  "trace_file": "traces/2a722a560e644b26a34e2994edfa2686.json",
+  "human_review": {
+    "task": "Trace a distribution-centre outage across power, cooling, temperature and storage protection. The backup barrier may interrupt the chain, so establish its state rather than assuming every upstream fault propagates.",
+    "gold": {
+      "task_id": "v2-causal-hard",
+      "relevant_evidence_ids": [
+        "e_52ac92ec2906",
+        "e_80fa8d35888c",
+        "e_eadd621aa2a2",
+        "e_f8dd2cdaa0f2",
+        "e_834864ec7d1e",
+        "e_88b424f7d3b1",
+        "e_fbf4535276d8"
+      ],
+      "distractor_ids": [
+        "e_10d72e1812e3",
+        "e_b27286da986f",
+        "e_54f7b7a8a710"
+      ],
+      "claims": [
+        {
+          "subject": "grid",
+          "value": "lost",
+          "supporting_sets": [
+            [
+              "e_52ac92ec2906"
+            ]
+          ]
+        },
+        {
+          "subject": "backup_power",
+          "value": "failed",
+          "supporting_sets": [
+            [
+              "e_80fa8d35888c"
+            ]
+          ]
+        },
+        {
+          "subject": "cooling",
+          "value": "stopped",
+          "supporting_sets": [
+            [
+              "e_eadd621aa2a2"
+            ]
+          ]
+        },
+        {
+          "subject": "ambient",
+          "value": "hot",
+          "supporting_sets": [
+            [
+              "e_f8dd2cdaa0f2"
+            ]
+          ]
+        },
+        {
+          "subject": "rack_temperature",
+          "value": "critical",
+          "supporting_sets": [
+            [
+              "e_834864ec7d1e"
+            ]
+          ]
+        },
+        {
+          "subject": "thermal_shutdown",
+          "value": "triggered",
+          "supporting_sets": [
+            [
+              "e_88b424f7d3b1"
+            ]
+          ]
+        },
+        {
+          "subject": "storage",
+          "value": "offline",
+          "supporting_sets": [
+            [
+              "e_fbf4535276d8"
+            ]
+          ]
+        }
+      ],
+      "required_insights": [
+        {
+          "subject": "mechanism",
+          "value": "power_cooling_shutdown",
+          "supporting_sets": [
+            [
+              "e_52ac92ec2906",
+              "e_80fa8d35888c",
+              "e_834864ec7d1e",
+              "e_88b424f7d3b1",
+              "e_eadd621aa2a2",
+              "e_f8dd2cdaa0f2",
+              "e_fbf4535276d8"
+            ]
+          ]
+        }
+      ],
+      "optional_insights": [
+        {
+          "subject": "heat_removal",
+          "value": "insufficient",
+          "supporting_sets": [
+            [
+              "e_52ac92ec2906",
+              "e_80fa8d35888c",
+              "e_eadd621aa2a2",
+              "e_f8dd2cdaa0f2"
+            ]
+          ]
+        },
+        {
+          "subject": "power",
+          "value": "unavailable",
+          "supporting_sets": [
+            [
+              "e_52ac92ec2906",
+              "e_80fa8d35888c"
+            ]
+          ]
+        },
+        {
+          "subject": "thermal_risk",
+          "value": "realized",
+          "supporting_sets": [
+            [
+              "e_52ac92ec2906",
+              "e_80fa8d35888c",
+              "e_834864ec7d1e",
+              "e_eadd621aa2a2",
+              "e_f8dd2cdaa0f2"
+            ]
+          ]
+        }
+      ],
+      "expected_conclusion": "restore_power_then_cooling_then_storage",
+      "constraints": [
+        "grid",
+        "backup_power",
+        "cooling",
+        "ambient",
+        "rack_temperature",
+        "thermal_shutdown",
+        "storage"
+      ],
+      "failure_factors": [],
+      "hidden_annotation": "GOLD_ONLY_f6fb148902ad59322613",
+      "benchmark_version": "2.0.0",
+      "optional_claims": [
+        {
+          "subject": "staff_report",
+          "value": "power_problem",
+          "supporting_sets": [
+            [
+              "e_373d0c1e7322"
+            ]
+          ]
+        }
+      ],
+      "weak_evidence_ids": [
+        "e_373d0c1e7322"
+      ],
+      "evidence_importance": {
+        "e_52ac92ec2906": 2,
+        "e_80fa8d35888c": 2,
+        "e_eadd621aa2a2": 2,
+        "e_f8dd2cdaa0f2": 2,
+        "e_834864ec7d1e": 2,
+        "e_88b424f7d3b1": 2,
+        "e_fbf4535276d8": 2
+      },
+      "decision_supporting_sets": [
+        [
+          "e_52ac92ec2906",
+          "e_80fa8d35888c",
+          "e_834864ec7d1e",
+          "e_88b424f7d3b1",
+          "e_eadd621aa2a2",
+          "e_f8dd2cdaa0f2",
+          "e_fbf4535276d8"
+        ]
+      ],
+      "allowed_uncertainty": [],
+      "required_unknowns": [],
+      "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+    },
+    "workers": [
+      {
+        "id": "7badb3f14a5c4fa780c0b06348fbd05d",
+        "name": "worker_0",
+        "version": 1,
+        "producer": "worker_0",
+        "node_id": "worker_0",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "backup_power",
+              "value": "failed",
+              "evidence_ids": [
+                "e_80fa8d35888c"
+              ]
+            },
+            {
+              "subject": "staff_report",
+              "value": "power_problem",
+              "evidence_ids": [
+                "e_373d0c1e7322"
+              ]
+            },
+            {
+              "subject": "storage",
+              "value": "offline",
+              "evidence_ids": [
+                "e_fbf4535276d8"
+              ]
+            }
+          ],
+          "insights": [],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_373d0c1e7322",
+              "e_80fa8d35888c",
+              "e_fbf4535276d8"
+            ],
+            "unknowns": [
+              "grid",
+              "cooling",
+              "ambient",
+              "rack_temperature",
+              "thermal_shutdown"
+            ]
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_373d0c1e7322",
+          "e_80fa8d35888c",
+          "e_fbf4535276d8"
+        ],
+        "created_at": "2026-09-29T01:25:56.914893Z"
+      },
+      {
+        "id": "050c562eca1e4e549815df0a204301f1",
+        "name": "worker_1",
+        "version": 1,
+        "producer": "worker_1",
+        "node_id": "worker_1",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "cooling",
+              "value": "stopped",
+              "evidence_ids": [
+                "e_eadd621aa2a2"
+              ]
+            },
+            {
+              "subject": "rack_temperature",
+              "value": "critical",
+              "evidence_ids": [
+                "e_834864ec7d1e"
+              ]
+            }
+          ],
+          "insights": [],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_834864ec7d1e",
+              "e_eadd621aa2a2"
+            ],
+            "unknowns": [
+              "grid",
+              "backup_power",
+              "ambient",
+              "thermal_shutdown",
+              "storage",
+              "staff_report"
+            ]
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_834864ec7d1e",
+          "e_eadd621aa2a2"
+        ],
+        "created_at": "2026-09-29T01:25:56.945892Z"
+      },
+      {
+        "id": "84b757f0fc6844ccacfbfc2e6cbbd774",
+        "name": "worker_2",
+        "version": 1,
+        "producer": "worker_2",
+        "node_id": "worker_2",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "ambient",
+              "value": "hot",
+              "evidence_ids": [
+                "e_f8dd2cdaa0f2"
+              ]
+            },
+            {
+              "subject": "grid",
+              "value": "lost",
+              "evidence_ids": [
+                "e_52ac92ec2906"
+              ]
+            },
+            {
+              "subject": "thermal_shutdown",
+              "value": "triggered",
+              "evidence_ids": [
+                "e_88b424f7d3b1"
+              ]
+            }
+          ],
+          "insights": [],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_52ac92ec2906",
+              "e_88b424f7d3b1",
+              "e_f8dd2cdaa0f2"
+            ],
+            "unknowns": [
+              "backup_power",
+              "cooling",
+              "rack_temperature",
+              "storage",
+              "staff_report"
+            ]
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_52ac92ec2906",
+          "e_88b424f7d3b1",
+          "e_f8dd2cdaa0f2"
+        ],
+        "created_at": "2026-09-29T01:25:56.982620Z"
+      }
+    ]
+  },
+  "partition_diagnostics": {
+    "workers": {
+      "worker_0": {
+        "relevant": 2,
+        "weak": 1,
+        "distractors": 1,
+        "importance": 4
+      },
+      "worker_1": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      },
+      "worker_2": {
+        "relevant": 3,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 6
+      }
+    },
+    "max_decision_support_share": 0.42857142857142855,
+    "importance_range": 2,
+    "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+  }
+}

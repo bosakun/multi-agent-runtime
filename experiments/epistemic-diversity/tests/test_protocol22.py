@@ -1,4 +1,4 @@
-"""Local recovery guards and independent-worker equivalence; no live model calls."""
+"""Local guards from 2.2, retained under the current amendment; no live model calls."""
 
 import asyncio
 import json
@@ -27,7 +27,7 @@ from app.llm.provider import ModelRequest, ModelResponse
 
 def local_settings(provider="mock"):
     return ModelSettings(
-        provider=provider, model="qwen3:14b", timeout_seconds=300, execution_profile="local_ollama"
+        provider=provider, model="qwen3:14b", timeout_seconds=600, execution_profile="local_ollama"
     )
 
 
@@ -57,6 +57,7 @@ def local_prepared(tmp_path, monkeypatch):
     "override",
     [
         {"timeout_seconds": 90},
+        {"timeout_seconds": 300},
         {"temperature": 0.5},
         {"max_output_tokens": 4096},
     ],
@@ -135,7 +136,7 @@ def test_only_scheduling_and_timeout_change_worker_visibility(task_id):
             assert standard.model == local.model
             assert standard.publish_to == local.publish_to
             assert standard.execution.timeout_seconds == 90
-            assert local.execution.timeout_seconds == 300
+            assert local.execution.timeout_seconds == 600
         assert all(e.target == "synthesizer" for e in b[0].edges)
 
 
@@ -196,7 +197,7 @@ async def test_local_profile_mock_pilot_complete(tmp_path, local_prepared):
         tmp_path / "offline", "pilot", 1, local_settings(), SEED, 60, VERSION, freeze_path=freeze
     )
     data = read_json(result)
-    assert data["metadata"]["protocol_version"] == "pilot-2.2"
+    assert data["metadata"]["protocol_version"] == "pilot-2.3"
     assert data["metadata"]["worker_concurrency"] == 1
     assert data["metadata"]["model_concurrency"] == 1
     assert data["metadata"]["budget_used_after"] == 48
@@ -210,7 +211,8 @@ async def test_local_profile_mock_pilot_complete(tmp_path, local_prepared):
             assert context["knowledge"] == [] and len(context["artifacts"]) == 3
 
 
-async def test_local_adapter_fake_http_serial_pilot(local_prepared, monkeypatch):
+@pytest.mark.parametrize("truncated", [False, True])
+async def test_local_adapter_fake_http_serial_pilot(local_prepared, monkeypatch, truncated):
     import epistemic.runner as runner
 
     freeze, binding, campaign = local_prepared
@@ -224,7 +226,14 @@ async def test_local_adapter_fake_http_serial_pilot(local_prepared, monkeypatch)
         try:
             body = json.loads(request.content)
             calls.append(body)
-            assert body["temperature"] == 0 and body["max_completion_tokens"] == 2048
+            assert body["temperature"] == 0 and body["max_tokens"] == 2048
+            assert "max_completion_tokens" not in body
+            assert not {"think", "reasoning", "reasoning_effort"} & body.keys()
+            if truncated:
+                return httpx.Response(
+                    200,
+                    json={"choices": [{"message": {"content": "{}"}, "finish_reason": "length"}]},
+                )
             context = AgentContext.model_validate_json(body["messages"][1]["content"])
             output = respond(
                 ModelRequest(
@@ -254,15 +263,27 @@ async def test_local_adapter_fake_http_serial_pilot(local_prepared, monkeypatch)
     original = httpx.AsyncClient
 
     def fake_client(**kwargs):
-        assert kwargs["timeout"] == 300
+        assert kwargs["timeout"] == 600
         return original(**kwargs, transport=httpx.MockTransport(handler))
 
     monkeypatch.setattr(runner.httpx, "AsyncClient", fake_client)
     result = await execute_campaign(
         campaign, "pilot", 1, local_settings("real"), SEED, 60, VERSION, binding, freeze
     )
-    assert maximum == 1 and len(calls) == 48
-    assert len(read_json(result)["records"]) == 12
+    assert maximum == 1 and len(calls) == (3 if truncated else 48)
+    data = read_json(result)
+    assert len(data["records"]) == (1 if truncated else 12)
+    if truncated:
+        assert data["metadata"]["stopped_reason"]
+        assert "provider_output_truncated" in data["records"][0]["errors"]
+    else:
+        assert all(record["errors"] == [] for record in data["records"])
+    for path in (result.parent / "call-journal").glob("*.json"):
+        assert read_json(path)["backend_request"] == {
+            "token_limit_parameter": "max_tokens",
+            "token_limit_fields": {"max_tokens": 2048},
+            "thinking_fields": [],
+        }
     with pytest.raises(ValueError, match="Phase already exists"):
         await execute_campaign(
             campaign, "pilot", 1, local_settings("real"), SEED, 60, VERSION, binding, freeze

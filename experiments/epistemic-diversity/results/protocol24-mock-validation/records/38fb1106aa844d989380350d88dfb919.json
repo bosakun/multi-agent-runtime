@@ -1,0 +1,466 @@
+{
+  "experiment_id": "782673072af042bd9ca1ff77f0ae0c25",
+  "run_id": "38fb1106aa844d989380350d88dfb919",
+  "timestamp": "2026-09-29T01:25:55.154285+00:00",
+  "condition": "C3",
+  "task_id": "v2-synthesis-easy",
+  "family": "synthesis",
+  "template": "independent_corroboration",
+  "seed": 20260928,
+  "repetition": 0,
+  "model_settings": {
+    "provider": "mock",
+    "model": "qwen3:14b",
+    "temperature": 0,
+    "max_output_tokens": 4096,
+    "timeout_seconds": 1200,
+    "execution_profile": "local_ollama"
+  },
+  "backend_token_limit_parameter": "max_tokens",
+  "assignment": {
+    "roles": {
+      "worker_0": "neutral",
+      "worker_1": "neutral",
+      "worker_2": "neutral"
+    },
+    "partitions": {
+      "worker_0": [
+        "e_2c409eca7714",
+        "e_45bef06ab0f2"
+      ],
+      "worker_1": [
+        "e_91be7aafc057",
+        "e_9344ac0c4e4e",
+        "e_2790a67d08aa"
+      ],
+      "worker_2": [
+        "e_0e97f105fe27",
+        "e_e365284caa2a"
+      ]
+    },
+    "seed": 20260928
+  },
+  "protocol_fingerprint": "780926d9fb0ad8182d6cbee907c0c2f93615c95f572ef659684ab1e52310ca2c",
+  "git_commit": "b8c5fa8fb95606f2a7e7f37d95b1d50807232ee9",
+  "source_sha256": "0b461896964c3b0fde4215111edd0efa63407a567a723f13d57696005a96412a",
+  "source_dirty": true,
+  "prompt_version": "v2",
+  "benchmark_version": "2.0.0",
+  "metrics_version": "2.0.0",
+  "difficulty": "easy",
+  "dependency_depth": 1,
+  "benchmark_sha256": "ce296691e188fd0f50e86796146506b146a1bcd7ccc97baa642fb50e0dc245b0",
+  "status": "succeeded",
+  "output": [
+    {
+      "claims": [
+        {
+          "subject": "cold_chain",
+          "value": "intact",
+          "evidence_ids": [
+            "e_2790a67d08aa"
+          ]
+        },
+        {
+          "subject": "inspection",
+          "value": "pass",
+          "evidence_ids": [
+            "e_45bef06ab0f2"
+          ]
+        },
+        {
+          "subject": "origin",
+          "value": "verified",
+          "evidence_ids": [
+            "e_9344ac0c4e4e"
+          ]
+        },
+        {
+          "subject": "recipient",
+          "value": "registered",
+          "evidence_ids": [
+            "e_e365284caa2a"
+          ]
+        }
+      ],
+      "insights": [
+        {
+          "subject": "release_basis",
+          "value": "complete",
+          "evidence_ids": [
+            "e_2790a67d08aa",
+            "e_45bef06ab0f2",
+            "e_9344ac0c4e4e"
+          ]
+        }
+      ],
+      "uncertainty": {
+        "confidence": null,
+        "assumptions": [],
+        "evidence_ids": [
+          "e_2790a67d08aa",
+          "e_45bef06ab0f2",
+          "e_9344ac0c4e4e",
+          "e_e365284caa2a"
+        ],
+        "unknowns": []
+      },
+      "conclusion": "release_batch",
+      "decision_summary": "Public rules evaluated over available observations."
+    }
+  ],
+  "metrics": {
+    "task_success": 1,
+    "gold_claim_coverage": 1.0,
+    "required_insight_coverage": 1.0,
+    "worker_evidence_coverage": 1.0,
+    "final_evidence_coverage": 1.0,
+    "worker_distinct_insights": 0,
+    "worker_contradictions": 0,
+    "final_contradictions": 0,
+    "unsupported_claims": 0,
+    "worker_unsupported_claims": 0,
+    "agent_failures": 0,
+    "collective_evidence_coverage_gain": 0.5,
+    "collective_claim_coverage_gain": 0.5,
+    "collective_insight_coverage_gain": 0.0,
+    "marginal_final_support_loss_mean": 0.3333333333333333,
+    "marginal_final_support_loss_max": 0.5,
+    "evidence_unique": 1.0,
+    "evidence_redundancy": 0.0,
+    "evidence_jaccard": 0.0,
+    "claim_unique": 1.0,
+    "claim_redundancy": 0.0,
+    "claim_jaccard": 0.0,
+    "insight_unique": 0,
+    "insight_redundancy": 0,
+    "insight_jaccard": null,
+    "context_leaks": 0,
+    "result_leaks": 0,
+    "gold_leaks": 0,
+    "raw_exposure_outside_partition": 0,
+    "input_tokens": 4167,
+    "output_tokens": 369,
+    "total_tokens": 4536,
+    "model_calls": 4,
+    "latency_ms": 137.04995799344033,
+    "cost_usd": null
+  },
+  "usage_kind": "character-quarter estimate",
+  "errors": [],
+  "diagnostics": {
+    "missing_claims": [],
+    "missing_insights": [],
+    "worker_valid_keys": [
+      [
+        "inspection=pass"
+      ],
+      [
+        "cold_chain=intact",
+        "origin=verified"
+      ],
+      [
+        "recipient=registered"
+      ]
+    ],
+    "worker_evidence": [
+      [
+        "e_45bef06ab0f2"
+      ],
+      [
+        "e_2790a67d08aa",
+        "e_9344ac0c4e4e"
+      ],
+      [
+        "e_e365284caa2a"
+      ]
+    ],
+    "worker_required_insights": [
+      [],
+      [],
+      []
+    ],
+    "marginal_final_claim_support": [
+      {
+        "supported_final_coverage_without": 0.75,
+        "drop": 0.25
+      },
+      {
+        "supported_final_coverage_without": 0.5,
+        "drop": 0.5
+      },
+      {
+        "supported_final_coverage_without": 0.75,
+        "drop": 0.25
+      }
+    ],
+    "marginal_final_insight_support": [
+      {
+        "supported_final_coverage_without": 0.0,
+        "drop": 1.0
+      },
+      {
+        "supported_final_coverage_without": 0.0,
+        "drop": 1.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      }
+    ],
+    "marginal_method": "fixed final-output provenance support loss; no re-generation",
+    "expected_conclusion": "release_batch",
+    "actual_conclusion": "release_batch"
+  },
+  "trace_file": "traces/38fb1106aa844d989380350d88dfb919.json",
+  "human_review": {
+    "task": "A cooperative must decide whether to release a stored batch. Combine independent origin, inspection and cold-chain records; an attractive label alone is not a release criterion.",
+    "gold": {
+      "task_id": "v2-synthesis-easy",
+      "relevant_evidence_ids": [
+        "e_9344ac0c4e4e",
+        "e_45bef06ab0f2",
+        "e_2790a67d08aa",
+        "e_e365284caa2a"
+      ],
+      "distractor_ids": [
+        "e_0e97f105fe27",
+        "e_91be7aafc057",
+        "e_2c409eca7714"
+      ],
+      "claims": [
+        {
+          "subject": "origin",
+          "value": "verified",
+          "supporting_sets": [
+            [
+              "e_9344ac0c4e4e"
+            ]
+          ]
+        },
+        {
+          "subject": "inspection",
+          "value": "pass",
+          "supporting_sets": [
+            [
+              "e_45bef06ab0f2"
+            ]
+          ]
+        },
+        {
+          "subject": "cold_chain",
+          "value": "intact",
+          "supporting_sets": [
+            [
+              "e_2790a67d08aa"
+            ]
+          ]
+        },
+        {
+          "subject": "recipient",
+          "value": "registered",
+          "supporting_sets": [
+            [
+              "e_e365284caa2a"
+            ]
+          ]
+        }
+      ],
+      "required_insights": [
+        {
+          "subject": "release_basis",
+          "value": "complete",
+          "supporting_sets": [
+            [
+              "e_2790a67d08aa",
+              "e_45bef06ab0f2",
+              "e_9344ac0c4e4e"
+            ]
+          ]
+        }
+      ],
+      "optional_insights": [],
+      "expected_conclusion": "release_batch",
+      "constraints": [
+        "origin",
+        "inspection",
+        "cold_chain",
+        "recipient"
+      ],
+      "failure_factors": [],
+      "hidden_annotation": "GOLD_ONLY_cbd363cb2ff48dc99177",
+      "benchmark_version": "2.0.0",
+      "optional_claims": [],
+      "weak_evidence_ids": [],
+      "evidence_importance": {
+        "e_9344ac0c4e4e": 2,
+        "e_45bef06ab0f2": 2,
+        "e_2790a67d08aa": 2,
+        "e_e365284caa2a": 2
+      },
+      "decision_supporting_sets": [
+        [
+          "e_2790a67d08aa",
+          "e_45bef06ab0f2",
+          "e_9344ac0c4e4e",
+          "e_e365284caa2a"
+        ]
+      ],
+      "allowed_uncertainty": [],
+      "required_unknowns": [],
+      "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+    },
+    "workers": [
+      {
+        "id": "01c3f425891e4d7ebe1aa919fd87b7ab",
+        "name": "worker_0",
+        "version": 1,
+        "producer": "worker_0",
+        "node_id": "worker_0",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "inspection",
+              "value": "pass",
+              "evidence_ids": [
+                "e_45bef06ab0f2"
+              ]
+            }
+          ],
+          "insights": [],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_45bef06ab0f2"
+            ],
+            "unknowns": [
+              "origin",
+              "cold_chain",
+              "recipient"
+            ]
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_45bef06ab0f2"
+        ],
+        "created_at": "2026-09-29T01:25:55.180364Z"
+      },
+      {
+        "id": "ce6c970b1ec0400aa050ef6fe75da0d0",
+        "name": "worker_1",
+        "version": 1,
+        "producer": "worker_1",
+        "node_id": "worker_1",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "cold_chain",
+              "value": "intact",
+              "evidence_ids": [
+                "e_2790a67d08aa"
+              ]
+            },
+            {
+              "subject": "origin",
+              "value": "verified",
+              "evidence_ids": [
+                "e_9344ac0c4e4e"
+              ]
+            }
+          ],
+          "insights": [],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_2790a67d08aa",
+              "e_9344ac0c4e4e"
+            ],
+            "unknowns": [
+              "inspection",
+              "recipient"
+            ]
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_2790a67d08aa",
+          "e_9344ac0c4e4e"
+        ],
+        "created_at": "2026-09-29T01:25:55.207051Z"
+      },
+      {
+        "id": "3ad54464468444669acbba3e9ccf5b80",
+        "name": "worker_2",
+        "version": 1,
+        "producer": "worker_2",
+        "node_id": "worker_2",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "recipient",
+              "value": "registered",
+              "evidence_ids": [
+                "e_e365284caa2a"
+              ]
+            }
+          ],
+          "insights": [],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_e365284caa2a"
+            ],
+            "unknowns": [
+              "origin",
+              "inspection",
+              "cold_chain"
+            ]
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_e365284caa2a"
+        ],
+        "created_at": "2026-09-29T01:25:55.237712Z"
+      }
+    ]
+  },
+  "partition_diagnostics": {
+    "workers": {
+      "worker_0": {
+        "relevant": 1,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 2
+      },
+      "worker_1": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      },
+      "worker_2": {
+        "relevant": 1,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 2
+      }
+    },
+    "max_decision_support_share": 0.5,
+    "importance_range": 2,
+    "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+  }
+}

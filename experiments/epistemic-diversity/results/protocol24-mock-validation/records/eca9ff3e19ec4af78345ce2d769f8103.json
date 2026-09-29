@@ -1,0 +1,472 @@
+{
+  "experiment_id": "782673072af042bd9ca1ff77f0ae0c25",
+  "run_id": "eca9ff3e19ec4af78345ce2d769f8103",
+  "timestamp": "2026-09-29T01:25:56.714884+00:00",
+  "condition": "C3",
+  "task_id": "v2-missing-easy",
+  "family": "missing",
+  "template": "required_measurement_gap",
+  "seed": 20260928,
+  "repetition": 0,
+  "model_settings": {
+    "provider": "mock",
+    "model": "qwen3:14b",
+    "temperature": 0,
+    "max_output_tokens": 4096,
+    "timeout_seconds": 1200,
+    "execution_profile": "local_ollama"
+  },
+  "backend_token_limit_parameter": "max_tokens",
+  "assignment": {
+    "roles": {
+      "worker_0": "neutral",
+      "worker_1": "neutral",
+      "worker_2": "neutral"
+    },
+    "partitions": {
+      "worker_0": [
+        "e_47fa4bb5c694",
+        "e_b0eec04ef11c"
+      ],
+      "worker_1": [
+        "e_afdb9fc83747",
+        "e_9f921c004c6b"
+      ],
+      "worker_2": [
+        "e_a699c5508e97",
+        "e_4d9cada6c23e",
+        "e_ccf7822250eb"
+      ]
+    },
+    "seed": 20260928
+  },
+  "protocol_fingerprint": "780926d9fb0ad8182d6cbee907c0c2f93615c95f572ef659684ab1e52310ca2c",
+  "git_commit": "b8c5fa8fb95606f2a7e7f37d95b1d50807232ee9",
+  "source_sha256": "0b461896964c3b0fde4215111edd0efa63407a567a723f13d57696005a96412a",
+  "source_dirty": true,
+  "prompt_version": "v2",
+  "benchmark_version": "2.0.0",
+  "metrics_version": "2.0.0",
+  "difficulty": "easy",
+  "dependency_depth": 1,
+  "benchmark_sha256": "a0377fcc7713449255c974d4d9baed0d56fe6df6853caf96b0889222034b2ea5",
+  "status": "succeeded",
+  "output": [
+    {
+      "claims": [
+        {
+          "subject": "item_mass",
+          "value": "not_reported",
+          "evidence_ids": [
+            "e_9f921c004c6b"
+          ]
+        },
+        {
+          "subject": "lifting_rule",
+          "value": "mass_required",
+          "evidence_ids": [
+            "e_ccf7822250eb"
+          ]
+        },
+        {
+          "subject": "manifest",
+          "value": "complete_inventory",
+          "evidence_ids": [
+            "e_a699c5508e97"
+          ]
+        },
+        {
+          "subject": "rated_capacity",
+          "value": "known",
+          "evidence_ids": [
+            "e_b0eec04ef11c"
+          ]
+        }
+      ],
+      "insights": [
+        {
+          "subject": "information_gap",
+          "value": "item_mass",
+          "evidence_ids": [
+            "e_9f921c004c6b",
+            "e_a699c5508e97",
+            "e_ccf7822250eb"
+          ]
+        }
+      ],
+      "uncertainty": {
+        "confidence": null,
+        "assumptions": [],
+        "evidence_ids": [
+          "e_9f921c004c6b",
+          "e_a699c5508e97",
+          "e_b0eec04ef11c",
+          "e_ccf7822250eb"
+        ],
+        "unknowns": [
+          "item_mass"
+        ]
+      },
+      "conclusion": "undetermined",
+      "decision_summary": "Public rules evaluated over available observations."
+    }
+  ],
+  "metrics": {
+    "task_success": 1,
+    "gold_claim_coverage": 1.0,
+    "required_insight_coverage": 1.0,
+    "worker_evidence_coverage": 1.0,
+    "final_evidence_coverage": 1.0,
+    "worker_distinct_insights": 0,
+    "worker_contradictions": 0,
+    "final_contradictions": 0,
+    "unsupported_claims": 0,
+    "worker_unsupported_claims": 0,
+    "agent_failures": 0,
+    "collective_evidence_coverage_gain": 0.5,
+    "collective_claim_coverage_gain": 0.5,
+    "collective_insight_coverage_gain": 0.0,
+    "marginal_final_support_loss_mean": 0.3333333333333333,
+    "marginal_final_support_loss_max": 0.5,
+    "evidence_unique": 1.0,
+    "evidence_redundancy": 0.0,
+    "evidence_jaccard": 0.0,
+    "claim_unique": 1.0,
+    "claim_redundancy": 0.0,
+    "claim_jaccard": 0.0,
+    "insight_unique": 0,
+    "insight_redundancy": 0,
+    "insight_jaccard": null,
+    "context_leaks": 0,
+    "result_leaks": 0,
+    "gold_leaks": 0,
+    "raw_exposure_outside_partition": 0,
+    "input_tokens": 4273,
+    "output_tokens": 391,
+    "total_tokens": 4664,
+    "model_calls": 4,
+    "latency_ms": 160.1517079398036,
+    "cost_usd": null
+  },
+  "usage_kind": "character-quarter estimate",
+  "errors": [],
+  "diagnostics": {
+    "missing_claims": [],
+    "missing_insights": [],
+    "worker_valid_keys": [
+      [
+        "rated_capacity=known"
+      ],
+      [
+        "item_mass=not_reported"
+      ],
+      [
+        "lifting_rule=mass_required",
+        "manifest=complete_inventory"
+      ]
+    ],
+    "worker_evidence": [
+      [
+        "e_b0eec04ef11c"
+      ],
+      [
+        "e_9f921c004c6b"
+      ],
+      [
+        "e_a699c5508e97",
+        "e_ccf7822250eb"
+      ]
+    ],
+    "worker_required_insights": [
+      [],
+      [],
+      []
+    ],
+    "marginal_final_claim_support": [
+      {
+        "supported_final_coverage_without": 0.75,
+        "drop": 0.25
+      },
+      {
+        "supported_final_coverage_without": 0.75,
+        "drop": 0.25
+      },
+      {
+        "supported_final_coverage_without": 0.5,
+        "drop": 0.5
+      }
+    ],
+    "marginal_final_insight_support": [
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 0.0,
+        "drop": 1.0
+      },
+      {
+        "supported_final_coverage_without": 0.0,
+        "drop": 1.0
+      }
+    ],
+    "marginal_method": "fixed final-output provenance support loss; no re-generation",
+    "expected_conclusion": "undetermined",
+    "actual_conclusion": "undetermined"
+  },
+  "trace_file": "traces/eca9ff3e19ec4af78345ce2d769f8103.json",
+  "human_review": {
+    "task": "Assess whether a lift can carry a shipment. Check whether the manifest supplies all measurements required by the lifting rule; explicitly identify any information gap instead of substituting an unrelated measurement.",
+    "gold": {
+      "task_id": "v2-missing-easy",
+      "relevant_evidence_ids": [
+        "e_b0eec04ef11c",
+        "e_9f921c004c6b",
+        "e_a699c5508e97",
+        "e_ccf7822250eb"
+      ],
+      "distractor_ids": [
+        "e_4d9cada6c23e",
+        "e_47fa4bb5c694",
+        "e_afdb9fc83747"
+      ],
+      "claims": [
+        {
+          "subject": "rated_capacity",
+          "value": "known",
+          "supporting_sets": [
+            [
+              "e_b0eec04ef11c"
+            ]
+          ]
+        },
+        {
+          "subject": "item_mass",
+          "value": "not_reported",
+          "supporting_sets": [
+            [
+              "e_9f921c004c6b"
+            ]
+          ]
+        },
+        {
+          "subject": "manifest",
+          "value": "complete_inventory",
+          "supporting_sets": [
+            [
+              "e_a699c5508e97"
+            ]
+          ]
+        },
+        {
+          "subject": "lifting_rule",
+          "value": "mass_required",
+          "supporting_sets": [
+            [
+              "e_ccf7822250eb"
+            ]
+          ]
+        }
+      ],
+      "required_insights": [
+        {
+          "subject": "information_gap",
+          "value": "item_mass",
+          "supporting_sets": [
+            [
+              "e_9f921c004c6b",
+              "e_a699c5508e97",
+              "e_ccf7822250eb"
+            ]
+          ]
+        }
+      ],
+      "optional_insights": [],
+      "expected_conclusion": "undetermined",
+      "constraints": [
+        "rated_capacity",
+        "item_mass",
+        "manifest",
+        "lifting_rule"
+      ],
+      "failure_factors": [],
+      "hidden_annotation": "GOLD_ONLY_e9b9ca6bb8fc289ee655",
+      "benchmark_version": "2.0.0",
+      "optional_claims": [],
+      "weak_evidence_ids": [],
+      "evidence_importance": {
+        "e_b0eec04ef11c": 2,
+        "e_9f921c004c6b": 2,
+        "e_a699c5508e97": 2,
+        "e_ccf7822250eb": 2
+      },
+      "decision_supporting_sets": [
+        [
+          "e_9f921c004c6b",
+          "e_a699c5508e97",
+          "e_b0eec04ef11c",
+          "e_ccf7822250eb"
+        ]
+      ],
+      "allowed_uncertainty": [
+        "item_mass"
+      ],
+      "required_unknowns": [
+        "item_mass"
+      ],
+      "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+    },
+    "workers": [
+      {
+        "id": "7856628640f0496ab09674be81acae0d",
+        "name": "worker_0",
+        "version": 1,
+        "producer": "worker_0",
+        "node_id": "worker_0",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "rated_capacity",
+              "value": "known",
+              "evidence_ids": [
+                "e_b0eec04ef11c"
+              ]
+            }
+          ],
+          "insights": [],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_b0eec04ef11c"
+            ],
+            "unknowns": [
+              "item_mass",
+              "manifest",
+              "lifting_rule"
+            ]
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_b0eec04ef11c"
+        ],
+        "created_at": "2026-09-29T01:25:56.743499Z"
+      },
+      {
+        "id": "b9ac74be510e40b1a753e1daa18205a3",
+        "name": "worker_1",
+        "version": 1,
+        "producer": "worker_1",
+        "node_id": "worker_1",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "item_mass",
+              "value": "not_reported",
+              "evidence_ids": [
+                "e_9f921c004c6b"
+              ]
+            }
+          ],
+          "insights": [],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_9f921c004c6b"
+            ],
+            "unknowns": [
+              "rated_capacity",
+              "manifest",
+              "lifting_rule"
+            ]
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_9f921c004c6b"
+        ],
+        "created_at": "2026-09-29T01:25:56.774475Z"
+      },
+      {
+        "id": "2ec2a8c512234af183b4efdf1875b584",
+        "name": "worker_2",
+        "version": 1,
+        "producer": "worker_2",
+        "node_id": "worker_2",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "lifting_rule",
+              "value": "mass_required",
+              "evidence_ids": [
+                "e_ccf7822250eb"
+              ]
+            },
+            {
+              "subject": "manifest",
+              "value": "complete_inventory",
+              "evidence_ids": [
+                "e_a699c5508e97"
+              ]
+            }
+          ],
+          "insights": [],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_a699c5508e97",
+              "e_ccf7822250eb"
+            ],
+            "unknowns": [
+              "rated_capacity",
+              "item_mass"
+            ]
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_a699c5508e97",
+          "e_ccf7822250eb"
+        ],
+        "created_at": "2026-09-29T01:25:56.810236Z"
+      }
+    ]
+  },
+  "partition_diagnostics": {
+    "workers": {
+      "worker_0": {
+        "relevant": 1,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 2
+      },
+      "worker_1": {
+        "relevant": 1,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 2
+      },
+      "worker_2": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      }
+    },
+    "max_decision_support_share": 0.5,
+    "importance_range": 2,
+    "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+  }
+}
