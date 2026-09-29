@@ -343,6 +343,10 @@ existing boundary rather than introducing a parallel control plane.
 
 ## Design documents
 
+[Native Windows / NVIDIA / Ollama host preparation](docs/windows-nvidia-ollama.md)
+provides non-generating preflight, hardware fingerprints and mock smoke tests.
+It does not introduce a research condition or authorize a new pilot.
+
 [Requirements](docs/requirements.md) · [Architecture](docs/architecture.md) ·
 [Agent model](docs/agent-model.md) · [Information flow](docs/information-flow.md) ·
 [Security](docs/security.md) · [ADRs](docs/design-decisions.md) ·
