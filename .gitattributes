@@ -1,0 +1,7 @@
+# Sealed research files are byte-hashed: preserve LF on native Windows checkouts.
+* text=auto eol=lf
+*.sqlite binary
+*.db binary
+*.png binary
+*.jpg binary
+*.pdf binary
