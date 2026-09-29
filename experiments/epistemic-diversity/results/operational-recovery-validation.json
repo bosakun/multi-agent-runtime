@@ -1,0 +1,92 @@
+{
+  "kind": "offline_validation_not_research_outcome",
+  "real_model_calls": 0,
+  "tests": {
+    "passed": 244,
+    "skipped": 3,
+    "new_tests": 19
+  },
+  "formatter": "passed",
+  "lint": "passed",
+  "strict_type_checks": "passed",
+  "research_seal": "fb661f49dd4b98276ae1594ded53b3aca53ac92b91d01e6b9d26a5913872e361",
+  "diagnostic_seal": "d1d115063ae1684def31ca8fc3e4475d75980628f8af9f465e8ad2b00a942fec",
+  "all_protected_roots_unchanged": true,
+  "protected_file_count": 2805,
+  "before": {
+    "experiments/epistemic-diversity/runs": {
+      "files": 2616,
+      "sha256": "1c98b1d656e854209739fffb03a064e751c09045ed6198572fe1dd2cfd3154b1"
+    },
+    "experiments/epistemic-diversity/freezes": {
+      "files": 5,
+      "sha256": "68d878f5feb919996c26ea4b7fb3f2c90b16c8c99ff17257f38518bba95aba66"
+    },
+    "experiments/epistemic-diversity/benchmarks": {
+      "files": 113,
+      "sha256": "6d530c92577aecda4170e8e2cbf5fa964523f7a460e4774da35331f9a656da9c"
+    },
+    "experiments/epistemic-diversity/configs": {
+      "files": 5,
+      "sha256": "4abc9ccd713fe0a016105f865387af09dcd2219dc107cdfe6f30c164609c078b"
+    },
+    "experiments/epistemic-diversity/prompts": {
+      "files": 7,
+      "sha256": "8df7daa537bc44d9ffcd166d81612aa2d6350aff15383c2ecca01e37356a2bb6"
+    },
+    "experiments/epistemic-diversity/src": {
+      "files": 17,
+      "sha256": "df8992688a1a8ed6b51a17e73ff48afdbfab58bf49c599b37aa501b3cb1c8fab"
+    },
+    "experiments/epistemic-diversity/operational_diagnostics": {
+      "files": 4,
+      "sha256": "ccfa65e41caaebec0c417f1551c0f1ae6f4eb60c575cb24b519f03ea8019b9cf"
+    },
+    "experiments/epistemic-diversity/diagnostics": {
+      "files": 3,
+      "sha256": "6f8715a5a3e1b204ad28434890b7320d91509d99c5801052d4eb7132ed598b10"
+    },
+    "app": {
+      "files": 35,
+      "sha256": "659b282abb06b82fd59efa24bb560c0e40613161fe722046ce16b618360062aa"
+    }
+  },
+  "after": {
+    "experiments/epistemic-diversity/runs": {
+      "files": 2616,
+      "sha256": "1c98b1d656e854209739fffb03a064e751c09045ed6198572fe1dd2cfd3154b1"
+    },
+    "experiments/epistemic-diversity/freezes": {
+      "files": 5,
+      "sha256": "68d878f5feb919996c26ea4b7fb3f2c90b16c8c99ff17257f38518bba95aba66"
+    },
+    "experiments/epistemic-diversity/benchmarks": {
+      "files": 113,
+      "sha256": "6d530c92577aecda4170e8e2cbf5fa964523f7a460e4774da35331f9a656da9c"
+    },
+    "experiments/epistemic-diversity/configs": {
+      "files": 5,
+      "sha256": "4abc9ccd713fe0a016105f865387af09dcd2219dc107cdfe6f30c164609c078b"
+    },
+    "experiments/epistemic-diversity/prompts": {
+      "files": 7,
+      "sha256": "8df7daa537bc44d9ffcd166d81612aa2d6350aff15383c2ecca01e37356a2bb6"
+    },
+    "experiments/epistemic-diversity/src": {
+      "files": 17,
+      "sha256": "df8992688a1a8ed6b51a17e73ff48afdbfab58bf49c599b37aa501b3cb1c8fab"
+    },
+    "experiments/epistemic-diversity/operational_diagnostics": {
+      "files": 4,
+      "sha256": "ccfa65e41caaebec0c417f1551c0f1ae6f4eb60c575cb24b519f03ea8019b9cf"
+    },
+    "experiments/epistemic-diversity/diagnostics": {
+      "files": 3,
+      "sha256": "6f8715a5a3e1b204ad28434890b7320d91509d99c5801052d4eb7132ed598b10"
+    },
+    "app": {
+      "files": 35,
+      "sha256": "659b282abb06b82fd59efa24bb560c0e40613161fe722046ce16b618360062aa"
+    }
+  }
+}

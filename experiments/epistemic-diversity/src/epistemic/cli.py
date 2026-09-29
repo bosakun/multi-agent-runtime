@@ -115,7 +115,7 @@ def main() -> None:
                 max_output_tokens=args.max_output_tokens,
                 timeout_seconds=args.timeout
                 if args.timeout is not None
-                else (300 if args.execution_profile == "local_ollama" else 90),
+                else (600 if args.execution_profile == "local_ollama" else 90),
                 execution_profile=args.execution_profile,
             )
             result = asyncio.run(

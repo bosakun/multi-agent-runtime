@@ -1,0 +1,789 @@
+{
+  "experiment_id": "782673072af042bd9ca1ff77f0ae0c25",
+  "run_id": "d8049f0967c149a0ab79687d56a1da3e",
+  "timestamp": "2026-09-29T01:25:55.893542+00:00",
+  "condition": "C2",
+  "task_id": "v2-constraints-medium",
+  "family": "constraints",
+  "template": "candidate_elimination_with_budget_and_compatibility",
+  "seed": 20260928,
+  "repetition": 0,
+  "model_settings": {
+    "provider": "mock",
+    "model": "qwen3:14b",
+    "temperature": 0,
+    "max_output_tokens": 4096,
+    "timeout_seconds": 1200,
+    "execution_profile": "local_ollama"
+  },
+  "backend_token_limit_parameter": "max_tokens",
+  "assignment": {
+    "roles": {
+      "worker_0": "systems",
+      "worker_1": "skeptical",
+      "worker_2": "analytical"
+    },
+    "partitions": {
+      "worker_0": [
+        "e_d746b153a9c4",
+        "e_96d09490c7d9",
+        "e_eb4c061a08fd"
+      ],
+      "worker_1": [
+        "e_c446885a3427",
+        "e_48356f221843",
+        "e_71d87df76c2b"
+      ],
+      "worker_2": [
+        "e_0929d9514324",
+        "e_b2512895670a",
+        "e_7595e6f7ee49"
+      ]
+    },
+    "seed": 20260928
+  },
+  "protocol_fingerprint": "780926d9fb0ad8182d6cbee907c0c2f93615c95f572ef659684ab1e52310ca2c",
+  "git_commit": "b8c5fa8fb95606f2a7e7f37d95b1d50807232ee9",
+  "source_sha256": "0b461896964c3b0fde4215111edd0efa63407a567a723f13d57696005a96412a",
+  "source_dirty": true,
+  "prompt_version": "v2",
+  "benchmark_version": "2.0.0",
+  "metrics_version": "2.0.0",
+  "difficulty": "medium",
+  "dependency_depth": 2,
+  "benchmark_sha256": "4cadf3f17b59baa2de57bba76b675b9f38f1f129682a0ca20a6fbf3887476895",
+  "status": "succeeded",
+  "output": [
+    {
+      "claims": [
+        {
+          "subject": "balanced_compatibility",
+          "value": "yes",
+          "evidence_ids": [
+            "e_b2512895670a"
+          ]
+        },
+        {
+          "subject": "balanced_drive_cost",
+          "value": "within_budget",
+          "evidence_ids": [
+            "e_c446885a3427"
+          ]
+        },
+        {
+          "subject": "fast_compatibility",
+          "value": "yes",
+          "evidence_ids": [
+            "e_48356f221843"
+          ]
+        },
+        {
+          "subject": "fast_drive_cost",
+          "value": "over_budget",
+          "evidence_ids": [
+            "e_d746b153a9c4"
+          ]
+        },
+        {
+          "subject": "migration_slot",
+          "value": "available",
+          "evidence_ids": [
+            "e_96d09490c7d9"
+          ]
+        },
+        {
+          "subject": "minimum_throughput",
+          "value": "balanced_sufficient",
+          "evidence_ids": [
+            "e_0929d9514324"
+          ]
+        }
+      ],
+      "insights": [
+        {
+          "subject": "balanced",
+          "value": "feasible",
+          "evidence_ids": [
+            "e_0929d9514324",
+            "e_b2512895670a",
+            "e_c446885a3427"
+          ]
+        },
+        {
+          "subject": "fast",
+          "value": "excluded",
+          "evidence_ids": [
+            "e_48356f221843",
+            "e_d746b153a9c4"
+          ]
+        },
+        {
+          "subject": "selection",
+          "value": "balanced",
+          "evidence_ids": [
+            "e_0929d9514324",
+            "e_48356f221843",
+            "e_b2512895670a",
+            "e_c446885a3427",
+            "e_d746b153a9c4"
+          ]
+        }
+      ],
+      "uncertainty": {
+        "confidence": null,
+        "assumptions": [],
+        "evidence_ids": [
+          "e_0929d9514324",
+          "e_48356f221843",
+          "e_96d09490c7d9",
+          "e_b2512895670a",
+          "e_c446885a3427",
+          "e_d746b153a9c4"
+        ],
+        "unknowns": []
+      },
+      "conclusion": "install_balanced",
+      "decision_summary": "Public rules evaluated over available observations."
+    }
+  ],
+  "metrics": {
+    "task_success": 1,
+    "gold_claim_coverage": 1.0,
+    "required_insight_coverage": 1.0,
+    "worker_evidence_coverage": 1.0,
+    "final_evidence_coverage": 1.0,
+    "worker_distinct_insights": 1,
+    "worker_contradictions": 0,
+    "final_contradictions": 0,
+    "unsupported_claims": 0,
+    "worker_unsupported_claims": 0,
+    "agent_failures": 0,
+    "collective_evidence_coverage_gain": 0.0,
+    "collective_claim_coverage_gain": 0.0,
+    "collective_insight_coverage_gain": 0.0,
+    "marginal_final_support_loss_mean": 0.0,
+    "marginal_final_support_loss_max": 0.0,
+    "evidence_unique": 0.0,
+    "evidence_redundancy": 0.6666666666666666,
+    "evidence_jaccard": 1.0,
+    "claim_unique": 0.0,
+    "claim_redundancy": 0.6666666666666666,
+    "claim_jaccard": 1.0,
+    "insight_unique": 0.0,
+    "insight_redundancy": 0.6666666666666666,
+    "insight_jaccard": 1.0,
+    "context_leaks": 0,
+    "result_leaks": 0,
+    "gold_leaks": 0,
+    "raw_exposure_outside_partition": 18,
+    "input_tokens": 6175,
+    "output_tokens": 1102,
+    "total_tokens": 7277,
+    "model_calls": 4,
+    "latency_ms": 196.08358293771744,
+    "cost_usd": null
+  },
+  "usage_kind": "character-quarter estimate",
+  "errors": [],
+  "diagnostics": {
+    "missing_claims": [],
+    "missing_insights": [],
+    "worker_valid_keys": [
+      [
+        "balanced_compatibility=yes",
+        "balanced_drive_cost=within_budget",
+        "fast_compatibility=yes",
+        "fast_drive_cost=over_budget",
+        "migration_slot=available",
+        "minimum_throughput=balanced_sufficient"
+      ],
+      [
+        "balanced_compatibility=yes",
+        "balanced_drive_cost=within_budget",
+        "fast_compatibility=yes",
+        "fast_drive_cost=over_budget",
+        "migration_slot=available",
+        "minimum_throughput=balanced_sufficient"
+      ],
+      [
+        "balanced_compatibility=yes",
+        "balanced_drive_cost=within_budget",
+        "fast_compatibility=yes",
+        "fast_drive_cost=over_budget",
+        "migration_slot=available",
+        "minimum_throughput=balanced_sufficient"
+      ]
+    ],
+    "worker_evidence": [
+      [
+        "e_0929d9514324",
+        "e_48356f221843",
+        "e_96d09490c7d9",
+        "e_b2512895670a",
+        "e_c446885a3427",
+        "e_d746b153a9c4"
+      ],
+      [
+        "e_0929d9514324",
+        "e_48356f221843",
+        "e_96d09490c7d9",
+        "e_b2512895670a",
+        "e_c446885a3427",
+        "e_d746b153a9c4"
+      ],
+      [
+        "e_0929d9514324",
+        "e_48356f221843",
+        "e_96d09490c7d9",
+        "e_b2512895670a",
+        "e_c446885a3427",
+        "e_d746b153a9c4"
+      ]
+    ],
+    "worker_required_insights": [
+      [
+        "selection=balanced"
+      ],
+      [
+        "selection=balanced"
+      ],
+      [
+        "selection=balanced"
+      ]
+    ],
+    "marginal_final_claim_support": [
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      }
+    ],
+    "marginal_final_insight_support": [
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      }
+    ],
+    "marginal_method": "fixed final-output provenance support loss; no re-generation",
+    "expected_conclusion": "install_balanced",
+    "actual_conclusion": "install_balanced"
+  },
+  "trace_file": "traces/d8049f0967c149a0ab79687d56a1da3e.json",
+  "human_review": {
+    "task": "Select a storage upgrade subject to migration compatibility and a strict spending ceiling. A faster but incompatible or over-budget option cannot be selected.",
+    "gold": {
+      "task_id": "v2-constraints-medium",
+      "relevant_evidence_ids": [
+        "e_d746b153a9c4",
+        "e_c446885a3427",
+        "e_48356f221843",
+        "e_b2512895670a",
+        "e_0929d9514324",
+        "e_96d09490c7d9"
+      ],
+      "distractor_ids": [
+        "e_71d87df76c2b",
+        "e_7595e6f7ee49",
+        "e_eb4c061a08fd"
+      ],
+      "claims": [
+        {
+          "subject": "fast_drive_cost",
+          "value": "over_budget",
+          "supporting_sets": [
+            [
+              "e_d746b153a9c4"
+            ]
+          ]
+        },
+        {
+          "subject": "balanced_drive_cost",
+          "value": "within_budget",
+          "supporting_sets": [
+            [
+              "e_c446885a3427"
+            ]
+          ]
+        },
+        {
+          "subject": "fast_compatibility",
+          "value": "yes",
+          "supporting_sets": [
+            [
+              "e_48356f221843"
+            ]
+          ]
+        },
+        {
+          "subject": "balanced_compatibility",
+          "value": "yes",
+          "supporting_sets": [
+            [
+              "e_b2512895670a"
+            ]
+          ]
+        },
+        {
+          "subject": "minimum_throughput",
+          "value": "balanced_sufficient",
+          "supporting_sets": [
+            [
+              "e_0929d9514324"
+            ]
+          ]
+        },
+        {
+          "subject": "migration_slot",
+          "value": "available",
+          "supporting_sets": [
+            [
+              "e_96d09490c7d9"
+            ]
+          ]
+        }
+      ],
+      "required_insights": [
+        {
+          "subject": "selection",
+          "value": "balanced",
+          "supporting_sets": [
+            [
+              "e_0929d9514324",
+              "e_48356f221843",
+              "e_b2512895670a",
+              "e_c446885a3427",
+              "e_d746b153a9c4"
+            ]
+          ]
+        }
+      ],
+      "optional_insights": [
+        {
+          "subject": "balanced",
+          "value": "feasible",
+          "supporting_sets": [
+            [
+              "e_0929d9514324",
+              "e_b2512895670a",
+              "e_c446885a3427"
+            ]
+          ]
+        },
+        {
+          "subject": "fast",
+          "value": "excluded",
+          "supporting_sets": [
+            [
+              "e_48356f221843",
+              "e_d746b153a9c4"
+            ]
+          ]
+        }
+      ],
+      "expected_conclusion": "install_balanced",
+      "constraints": [
+        "fast_drive_cost",
+        "balanced_drive_cost",
+        "fast_compatibility",
+        "balanced_compatibility",
+        "minimum_throughput",
+        "migration_slot"
+      ],
+      "failure_factors": [],
+      "hidden_annotation": "GOLD_ONLY_30e3145f43a9520a3e98",
+      "benchmark_version": "2.0.0",
+      "optional_claims": [],
+      "weak_evidence_ids": [],
+      "evidence_importance": {
+        "e_d746b153a9c4": 2,
+        "e_c446885a3427": 2,
+        "e_48356f221843": 2,
+        "e_b2512895670a": 2,
+        "e_0929d9514324": 2,
+        "e_96d09490c7d9": 2
+      },
+      "decision_supporting_sets": [
+        [
+          "e_0929d9514324",
+          "e_48356f221843",
+          "e_96d09490c7d9",
+          "e_b2512895670a",
+          "e_c446885a3427",
+          "e_d746b153a9c4"
+        ]
+      ],
+      "allowed_uncertainty": [],
+      "required_unknowns": [],
+      "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+    },
+    "workers": [
+      {
+        "id": "372fc97244fa4cbba49c96182e62938a",
+        "name": "worker_0",
+        "version": 1,
+        "producer": "worker_0",
+        "node_id": "worker_0",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "balanced_compatibility",
+              "value": "yes",
+              "evidence_ids": [
+                "e_b2512895670a"
+              ]
+            },
+            {
+              "subject": "balanced_drive_cost",
+              "value": "within_budget",
+              "evidence_ids": [
+                "e_c446885a3427"
+              ]
+            },
+            {
+              "subject": "fast_compatibility",
+              "value": "yes",
+              "evidence_ids": [
+                "e_48356f221843"
+              ]
+            },
+            {
+              "subject": "fast_drive_cost",
+              "value": "over_budget",
+              "evidence_ids": [
+                "e_d746b153a9c4"
+              ]
+            },
+            {
+              "subject": "migration_slot",
+              "value": "available",
+              "evidence_ids": [
+                "e_96d09490c7d9"
+              ]
+            },
+            {
+              "subject": "minimum_throughput",
+              "value": "balanced_sufficient",
+              "evidence_ids": [
+                "e_0929d9514324"
+              ]
+            }
+          ],
+          "insights": [
+            {
+              "subject": "balanced",
+              "value": "feasible",
+              "evidence_ids": [
+                "e_0929d9514324",
+                "e_b2512895670a",
+                "e_c446885a3427"
+              ]
+            },
+            {
+              "subject": "fast",
+              "value": "excluded",
+              "evidence_ids": [
+                "e_48356f221843",
+                "e_d746b153a9c4"
+              ]
+            },
+            {
+              "subject": "selection",
+              "value": "balanced",
+              "evidence_ids": [
+                "e_0929d9514324",
+                "e_48356f221843",
+                "e_b2512895670a",
+                "e_c446885a3427",
+                "e_d746b153a9c4"
+              ]
+            }
+          ],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_0929d9514324",
+              "e_48356f221843",
+              "e_96d09490c7d9",
+              "e_b2512895670a",
+              "e_c446885a3427",
+              "e_d746b153a9c4"
+            ],
+            "unknowns": []
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_0929d9514324",
+          "e_48356f221843",
+          "e_96d09490c7d9",
+          "e_b2512895670a",
+          "e_c446885a3427",
+          "e_d746b153a9c4"
+        ],
+        "created_at": "2026-09-29T01:25:55.927125Z"
+      },
+      {
+        "id": "fdf44853c3114cb0bb114ae4628e5c33",
+        "name": "worker_1",
+        "version": 1,
+        "producer": "worker_1",
+        "node_id": "worker_1",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "balanced_compatibility",
+              "value": "yes",
+              "evidence_ids": [
+                "e_b2512895670a"
+              ]
+            },
+            {
+              "subject": "balanced_drive_cost",
+              "value": "within_budget",
+              "evidence_ids": [
+                "e_c446885a3427"
+              ]
+            },
+            {
+              "subject": "fast_compatibility",
+              "value": "yes",
+              "evidence_ids": [
+                "e_48356f221843"
+              ]
+            },
+            {
+              "subject": "fast_drive_cost",
+              "value": "over_budget",
+              "evidence_ids": [
+                "e_d746b153a9c4"
+              ]
+            },
+            {
+              "subject": "migration_slot",
+              "value": "available",
+              "evidence_ids": [
+                "e_96d09490c7d9"
+              ]
+            },
+            {
+              "subject": "minimum_throughput",
+              "value": "balanced_sufficient",
+              "evidence_ids": [
+                "e_0929d9514324"
+              ]
+            }
+          ],
+          "insights": [
+            {
+              "subject": "balanced",
+              "value": "feasible",
+              "evidence_ids": [
+                "e_0929d9514324",
+                "e_b2512895670a",
+                "e_c446885a3427"
+              ]
+            },
+            {
+              "subject": "fast",
+              "value": "excluded",
+              "evidence_ids": [
+                "e_48356f221843",
+                "e_d746b153a9c4"
+              ]
+            },
+            {
+              "subject": "selection",
+              "value": "balanced",
+              "evidence_ids": [
+                "e_0929d9514324",
+                "e_48356f221843",
+                "e_b2512895670a",
+                "e_c446885a3427",
+                "e_d746b153a9c4"
+              ]
+            }
+          ],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_0929d9514324",
+              "e_48356f221843",
+              "e_96d09490c7d9",
+              "e_b2512895670a",
+              "e_c446885a3427",
+              "e_d746b153a9c4"
+            ],
+            "unknowns": []
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_0929d9514324",
+          "e_48356f221843",
+          "e_96d09490c7d9",
+          "e_b2512895670a",
+          "e_c446885a3427",
+          "e_d746b153a9c4"
+        ],
+        "created_at": "2026-09-29T01:25:55.961853Z"
+      },
+      {
+        "id": "319a438fb1774944b7acae7f67fa7d58",
+        "name": "worker_2",
+        "version": 1,
+        "producer": "worker_2",
+        "node_id": "worker_2",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "balanced_compatibility",
+              "value": "yes",
+              "evidence_ids": [
+                "e_b2512895670a"
+              ]
+            },
+            {
+              "subject": "balanced_drive_cost",
+              "value": "within_budget",
+              "evidence_ids": [
+                "e_c446885a3427"
+              ]
+            },
+            {
+              "subject": "fast_compatibility",
+              "value": "yes",
+              "evidence_ids": [
+                "e_48356f221843"
+              ]
+            },
+            {
+              "subject": "fast_drive_cost",
+              "value": "over_budget",
+              "evidence_ids": [
+                "e_d746b153a9c4"
+              ]
+            },
+            {
+              "subject": "migration_slot",
+              "value": "available",
+              "evidence_ids": [
+                "e_96d09490c7d9"
+              ]
+            },
+            {
+              "subject": "minimum_throughput",
+              "value": "balanced_sufficient",
+              "evidence_ids": [
+                "e_0929d9514324"
+              ]
+            }
+          ],
+          "insights": [
+            {
+              "subject": "balanced",
+              "value": "feasible",
+              "evidence_ids": [
+                "e_0929d9514324",
+                "e_b2512895670a",
+                "e_c446885a3427"
+              ]
+            },
+            {
+              "subject": "fast",
+              "value": "excluded",
+              "evidence_ids": [
+                "e_48356f221843",
+                "e_d746b153a9c4"
+              ]
+            },
+            {
+              "subject": "selection",
+              "value": "balanced",
+              "evidence_ids": [
+                "e_0929d9514324",
+                "e_48356f221843",
+                "e_b2512895670a",
+                "e_c446885a3427",
+                "e_d746b153a9c4"
+              ]
+            }
+          ],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_0929d9514324",
+              "e_48356f221843",
+              "e_96d09490c7d9",
+              "e_b2512895670a",
+              "e_c446885a3427",
+              "e_d746b153a9c4"
+            ],
+            "unknowns": []
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_0929d9514324",
+          "e_48356f221843",
+          "e_96d09490c7d9",
+          "e_b2512895670a",
+          "e_c446885a3427",
+          "e_d746b153a9c4"
+        ],
+        "created_at": "2026-09-29T01:25:56.002584Z"
+      }
+    ]
+  },
+  "partition_diagnostics": {
+    "workers": {
+      "worker_0": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      },
+      "worker_1": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      },
+      "worker_2": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      }
+    },
+    "max_decision_support_share": 0.3333333333333333,
+    "importance_range": 0,
+    "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+  }
+}

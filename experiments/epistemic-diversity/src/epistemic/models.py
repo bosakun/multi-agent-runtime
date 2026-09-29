@@ -5,6 +5,7 @@ from typing import Literal
 from pydantic import Field, model_validator
 
 from app.core.models import Knowledge, Model, Uncertainty
+from app.llm.openai_provider import TokenLimitParameter
 
 ConditionID = Literal["C0", "C1", "C2", "C3", "C4"]
 Family = Literal[
@@ -133,10 +134,15 @@ class ModelSettings(Model):
     @model_validator(mode="after")
     def local_execution_invariants(self) -> "ModelSettings":
         if self.execution_profile == "local_ollama" and (
-            self.timeout_seconds != 300 or self.temperature != 0 or self.max_output_tokens != 2048
+            self.timeout_seconds != 600 or self.temperature != 0 or self.max_output_tokens != 2048
         ):
-            raise ValueError("Local Ollama requires timeout 300, temperature 0, output limit 2048")
+            raise ValueError("Local Ollama requires timeout 600, temperature 0, output limit 2048")
         return self
+
+    @property
+    def backend_token_limit_parameter(self) -> TokenLimitParameter:
+        """Profile selection is explicit, not inferred from a model name or HTTP failure."""
+        return "max_tokens" if self.execution_profile == "local_ollama" else "max_completion_tokens"
 
 
 class Assignment(Model):
@@ -152,3 +158,4 @@ class CallRecord(Model):
     response: dict[str, object] | None = None
     error: str | None = None
     latency_ms: float = 0
+    backend_request: dict[str, object] | None = None

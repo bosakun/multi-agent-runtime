@@ -2,7 +2,7 @@
 
 import json
 from copy import deepcopy
-from typing import Any
+from typing import Any, Literal
 
 import httpx
 from pydantic import ValidationError
@@ -34,10 +34,23 @@ def strict_schema(schema: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
+TokenLimitParameter = Literal["max_completion_tokens", "max_tokens"]
+
+
 class OpenAICompatibleProvider:
-    def __init__(self, client: httpx.AsyncClient, api_key: str) -> None:
+    def __init__(
+        self,
+        client: httpx.AsyncClient,
+        api_key: str,
+        *,
+        token_limit_parameter: TokenLimitParameter = "max_completion_tokens",
+    ) -> None:
+        """Select an explicit backend limit field; never negotiate or silently fall back."""
+        if token_limit_parameter not in {"max_completion_tokens", "max_tokens"}:
+            raise ValueError("Unsupported token-limit parameter")
         self._client = client
         self._api_key = api_key
+        self._token_limit_parameter = token_limit_parameter
 
     async def generate(self, request: ModelRequest) -> ModelResponse:
         messages: list[dict[str, Any]] = [
@@ -81,7 +94,7 @@ class OpenAICompatibleProvider:
             "model": request.config.model,
             "messages": messages,
             "temperature": request.config.temperature,
-            "max_completion_tokens": request.config.max_output_tokens,
+            self._token_limit_parameter: request.config.max_output_tokens,
             "response_format": {
                 "type": "json_schema",
                 "json_schema": {

@@ -1,10 +1,20 @@
 # Limitations and threats to validity
 
+Protocol 2.3: 600 seconds is an upper deadline, not a guarantee; timeout can recur.
+Qwen3 model-default thinking is deliberately unchanged and can affect latency or
+consume generation capacity. Enforcing a previously uncertain 2048 ceiling may
+surface truncation/schema failures; these trigger the existing stop rule, not
+automatic limit expansion. MacBook Air load, memory pressure, caching and thermal
+conditions may vary, but none is established as the earlier failure's cause.
+Fake HTTP proves request translation, not enforcement by every local backend or
+custom build. No live call validates the new adapter during this implementation.
+
 Protocol 2.2: sequential local scheduling changes wall time and backend load/cache
 effects. Worker role/access factors are preserved because there is no sibling
 information dependency; real output invariance is not guaranteed. The 300-second
-deadline does not guarantee completion. The failed cohort has no paired quality
-contrast. Protocol-2.1 and 2.2 cohorts must not be pooled.
+deadline did not guarantee completion: the pilot stopped at run 4 / call 16.
+The operational gate failed, so no performance contrast was made.
+Protocol-2.1, 2.2 and 2.3 cohorts must not be pooled.
 
 Protocol 2.1 corrects an answer-position hint found after mock validation: author
 order put the correct decision first in all files. Provider-facing candidate and
@@ -38,8 +48,8 @@ fully evaluate semantic conflicts. Literal markers do not detect all leaks; inva
 HTTP bodies may be rejected before typed response audit. No LLM judge is used, so
 same-model judge bias is absent but human/semantic validation is still needed.
 
-No real credentials/model choice are available. Content freeze is complete only
-when verify-freeze passes; a concrete model/endpoint must additionally be bound
+Qwen3 local model/endpoint are selected, but no protocol-2.3 real run is authorized.
+Content freeze is complete only when verify-freeze passes; the model/endpoint must additionally be bound
 before paid calls. Fake-HTTP contract tests are not live-model experiments. After
 any fatal case, remaining cells are unexecuted, with partial pairs disclosed.
 No automatic main run or post-hoc conclusion is authorized. Earlier v1 results,

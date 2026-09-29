@@ -1,0 +1,917 @@
+{
+  "experiment_id": "782673072af042bd9ca1ff77f0ae0c25",
+  "run_id": "27688812fb0c479b9535bed1784f3f03",
+  "timestamp": "2026-09-29T01:25:56.105022+00:00",
+  "condition": "C2",
+  "task_id": "v2-contradiction-hard",
+  "family": "contradiction",
+  "template": "reliability_condition_and_time_precedence",
+  "seed": 20260928,
+  "repetition": 0,
+  "model_settings": {
+    "provider": "mock",
+    "model": "qwen3:14b",
+    "temperature": 0,
+    "max_output_tokens": 4096,
+    "timeout_seconds": 1200,
+    "execution_profile": "local_ollama"
+  },
+  "backend_token_limit_parameter": "max_tokens",
+  "assignment": {
+    "roles": {
+      "worker_0": "analytical",
+      "worker_1": "skeptical",
+      "worker_2": "systems"
+    },
+    "partitions": {
+      "worker_0": [
+        "e_8f26fb7ab3e6",
+        "e_a6ffa433a2a3",
+        "e_776a13a3f006"
+      ],
+      "worker_1": [
+        "e_89893e78d219",
+        "e_d0640a52ba7d",
+        "e_cc0aae90b4e6",
+        "e_66806cd423ad",
+        "e_ad7411770ee1"
+      ],
+      "worker_2": [
+        "e_a94cd5a160b9",
+        "e_14d55888f9bc",
+        "e_e83053d8bd81"
+      ]
+    },
+    "seed": 20260928
+  },
+  "protocol_fingerprint": "780926d9fb0ad8182d6cbee907c0c2f93615c95f572ef659684ab1e52310ca2c",
+  "git_commit": "b8c5fa8fb95606f2a7e7f37d95b1d50807232ee9",
+  "source_sha256": "0b461896964c3b0fde4215111edd0efa63407a567a723f13d57696005a96412a",
+  "source_dirty": true,
+  "prompt_version": "v2",
+  "benchmark_version": "2.0.0",
+  "metrics_version": "2.0.0",
+  "difficulty": "hard",
+  "dependency_depth": 3,
+  "benchmark_sha256": "5588ea90e24448d2e5fd50e3fc05a3ebf441ed5e713e75a059dabbd6550dd212",
+  "status": "succeeded",
+  "output": [
+    {
+      "claims": [
+        {
+          "subject": "calibration",
+          "value": "valid",
+          "evidence_ids": [
+            "e_8f26fb7ab3e6"
+          ]
+        },
+        {
+          "subject": "dashboard",
+          "value": "safe",
+          "evidence_ids": [
+            "e_a94cd5a160b9"
+          ]
+        },
+        {
+          "subject": "dashboard_condition",
+          "value": "unloaded",
+          "evidence_ids": [
+            "e_cc0aae90b4e6"
+          ]
+        },
+        {
+          "subject": "operator_memory",
+          "value": "usually_safe",
+          "evidence_ids": [
+            "e_d0640a52ba7d"
+          ]
+        },
+        {
+          "subject": "sample_order",
+          "value": "test_newer",
+          "evidence_ids": [
+            "e_89893e78d219"
+          ]
+        },
+        {
+          "subject": "target_condition",
+          "value": "loaded",
+          "evidence_ids": [
+            "e_14d55888f9bc"
+          ]
+        },
+        {
+          "subject": "test",
+          "value": "unsafe",
+          "evidence_ids": [
+            "e_776a13a3f006"
+          ]
+        },
+        {
+          "subject": "test_condition",
+          "value": "loaded",
+          "evidence_ids": [
+            "e_66806cd423ad"
+          ]
+        }
+      ],
+      "insights": [
+        {
+          "subject": "applicable_source",
+          "value": "test",
+          "evidence_ids": [
+            "e_14d55888f9bc",
+            "e_66806cd423ad",
+            "e_cc0aae90b4e6"
+          ]
+        },
+        {
+          "subject": "preferred_source",
+          "value": "test",
+          "evidence_ids": [
+            "e_14d55888f9bc",
+            "e_66806cd423ad",
+            "e_89893e78d219",
+            "e_8f26fb7ab3e6",
+            "e_cc0aae90b4e6"
+          ]
+        },
+        {
+          "subject": "resolved_safety",
+          "value": "unsafe",
+          "evidence_ids": [
+            "e_14d55888f9bc",
+            "e_66806cd423ad",
+            "e_776a13a3f006",
+            "e_89893e78d219",
+            "e_8f26fb7ab3e6",
+            "e_a94cd5a160b9",
+            "e_cc0aae90b4e6"
+          ]
+        }
+      ],
+      "uncertainty": {
+        "confidence": null,
+        "assumptions": [],
+        "evidence_ids": [
+          "e_14d55888f9bc",
+          "e_66806cd423ad",
+          "e_776a13a3f006",
+          "e_89893e78d219",
+          "e_8f26fb7ab3e6",
+          "e_a94cd5a160b9",
+          "e_cc0aae90b4e6",
+          "e_d0640a52ba7d"
+        ],
+        "unknowns": []
+      },
+      "conclusion": "stop_loaded_operation",
+      "decision_summary": "Public rules evaluated over available observations."
+    }
+  ],
+  "metrics": {
+    "task_success": 1,
+    "gold_claim_coverage": 1.0,
+    "required_insight_coverage": 1.0,
+    "worker_evidence_coverage": 1.0,
+    "final_evidence_coverage": 1.0,
+    "worker_distinct_insights": 1,
+    "worker_contradictions": 0,
+    "final_contradictions": 0,
+    "unsupported_claims": 0,
+    "worker_unsupported_claims": 0,
+    "agent_failures": 0,
+    "collective_evidence_coverage_gain": 0.0,
+    "collective_claim_coverage_gain": 0.0,
+    "collective_insight_coverage_gain": 0.0,
+    "marginal_final_support_loss_mean": 0.0,
+    "marginal_final_support_loss_max": 0.0,
+    "evidence_unique": 0.0,
+    "evidence_redundancy": 0.6666666666666666,
+    "evidence_jaccard": 1.0,
+    "claim_unique": 0.0,
+    "claim_redundancy": 0.6666666666666666,
+    "claim_jaccard": 1.0,
+    "insight_unique": 0.0,
+    "insight_redundancy": 0.6666666666666666,
+    "insight_jaccard": 1.0,
+    "context_leaks": 0,
+    "result_leaks": 0,
+    "gold_leaks": 0,
+    "raw_exposure_outside_partition": 22,
+    "input_tokens": 6584,
+    "output_tokens": 1352,
+    "total_tokens": 7936,
+    "model_calls": 4,
+    "latency_ms": 202.29341695085168,
+    "cost_usd": null
+  },
+  "usage_kind": "character-quarter estimate",
+  "errors": [],
+  "diagnostics": {
+    "missing_claims": [],
+    "missing_insights": [],
+    "worker_valid_keys": [
+      [
+        "calibration=valid",
+        "dashboard=safe",
+        "dashboard_condition=unloaded",
+        "sample_order=test_newer",
+        "target_condition=loaded",
+        "test=unsafe",
+        "test_condition=loaded"
+      ],
+      [
+        "calibration=valid",
+        "dashboard=safe",
+        "dashboard_condition=unloaded",
+        "sample_order=test_newer",
+        "target_condition=loaded",
+        "test=unsafe",
+        "test_condition=loaded"
+      ],
+      [
+        "calibration=valid",
+        "dashboard=safe",
+        "dashboard_condition=unloaded",
+        "sample_order=test_newer",
+        "target_condition=loaded",
+        "test=unsafe",
+        "test_condition=loaded"
+      ]
+    ],
+    "worker_evidence": [
+      [
+        "e_14d55888f9bc",
+        "e_66806cd423ad",
+        "e_776a13a3f006",
+        "e_89893e78d219",
+        "e_8f26fb7ab3e6",
+        "e_a94cd5a160b9",
+        "e_cc0aae90b4e6"
+      ],
+      [
+        "e_14d55888f9bc",
+        "e_66806cd423ad",
+        "e_776a13a3f006",
+        "e_89893e78d219",
+        "e_8f26fb7ab3e6",
+        "e_a94cd5a160b9",
+        "e_cc0aae90b4e6"
+      ],
+      [
+        "e_14d55888f9bc",
+        "e_66806cd423ad",
+        "e_776a13a3f006",
+        "e_89893e78d219",
+        "e_8f26fb7ab3e6",
+        "e_a94cd5a160b9",
+        "e_cc0aae90b4e6"
+      ]
+    ],
+    "worker_required_insights": [
+      [
+        "resolved_safety=unsafe"
+      ],
+      [
+        "resolved_safety=unsafe"
+      ],
+      [
+        "resolved_safety=unsafe"
+      ]
+    ],
+    "marginal_final_claim_support": [
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      }
+    ],
+    "marginal_final_insight_support": [
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      },
+      {
+        "supported_final_coverage_without": 1.0,
+        "drop": 0.0
+      }
+    ],
+    "marginal_method": "fixed final-output provenance support loss; no re-generation",
+    "expected_conclusion": "stop_loaded_operation",
+    "actual_conclusion": "stop_loaded_operation"
+  },
+  "trace_file": "traces/27688812fb0c479b9535bed1784f3f03.json",
+  "human_review": {
+    "task": "Resolve apparently conflicting pump-safety reports for the requested operation. Establish which source applies using the condition, calibration and temporal-order records, without automatically trusting either source.",
+    "gold": {
+      "task_id": "v2-contradiction-hard",
+      "relevant_evidence_ids": [
+        "e_a94cd5a160b9",
+        "e_cc0aae90b4e6",
+        "e_776a13a3f006",
+        "e_66806cd423ad",
+        "e_14d55888f9bc",
+        "e_8f26fb7ab3e6",
+        "e_89893e78d219"
+      ],
+      "distractor_ids": [
+        "e_a6ffa433a2a3",
+        "e_e83053d8bd81",
+        "e_ad7411770ee1"
+      ],
+      "claims": [
+        {
+          "subject": "dashboard",
+          "value": "safe",
+          "supporting_sets": [
+            [
+              "e_a94cd5a160b9"
+            ]
+          ]
+        },
+        {
+          "subject": "dashboard_condition",
+          "value": "unloaded",
+          "supporting_sets": [
+            [
+              "e_cc0aae90b4e6"
+            ]
+          ]
+        },
+        {
+          "subject": "test",
+          "value": "unsafe",
+          "supporting_sets": [
+            [
+              "e_776a13a3f006"
+            ]
+          ]
+        },
+        {
+          "subject": "test_condition",
+          "value": "loaded",
+          "supporting_sets": [
+            [
+              "e_66806cd423ad"
+            ]
+          ]
+        },
+        {
+          "subject": "target_condition",
+          "value": "loaded",
+          "supporting_sets": [
+            [
+              "e_14d55888f9bc"
+            ]
+          ]
+        },
+        {
+          "subject": "calibration",
+          "value": "valid",
+          "supporting_sets": [
+            [
+              "e_8f26fb7ab3e6"
+            ]
+          ]
+        },
+        {
+          "subject": "sample_order",
+          "value": "test_newer",
+          "supporting_sets": [
+            [
+              "e_89893e78d219"
+            ]
+          ]
+        }
+      ],
+      "required_insights": [
+        {
+          "subject": "resolved_safety",
+          "value": "unsafe",
+          "supporting_sets": [
+            [
+              "e_14d55888f9bc",
+              "e_66806cd423ad",
+              "e_776a13a3f006",
+              "e_89893e78d219",
+              "e_8f26fb7ab3e6",
+              "e_a94cd5a160b9",
+              "e_cc0aae90b4e6"
+            ]
+          ]
+        }
+      ],
+      "optional_insights": [
+        {
+          "subject": "applicable_source",
+          "value": "test",
+          "supporting_sets": [
+            [
+              "e_14d55888f9bc",
+              "e_66806cd423ad",
+              "e_cc0aae90b4e6"
+            ]
+          ]
+        },
+        {
+          "subject": "preferred_source",
+          "value": "test",
+          "supporting_sets": [
+            [
+              "e_14d55888f9bc",
+              "e_66806cd423ad",
+              "e_89893e78d219",
+              "e_8f26fb7ab3e6",
+              "e_cc0aae90b4e6"
+            ]
+          ]
+        }
+      ],
+      "expected_conclusion": "stop_loaded_operation",
+      "constraints": [
+        "dashboard",
+        "dashboard_condition",
+        "test",
+        "test_condition",
+        "target_condition",
+        "calibration",
+        "sample_order"
+      ],
+      "failure_factors": [],
+      "hidden_annotation": "GOLD_ONLY_5ce6499f2edac8a51eeb",
+      "benchmark_version": "2.0.0",
+      "optional_claims": [
+        {
+          "subject": "operator_memory",
+          "value": "usually_safe",
+          "supporting_sets": [
+            [
+              "e_d0640a52ba7d"
+            ]
+          ]
+        }
+      ],
+      "weak_evidence_ids": [
+        "e_d0640a52ba7d"
+      ],
+      "evidence_importance": {
+        "e_a94cd5a160b9": 2,
+        "e_cc0aae90b4e6": 2,
+        "e_776a13a3f006": 2,
+        "e_66806cd423ad": 2,
+        "e_14d55888f9bc": 2,
+        "e_8f26fb7ab3e6": 2,
+        "e_89893e78d219": 2
+      },
+      "decision_supporting_sets": [
+        [
+          "e_14d55888f9bc",
+          "e_66806cd423ad",
+          "e_776a13a3f006",
+          "e_89893e78d219",
+          "e_8f26fb7ab3e6",
+          "e_a94cd5a160b9",
+          "e_cc0aae90b4e6"
+        ]
+      ],
+      "allowed_uncertainty": [],
+      "required_unknowns": [],
+      "partition_note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+    },
+    "workers": [
+      {
+        "id": "62909117c198463cb04a281d10732cf8",
+        "name": "worker_0",
+        "version": 1,
+        "producer": "worker_0",
+        "node_id": "worker_0",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "calibration",
+              "value": "valid",
+              "evidence_ids": [
+                "e_8f26fb7ab3e6"
+              ]
+            },
+            {
+              "subject": "dashboard",
+              "value": "safe",
+              "evidence_ids": [
+                "e_a94cd5a160b9"
+              ]
+            },
+            {
+              "subject": "dashboard_condition",
+              "value": "unloaded",
+              "evidence_ids": [
+                "e_cc0aae90b4e6"
+              ]
+            },
+            {
+              "subject": "operator_memory",
+              "value": "usually_safe",
+              "evidence_ids": [
+                "e_d0640a52ba7d"
+              ]
+            },
+            {
+              "subject": "sample_order",
+              "value": "test_newer",
+              "evidence_ids": [
+                "e_89893e78d219"
+              ]
+            },
+            {
+              "subject": "target_condition",
+              "value": "loaded",
+              "evidence_ids": [
+                "e_14d55888f9bc"
+              ]
+            },
+            {
+              "subject": "test",
+              "value": "unsafe",
+              "evidence_ids": [
+                "e_776a13a3f006"
+              ]
+            },
+            {
+              "subject": "test_condition",
+              "value": "loaded",
+              "evidence_ids": [
+                "e_66806cd423ad"
+              ]
+            }
+          ],
+          "insights": [
+            {
+              "subject": "applicable_source",
+              "value": "test",
+              "evidence_ids": [
+                "e_14d55888f9bc",
+                "e_66806cd423ad",
+                "e_cc0aae90b4e6"
+              ]
+            },
+            {
+              "subject": "preferred_source",
+              "value": "test",
+              "evidence_ids": [
+                "e_14d55888f9bc",
+                "e_66806cd423ad",
+                "e_89893e78d219",
+                "e_8f26fb7ab3e6",
+                "e_cc0aae90b4e6"
+              ]
+            },
+            {
+              "subject": "resolved_safety",
+              "value": "unsafe",
+              "evidence_ids": [
+                "e_14d55888f9bc",
+                "e_66806cd423ad",
+                "e_776a13a3f006",
+                "e_89893e78d219",
+                "e_8f26fb7ab3e6",
+                "e_a94cd5a160b9",
+                "e_cc0aae90b4e6"
+              ]
+            }
+          ],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_14d55888f9bc",
+              "e_66806cd423ad",
+              "e_776a13a3f006",
+              "e_89893e78d219",
+              "e_8f26fb7ab3e6",
+              "e_a94cd5a160b9",
+              "e_cc0aae90b4e6",
+              "e_d0640a52ba7d"
+            ],
+            "unknowns": []
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_14d55888f9bc",
+          "e_66806cd423ad",
+          "e_776a13a3f006",
+          "e_89893e78d219",
+          "e_8f26fb7ab3e6",
+          "e_a94cd5a160b9",
+          "e_cc0aae90b4e6",
+          "e_d0640a52ba7d"
+        ],
+        "created_at": "2026-09-29T01:25:56.141349Z"
+      },
+      {
+        "id": "b2094dc7117a45ddbcb488326624d453",
+        "name": "worker_1",
+        "version": 1,
+        "producer": "worker_1",
+        "node_id": "worker_1",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "calibration",
+              "value": "valid",
+              "evidence_ids": [
+                "e_8f26fb7ab3e6"
+              ]
+            },
+            {
+              "subject": "dashboard",
+              "value": "safe",
+              "evidence_ids": [
+                "e_a94cd5a160b9"
+              ]
+            },
+            {
+              "subject": "dashboard_condition",
+              "value": "unloaded",
+              "evidence_ids": [
+                "e_cc0aae90b4e6"
+              ]
+            },
+            {
+              "subject": "operator_memory",
+              "value": "usually_safe",
+              "evidence_ids": [
+                "e_d0640a52ba7d"
+              ]
+            },
+            {
+              "subject": "sample_order",
+              "value": "test_newer",
+              "evidence_ids": [
+                "e_89893e78d219"
+              ]
+            },
+            {
+              "subject": "target_condition",
+              "value": "loaded",
+              "evidence_ids": [
+                "e_14d55888f9bc"
+              ]
+            },
+            {
+              "subject": "test",
+              "value": "unsafe",
+              "evidence_ids": [
+                "e_776a13a3f006"
+              ]
+            },
+            {
+              "subject": "test_condition",
+              "value": "loaded",
+              "evidence_ids": [
+                "e_66806cd423ad"
+              ]
+            }
+          ],
+          "insights": [
+            {
+              "subject": "applicable_source",
+              "value": "test",
+              "evidence_ids": [
+                "e_14d55888f9bc",
+                "e_66806cd423ad",
+                "e_cc0aae90b4e6"
+              ]
+            },
+            {
+              "subject": "preferred_source",
+              "value": "test",
+              "evidence_ids": [
+                "e_14d55888f9bc",
+                "e_66806cd423ad",
+                "e_89893e78d219",
+                "e_8f26fb7ab3e6",
+                "e_cc0aae90b4e6"
+              ]
+            },
+            {
+              "subject": "resolved_safety",
+              "value": "unsafe",
+              "evidence_ids": [
+                "e_14d55888f9bc",
+                "e_66806cd423ad",
+                "e_776a13a3f006",
+                "e_89893e78d219",
+                "e_8f26fb7ab3e6",
+                "e_a94cd5a160b9",
+                "e_cc0aae90b4e6"
+              ]
+            }
+          ],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_14d55888f9bc",
+              "e_66806cd423ad",
+              "e_776a13a3f006",
+              "e_89893e78d219",
+              "e_8f26fb7ab3e6",
+              "e_a94cd5a160b9",
+              "e_cc0aae90b4e6",
+              "e_d0640a52ba7d"
+            ],
+            "unknowns": []
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_14d55888f9bc",
+          "e_66806cd423ad",
+          "e_776a13a3f006",
+          "e_89893e78d219",
+          "e_8f26fb7ab3e6",
+          "e_a94cd5a160b9",
+          "e_cc0aae90b4e6",
+          "e_d0640a52ba7d"
+        ],
+        "created_at": "2026-09-29T01:25:56.177373Z"
+      },
+      {
+        "id": "8b5a108875df4bac8fe033b7976e4453",
+        "name": "worker_2",
+        "version": 1,
+        "producer": "worker_2",
+        "node_id": "worker_2",
+        "schema_id": "worker.v1",
+        "payload": {
+          "claims": [
+            {
+              "subject": "calibration",
+              "value": "valid",
+              "evidence_ids": [
+                "e_8f26fb7ab3e6"
+              ]
+            },
+            {
+              "subject": "dashboard",
+              "value": "safe",
+              "evidence_ids": [
+                "e_a94cd5a160b9"
+              ]
+            },
+            {
+              "subject": "dashboard_condition",
+              "value": "unloaded",
+              "evidence_ids": [
+                "e_cc0aae90b4e6"
+              ]
+            },
+            {
+              "subject": "operator_memory",
+              "value": "usually_safe",
+              "evidence_ids": [
+                "e_d0640a52ba7d"
+              ]
+            },
+            {
+              "subject": "sample_order",
+              "value": "test_newer",
+              "evidence_ids": [
+                "e_89893e78d219"
+              ]
+            },
+            {
+              "subject": "target_condition",
+              "value": "loaded",
+              "evidence_ids": [
+                "e_14d55888f9bc"
+              ]
+            },
+            {
+              "subject": "test",
+              "value": "unsafe",
+              "evidence_ids": [
+                "e_776a13a3f006"
+              ]
+            },
+            {
+              "subject": "test_condition",
+              "value": "loaded",
+              "evidence_ids": [
+                "e_66806cd423ad"
+              ]
+            }
+          ],
+          "insights": [
+            {
+              "subject": "applicable_source",
+              "value": "test",
+              "evidence_ids": [
+                "e_14d55888f9bc",
+                "e_66806cd423ad",
+                "e_cc0aae90b4e6"
+              ]
+            },
+            {
+              "subject": "preferred_source",
+              "value": "test",
+              "evidence_ids": [
+                "e_14d55888f9bc",
+                "e_66806cd423ad",
+                "e_89893e78d219",
+                "e_8f26fb7ab3e6",
+                "e_cc0aae90b4e6"
+              ]
+            },
+            {
+              "subject": "resolved_safety",
+              "value": "unsafe",
+              "evidence_ids": [
+                "e_14d55888f9bc",
+                "e_66806cd423ad",
+                "e_776a13a3f006",
+                "e_89893e78d219",
+                "e_8f26fb7ab3e6",
+                "e_a94cd5a160b9",
+                "e_cc0aae90b4e6"
+              ]
+            }
+          ],
+          "uncertainty": {
+            "confidence": null,
+            "assumptions": [],
+            "evidence_ids": [
+              "e_14d55888f9bc",
+              "e_66806cd423ad",
+              "e_776a13a3f006",
+              "e_89893e78d219",
+              "e_8f26fb7ab3e6",
+              "e_a94cd5a160b9",
+              "e_cc0aae90b4e6",
+              "e_d0640a52ba7d"
+            ],
+            "unknowns": []
+          }
+        },
+        "readers": [
+          "synthesizer"
+        ],
+        "evidence_ids": [
+          "e_14d55888f9bc",
+          "e_66806cd423ad",
+          "e_776a13a3f006",
+          "e_89893e78d219",
+          "e_8f26fb7ab3e6",
+          "e_a94cd5a160b9",
+          "e_cc0aae90b4e6",
+          "e_d0640a52ba7d"
+        ],
+        "created_at": "2026-09-29T01:25:56.225523Z"
+      }
+    ]
+  },
+  "partition_diagnostics": {
+    "workers": {
+      "worker_0": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      },
+      "worker_1": {
+        "relevant": 3,
+        "weak": 1,
+        "distractors": 1,
+        "importance": 6
+      },
+      "worker_2": {
+        "relevant": 2,
+        "weak": 0,
+        "distractors": 1,
+        "importance": 4
+      }
+    },
+    "max_decision_support_share": 0.42857142857142855,
+    "importance_range": 2,
+    "note": "Oracle relevance/importance strata; count difference at most one. Integer document weights may preclude identical importance totals. Assignment diagnostics record every remaining imbalance."
+  }
+}

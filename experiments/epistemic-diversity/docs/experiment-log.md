@@ -1,5 +1,129 @@
 # Research log
 
+## 2026-09-29 JST — Protocol 2.4 pilot stopped on boundary validation
+
+- Executed 4 runs / 15 Pilot calls (18 total including the 3-call diagnostic).
+  First 3 runs succeeded. Fourth, v2-diagnosis-medium / C3, stopped partial at
+  worker_1 with `unknown_evidence_reference`; its structured output cited `none`,
+  not present in that worker's authorized context. Runtime fail-closed behavior
+  is correct. This is invalid citation handling, not context leakage.
+- Leakage checks in all 4 records: zero. Eight remaining runs unexecuted; campaign
+  consumed with no retry/resume/task replacement. No performance analysis/figures.
+- Full local results, calls and traces remain in Git-ignored runs/. The concise
+  incident/provenance summary is docs/qwen3-14b-protocol24-operational-failure.md.
+- 2.4 diagnosis improves one observed generation-limit failure but does not make
+  the multi-agent pilot robust to unsupported model citations. Any further attempt
+  requires a new predeclared protocol/binding/campaign.
+
+## 2026-09-29 JST — representative diagnostic passed; new Pilot launched
+
+- User authorized improving operational problems through Pilot completion.
+  Predeclared recovery-v2: 3 real diagnostic + 48 Pilot calls, shared ceiling 60.
+- Exact failed worker input reproduced length termination with max_tokens 2048;
+  measured 2048 generated tokens, nonzero reasoning characters, zero final-content
+  characters. Same input at 4096 produced schema-valid JSON in 2430 generated
+  tokens. Near-limit synthesizer also passed. No hidden reasoning persisted.
+- Source/input binding preceded diagnostic generation. Protocol 2.4 freeze and
+  new binding preceded its separate real Pilot launch. Both conditions share
+  4096 tokens / 1200s; all scientific factors other than generation budget stay
+  fixed. This is a changed cohort, never pooled with failed historical attempts.
+- Mock 2.4 validation: 12 succeeded runs / 48 calls, zero errors/leaks. Full
+  pre-launch suite: 252 passed / 3 skipped; formatter/lint/strict types pass.
+- All 2,805 historical protected files retain hashes. Old source and both old
+  seals remain unchanged/valid. Pilot completion/results are still pending.
+
+## 2026-09-29 JST — repeated-failure audit and offline recovery improvements
+
+- Separated deadline failures (2.1/2.2), the corrected Ollama limit-field mismatch,
+  and the observed length termination (2.3). The latter is not a 600-second timeout.
+  No failed answer or reasoning/token allocation was reconstructed.
+- The prior six-call diagnostic consumed only 422–472 generated tokens. Compared
+  structural load against the failed request: 4 inference rules / 2 decision rules /
+  14 premises versus at most 1 / 1 / 4. Small-fixture success cannot establish a fix.
+- Added unsealed operational_recovery tooling, outside both archived source sets:
+  exact public request fixture with provenance/hash, read-only workload audit,
+  pre-rejection final-answer-prefix/usage capture and fake-only single-attempt executor.
+  Hidden reasoning/prose/error bodies withheld; truncation and schema errors stay failures.
+- Added 19 offline/fake HTTP tests covering unchanged requests, partial/complete JSON
+  with length, timeout/cancel, usage unknowns, schema rejection, privacy guards,
+  real-transport rejection, old paths and overwrite refusal. No new real call,
+  retry, scientific protocol, condition analysis or push.
+- Details and remaining limits: docs/operational-recovery.md. Scientific pilot
+  reliability is still unestablished, not promoted from fake-test success.
+
+## 2026-09-29 JST — authorized six-call real diagnostic completed
+
+- User explicitly authorized implementation through real execution. Implemented
+  independent token_budget.py with immutable synthetic plan, seal and new binding.
+  Did not modify app/, scientific src/, benchmark, prompts or old campaigns.
+- Fake HTTP validation and full suite passed: 225 tests / 3 external-service skips;
+  formatter/lint/strict types pass. Then sealed source/plan before real generation.
+- Executed exactly six serial calls in the fixed order, Thinking default,
+  temperature 0, 600s deadlines, max_tokens 2048/4096. All six schema-valid / stop,
+  no errors; 3116 input + 2640 generated = 5756 reported tokens, about 3m52s.
+- Both ceilings completed all three small fixtures, with identical reported
+  counts/lengths per pair. Failed-Pilot truncation was not reproduced; the
+  predeclared criterion for proposing 4096 was not met. No reliability claim.
+- Thinking lengths were measured without persisting text; reasoning-token split
+  remained unknown. Recorded all journals, backend metadata and consumed budget.
+- Both seals verify and all 228 protected hashes match. No added calls, retry,
+  resume, new research protocol, Pilot, main/full, performance analysis or push.
+  Detailed actual outcomes: docs/token-budget-diagnostic-results.md.
+
+## 2026-09-29 JST — approved diagnostic planning, no implementation or execution
+
+- Fixed an independent synthetic-input diagnostic proposal: three contexts,
+  two total generation ceilings 2048/4096, one repetition, six calls maximum.
+- Kept Thinking default, temperature 0, serial dispatch, no tools/retries and
+  600s per-call deadlines. Seeded the predetermined pair order with 20260928.
+- Authored JSON inputs/plan outside sealed source and benchmark; no failed-task
+  replay or gold data. Artifact inputs are clearly labeled authored fixtures.
+- Specified metadata-before-rejection logging, separate diagnostic truncation
+  outcomes, fail-stop for other operational faults, unknown usage and incomplete
+  cells, and descriptive-only decision criteria. Neither budget is proven reliable.
+- No new source change, model call, Protocol 2.4, seal, binding or campaign.
+  Implementation and real launch remain separate approval gates.
+- Offline validation: 212 passed / 3 existing skips, formatter/lint/strict types
+  pass, current freeze valid and all 228 protected hashes unchanged. No real calls.
+
+## 2026-09-29 JST — protocol 2.3 failure diagnosis, no new generation
+
+- Inspected saved five records / 19 journals: first four records succeeded, then
+  v2-constraints-medium / C3 partial. Worker_0 failed once with output truncation
+  after 431.35s; the other workers succeeded and synthesis was not dispatched.
+- Distinguished length termination from deadline expiry. The failed HTTP envelope
+  and token usage are unavailable, so thinking exhaustion is a hypothesis, not
+  a recovered fact. Two successful calls used 2033/2025 of 2048 generated tokens.
+- Consulted versioned official Ollama implementation and the Qwen3-14B model card;
+  documented shared generation-budget/default-thinking and greedy-decoding risks.
+  Neither temperature nor thinking nor any other generation setting was changed.
+- Added unsealed offline diagnostics and a prospective metadata-only HTTP hook,
+  tested using fake HTTP; it does not save hidden reasoning or change requests.
+  It is not integrated into frozen execution without a future reviewed amendment.
+- Preserved old and current campaign artifacts, scientific sources, bindings,
+  seals and benchmark. No Protocol 2.4, performance analysis, figures or real
+  generation is part of this improvement. Validation details are recorded in
+  docs/protocol23-diagnostic-validation.md.
+
+## 2026-09-29 JST — protocol 2.3 operational compatibility amendment
+
+- Inspected the retained protocol-2.2 pilot: four runs / 16 calls, three successes,
+  then v2-diagnosis-medium / C3 partial. Workers succeeded; synthesizer exceeded
+  its 300s deadline. Journal recorded cancellation without a response. No
+  performance comparison or plots followed the failed operational gate.
+- Recorded separate failure documentation and protocol-2.3-amendment.md before
+  implementation or any new generation. Preserved all old campaign/freeze bytes.
+- Exactly two local corrections: deadline 600s and explicit `max_tokens=2048`.
+  Generic runtime adapter defaults to the old parameter; the research profile
+  chooses the compatibility field. Wire checks journal actual key/value before
+  transport and reject mismatches rather than fallback. Thinking is unchanged.
+- Scientific code, benchmark public/gold files, prompts and configs remain fixed;
+  seed, six tasks, C2/C3, assignment/order, metrics and stopping rules are unchanged.
+- Prepared new seal/binding/fresh campaign requirements. Neither partial resume
+  nor a real execution is performed. Old cohorts are never pooled with 2.3.
+- Mock and fake HTTP validation only; finalized commands, counts, preservation
+  checks and regression equivalence are recorded in protocol-2.3-validation.md.
+
 ## 2026-09-28 — protocol 2.2 local Ollama operational recovery
 
 - Inspected preserved runs/qwen3-14b only with read-only checks: 1 C2 run on

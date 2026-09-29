@@ -25,6 +25,7 @@ from epistemic.benchmark_v2 import VERSION, partition_stats
 from epistemic.conditions import build_condition, configurations, schemas
 from epistemic.freeze import (
     FREEZE_PATH,
+    reject_historical_path,
     validate_binding,
     validate_endpoint,
     validate_execution_endpoint,
@@ -188,6 +189,7 @@ async def run_case(
         "seed": seed,
         "repetition": repetition,
         "model_settings": settings.model_dump(),
+        "backend_token_limit_parameter": settings.backend_token_limit_parameter,
         "assignment": assignment.model_dump(),
         "protocol_fingerprint": metadata["protocol_fingerprint"],
         "git_commit": metadata["source"]["git_commit"],
@@ -246,6 +248,7 @@ async def execute_campaign(
     freeze_path: Path = FREEZE_PATH,
 ) -> Path:
     """Run whole paired blocks; persist every attempted case and never overwrite a phase."""
+    reject_historical_path(campaign)
     if settings.provider == "real" and not os.environ.get("OPENAI_API_KEY"):
         raise ValueError(
             "Real-model experiment pending because no provider credentials were available."
@@ -289,6 +292,8 @@ async def execute_campaign(
         "execution_profile": settings.execution_profile,
         "worker_concurrency": 1 if settings.execution_profile == "local_ollama" else 3,
         "model_concurrency": 1 if settings.execution_profile == "local_ollama" else 3,
+        "backend_token_limit_parameter": settings.backend_token_limit_parameter,
+        "thinking_configuration": "model_default; no override sent",
         "freeze_sha256": frozen["freeze_sha256"] if frozen else None,
         "model_binding": binding,
         "endpoint": endpoint if settings.provider == "real" else "offline-mock",
@@ -314,14 +319,21 @@ async def execute_campaign(
             base: ModelProvider = (
                 MockProvider(respond)
                 if settings.provider == "mock"
-                else OpenAICompatibleProvider(client, os.environ["OPENAI_API_KEY"])
+                else OpenAICompatibleProvider(
+                    client,
+                    os.environ["OPENAI_API_KEY"],
+                    token_limit_parameter=settings.backend_token_limit_parameter,
+                )
             )
             provider = AuditedProvider(
                 base,
                 budget,
                 output_dir / "call-journal",
                 max_concurrency=1 if settings.execution_profile == "local_ollama" else None,
+                token_limit_parameter=settings.backend_token_limit_parameter,
             )
+            if settings.provider == "real":
+                client.event_hooks["request"].append(provider.audit_http_request)
             stop = False
             for task_id, repetition in plan["blocks"]:
                 if stop:

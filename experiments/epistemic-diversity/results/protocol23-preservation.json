@@ -1,0 +1,195 @@
+{
+  "before": {
+    "protocol21_campaign": {
+      "files": {
+        "experiments/epistemic-diversity/runs/qwen3-14b/binding.json": "a48045bdeffa94d5b5ad7d5d74d0a226645f4ffb2f6b4dc01fb2f162372b6383",
+        "experiments/epistemic-diversity/runs/qwen3-14b/budget.sqlite": "8f550783e1a10e257adfa3cf2c9a1f2a48c9a20bea487b9d5a0372419219f357",
+        "experiments/epistemic-diversity/runs/qwen3-14b/hardware.txt": "e498ca4e06644b2fc8de03fd9092cab962014f225c01d7ca23d6afe4eb3a0bda",
+        "experiments/epistemic-diversity/runs/qwen3-14b/ollama-model.txt": "bd5bd941c2bd9bf6b1db454294d1f5b1ea8a90e6b3b963f6e80f39aa09c816dc",
+        "experiments/epistemic-diversity/runs/qwen3-14b/ollama-version.txt": "6d466593f95007d87722b0836b2e5d89377a07ab5d1f3b8af4f241c46c290891",
+        "experiments/epistemic-diversity/runs/qwen3-14b/pilot/call-journal/0001_d1da9d2ed05047d59355c54cbb48c9ec_worker_0.json": "854fcc2d70ef5cb23e9d505477b8dc3800af4b5818eaf0b761fe33ce0a914384",
+        "experiments/epistemic-diversity/runs/qwen3-14b/pilot/call-journal/0002_d1da9d2ed05047d59355c54cbb48c9ec_worker_1.json": "f5686982fafd98375b2ae9c9ef61b5c0be0427beb8381305ff914f804db08a6b",
+        "experiments/epistemic-diversity/runs/qwen3-14b/pilot/call-journal/0003_d1da9d2ed05047d59355c54cbb48c9ec_worker_2.json": "0e46943b53544518744b41025516306fa4cb206f06dc939d963fa27b4c2adb0f",
+        "experiments/epistemic-diversity/runs/qwen3-14b/pilot/manifest.json": "90de87c459c4e2ffb563f21f2f49d2695d9f09f334eea076bd78380c40ba3e2c",
+        "experiments/epistemic-diversity/runs/qwen3-14b/pilot/pilot-human-review.md": "e3dd9586b2977df949476bead692478fb77d2a81d63ee0820bde691f7f9916e7",
+        "experiments/epistemic-diversity/runs/qwen3-14b/pilot/records/d1da9d2ed05047d59355c54cbb48c9ec.json": "29c290343f0f50cdfe89b60e9fe9b6bb41e82041d7f590ac09e377d8ef2ff149",
+        "experiments/epistemic-diversity/runs/qwen3-14b/pilot/results.json": "71af38a62e4610a4eba99900d00cd606858a8a897cc75cc8ef55ce1e9e89e2c5",
+        "experiments/epistemic-diversity/runs/qwen3-14b/pilot/runtime.sqlite": "1646be57e5431ecd78474f4c367d2556320cc4623d1a4ef5bb2f8bfe5354d9f2",
+        "experiments/epistemic-diversity/runs/qwen3-14b/pilot/traces/d1da9d2ed05047d59355c54cbb48c9ec.json": "737cb4e83bb334849696f692b7b53783a420ee027475c7aeb0326c0572941d2b"
+      },
+      "sha256": "2bc076f8ba086ba000c7e60188d536f13380e1a95985117710cb2cecb196bfa0",
+      "count": 14
+    },
+    "protocol22_campaign": {
+      "files": {
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/binding.json": "aa64f9de8003bf716b2696b05414f059a81b31d889e0bc2f8a7cbcc095fe1730",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/budget.sqlite": "cdced31de5f2a14c9945d026f07244831d91569b3a0a17a78be2f298ad0e84bc",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0001_c6e27d7af8a848958fafc80487e76ab5_worker_0.json": "f8195f7ddfffc4417939318532e00cc68802f5425dd9675b65df651fead15fdb",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0002_c6e27d7af8a848958fafc80487e76ab5_worker_1.json": "77e0963d04a3528f576c80a2810b584b4159919c7a1445bca2b7af74be1e140a",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0003_c6e27d7af8a848958fafc80487e76ab5_worker_2.json": "7bb688f128908b0326f162f872df70a8ed3f24394e1dc76a38d6f5dea63718c4",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0004_c6e27d7af8a848958fafc80487e76ab5_synthesizer.json": "5b55e664d6b1449542974b87a7fe00a1e62ca3701b12393004ff86e4dc819ffc",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0005_05bfa741b32d412887f512b4c433c52a_worker_0.json": "79edd0b1ebc9f403090fb955a1de7da6fe1d92f6b05caff39f859abe3d0d22c2",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0006_05bfa741b32d412887f512b4c433c52a_worker_1.json": "bc6ee8dec83ad994ae21875191bc27943d86ff70103f59b4107162d44b57deb9",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0007_05bfa741b32d412887f512b4c433c52a_worker_2.json": "c7699169e941dd792f9b5a5f9035dc3735c95d6032ee85e24ecf93e575ae77e7",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0008_05bfa741b32d412887f512b4c433c52a_synthesizer.json": "1d6a9bba5a6246299e2bea7b894f9de66672ec132dd8e35af0fb68d9cc707d6b",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0009_0899bcadb4564cf180511e1cbb37b8c2_worker_0.json": "60c4d51608825b10909c778580bb7a252d8d9be938fc3d71960629cbdfa6c58f",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0010_0899bcadb4564cf180511e1cbb37b8c2_worker_1.json": "f61fdb9b47cb877943c49ed95b93f63a826a8ce8076019361977a0a7c96822a5",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0011_0899bcadb4564cf180511e1cbb37b8c2_worker_2.json": "716664d3799f2820cc5be5711ceb90289879a9a13e14289e37885600396a2b7b",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0012_0899bcadb4564cf180511e1cbb37b8c2_synthesizer.json": "eb29c760e0c8deedb8d8d0debe9d1fdd944ad7cd7e85bb12bf9f54f8ed473bf0",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0013_cfa36772e6b64dd88edfcb568c5fb3b1_worker_0.json": "db9b979c62b60817c6a420d4f668bec4156e233f142f2d90fd0ced702c676159",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0014_cfa36772e6b64dd88edfcb568c5fb3b1_worker_1.json": "331f6e410b3065c3d659c67b3ff5ed0662e9f7b33b2f3ccee1e410c09731d056",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0015_cfa36772e6b64dd88edfcb568c5fb3b1_worker_2.json": "05d00d46b6934fe3f71c6eae90240b7192ac639d682a6cc915b15a45e03318ea",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/call-journal/0016_cfa36772e6b64dd88edfcb568c5fb3b1_synthesizer.json": "d1bcd60d4011a210fdc16b39d77dd8ca8532bc9d86424ef94a36785c33116599",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/manifest.json": "5793c1ba2533ac37fc7f80ea0f5ab95b7815363317f2ce620fc61d4ef8a7aac9",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/pilot-human-review.md": "72dae13c0bcf13a9c1a487feaa81bca460bb8f13fd4ea3ad6a33b6e2640890da",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/records/05bfa741b32d412887f512b4c433c52a.json": "9855782094ac734acd7e6025d6751dd2f1b3d7b66a57924bf735c035c5cc105b",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/records/0899bcadb4564cf180511e1cbb37b8c2.json": "f9acecac127802310f859f838ac4021c46c98b097a7c079e5002cd6d7eeb8cea",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/records/c6e27d7af8a848958fafc80487e76ab5.json": "5c959ddf0c3a3cd8bea59d66549b61893449cf0b2f1cc8943b1a5217e8466a80",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/records/cfa36772e6b64dd88edfcb568c5fb3b1.json": "321cbb28abc540dc940c5227249a1dc222b26ef3308eff3d5a8e1ef13f319884",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/results.json": "cc271099baf8c025336e460bebfc4692d88f1d18e022c4cb208e506e838bf2c4",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/runtime.sqlite": "a26143814420a3b3fe1ff4b4f0731cb2b7120b472ffaed612ab0a15bd87e0662",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/traces/05bfa741b32d412887f512b4c433c52a.json": "e9362d374a1b356c7d9b2dc918b3acc003d6a886860c9e8f33280b748f7ae73c",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/traces/0899bcadb4564cf180511e1cbb37b8c2.json": "98743b2baba50581786b15d31cf97cc5f856fcfa06e42dd235953c0b6d130a6b",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/traces/c6e27d7af8a848958fafc80487e76ab5.json": "21486716acc40266b5b7d5f12ebfaa69944c5ea2787833bf4e461f2145c506ae",
+        "experiments/epistemic-diversity/runs/qwen3-14b-protocol22/pilot/traces/cfa36772e6b64dd88edfcb568c5fb3b1.json": "d195771eb1e37a92b79f514eacc6a3e9e6ebcc7b9d8c3a77595896067dfc0e2b"
+      },
+      "sha256": "f67564b84a0c85cc2d181840167e322005b7b70562aa8b6cb94c1044bde94677",
+      "count": 30
+    },
+    "benchmark20": {
+      "files": {
+        "experiments/epistemic-diversity/benchmarks/v2/audit.json": "9b330d1323c1d391fcfcebc627d505027ae9367178d48c71192b86e09dbfb66d",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-causal-easy.json": "3e2280223dbcb9ec4d4104630a94fa80c54a9a9224307f9c5a71dea76505f7d1",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-causal-hard.json": "15e42468d99cf6842e18b0ef8a035b3fccbd6504d84fa9e47f1eb6987d018484",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-causal-medium.json": "7f9e3e22f7bcbd612f25940c7a2b8c16d78c062e3b6edab0951e986b568007f2",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-constraints-easy.json": "0a5b38f142fb5878fefd2cd2bc96ffe168915abab60d4ea6002d227cd80d9d96",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-constraints-hard.json": "fe02f750fb5f0e2a76f149844665c58f27c10e84c6486d3c7bd933023d3993e8",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-constraints-medium.json": "19e31c6630fe682e7f613256446046c1d1dfb4873ededb84382eb7a7d5bf6595",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-contradiction-easy.json": "3bb7393500d08d71958b593c9c411002163b1c3446ba6d7c78accca29797c105",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-contradiction-hard.json": "af871974a629c81fc743231483bffbf96867c2b34ff921884519ee207e236a0c",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-contradiction-medium.json": "cd402b57ed75f6513f6d519c0fc8b800f013832f6621ae1de0866fd535c94e34",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-decision-easy.json": "5ea6288847b80413b7726cad2084fb113e22a3a59f8afabb5af68d09818ec07c",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-decision-hard.json": "40f4b5138b0fb1c0136db070fc594a4bf2f42e7b140f33cac7827087df9763eb",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-decision-medium.json": "dcdad7030cb552983772ef733755e3b27225d3e90703e02d9e70dd41844cc386",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-diagnosis-easy.json": "9a628d4ecd1d9ab0fe7f74bd1df924351b6774aeaf2519598ac89327dce1ad6d",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-diagnosis-hard.json": "89c7762d66c6c3d3268423f855f451b16260856f98fce02c0a42027372ae74a5",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-diagnosis-medium.json": "6e2bcc87ff1755641fdc89fb2f34e993d86aabff6711fc4820dc12f4e53aa075",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-failure-easy.json": "29eb78ab48ed90c0d5978f0868ac908c95d8629a85714631e152c8f55152ec3d",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-failure-hard.json": "8ff4da63fe799b1afb218ec97da1ff52e51786ba64ffa19659c6743bb700b731",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-failure-medium.json": "d7e26772c758e9ab94feb0d76497cbe129dbe0485561a574a0f9766046de9db7",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-missing-easy.json": "29a9edf72b68ba92f27013f9a238dbe825bcd95ea0290651608786da1de9ad8e",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-missing-hard.json": "d53ad69bdc9b0cd3149a22966cff9fafab417ba8d6266501bacf9062991e507b",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-missing-medium.json": "64fa9c0d5f0836ac7e6b722ce0b795db1cbea3d1ee1e0759e5aae64caaa66c7b",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-planning-easy.json": "f4dd6d511e97d2cd889f0932637dd849908e69ff5bf45bd22fcc571539b6e4ac",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-planning-hard.json": "764bc7d8ec685f0bbf138163dec8227e8a6641f12f00124d9daefe5ea48b4358",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-planning-medium.json": "303bcbadd531bd9d93232e78a2424eaa589409c4aa9fbc0b483cd3c63f7c2f95",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-ranking-easy.json": "2d69e7a8406d392b80b1125515b822ec560ad6ac4e21b522ee952825f18464a0",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-ranking-hard.json": "e0fcbf7f6dd8f6b74e8e8e3e2ed1e663ef56de3a07444655c3d6439b18519f65",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-ranking-medium.json": "8df59ce5cb4e8020a0b558c2b18bfed4036da1eb4b060da40d6b805bd97720d8",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-synthesis-easy.json": "02f64665e52a693b077e020013bf308eff8f42b33db28c23a98297865070d3c8",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-synthesis-hard.json": "24ce88ad9bf08271d6bff12101c64bac3770165120fa6b62b95242e004ac5d28",
+        "experiments/epistemic-diversity/benchmarks/v2/gold/v2-synthesis-medium.json": "8bd0b3b58bfe0e7882319321e174dffe155ede9d757bdd2fadd17620a7542727",
+        "experiments/epistemic-diversity/benchmarks/v2/manifest.json": "e7ad0284027ff52784e8525b8778baecd220597271f872ca7ea838c9ba4c95ce",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-causal-easy.json": "e434fc0bb3adeb873e3bcd0bba83531bdc3ef69b91e26ee8d181f53766bab95f",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-causal-hard.json": "737e50a51d149a36b6ef98d6f371700369650fd54fa6545be243157c348c1a16",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-causal-medium.json": "e1f3c65f20cd7a3d6d56784b412ea780c5aec9c606fe90be005768455f4b6faf",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-constraints-easy.json": "836943510d7c7f1115c7bd5063c08f2ecc2d12d900754d474d16cfe1aa3b9efd",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-constraints-hard.json": "ad3dba8a455830f00c576759d7da52a1137353de7929285efb432d586d0132d2",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-constraints-medium.json": "85bc7f35f4f63e327ac1b2f10211a9ac8261fd7bc088a3891b4d17f8e4b5403e",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-contradiction-easy.json": "ee00851f0697def03ece19cb4fb209c82724cb3dbc9ab48f3e0efae2ba9f27a5",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-contradiction-hard.json": "e3768e2ec4d21cdb6da9403874b8998c437c12a2aef0252f4c40cf6fe7ae127c",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-contradiction-medium.json": "7fa26b3c31530f67bc25b993b0a2345533900709fc6e21677f7d5e50224c6ab3",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-decision-easy.json": "bf4cfe3c071f3cf1640c9d8f8588d93badd619da65caa6b22738b6acb24e6ae5",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-decision-hard.json": "3e72de6737c3fb6c04943f73af7cab50561941507b29ec22c70bc4a0f86767b5",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-decision-medium.json": "6267f5684f873caed35569fdffc7665ac8552cfa7076fd772f63c33dadcc0231",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-diagnosis-easy.json": "f074f388d7e3fcc66522e93af6e59f7f37d1e45d49f5caa304a37eab8235d645",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-diagnosis-hard.json": "e5a7b08abfe9ff19756fc4d63f1abf86c24d312b8b25f6ecf0a0a9a4a8144b92",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-diagnosis-medium.json": "132abb13a5d39a668b6be0a3dbb1318d0b85cfadc82c183b25109f6b1f080bdb",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-failure-easy.json": "485ac833d4e6a5f68853e0bda1ccfec8514d929b381437f4f036d45457f45d38",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-failure-hard.json": "272402778394137aedbd0eb8c11e39a33c36bed79925dfc459068c6d04bb7afd",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-failure-medium.json": "9c1cf7a742274bc20ab5035e43ba15dd037b37fec0f29f1ce869b25d4d763c85",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-missing-easy.json": "a564882990d9c4d9612fe347b06cea3aaeb17a531d0f90980e67b179cc5b2efc",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-missing-hard.json": "4798fb57b879d095df4c0a21aadae40e4c8c8d4d154a8bae53baf33458dbe12c",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-missing-medium.json": "ae39803fac6549b33e4b955866a90e74c360374c7b09e7528bdb692ae65403cd",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-planning-easy.json": "f885cb848a6821d51e9da0ee0ab98a1b1a6a1132484dccbb15ec0771cb6e6028",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-planning-hard.json": "6b7c39d9b9df2883dee07a4d4d00640dca63e7820b1a1795e34951081171d52b",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-planning-medium.json": "e0d8b15a97c6646ef185fe44cf2b29c68a44e32e82d6c2e4f5a161776768c4ef",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-ranking-easy.json": "911e0a313f725b77e6cc3c4292be9bf0ad5c65d547d1bef729d439f36ac43033",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-ranking-hard.json": "3cef0d669d93c905b3ee78c8fc5a56374d18d0fe80f11eff0ba23a0376e7c164",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-ranking-medium.json": "c1e418e6f50e8ec5c8c89dc087eab93c1dd87cb10ee919e8f049d9583feb50f8",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-synthesis-easy.json": "20107cc2b6e8e7912450a45380cf55453e1363db7d6961a3c3099693e935430e",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-synthesis-hard.json": "ed56e13753f9b4310298aac987b716730ecc17f579b448964864670a9e78bfb5",
+        "experiments/epistemic-diversity/benchmarks/v2/public/v2-synthesis-medium.json": "7d8351749c094ddd2c97149c7420f5ce171b501ad7724a3a5fa051bb45aaf0bc",
+        "experiments/epistemic-diversity/benchmarks/v2/specifications.json": "24b1670797da26f3a2616f0fd79a8439f410bd734473d3597c33cbb93d216d8a"
+      },
+      "sha256": "f4284f7f5b5e33f771e0b3549bb786bf3efa4984cc82aaacd280dc1b807b4ded",
+      "count": 63
+    },
+    "prompts": {
+      "files": {
+        "experiments/epistemic-diversity/prompts/roles_v1.json": "3a7bf648f6416c6a18c818aa651d3282e1bb3b0d708a919b97dea0c78b6d9f8f",
+        "experiments/epistemic-diversity/prompts/single_v1.txt": "1e9cbedad2ef537ee0e8da5806ffbc4bdc1cc7f1de9f93818968a85487715b43",
+        "experiments/epistemic-diversity/prompts/single_v2.txt": "c102b128ff644a463b853a26563768d717db27c1a66dfdb1467d22616dbaebec",
+        "experiments/epistemic-diversity/prompts/synthesizer_v1.txt": "b01acda8a89d8451ab629391df60c3695e096741f5fa198727717f80e6069dfc",
+        "experiments/epistemic-diversity/prompts/synthesizer_v2.txt": "8a79268dce5c106911fa904d8c1532fe024e1dbc1ffdd515455d29b41a7d1454",
+        "experiments/epistemic-diversity/prompts/worker_v1.txt": "275c1dd4034010b79299f89c548afbf5c92b2f4b8180ca2038dcd67e5b1302d2",
+        "experiments/epistemic-diversity/prompts/worker_v2.txt": "9418d788bdeb0c657b866a2a1ed8de4127c510c7445adfdf27a4a392b6e6b2d0"
+      },
+      "sha256": "ab511754f1862dc8c161914c46728591ed6c4c0661036f452cebf0eb14ba1c7c",
+      "count": 7
+    },
+    "configs": {
+      "files": {
+        "experiments/epistemic-diversity/configs/epistemic_diversity.json": "911230abf842824d20fba90d113e15b416dd5f84f45f222d692dc38b19991a30",
+        "experiments/epistemic-diversity/configs/multi_shared_homogeneous.json": "28528e55c8e988c1bd7093eee4542fa75837bfe814f82b63403de3af6f6e1ca4",
+        "experiments/epistemic-diversity/configs/role_diversity.json": "56dc2d42d83ade3bab45bf49a24e82059808f9c5ee64e08c1f97be48c166bae4",
+        "experiments/epistemic-diversity/configs/role_plus_epistemic.json": "794766bc5405d6c260444ff515de89cdd603d905abc6a8b03b6388baa4c6e7cb",
+        "experiments/epistemic-diversity/configs/single_full.json": "daf4c0781bf88b80df3dcffefc125676bc75dd08a2869844d4710d0b10e83bbf"
+      },
+      "sha256": "d2f9bf3337db82c469eced1154fc47a18dc7b90ed8f19a87454db9e4c0ca6fb0",
+      "count": 5
+    },
+    "historical_freezes": {
+      "files": {
+        "experiments/epistemic-diversity/freezes/benchmark-2.0.0-protocol-2.1.json": "6826af614d61e517d6c72b1a8e2acacedcc5beebfca2c575f0f70a6fa3e255a9",
+        "experiments/epistemic-diversity/freezes/benchmark-2.0.0-protocol-2.2.json": "245c85a476c0ac7334424e45f667ac40166a7d029a9e9db967d6d905d44a7b22",
+        "experiments/epistemic-diversity/freezes/benchmark-2.0.0.json": "d79e72a26f68aba4143a8c718901bc028c400e1f1c8485ee9e5959fed31e3f76",
+        "experiments/epistemic-diversity/freezes/protocol-2-source.tar.gz": "11379cd0b0996480f5fbb385a878e5231a784ba58876a3db01ea7d2e6a605198"
+      },
+      "count": 4
+    }
+  },
+  "status": "Verified byte-for-byte unchanged after protocol-2.3 implementation; no real generation",
+  "after": {
+  "protocol21_campaign": {
+    "count": 14,
+    "unchanged": true,
+    "sha256": "2bc076f8ba086ba000c7e60188d536f13380e1a95985117710cb2cecb196bfa0"
+  },
+  "protocol22_campaign": {
+    "count": 30,
+    "unchanged": true,
+    "sha256": "f67564b84a0c85cc2d181840167e322005b7b70562aa8b6cb94c1044bde94677"
+  },
+  "benchmark20": {
+    "count": 63,
+    "unchanged": true,
+    "sha256": "f4284f7f5b5e33f771e0b3549bb786bf3efa4984cc82aaacd280dc1b807b4ded"
+  },
+  "prompts": {
+    "count": 7,
+    "unchanged": true,
+    "sha256": "ab511754f1862dc8c161914c46728591ed6c4c0661036f452cebf0eb14ba1c7c"
+  },
+  "configs": {
+    "count": 5,
+    "unchanged": true,
+    "sha256": "d2f9bf3337db82c469eced1154fc47a18dc7b90ed8f19a87454db9e4c0ca6fb0"
+  },
+  "historical_freezes": {
+    "count": 4,
+    "unchanged": true,
+    "sha256": "0cb0d865148ed98493d7c69f62c1cb0f3db134dcc3e91fc8769d615313690730"
+  }
+}
+}
