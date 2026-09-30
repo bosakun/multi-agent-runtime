@@ -1,0 +1,1 @@
+A blank page has a visible surface. Text can occupy part of that surface. A margin can leave space around a passage. A line can be short or long. Spacing can separate neighboring lines. A border can surround an empty region. The arrangement of these elements describes the layout of a page.

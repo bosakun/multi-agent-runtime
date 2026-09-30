@@ -1,0 +1,11 @@
+# Windows回帰検証の範囲と旧資料の制約
+
+最初の広いoffline suiteは396 passed、11 failed、16 errors、4 skippedでした。未合格を削除したり、全repositoryがgreenと報告したりしません。記録は`reports/prelaunch-validation/2.txt`に保持しています。
+
+2件のCLI失敗では、UTF-8の親processと既定文字コードの子processの組み合わせでdecode errorが起きました。新しいvalidationは子processにもPYTHONUTF8=1とPYTHONIOENCODING=utf-8を渡して再検証します。API keyやCodex認証は変更しません。
+
+残りは旧Protocol 2.xのアーカイブ参照です。旧freezeはWindowsのbackslash形式のkeyとMacのslash形式のkeyを直接比較しており、そのままでは実行を拒否します。読み取り専用でkeyを正規化すると、科学的sourceの全hashが一致しました。旧byte保存baselineとの相違は、検証時にCRLFからLFへ正規化した場合のみ一致することを確認します。repositoryの改行やfreezeを実際に書き換える操作は行いません。また、旧Mac実行の一部journalはこのcheckoutにありません。
+
+これらの旧Protocolを実行可能にしたとは主張しません。新研究の開始gateでは、理由を確認した個別archival nodeを明示的にdeselectし、その一覧・理由・元suite未合格を検証reportに残します。単なるkey/改行差でなく内容hashの相違がある場合は、この扱いを拒否して停止します。Runtime本体、Windows tests、再利用するHotpotQA/scorer/native serializationと、新研究の全テストは開始gateに含めます。
+
+新研究は独立した入力・source hash・コード・Mock監査・検証reportでfreezeします。旧freezeを再承認したり、旧campaignを再開したりしません。
