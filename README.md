@@ -329,9 +329,17 @@ handler. See [extension guide](docs/extensions.md).
 [Role Diversity vs. Epistemic Diversity](experiments/epistemic-diversity/README.md)
 is an independent research application of this runtime: five controlled conditions,
 30 versioned synthetic tasks across ten structural families, auditable context
-separation, paired analysis and reproducible figures. A frozen six-task real-pilot
-plan targets C2/C3 within 48 calls; real-model results are pending. Research code
-lives under `experiments/` and is not part of the runtime core; v1 results are retained.
+separation, paired analysis and reproducible figures. The later Windows / Qwen3
+HotpotQA study completed 30 questions across C0-C4, with 150 cases and 510 successful
+model calls; see the [completion report](experiments/epistemic-diversity/docs/qwen3-14b-hotpotqa-protocol32-windows-outcome.md).
+Research code lives under `experiments/` and is not part of the runtime core; prior
+campaigns and results are retained.
+
+The follow-up study, [Synthesis Evidence Preservation](experiments/synthesis-evidence-preservation/README.md),
+completed an 81-call fixed-worker comparison on Windows, including 24 questions
+with source-excerpt and input-length controls. See the
+[results and limitations](experiments/synthesis-evidence-preservation/docs/qwen3-14b-windows-outcome.md).
+Independent human review is pending; the overall research is not yet complete.
 
 ## Roadmap
 
