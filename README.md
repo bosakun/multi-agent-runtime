@@ -326,6 +326,9 @@ handler. See [extension guide](docs/extensions.md).
 
 ## Research / Experiments
 
+[研究の現在地（日本語）](docs/research-status-ja.md) summarizes both completed
+model comparisons, their evidence, and the unresolved research questions.
+
 [Role Diversity vs. Epistemic Diversity](experiments/epistemic-diversity/README.md)
 is an independent research application of this runtime: five controlled conditions,
 30 versioned synthetic tasks across ten structural families, auditable context
