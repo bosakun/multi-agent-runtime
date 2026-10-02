@@ -18,6 +18,8 @@ Frozen reference registry
 
 主対象候補はStudy 1の既存30問C3とStudy 2の既存24問×A/B/C（72出力）。同一questionのS0〜S3は共有レコードを参照し、A/B/Cで三重計上しない。smokeは校正・動作確認の記録として別扱いで、本比較へ混ぜない。旧仕様は2問校正＋28問独立判定だった。v3は対象30問外で校正する方向を提案するが、30問／28問の本判定範囲は開始前に人間が固定する。既に校正で見たケースがあれば、そのreviewerの独立本判定・IAAから除き、記述的な別層として残す。結果に基づく対象除外はしない。
 
+30問／28問は[preflight checklist](human-review-preflight-freeze-checklist.md)で人間が明示的に選択する。旧2問の閲覧・discussion/calibration履歴、reviewer別の既知ケース、IAAへの適格性、descriptive-onlyの扱いを記録する。基準形成に使ったケースを当該reviewerのindependent IAA sampleへ無条件に戻さず、本判定範囲と独立性を満たすIAA対象を区別する。現時点ではどちらも採用決定していない。
+
 ## 2. Fact Registry: system output開示前のtwo-pass
 
 実装・実験作成者以外の2名が担当する。registry担当とstage担当を同じ2名にするか分けるかは開始前に決め、既知情報・過去のケース閲覧を申告する。
@@ -74,11 +76,15 @@ S1はWorkerごとの入力について判定する。1つのsupport setが複数
 
 Artifact自体の`artifact_fact_state`（correct / partial / distorted / absent / unclear）は別に記録できる。S3がNAでもS4の入力照合は可能であり、NAをpublication成功と見なす必要はない。独立before/afterがない場合、内部抽出とpublication lossを区別できない。
 
+Fact / Path E2Eのstrict lineageは、separate_recordsならS1 complete→S2 correct→S3 retained→Artifact-route S4 correct、identity_aliasならS1 complete→S2 correct→Artifact-route S4 correctとする。aliasのS3はstructural NAとしてskipし、publication success=1やfailure=0へ変換しない。unknownのpublication経由lineageはnon-identifiableで成功・失敗へ割り当てない。各path-required factに同じ規則を適用し、[metrics plan](evidence-lineage-metrics-plan.md)のevaluability coverageを併記する。
+
 ### S4 / S5: 機械照合と支持の区別
 
 S4には`machine_payload_match = match / mismatch / unclear / NA`、expected/actualの正規化規則・hash・位置を別に記録する。`received_via = artifact / supplementary_evidence / both / neither / unclear`とroute別semantic stateも保存する。Bで補足原文にfactがあることはWorker expressionの修復ではなく、別routeでのavailabilityである。Cの中立文がfactを含むと仮定しない。
 
 S5は、出力の主張とreceived pathの支持関係を記録する。正答でも実入力から支持経路を確認できなければ、正答率とsupport判定を混同しない。支持経路があっても実際にモデルがそれを参照したとは主張しない。S5bは必要な橋渡し関係が入力にそろうかを含め、最終短答にbridgeを逐語記載することは要求しない。
+
+S5bのobserved stateとprimary metricのeligibilityを区別する。Downstream Evidential Supportのprimaryは、**S4で少なくとも1本のcomplete valid frozen registered pathが利用可能なquestion–arm**に限定し、final answerがその受信完全pathの少なくとも1本によってfully_supportedならsuccessとする。S5b unclear/missingの除外とcoverageはmetrics planの共通分母規則に従う。partial/none-path casesはprimaryに入れず、必要ならsecondary descriptiveで別記する。未到達の証拠は上流state・prerequisite付きrulesで扱い、それだけでdownstream failureとはしない。
 
 ## 4. Observed stateとderived failure event
 
@@ -93,7 +99,7 @@ reviewerはstageのstateと根拠を独立に記録する。failure taxonomyはf
 | `publication_partial_loss / publication_loss / publication_distortion` | separate_recordsかつS2=correctというbeforeがあり、afterに対応するpartial_loss / lost / distorted。identity_aliasでは導出しない |
 | `transmission_record_mismatch` | 規定のArtifact routingのexpectedとactualが不一致で、そのfactを含む部分に関連する。無関係なmetadata差は別のrecord diagnostic |
 | `transmission_partial_loss / transmission_distortion` | published factがcorrectという前提があり、Artifact routeのactual inputでpartial / distorted。上流absentの伝播を新しい転送失敗としない |
-| `answer_unsupported_despite_complete_received_path` | S4に少なくとも1つの妥当な完全pathがあり、S5b=unsupported |
+| `answer_unsupported_despite_complete_received_path` | S4で少なくとも1本のcomplete valid frozen registered pathが利用可能で、S5b=unsupported。primary Downstream Evidential Supportと同じS4 eligibilityを用い、partially_supportedや証拠未到達をこのeventへ変換しない |
 | `final_output_contradicts_received_fact` | S4 fact=correctで、S5a=contradicted。因果的な「無視」とは呼ばない |
 | `undetermined` | prerequisite不明、独立transitionなしの帰属不能、または必要な記録不足。明確な他eventを消さず不確実性として保持 |
 

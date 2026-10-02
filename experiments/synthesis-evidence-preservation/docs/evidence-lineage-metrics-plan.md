@@ -19,9 +19,33 @@ strict primaryはcomplete/correct/retained/fully_supportedのみ。sensitivity�
 | Publication Survival | S3=retained | separate_recordsかつS2=correctで独立before/after transitionを判定可能なunits | retained+partial_loss。identity_aliasは成功・失敗とも分母外。unknownはnon-identifiable coverageへ |
 | Artifact Transmission Survival | Artifact route S4=correct | artifact_fact_state=correctで、規定Artifact routeと実入力を照合できるunits | correct+partial。上流で失われたfactはtransmission failure分母にしない。record-level payload matchは別diagnostic |
 | Any-Route Synthesizer Availability | 少なくとも1routeでS4=correct | S0=completeのunique registry factsで実Synthesizer入力がevaluable | correct+partial。artifact / supplementary / bothを別掲。Bで補足原文が届くことをWorker survivalとしない |
-| Downstream Evidential Support | S5b=fully_supported | 受信したpathの支持と最終回答を判定できるquestion–arm units | fully+partially_supported。partial/none received pathも判定対象とし、complete path subsetの値を別記。S5a=not_assertedのbridgeだけでunsupportedにしない |
-| Fact End-to-End Survival | 同一factについてdocumented complete Worker access→correct public expression→Artifact retention→Artifact route S4 correctの連続lineageが少なくとも1つ存在 | S0=completeのunique path-conditional factsで、必要なrecordsが判定可能 | 本metricは**Artifact経由でSynthesizer入力まで**。alias transitionはS3成功ではなく構造的にbypass。補足原文だけの復元はこのsuccessでなくAny-Route Availability。final短答への逐語記載は要求しない |
-| Path End-to-End Survival | 少なくとも1つの妥当なpathで全required factsの上記連続lineageが存在するquestions | 少なくとも1つの妥当なfrozen pathを持ち、path success/failureを判定可能なquestions | AND within path、OR across paths。各factの連続lineageは同じWorkerに由来している必要があるが、異なるfactsは異なるWorkers由来でもよい |
+| Downstream Evidential Support | final answerがS4で利用可能だった少なくとも1本のcomplete valid frozen registered pathによってfully_supported | **S4で少なくとも1本のcomplete valid frozen registered pathが利用可能なquestion–arm**のうち、最終回答の支持を判定可能なunits | 同じeligible subset内のfully+partially_supportedはsensitivity。partial/none received pathはprimary分母外。all-evaluable support rate等はsecondary descriptiveとして別記。S5a=not_assertedのbridgeだけでunsupportedにしない |
+| Fact End-to-End Survival | 同一factについて下記transition別規則を満たすArtifact-route連続lineageが少なくとも1つ存在 | S0=completeのunique path-conditional factsで、必要なrecordsとtransition別lineageを判定可能 | **Artifact経由でSynthesizer入力まで**。identity_aliasはS3=NA / structural bypass、unknownは当該lineageをnon-identifiableとする。補足原文だけの復元はAny-Route Availabilityへ。final短答への逐語記載は要求しない |
+| Path End-to-End Survival | 少なくとも1つの妥当なfrozen pathで全required factsが下記transition別E2E規則を満たすquestions | 少なくとも1つの妥当なfrozen pathを持ち、path success/failureを判定可能なquestions | AND within path、OR across paths。各required factに同じE2E規則を適用。各factの連続lineageは同じWorker由来であり、異なるfactsは異なるWorkers由来でもよい。non-identifiableとcoverageを別記 |
+
+### Downstream Evidential Supportのprimary eligibility
+
+eligibleは、S4の実入力に**少なくとも1本のcomplete valid frozen registered path**が利用可能なquestion–armである。completeは、そのpath内の全required factsと必要な関係がS4でcorrectとして確認できることを指す。Artifact／supplementary evidence／両方という許可された受信routeは区別して記録するが、primary eligibilityは実際に受信した完全pathで判定する。
+
+successは、final answerが**そのS4で利用可能だった完全pathの少なくとも1本**によってfully_supportedであること。未受信pathやgold正答との一致だけでsuccessにしない。S4 eligibilityを満たすがS5bがunclear/missingの場合は、共通規則に従いevaluable分母から除外し、eligible件数に対するcoverageを必ず併記する。
+
+必要証拠が届かずcomplete pathがないケースはprimary分母へ入れず、access / expression / publication / transmissionの観測状態・適用可能なfailure rulesで別に扱う。all-evaluable casesのsupport rateとpartial-path casesはsecondary descriptiveとしてのみ残せる。primaryの分母や感度分析へ混ぜない。
+
+`answer_unsupported_despite_complete_received_path`は同じS4 eligibilityに加えS5b=unsupportedの場合だけ導出する。partially_supportedはstrict primaryのsuccessではないが、このunsupported eventへ自動変換しない。証拠が届かなかったことだけでdownstream failureを導出しない。
+
+### Artifact-lineage E2Eのtransition別規則
+
+Fact / Path End-to-End Survivalは既存の**Artifact-lineage E2E**として、S0=completeの対象に以下を適用する。
+
+| publication_transition_type | strict E2Eに必要な連続lineage | S3 / evaluability |
+| --- | --- | --- |
+| separate_records | S1 complete → S2 correct → S3 retained → Artifact-route S4 correct | 独立S3 transitionを評価する |
+| identity_alias | S1 complete → S2 correct → Artifact-route S4 correct | S3=NA / no_separate_transition。structurally not applicableとしてskipし、**publication success=1にもfailure=0にも変換しない** |
+| unknown | publicationを経由するstage-specific lineageはnon-identifiable | 当該lineageを成功にも失敗にも割り当てず、coverageとnon-identifiable件数を別記する |
+
+Path End-to-End Survivalでも**各required fact**に同じ規則を適用する。別の識別可能なlineage／valid pathでsuccessを確認できる場合はその根拠を用い、unknownな候補を成功・失敗へ補完しない。未確定の代替候補によりsuccess/failureを確定できなければnon-identifiableとして保持する。evaluable / potentially eligible coverageを必ず併記する。
+
+unknownでもS4自体を判定できる場合、publication attributionを要求しない既存のAny-Route Availability / Received-Path Availabilityは別に評価できる。ただし、それをArtifact-lineage E2E successへ読み替えない。identity_aliasを含む識別可能なE2Eと、独立publicationだけを対象とするPublication Survivalの分母を混同しない。
 
 最後のPath metricはprimary候補。補足原文を含む**Any-Route Received-Path Availability**も別に報告する計画で、全path-required factsがS4にそろうかを判定する。Artifact lineageとraw-evidence routeの復元を混同しない。path availabilityとS5b fully_supportedの共同成立は補助指標候補であり、モデルがそのpathを使ったという主張ではない。
 
