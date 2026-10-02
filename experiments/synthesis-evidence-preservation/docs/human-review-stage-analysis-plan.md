@@ -1,5 +1,7 @@
 # fact単位の段階別独立人手分析計画
 
+> Superseded for future review by [Observable Evidence Lineage design v3](human-review-stage-analysis-plan-v3.md)（2026-10-02）。以下は旧v2 draftの履歴として保持します。v3も未freeze・未実施で、旧REVIEW・prepared kitを変更しません。
+
 設計revision：`human-stage-review-v2-draft`、2026-10-02。状態：**設計のみ・人間の開始判断待ち**。新kit・判定票・評価実装はまだ作成していません。独立人手レビューは0/2名です。
 
 本計画は[研究目的・RQ2](../../../docs/research-question-and-contributions.md)へ直接答えるための探索的内容分析の仕様です。freeze済み[REVIEW.md](../REVIEW.md)を変更せず、分析項目を別文書で拡張します。旧kitのまま新schemaで判定済みとしません。[依存・影響監査](review-stage-amendment-and-kit-impact.md)と併せて人間が採用revisionを決めます。過去の生成条件、主評価、scorer、結果は変更しません。

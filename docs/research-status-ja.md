@@ -1,12 +1,12 @@
 # 研究の現在地
 
-確認日：2026-09-30。GitHub main HEADは`130ff0c54ddd77129bd9645d56ca33de505481ec`。調査した研究ブランチHEADは`6d27edc4535f22d195b229da7010f982563eaf80`で、両者のファイル内容は一致していました。本書は保存済み資料の整理であり、新しい実験・統計・人手判定ではありません。
+初回確認日：2026-09-30。当時のaudited base snapshotはmain `130ff0c54ddd77129bd9645d56ca33de505481ec`、研究branch `6d27edc4535f22d195b229da7010f982563eaf80`で内容は一致していました。本書は保存済み資料の整理であり、新しい実験・統計・人手判定ではありません。2026-10-02の照合snapshotは[統合監査](deep-research-integration-audit.md)へ分離します。
 
-2026-10-02追記：[研究目的・RQ・貢献](research-question-and-contributions.md)を現在の説明の基準としました。主題はRole／Epistemic Diversityと情報フローで、Runtime単体の新規性を主張する研究ではありません。Study 1→仮説→探索的Study 2→段階別独立人手分析を一つの研究ストーリーとする方向を基本案にしています。最新main確認と旧仕様の依存関係は[レビュー設計の影響監査](../experiments/synthesis-evidence-preservation/docs/review-stage-amendment-and-kit-impact.md)を参照してください。過去の事前計画・結果は変更していません。
+2026-10-02更新：[研究目的・RQ・貢献](research-question-and-contributions.md)を説明の基準とし、Role Diversity、actual Information Access Diversity、Observable Evidence Lineageを主題にします。Runtimeはtreatment integrityの基盤です。Study 1→仮説→探索的Study 2→独立人手lineage分析を一つの研究ストーリーとする基本案です。[現行Related Work](../experiments/epistemic-diversity/paper/current-related-work.md)と[統合監査](deep-research-integration-audit.md)を追加しました。過去の事前計画・結果は変更していません。
 
 ## 全体の要約
 
-この研究は、同じLLMに異なる役割を与えることと、参照できる外部情報を実際に分けることが、最終回答にどう関係するかを調べています。情報境界をコードで強制するRuntime上で、Study 1ではHotpotQAの固定30問・5条件を実行し、事前指定の24問ではC3（中立役割・分割情報）がC2（多様役割・全文情報）より低いAnswer F1となりました。そこから情報の抽出・公開・統合に関する仮説が生じ、Study 2では保存済みWorker出力を固定して引用原文を追加しました。しかし、中立文による入力量対照と比べた平均回答改善は観測されませんでした。二つのモデル比較は完了していますが、独立人手レビュー、機構の因果的特定、再現性・一般化の確認は未完了です。
+この研究は、同じLLMに異なる役割を与えることと、参照できる外部情報を実際に分けることが、最終回答にどう関係するかを調べています。情報境界をコードで強制するRuntime上で、Study 1ではHotpotQAの固定30問・5条件を実行し、事前指定の24問ではC3（中立役割・分割情報）がC2（多様役割・全文情報）より低いAnswer F1となりました。そこから公開表現・情報保持・回答の支持に関する仮説が生じ、Study 2では保存済みWorker出力を固定して引用原文を追加しました。しかし、中立文による入力量対照と比べた平均回答改善は観測されませんでした。二つのモデル比較は完了していますが、独立人手レビュー、機構の因果的特定、再現性・一般化の確認は未完了です。
 
 ## Runtimeと研究の関係
 
@@ -34,9 +34,9 @@ Protocol 3.0のPilot、3.1の本実験と停止、3.2の承認済み最小復旧
 
 ## Study 1から生じた仮説
 
-全30問のC3では、Worker群のgold支持文引用recallが0.8472、final support recallが0.5917でした。引用集合の差は意味内容の欠落率ではありません。保存出力の不一致3件の予備的確認では、必要な事実がWorker出力にあるのに合成で使われない例と、原文にある事実をWorkerが抽出できない例が記録されています。これは独立人手評価でも、全30問の原因割合でもありません。
+全30問のC3では、Worker群のgold支持文引用recallが0.8472、final support recallが0.5917でした。引用集合の差は意味内容の欠落率ではありません。保存出力の不一致3件の予備的確認には、Workerの公開表現に必要な事実が欠落・混同する例と、公開された事実とfinalの主張が整合しない例があります。歴史的記録の「抽出／不使用」という説明を内部過程の証拠とは扱いません。これは独立人手評価でも、全30問の原因割合でもありません。
 
-次の仮説は「原文→Worker公開Artifact→Synthesizer→最終回答の過程で、必要な事実の欠落・変形・不使用が性能低下に関係する」です。スキーマ正規化後の受け渡し照合は不一致0件で、Runtime転送時の文字列欠損が確認されたわけではありません。[事例記録](articles/multi-agent-runtime-hotpotqa-windows-ja.md)と[Study 2計画](../experiments/synthesis-evidence-preservation/PLAN.md)を区別して読みます。
+次の仮説は「原文→Worker公開Artifact→Synthesizer→最終回答の過程で、必要な事実の欠落・変形や出力支持の不足が性能差に関係する可能性」です。スキーマ正規化後の受け渡し照合は不一致0件で、Runtime転送時の文字列欠損が確認されたわけではありません。[事例記録](articles/multi-agent-runtime-hotpotqa-windows-ja.md)と[Study 2計画](../experiments/synthesis-evidence-preservation/PLAN.md)を区別して読みます。
 
 ## Study 2：Synthesis Evidence Preservation
 
@@ -61,9 +61,9 @@ B−Aは+0.0139（探索的bootstrap 95%区間[−0.1111, +0.1250]）、B−Cは
 ## 未完了事項と人間に相談する論点
 
 - 独立人手レビュー0/2名。元30問と新72回答の匿名資料・空の票は準備済みですが、意味的判定と不一致処理は未実施です。
-- [段階別レビュー計画](../experiments/synthesis-evidence-preservation/docs/human-review-stage-analysis-plan.md)は設計のみです。fact単位で原文存在・Workerアクセス・公開出力の抽出表現・Artifact保持・実受信・最終利用を分けます。旧kitは保持し、新schemaへの対応kitは未生成です。レビューと不一致処理終了前に次の確認実験は開始せず、終了後も仮説・新計画・人間の承認が必要です。
+- [Evidence Lineageレビューv3](../experiments/synthesis-evidence-preservation/docs/human-review-stage-analysis-plan-v3.md)は設計のみ・未freezeです。two-pass registryを出力開示前に固定し、reference presence・actual access・public expression・独立publication・actual Synthesizer input・final evidential supportを分けます。question macro集計、[metrics](../experiments/synthesis-evidence-preservation/docs/evidence-lineage-metrics-plan.md)、[開始前checklist](../experiments/synthesis-evidence-preservation/docs/human-review-preflight-freeze-checklist.md)を設計しました。旧kitは保持し、新対応kitは未生成です。レビューと不一致処理終了前に次の確認実験は開始せず、終了後も新計画・人間の承認が必要です。
 - 他モデル、追加反復、未観測標本の確認実験、全dev 7405問、総計算量を揃えた比較は未実施です。公開devの学習汚染も否定できません。
-- 抽出・公開・合成のどこで失敗したか、その頻度と因果機構は未確定です。元Windows保存エラーの具体的なlock所有者も未確定です。
+- 観測可能な公開表現・保持・出力支持のどこで障害が見られるか、その頻度と因果機構は未確定です。identity aliasでは独立publicationの損失を識別できません。元Windows保存エラーの具体的なlock所有者も未確定です。
 - 教員とは、研究会発表としての貢献、一論文化か分離か、レビュー設計、確認実験の優先順位、関連研究の補強と公開可能な証拠範囲を相談します。追加生成は本整理の対象外です。
 
 ## 根拠と読み方

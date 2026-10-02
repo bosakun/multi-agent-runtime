@@ -1,25 +1,25 @@
 # 一論文化する場合の構成案
 
-2026-10-02更新。仮題：**Information Boundaries and Evidence Preservation in a Same-Model Multi-Agent QA System**。既存結果の数値・解釈は変更せず、研究目的と未実施の段階別分析を整理した構成案です。
+2026-10-02更新。仮題：**Role and Information Access Diversity: Observable Evidence Lineage in a Same-Model Multi-Agent QA System**。既存結果の数値は変更せず、研究目的と未実施のlineage分析を整理した構成案です。
 
-Study 1→仮説→探索的Study 2→段階別人手分析を一つの研究ストーリーとして扱うことを基本案とします。一論文化が最善か、研究会報告と後続論文を分離するかは教員と相談し、まだ確定しません。Study 2は観測済み標本での探索的追加実験で、Study 1の機構を決着させる確認実験ではありません。[研究目的・RQ・貢献候補](../../../docs/research-question-and-contributions.md)に合わせ、主眼をRole / Epistemic Diversityと情報フローの分析に置きます。[旧outline](outline.md)と[旧abstract](abstract.md)は実行前の歴史的記録として保持し、新旧の件数・指標を混ぜません。
+Motivation→Role / actual Information Access→Runtime as treatment integrity→Study 1→観測と仮説→探索的Study 2→引用原文固有の平均改善は支持されず→Evidence Lineage Human Review→将来のfailure patterns / 仮説生成→確認実験の相談、というストーリーを基本案にします。一論文化が最善かは未確定です。Study 2は観測済み標本での探索的追加実験で、機構を決着させる確認実験ではありません。[研究目的・RQ・貢献候補](../../../docs/research-question-and-contributions.md)に合わせます。[旧outline](outline.md)と[旧abstract](abstract.md)は保持し、新旧の件数・指標を混ぜません。
 
 ## 1. Introduction
 
 - 問題意識：役割の違い、外部情報アクセスの違い、公開後の情報保持を区別する。
 - 研究の射程：同じモデルの小さなQAシステム。人間の信条や認知的独立性を操作したとはしない。
-- RQ1はroleと外部情報accessの条件差と回答性能の関係、RQ2は必要factの段階別保持・欠落・変形・不使用を扱う。
+- RQ1はroleとactual external information accessの条件差と回答性能の関係、RQ2はreference factsのobservable lineageと最終出力の証拠支持を扱う。
 - 候補貢献：role / accessを区別する実験枠組み、その条件を実装・監査する基盤、限定比較から仮説・固定Worker介入・段階別分析へ接続する研究。Runtime単体の新規性を主主張にしない。新規性・投稿水準は未確定。
 
 ## 2. Related Work
 
-- モデル異質性、役割・推論方法の多様性、情報非対称、マルチホップQA、証拠付き合成を分ける。
-- [保存済み関連研究調査](../docs/related-work.md)は出発点で、網羅的レビューではない。投稿前に一次論文を再確認する。
+- [現行Related Work](current-related-work.md)のA〜G: Role/Persona、Model、Reasoning/Sampling、Distributed Information、Communication、Access Enforcement、Evidence/Claim Diagnosisで整理する。
+- SILO-BENCHのrole-prior confounding、HiddenBenchのsurfacing、MARCHのcoupled role/access、PACTのsplit evidence、RAGCheckerのclaim diagnosisを比較する。[旧focused survey](../docs/related-work.md)は当時の記録として保持する。
 - 既存研究がすべて共有情報しか扱わないという主張や、既存手法より優れるという主張はしない。
 
 ## 3. Isolated Agent Runtime / Information Boundary
 
-- Runtimeは実験条件をprompt instructionだけに依存せず担保・監査する基盤として説明し、独立したRuntime提案を論文の主眼にしない。
+- Runtimeはexperimental treatment integrityの基盤とする。intended visibility→actual serialized Worker input→public Artifact→actual serialized Synthesizer inputを照合し、access-control自体の新規mechanismを主張しない。
 - ContextBuilderのallowlist、ACL、detached context、typed Artifact、引用scope検証。
 - Worker→Artifact→Synthesizerの一枚の情報フロー図。情報の公開は意図したdeclassification。
 - 汎用`app/`と研究runnerの関係。Study 2の専用replay/event DBと旧Runtime DBを区別。
@@ -44,7 +44,7 @@ Study 1→仮説→探索的Study 2→段階別人手分析を一つの研究ス
 ## 6. Error Analysis and Mechanism Hypothesis
 
 - 全30問C3のWorker citation recall 0.8472とfinal support recall 0.5917。集合指標で、意味的欠落率ではない。
-- EM不一致3件の保存出力確認：届いた事実の不使用とWorker抽出失敗の両方。結果に基づく事例選択で、頻度推定や独立レビューに使わない。
+- EM不一致3件の予備的保存出力確認：Worker公開表現の欠落・混同と公開事実/finalの不整合。旧記録の抽出・不使用という語を内部思考の証拠にしない。outcome-selectedで頻度推定・独立レビューではない。
 - 30問のスキーマ正規化後の受け渡し不一致0。転送破損と意味的な選択・変形を区別。
 - 独立人手レビューは未実施。原因ラベルの結果・一致率欄は「未実施」とし、推測で埋めない。
 
@@ -65,25 +65,27 @@ Study 1→仮説→探索的Study 2→段階別人手分析を一つの研究ス
 - Support F1のB上昇とSupport recallのB低下を併記。主評価改善に言い換えない。
 - 新Aと歴史的C3はinstruction変更を含むため、純粋な再現性試験として扱わない。
 
-## 9. Stage-wise Human Analysis（RQ2：計画・未実施）
+## 9. Observable Evidence Lineage Human Analysis（RQ2：計画・未実施）
 
-- [段階別レビュー計画](../../synthesis-evidence-preservation/docs/human-review-stage-analysis-plan.md)に従い、必要fact単位で原文中の存在→Worker access→意味的抽出→公開Artifactへの保持→実Synthesizer入力への伝達→観測可能な最終利用を分ける。単なる付録ではなくRQ2に直接答える分析として位置づける。
-- 引用IDの正しさと意味的抽出、機械的payload一致と意味的保持を区別する。Worker出力とArtifactが同一記録の場合、抽出と公開の独立した失敗箇所を識別できない限界を示す。hidden reasoningは推定しない。
-- 2名の独立判定、校正後の基準version、必要fact registry、blindの限界、最初に識別できた障害と後段のmulti-label、協議別version、項目別一致率の設計を記載する。
+- [v3計画](../../synthesis-evidence-preservation/docs/human-review-stage-analysis-plan-v3.md): two-pass registryを出力開示前にfreeze。sentence/fact/support set/path、alternative paths、path-conditional requirednessを明示する。RQ2の本文分析であって付録だけに置かない。
+- S0 reference presence→S1 actual Worker accessibility→S2 public expression→S3独立publication（aliasはNA）→S4 actual Synthesizer input / routes→S5a final relation＋S5b evidential support。引用ID・payload一致と意味stateを分け、内部extract/use/ignoreを推定しない。
+- independent reviewers2名、対象外registry校正とedge cases、progressive disclosureとlocks、allocation blindingの限界、pre-adjudication IAA、adjudication別versionを説明する。stateとderived failure eventを分け、first observable failureをroot causeと呼ばない。
+- [Metrics](../../synthesis-evidence-preservation/docs/evidence-lineage-metrics-plan.md): question macro、coverage、strict/partial sensitivity、Path End-to-End Survival、question-clustered uncertainty、共有S0〜S3の非三重計上を計画する。
 - 既存freeze・旧kitは保持し、新kitはまだ生成しない。人手レビュー結果、障害件数・割合、一致率は存在せず、本節は分析計画のみ。完了後に保存済み実判定を根拠として構成を再検討する。
 
 ## 10. Discussion
 
-- 境界遵守、必要事実の抽出、公開、統合は異なる達成事項。
+- 境界遵守、public expression、publication、actual inputへの到達、最終回答の支持は異なる観測対象。
 - 単純な引用原文復元の説明は今回支持されなかったが、未引用情報・文書分割・統合負担は残る。
 - 中立文の注意分散もあり得るため、B−Cを万能なmechanism検定とはしない。
 - Study 1からStudy 2への接続は仮説生成と探索的介入で、因果機構の確定ではない。
-- 単純な「圧縮された情報を戻せば解決」という説明だけでは今回の結果を十分説明できず、次に段階別分析で具体的な障害候補を調べる。人手分析も、それだけで因果機構を確定するものではない。
+- 観測は「fixed Workerで引用原文追加がneutral controlより平均Answer F1を改善する所見は得られなかった」。単純なraw-evidence restorationだけでは十分でない可能性はDiscussionの仮説に留める。将来のobservable failure patterns→specific hypothesisを検討し、人手分析だけで因果機構を確定しない。
 
 ## 11. Limitations
 
 - 長さ選択された30/24問、公開dev・汚染不明、単一モデル・一反復、質問依存、弱いrole操作、partition依存。
 - role/accessの同時変更、総資源の非同一、Study 2の既観測標本・smoke重複、完全blindでないレビュー資料。
+- gold alignmentによる参照経路へのanchoring、registry依存、S3非識別、unclear/coverage、rare-label IAA、質問間依存。新2×2解析は[post-hoc plan](exploratory-role-access-factorial-analysis-plan.md)だけで新結果はない。
 - 独立人手レビュー0/2、内容の妥当性と失敗原因未確定。
 - 保存復旧と不明なlock原因。Git管理外資料、完全な第三者再解析パッケージ未整備。
 - 回帰検証は398 passed / 4 skipped / 25 archival deselectedのgateであり、repository全体無条件greenではない。
@@ -99,7 +101,7 @@ Study 1→仮説→探索的Study 2→段階別人手分析を一つの研究ス
 ## 付録・投稿前の判断
 
 - Protocolの時系列、freeze/scorer/モデルのhash、復旧の出自、全比較、各失敗の記録。
-- 独立レビューの詳細schema・校正2問・独立28問・新72回答・協議別version。実判定は未実施。RQ2の分析本体は第9節に置き、付録には手続きと記録仕様を補足する。
+- 独立レビューv3 schema・two-pass registry・校正記録・scope採用版・IAA/derivation rules・協議別version。旧2校正＋28本判定仕様と区別する。実判定未実施で、RQ2本体は第9節、付録は手続き・記録仕様の補足とする。
 - 公開可能な再解析資料とローカル限定資料を区別し、倫理・ライセンス・共有範囲を相談する。
 - 一論文化なら「未確定機構を含む探索的研究」を中核にする。分離ならStudy 1の限定比較報告とStudy 2の介入報告それぞれの独自貢献を検討する。
 - 根拠：[研究の現在地](../../../docs/research-status-ja.md)、[主張対応表](../../../docs/research-claims-evidence-map.md)、[両研究の結果報告への入口](../../synthesis-evidence-preservation/README.md)。

@@ -2,7 +2,7 @@
 
 2026-09-30。相談用の約2ページ相当の概要です。モデル比較2件は完了していますが、独立人手検証済みの完成研究・投稿論文ではありません。研究全体の入口は[現在地](research-status-ja.md)、主張の範囲は[根拠対応表](research-claims-evidence-map.md)を参照してください。
 
-2026-10-02追記：説明の基準は[Research Objective・RQ・貢献](research-question-and-contributions.md)です。主題をRole／Epistemic Diversityと情報フロー分析に置き、Runtimeは実験条件を担保・監査する基盤として扱います。Study 1→仮説→探索的Study 2→段階別人手分析を一つの研究ストーリーとする方向を基本案としますが、投稿形態は未確定です。
+2026-10-02更新：説明の基準は[Research Objective・RQ・貢献](research-question-and-contributions.md)です。Role Diversity、actual Information Access Diversity、Observable Evidence Lineageを主題にし、Runtimeはexperimental treatment integrityの基盤とします。Study 1→仮説→探索的Study 2→人手lineage分析を一つの研究ストーリーとする基本案ですが、投稿形態は未確定です。[現行Related Work](../experiments/epistemic-diversity/paper/current-related-work.md)では既知の役割・分散情報・通信・診断手法と差分候補を整理し、「初」とは主張しません。
 
 ## 問題意識と実装
 
@@ -12,7 +12,7 @@
 
 ## 研究質問とStudy 1
 
-RQ1：同一LLMで、役割の多様性と外部情報アクセスの多様性の違いは、最終回答性能にどう関係するか。RQ2：必要factは、原文参照、Workerの公開出力での抽出・表現、Artifact保持、実際の合成入力への伝達、最終回答での利用の各段階でどう保持・欠落・変形・不使用されるか。いずれも内部思考や単一要因の因果主効果を識別した問いではありません。
+RQ1：同一LLMで、役割の多様性と外部情報アクセスの多様性の違いは、最終回答性能にどう関係するか。RQ2：reference factsは、actual Worker input、Worker public expression、Artifact publication、actual Synthesizer input、final outputのevidential supportに沿ってどう保持・変形・欠落しているか。いずれも内部思考や因果的な証拠利用を観測する問いではありません。
 
 Study 1はRole Diversity vs. Epistemic Diversityです。HotpotQA distractor devから公開長さ・構造と固定seedのID順位で30問を選び、Qwen3:14b Q4_K_M、temperature 0、think=false、単一反復で5条件を実行しました。C0は単一中立Agent・全文、C1は中立3 Worker・全文、C2は多様役割3 Worker・全文、C3は中立3 Worker・文書分割、C4は多様役割3 Worker・文書分割です。C1〜C4の共通SynthesizerはWorkerの公開出力だけを読みます。
 
@@ -22,7 +22,7 @@ Study 1はRole Diversity vs. Epistemic Diversityです。HotpotQA distractor dev
 
 ## 機構仮説とStudy 2
 
-全30問C3のWorker群のgold支持文引用recallは0.8472、final support recallは0.5917でした。保存出力のEM不一致3件の予備的確認には、Workerが必要な事実を公開したのに合成が使わない例と、Workerが原文中の必要な事実を抽出できない例がありました。引用IDの一致は意味理解を保証せず、この3件から全体の原因割合は推定できません。
+全30問C3のWorker群のgold支持文引用recallは0.8472、final support recallは0.5917でした。EM不一致3件の予備的確認には、Workerの公開表現に必要な事実が欠落・混同する例と、公開事実とfinalの主張が整合しない例があります。内部抽出や証拠の不使用を確認したとは扱いません。引用IDの一致は意味的な表現の正しさを保証せず、この3件から全体の原因割合は推定できません。
 
 Study 2は、この仮説のうち単純な「引用元原文を戻せば改善する」を調べるSynthesis Evidence Preservationです。保存済みC3 Worker出力・順序を固定し、Synthesizer入力だけを変えました。AはWorker outputのみ、Bは同じoutput＋引用原文、Cは同じoutput＋token長を近づけた固定中立文です。原文選択にgoldやレビューラベルは使いません。共通instructionを新たに揃え、Aも生成し直しました。
 
@@ -32,11 +32,11 @@ Study 2は、この仮説のうち単純な「引用元原文を戻せば改善�
 
 ## 現在の限界と未完了事項
 
-長さ選択された小標本、単一モデル・一反復、公開devの学習汚染不明、質問間依存、role・partition・promptへの依存があります。Study 2の24問は既に観測済みで、未観測標本による確認実験ではありません。他モデル、追加反復、全dev 7405問、総計算量統制は未実施です。抽出・公開・合成の失敗機構と、元保存エラーの具体的なlock原因も未確定です。
+長さ選択された小標本、単一モデル・一反復、公開devの学習汚染不明、質問間依存、role・partition・promptへの依存があります。Study 2の24問は既に観測済みで、未観測標本による確認実験ではありません。他モデル、追加反復、全dev 7405問、総計算量統制は未実施です。観測段階の障害patternと因果機構、元保存エラーの具体的なlock原因も未確定です。
 
-独立人手レビューは0/2名です。元30問のC3を主対象とする匿名参照資料と、新72回答、2名分の空の判定票は準備済みです。計画は実験作成者以外の2名、旧Pilot 2問で基準校正、残り28問と新72回答の独立判定、一致率・ラベル分布、不一致協議を別version保存する方式です。資料構造から条件を推測でき、完全blindではありません。AIの照合は人手レビューに数えません。
+独立人手レビューは0/2名です。元30問のC3匿名資料、新72回答、2名分の空票は旧仕様で準備済みですが、v3対応kitではありません。旧2問校正＋28問本判定の仕様は履歴として保持します。新設計は実験作成者以外の2名、対象外質問・edge casesでの校正、独立票の保存、別versionの協議結果という方式です。対象数・担当者・採用版は人間の開始判断待ちです。AIの照合は人手レビューに数えません。
 
-[段階別計画](../experiments/synthesis-evidence-preservation/docs/human-review-stage-analysis-plan.md)ではRQ2の本体分析としてfact単位の6段階、multi-labelと最初／後段の障害、項目別raw agreementと補助kappaの扱いを設計しました。旧freeze・kitはそのままで、新仕様のkitは未生成です。抽出と公開が同じ記録で分離不能な場合、また短い最終回答から利用経路が見えない場合は判定不能を残します。新しい確認実験は人手レビュー・不一致処理の終了後にfailure patternと具体的仮説から提案し、それ以前に開始しません。
+[Evidence Lineage v3](../experiments/synthesis-evidence-preservation/docs/human-review-stage-analysis-plan-v3.md)はRQ2の本体分析の**未実施設計**です。raw-only発見→gold alignmentのtwo-pass registryを出力開示前にfreezeし、path-conditional factsと代替経路を保持します。S2は公開表現、S3は独立publicationだけ（identity aliasはNA）、S5は最終出力の支持として評価します。段階的開示・locks、allocation blinding、pre-adjudication raw agreement/kappa、question-level macroとclustered uncertaintyを計画しました。旧freeze・kitは保持し、新kitは未生成です。判定不能とcoverageを残し、確認実験は人手レビュー終了後にpattern→仮説→人間の新計画の順で提案します。
 
 実装・計画・結果要約はGit管理されていますが、raw・DB・詳細ログ・判定票はローカル限定です。ライセンス・共有範囲を整理した第三者再解析パッケージは未整備で、GitHubだけで完全再現できるとは言えません。
 
@@ -45,7 +45,7 @@ Study 2は、この仮説のうち単純な「引用元原文を戻せば改善�
 1. この限定比較と透明な失敗・非支持結果の報告は、研究会発表として成立するか。主な研究貢献をどこに置くべきか。
 2. 査読付き論文へ発展可能か。必要な独立検証・新規性・標本設計は何か。
 3. Study 1とStudy 2を一論文にまとめるか、探索的報告と確認研究を分けるか。
-4. 独立人手レビューの判定単位、校正、匿名化、一致率・不一致処理は妥当か。機構分類に必要な証拠は何か。
+4. two-pass registry、alternative paths、S3の識別可能性、progressive disclosure、question-level分母、IAAと不一致処理は妥当か。人手判定で答えられる範囲と、因果的検証に別途必要な証拠をどう分けるか。
 5. 次の確認実験は、未観測標本、role固定のアクセス比較、資源統制、別モデル、反復のどれを優先すべきか。必要標本数・予算はどう決めるか。
 6. IPSJ等では、マルチエージェント／協調AI、自然言語処理・QA、ソフトウェア／実行基盤のどの領域・研究会と議論するのが適切か。現行の募集・投稿区分を確認して判断したい。
 

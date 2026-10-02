@@ -330,9 +330,11 @@ handler. See [extension guide](docs/extensions.md).
 model comparisons, their evidence, and the unresolved research questions.
 
 [Research objective, RQs and contributions](docs/research-question-and-contributions.md)
-places the runtime as an auditable experimental foundation. The next analysis is
-[stage-wise independent human review](experiments/synthesis-evidence-preservation/docs/human-review-stage-analysis-plan.md)
-(design only; not yet conducted), before any new confirmatory experiment.
+positions Role Diversity, actual Information Access Diversity, and Observable
+Evidence Lineage as the research topic, with the runtime providing experimental
+treatment integrity. See [current Related Work](experiments/epistemic-diversity/paper/current-related-work.md).
+The next analysis is [Evidence Lineage human review v3](experiments/synthesis-evidence-preservation/docs/human-review-stage-analysis-plan-v3.md)
+(design only; not frozen, implemented, or conducted), before any new confirmatory experiment.
 
 [Role Diversity vs. Epistemic Diversity](experiments/epistemic-diversity/README.md)
 is an independent research application of this runtime: five controlled conditions,
