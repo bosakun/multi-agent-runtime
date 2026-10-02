@@ -1,14 +1,15 @@
 # 一論文化する場合の構成案
 
-2026-09-30。仮題：**Information Boundaries and Evidence Preservation in a Same-Model Multi-Agent QA System**。
+2026-10-02更新。仮題：**Information Boundaries and Evidence Preservation in a Same-Model Multi-Agent QA System**。既存結果の数値・解釈は変更せず、研究目的と未実施の段階別分析を整理した構成案です。
 
-Study 1とStudy 2を一論文にすることが最善かは未確定です。共通の情報境界を軸に「比較→仮説→限定的介入」を説明できる一方、Study 2は観測済み標本の探索的追試で、Study 1の機構を決着させる確認実験ではありません。研究会報告と後続論文の分離も教員と相談します。[旧outline](outline.md)と[旧abstract](abstract.md)は実行前の歴史的記録として保持し、新旧の件数・指標を混ぜません。
+Study 1→仮説→探索的Study 2→段階別人手分析を一つの研究ストーリーとして扱うことを基本案とします。一論文化が最善か、研究会報告と後続論文を分離するかは教員と相談し、まだ確定しません。Study 2は観測済み標本での探索的追加実験で、Study 1の機構を決着させる確認実験ではありません。[研究目的・RQ・貢献候補](../../../docs/research-question-and-contributions.md)に合わせ、主眼をRole / Epistemic Diversityと情報フローの分析に置きます。[旧outline](outline.md)と[旧abstract](abstract.md)は実行前の歴史的記録として保持し、新旧の件数・指標を混ぜません。
 
 ## 1. Introduction
 
 - 問題意識：役割の違い、外部情報アクセスの違い、公開後の情報保持を区別する。
 - 研究の射程：同じモデルの小さなQAシステム。人間の信条や認知的独立性を操作したとはしない。
-- 候補貢献：監査可能な情報境界、完了した限定比較、固定Workerによる入力介入と支持されなかった説明の報告。新規性・投稿水準は未確定。
+- RQ1はroleと外部情報accessの条件差と回答性能の関係、RQ2は必要factの段階別保持・欠落・変形・不使用を扱う。
+- 候補貢献：role / accessを区別する実験枠組み、その条件を実装・監査する基盤、限定比較から仮説・固定Worker介入・段階別分析へ接続する研究。Runtime単体の新規性を主主張にしない。新規性・投稿水準は未確定。
 
 ## 2. Related Work
 
@@ -18,6 +19,7 @@ Study 1とStudy 2を一論文にすることが最善かは未確定です。共
 
 ## 3. Isolated Agent Runtime / Information Boundary
 
+- Runtimeは実験条件をprompt instructionだけに依存せず担保・監査する基盤として説明し、独立したRuntime提案を論文の主眼にしない。
 - ContextBuilderのallowlist、ACL、detached context、typed Artifact、引用scope検証。
 - Worker→Artifact→Synthesizerの一枚の情報フロー図。情報の公開は意図したdeclassification。
 - 汎用`app/`と研究runnerの関係。Study 2の専用replay/event DBと旧Runtime DBを区別。
@@ -63,14 +65,22 @@ Study 1とStudy 2を一論文にすることが最善かは未確定です。共
 - Support F1のB上昇とSupport recallのB低下を併記。主評価改善に言い換えない。
 - 新Aと歴史的C3はinstruction変更を含むため、純粋な再現性試験として扱わない。
 
-## 9. Discussion
+## 9. Stage-wise Human Analysis（RQ2：計画・未実施）
+
+- [段階別レビュー計画](../../synthesis-evidence-preservation/docs/human-review-stage-analysis-plan.md)に従い、必要fact単位で原文中の存在→Worker access→意味的抽出→公開Artifactへの保持→実Synthesizer入力への伝達→観測可能な最終利用を分ける。単なる付録ではなくRQ2に直接答える分析として位置づける。
+- 引用IDの正しさと意味的抽出、機械的payload一致と意味的保持を区別する。Worker出力とArtifactが同一記録の場合、抽出と公開の独立した失敗箇所を識別できない限界を示す。hidden reasoningは推定しない。
+- 2名の独立判定、校正後の基準version、必要fact registry、blindの限界、最初に識別できた障害と後段のmulti-label、協議別version、項目別一致率の設計を記載する。
+- 既存freeze・旧kitは保持し、新kitはまだ生成しない。人手レビュー結果、障害件数・割合、一致率は存在せず、本節は分析計画のみ。完了後に保存済み実判定を根拠として構成を再検討する。
+
+## 10. Discussion
 
 - 境界遵守、必要事実の抽出、公開、統合は異なる達成事項。
 - 単純な引用原文復元の説明は今回支持されなかったが、未引用情報・文書分割・統合負担は残る。
 - 中立文の注意分散もあり得るため、B−Cを万能なmechanism検定とはしない。
 - Study 1からStudy 2への接続は仮説生成と探索的介入で、因果機構の確定ではない。
+- 単純な「圧縮された情報を戻せば解決」という説明だけでは今回の結果を十分説明できず、次に段階別分析で具体的な障害候補を調べる。人手分析も、それだけで因果機構を確定するものではない。
 
-## 10. Limitations
+## 11. Limitations
 
 - 長さ選択された30/24問、公開dev・汚染不明、単一モデル・一反復、質問依存、弱いrole操作、partition依存。
 - role/accessの同時変更、総資源の非同一、Study 2の既観測標本・smoke重複、完全blindでないレビュー資料。
@@ -78,18 +88,18 @@ Study 1とStudy 2を一論文にすることが最善かは未確定です。共
 - 保存復旧と不明なlock原因。Git管理外資料、完全な第三者再解析パッケージ未整備。
 - 回帰検証は398 passed / 4 skipped / 25 archival deselectedのgateであり、repository全体無条件greenではない。
 
-## 11. Future Work
+## 12. Future Work
 
-人間と合意すべき計画として、独立2名のレビュー、未観測標本での確認、role固定のアクセス比較、資源統制、別モデル・追加反復、公開パッケージを挙げる。全dev実行を当然の次段階とはせず、研究目的・予算・必要精度から優先順位を決める。本outlineは実行承認ではない。
+独立人手レビューと不一致整理→failure pattern→具体的仮説→確認実験候補→人間による計画・予算・実行承認の順序を守る。候補は未使用質問、role固定のaccess-only比較、access固定のrole-only比較、資源統制、別モデル・追加反復、Artifact表現への介入であり、実行するものはまだ決めない。全dev実行を当然の次段階とはせず、研究目的・予算・必要精度から優先順位を相談する。本outlineは実行承認ではなく、人手レビュー終了前に新実験を開始しない。
 
-## 12. Conclusion
+## 13. Conclusion
 
 この設定・選択標本で観測した比較結果と、原文追加固有の平均回答改善が支持されなかった範囲だけを述べる。Epistemic Diversity一般の優劣、information-loss mechanismの証明、LLM一般への外挿はしない。
 
 ## 付録・投稿前の判断
 
 - Protocolの時系列、freeze/scorer/モデルのhash、復旧の出自、全比較、各失敗の記録。
-- 独立レビューの基準・校正2問・独立28問・新72回答・協議別version。実判定は未実施。
+- 独立レビューの詳細schema・校正2問・独立28問・新72回答・協議別version。実判定は未実施。RQ2の分析本体は第9節に置き、付録には手続きと記録仕様を補足する。
 - 公開可能な再解析資料とローカル限定資料を区別し、倫理・ライセンス・共有範囲を相談する。
 - 一論文化なら「未確定機構を含む探索的研究」を中核にする。分離ならStudy 1の限定比較報告とStudy 2の介入報告それぞれの独自貢献を検討する。
 - 根拠：[研究の現在地](../../../docs/research-status-ja.md)、[主張対応表](../../../docs/research-claims-evidence-map.md)、[両研究の結果報告への入口](../../synthesis-evidence-preservation/README.md)。
