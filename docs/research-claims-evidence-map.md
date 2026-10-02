@@ -2,6 +2,8 @@
 
 2026-09-30。保存済み計画・結果・監査とコードを照合した表です。新しい統計分析や意味的判定は行っていません。
 
+2026-10-02追記：[研究目的・RQ・貢献](research-question-and-contributions.md)を説明の基準にしました。Runtimeは実験条件の実装・監査基盤で、単体の新規性を主貢献とはしません。[段階別人手分析計画](../experiments/synthesis-evidence-preservation/docs/human-review-stage-analysis-plan.md)はRQ2への設計であり、分析結果の証拠ではありません。旧freeze／kitとの関係は[依存監査](../experiments/synthesis-evidence-preservation/docs/review-stage-amendment-and-kit-impact.md)に記録します。
+
 statusの意味：`established`は指定された実装・実行・機械照合の範囲で確認、`descriptive`は当該標本の観測・集計、`hypothesis`は未確定の説明、`limitation`は未実施事項・設計上の制約です。`established`も普遍的な安全性や認知機構を意味しません。
 
 ## 主張対応表
@@ -21,6 +23,7 @@ statusの意味：`established`は指定された実装・実行・機械照合�
 | Study 2のB−Cは0 | 24問平均0；1改善/22同点/1悪化；探索的CI95[−0.1250,+0.1250] | [Study 2結果](../experiments/synthesis-evidence-preservation/docs/qwen3-14b-windows-outcome.md)；L6 | descriptive | この標本でB−Cの平均差は0だった | 全回答同一、同等性証明、効果ゼロ確定 |
 | raw evidence追加固有の平均改善は今回支持されなかった | A=0.566577、B=C=0.580466；計画した中立文対照との差なし | [Study 2結果](../experiments/synthesis-evidence-preservation/docs/qwen3-14b-windows-outcome.md)；L6 | descriptive | 今回の条件・標本・主評価では支持する所見が得られなかった | 原文は常に無益、情報損失仮説を否定、mechanismを証明 |
 | information-loss mechanismは未確定 | 引用IDと意味理解は別；未引用文はBに戻らない；抽出・合成の独立判定なし | [PLAN](../experiments/synthesis-evidence-preservation/PLAN.md)、[REVIEW](../experiments/synthesis-evidence-preservation/REVIEW.md) | hypothesis | 欠落・変形・不使用が関係する可能性を検討している | C3低下の原因は圧縮と断定、媒介効果を識別した |
+| 六stageの人手分析は設計のみ | fact schema・観測上の分離限界・label導出・独立workflowを文書化、新kitも判定も未実施 | [段階別計画](../experiments/synthesis-evidence-preservation/docs/human-review-stage-analysis-plan.md) | limitation | RQ2へ答える内容分析を計画した | 情報損失stageを特定した、publication loss率を測定済み |
 | independent human reviewは未完了 | 担当者0/2、完了0/2、匿名資料・空票のみ準備済み | [REVIEW-HANDOFF](../experiments/synthesis-evidence-preservation/REVIEW-HANDOFF.md)；L8 | limitation | 機械照合は済み、独立人手内容検証は未実施 | AIレビューを独立人手2名として数える、意味的妥当性検証済み |
 | 入力長対照は総compute対照ではない | B/C native input差最大1.893%；output・latencyは異なる | [Study 2結果](../experiments/synthesis-evidence-preservation/docs/qwen3-14b-windows-outcome.md)；L6 | limitation | 許容5%以内で入力長を近づけた対照 | 計算量を完全に揃えた因果実験 |
 | 他モデル・未観測標本等への一般化は未検証 | 単一モデル・一反復、30問選択、Study 2は既観測24問；他モデル・全devなし | 両結果報告、[PLAN後続課題](../experiments/synthesis-evidence-preservation/PLAN.md) | limitation | 次の確認研究が必要である | HotpotQA全体、LLM一般、人間集団の多様性へ外挿 |

@@ -14,6 +14,9 @@ Workerの公開出力からSynthesizerの最終回答まで、必要な事実が
 
 ## 最初に読む資料
 
+- [研究目的・RQ・貢献](../../docs/research-question-and-contributions.md)：Study 1→仮説→探索的Study 2→人手分析の説明基準。
+- [段階別人手分析計画](docs/human-review-stage-analysis-plan.md)と[旧kitへの影響監査](docs/review-stage-amendment-and-kit-impact.md)：2026-10-02追加の設計文書です。旧REVIEW・freeze・prepared kitは変更せず、新kit生成・判定は未実施です。次の確認実験は人手レビュー・不一致処理の終了前に開始しません。
+
 - [Windows実比較の結果](docs/qwen3-14b-windows-outcome.md)：81件の実生成と集計、未完了の人手レビューを区別した報告。
 
 - [独立レビューの引き継ぎ](REVIEW-HANDOFF.md)：担当者未定のまま準備した資料と、担当者が決まった後の手順。
