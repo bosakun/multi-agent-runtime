@@ -1,43 +1,43 @@
 # 研究目的・Research Questions・Contributions
 
-設計revision：`research-framing-v1`、2026-10-02。
-確認した最新mainは`213906dd6d30ab29ba0a66ecc78c3dfee1044d24`、作業ブランチHEADは`8dbb5a9525087d82d96142e136e67547ad09fb5b`で、ファイル内容は一致していました。
+設計revision：`research-framing-v2`、2026-10-02。v1の用語・分析設計を改訂する現行文書です。
+今回のaudited base snapshotはmain `432a5ec85e78be31508ce250df6396ad7105041e`。作業ブランチの比較snapshot `8c9ea24fb0df6809077491206fb3637fa67f36ca`とファイル内容が一致していました。これらは監査時点の識別子であり、永続的な「最新HEAD」表記ではありません。
 
 本書は、実施済みStudy 1/2と今後の内容分析を一貫して説明するための研究目的・用語・主張範囲の基準です。過去の事前計画や主評価を変更する文書でも、事後に事前登録を主張する文書でもありません。以降の現行要約・論文構成はこの定義に合わせます。新しい実験の実行承認は含みません。
 
 ## Research Objective
 
-LLMマルチエージェントシステムにおいて、エージェントに与える役割の多様性と、アクセス可能な外部情報の多様性が、協調的な回答生成にどのように関係するかを調べる。さらに、情報を分割した条件において、回答に必要な情報が、原文参照、Workerの公開出力での抽出・表現、公開Artifactへの保持、Synthesizerへの伝達、最終回答での利用という過程でどのように保持・欠落・変形・不使用されるかを、保存済みの入力・公開出力に基づき分析する。
+LLMマルチエージェントシステムにおいて、役割の多様性と実際の外部情報アクセスの多様性が、協調的な回答性能にどのように関係するかを調べる。さらに、同じreference evidenceに基づくfactsが、実Worker入力、Workerの公開表現、Artifact publication、実Synthesizer入力、最終出力のevidential supportに沿ってどのように保持・変形・欠落するかを、観測可能な保存記録に限定して分析する。
 
-主題はRole Diversity、実際の外部情報アクセス差としてのEpistemic Diversity、および情報フローの分析です。Runtimeは、条件をプロンプト指示だけに依存せず実装・監査する実験基盤であり、Runtime単体の新規性を主貢献には置きません。Epistemic Diversityはモデル重み・事前学習知識・人格・信条の違いを意味しません。
+主題はRole Diversity、actual Information Access Diversity、およびObservable Evidence Lineageです。従来のEpistemic Diversityという条件名は実行時の外部文書アクセス差を意味し、モデル重み・事前学習知識・人格・信条の違いではありません。Runtimeは**experimental treatment integrity / auditable experimental infrastructure**です。intended visibility、actual serialized Worker input、public Artifact、actual serialized Synthesizer inputを保存・照合し、条件がprompt complianceだけでなく実input/routing levelで成立することを監査します。Runtime単体の新規access-control mechanismを主貢献にしません。
 
 ## RQ1：役割・情報アクセスと回答性能
 
 **同一LLMを用いたマルチエージェントシステムにおいて、役割の多様性と外部情報アクセスの多様性の違いは、最終的な回答性能にどのように関係するか。**
 
-Study 1のC0〜C4はこの問いに対する比較枠組みです。C2はrole-diverse＋full access、C3はneutral role＋partitioned accessであり、主比較C3−C2は二要因を同時に変えます。roleとaccessの主効果をこの対比だけで識別したとはしません。C1/C3等の同role比較を含む設計が存在しても、事後に主比較を変更せず、副比較の補正・資源差・標本制約を保持します。
+Study 1のC1〜C4はsame LLM / same collaboration structureのneutral/diverse role × full/partitioned access格子です。C0はsingle-agent baselineで格子外です。C2はrole-diverse＋full access、C3はneutral role＋partitioned accessであり、主比較C3−C2は二要因を同時に変えます。roleとaccessの主効果をこの対比だけで識別したとはしません。事後に主比較を変更せず、副比較の補正・資源差・標本制約を保持します。[Exploratory factorial plan](../experiments/epistemic-diversity/paper/exploratory-role-access-factorial-analysis-plan.md)は計画のみです。
 
 固定30問・5条件・単一モデル／反復の結果は限定的な観測です。Study 1時点の未観測fresh24におけるC3−C2 Answer F1差−0.15643は、その条件・選択標本での差として報告します。全30問は累積探索的集計です。
 
-## RQ2：観測可能な情報フロー
+## RQ2：Observable Evidence Lineage
 
-**情報アクセスを分割したマルチエージェントシステムにおいて、回答に必要な情報は、原文参照、Workerによる抽出・表現、公開Artifactへの保持、Synthesizerへの伝達、最終回答での利用という各段階でどのように保持・欠落・変形・不使用されるか。**
+**必要なreference factsは、Workerへの実際の情報アクセス、Workerの公開表現、Artifact publication、実際のSynthesizer input、最終出力のevidential supportという観測可能な各段階で、どの程度保持・変形・欠落しているか。**
 
-判定単位は原則として必要factです。原文にあること、実入力に含まれること、意味的に正しい表現、公開payloadへの保持、実合成入力への到達、最終出力との整合を分けます。引用IDの正しさを意味的抽出の正しさと同一視せず、payload一致を意味的保持の証明とも扱いません。
+annotation単位はpath-conditional fact、support set、pathです。sentenceとfactを同一視しません。原文の存在、実入力、公開表現、独立publication transitionの保持、実合成入力、最終出力の支持を分けます。引用IDの正しさを意味的な公開表現の正しさと同一視せず、payload一致を意味的保持の証明とも扱いません。inferential statisticsの主要単位はquestionであり、fact数を独立sample数としません。
 
-Workerの内部思考やLLMのhidden chain-of-thoughtは観測しません。「抽出」は保存された公開出力で正しく表現されたか、「利用」は入力と最終出力から評価できる支持・整合の範囲を指します。別々の前後記録がなく抽出と公開の失敗を区別できない場合や、短い回答から利用経路を特定できない場合は`undetermined`／`unclear`を残します。
+Workerの内部思考やLLMのhidden chain-of-thoughtは観測しません。現在の設計では「internally extracted / understood / used / ignored / relied on」を評価labelにしません。独立publication transitionのないidentity aliasはS3=NAです。最終短答にbridge factが書かれないだけではfailureにせず、受信したpathによる支持と出力の整合関係を判定します。識別不能は`undetermined`／`unclear`を残します。
 
-RQ2の意味的分析は独立人手レビュー未実施です。Study 2はこの問いを動機とした探索的追加実験であり、RQ2全体や因果機構を解決したものではありません。[段階別計画](../experiments/synthesis-evidence-preservation/docs/human-review-stage-analysis-plan.md)を参照してください。
+RQ2の意味的分析は独立人手レビュー未実施です。Study 2はこの問いを動機とした探索的追加実験であり、RQ2全体や因果機構を解決したものではありません。[v3レビュー設計](../experiments/synthesis-evidence-preservation/docs/human-review-stage-analysis-plan-v3.md)は未freeze・未実装のplanned analysisです。
 
 ## Contributions：現在の貢献候補と証拠の境界
 
 | 候補 | 現在の内容 | 達成・未達成の境界 |
 | --- | --- | --- |
-| Contribution 1：実験枠組み | Role Diversityと実際の外部情報アクセス差としてのEpistemic Diversityを区別し、同一モデルの条件格子として比較する枠組み | Study 1を実行済み。C2/C3から単一要因の因果効果は識別していない。既存研究に対する新規性・網羅性は別途検討が必要 |
-| Contribution 2：条件の実装・監査 | allowlist、ACL、detached context、typed Artifact等により、Agentごとのアクセスと公開経路を実装・監査可能にした実験基盤 | 実装・アクセス監査の証拠はある。完全sandboxや意味的confidentialityの保証、Runtime自体の新規性を主張しない |
-| Contribution 3：観測から探索的介入・段階別分析への接続 | Study 1の観測から情報保持・統合の仮説を立て、固定WorkerのStudy 2を実施した。単純な引用原文復元で今回の性能差を十分説明する支持は得られず、段階別分析を次の分析課題として定義した | Study 2のモデル比較は完了。原因特定・information bottleneckの証明ではない。独立人手の段階別分析結果はまだ存在せず、達成済み貢献として数えない |
+| Contribution 1：controlled comparisonの枠組み | same-model / same collaboration structureでRoleとactual Information Accessを別experimental factorとして配置 | Study 1 C1〜C4は実行済み。ただし主比較は二要因変更で、新factorial解析は未実施。今回確認した主要文献の範囲では、この配置と同一evidenceのobservable lineageを組み合わせた明示的直交比較を確認できなかった。世界初とはしない |
+| Contribution 2：experimental treatment integrity | allowlist / ACL / detached context / typed Artifactと保存された実入力・公開記録で条件を担保・監査 | 実装とアクセス監査の証拠がある。access-control自体の新mechanism、完全sandbox、意味的confidentialityを主張しない |
+| Contribution 3：exploratory follow-upとplanned lineage analysis | Study 1の観測→仮説→fixed-Worker Study 2を接続し、reference evidence→documented access→public expression→publication transition→actual Synthesizer input→downstream evidential supportを追跡する分析設計 | **実証済み:** 固定Worker条件では引用原文追加がtoken-length-matched neutral controlより平均Answer F1を改善する所見は得られなかった。**planned contribution:** two-pass registryと独立人手lineage分析。原因特定・bottleneckの証明でも、完了済み人手結果でもない |
 
-Study 2の既存24問のAnswer F1はA=0.5666、B=0.5805、C=0.5805、B−A=+0.0139、B−C=0です。「単純に引用原文を戻せば改善する」「情報圧縮による情報量減少がStudy 1の主原因だった」という説明は今回支持されませんでした。ただし効果ゼロや情報損失一般の否定ではなく、未引用文は復元していません。既観測標本・一反復・総compute非同一の探索的介入です。
+Study 2の既存24問のAnswer F1はA=0.5666、B=0.5805、C=0.5805、B−A=+0.0139、B−C=0です。引用原文追加固有の平均回答改善が今回支持されなかったという観測に留めます。「単純なraw-evidence restorationだけでは十分でない可能性」はDiscussionの仮説であり、Study 1のgapの原因を説明した／否定したという結論ではありません。効果ゼロや情報損失一般の否定でもなく、未引用文は復元していません。既観測標本・一反復・総compute非同一の探索的追加実験です。
 
 ## 研究ストーリーと次段階の境界
 
@@ -45,10 +45,10 @@ Study 2の既存24問のAnswer F1はA=0.5666、B=0.5805、C=0.5805、B−A=+0.01
 役割の違いと外部情報アクセスの違いを区別する
   → Runtimeで比較条件を実装・監査
   → Study 1：C2/C3等の比較と限定的な性能差の観測
-  → 仮説：必要情報の抽出・公開・保持・利用に課題がある可能性
+  → 仮説：必要情報の公開表現・保持・最終出力の支持に課題がある可能性
   → Study 2：固定Worker＋引用原文／中立文対照
   → 引用原文追加固有の平均改善は今回支持されず
-  → 段階別独立人手分析（未実施）
+  → Observable Evidence Lineage独立人手分析（未実施）
   → failure pattern → specific hypothesis → 確認実験の提案・事前計画
 ```
 
@@ -65,7 +65,11 @@ Study 2の既存24問のAnswer F1はA=0.5666、B=0.5805、C=0.5805、B−A=+0.01
 - 24/30問の結果をHotpotQA全体やLLM一般へ一般化できる。
 - 人間の集団知・認知多様性と同じ現象、または内部思考を測定した。
 - 段階別レビューを設計したこと自体が独立人手検証の完了である。
+- Role/persona研究、distributed information、context partition、Runtime access control、Role/Informationの区別、MAS stage-wise error analysis、HotpotQA evidence splitを初めて提案した。
+- 保存されたpublic outputからモデルの内部的な証拠利用や因果的root causeを特定した。
 
 ## 根拠
 
 [Study 1事前計画3.1](../experiments/epistemic-diversity/docs/protocol-3.1-hotpotqa-main.md)・[復旧計画3.2](../experiments/epistemic-diversity/docs/protocol-3.2-hotpotqa-recovery.md)・[最終結果](../experiments/epistemic-diversity/docs/qwen3-14b-hotpotqa-protocol32-windows-outcome.md)、[Study 2 PLAN](../experiments/synthesis-evidence-preservation/PLAN.md)・[結果](../experiments/synthesis-evidence-preservation/docs/qwen3-14b-windows-outcome.md)、[Runtimeの情報フロー](information-flow.md)・[安全境界](security.md)、[主張と根拠](research-claims-evidence-map.md)。旧仕様の保全と新レビューの差分は[依存監査](../experiments/synthesis-evidence-preservation/docs/review-stage-amendment-and-kit-impact.md)に記録します。
+
+現行[Related Work](../experiments/epistemic-diversity/paper/current-related-work.md)と[Deep Research統合監査](deep-research-integration-audit.md)が位置づけ・citation照合の根拠です。旧revisionの本文はGit履歴に保持し、freeze済み研究仕様・旧kitを改変しません。

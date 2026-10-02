@@ -1,6 +1,8 @@
 # 研究文書の整合性監査
 
-監査日：2026-09-30。最新GitHub main HEADは`130ff0c54ddd77129bd9645d56ca33de505481ec`（PR #7 merge）、作業ブランチは`research/epistemic-diversity`、HEADは`6d27edc4535f22d195b229da7010f982563eaf80`でした。`git diff HEAD origin/main`は空で、内容は一致しています。ローカル`main`参照は`5078c65`のままで、最新mainと取り違えていません。mainをcheckoutしたり既存未追跡資料を移動したりはしていません。
+監査日：2026-09-30。当時のaudited base snapshotはGitHub main `130ff0c54ddd77129bd9645d56ca33de505481ec`（PR #7 merge）、研究branch snapshotは`6d27edc4535f22d195b229da7010f982563eaf80`でした。当時のtree差分は空で内容が一致し、ローカル`main`参照`5078c65`とは区別しました。以下は当時の文書監査記録であり、永続的な最新HEAD表記ではありません。mainのcheckoutや既存未追跡資料の移動はしていません。
+
+2026-10-02追記：現行framing・Related Work・Human Review設計の改訂とsnapshot表記の監査は[Deep Research統合監査](deep-research-integration-audit.md)に記録します。以下の歴史的stale項目・当時の監査結果は削除しません。
 
 ## 範囲と判断方針
 

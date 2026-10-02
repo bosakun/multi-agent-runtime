@@ -1,6 +1,8 @@
 # 段階別レビュー設計の追加と旧kitへの影響監査
 
-2026-10-02。最新main `213906dd6d30ab29ba0a66ecc78c3dfee1044d24`と作業ブランチHEAD `8dbb5a9525087d82d96142e136e67547ad09fb5b`は内容が一致していました。これは設計・依存関係の監査で、kit生成・人手判定・新しいモデル実験ではありません。
+2026-10-02。当時のaudited base snapshot：main `213906dd6d30ab29ba0a66ecc78c3dfee1044d24`と研究branch `8dbb5a9525087d82d96142e136e67547ad09fb5b`は内容が一致していました。これは当時の設計・依存関係の監査で、kit生成・人手判定・新しいモデル実験ではありません。
+
+> Future review designは[Evidence Lineage v3](human-review-stage-analysis-plan-v3.md)へ移行します。以下のv2追加時の監査・検証記録は保持します。two-pass registry、progressive disclosure、旧kitの不足は[新しい統合監査](../../../docs/deep-research-integration-audit.md)を参照してください。
 
 ## 1. 採った方式と理由
 

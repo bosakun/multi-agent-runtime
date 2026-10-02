@@ -1,6 +1,6 @@
 # Synthesis Evidence Preservation
 
-Workerの公開出力からSynthesizerの最終回答まで、必要な事実がどう保持されるかを調べる独立した研究です。
+Workerの公開出力からSynthesizerの最終回答まで、必要な事実がどう保持されるかを調べるStudy 2です。実装・freeze・保存先はStudy 1と分離していますが、研究上はStudy 1→仮説→探索的Study 2→Observable Evidence Lineage分析という一つのストーリーを基本案にします。
 
 前の研究は、HotpotQA distractor devの30問×C0〜C4・150ケース・510正常生成の比較として完了しました。C3が低かった原因の特定、独立人手検証、他モデルへの一般化は、その比較から生まれた次の問いです。研究全体の問いが残っていることと、一つの実験が完了していることは両立します。
 
@@ -15,14 +15,14 @@ Workerの公開出力からSynthesizerの最終回答まで、必要な事実が
 ## 最初に読む資料
 
 - [研究目的・RQ・貢献](../../docs/research-question-and-contributions.md)：Study 1→仮説→探索的Study 2→人手分析の説明基準。
-- [段階別人手分析計画](docs/human-review-stage-analysis-plan.md)と[旧kitへの影響監査](docs/review-stage-amendment-and-kit-impact.md)：2026-10-02追加の設計文書です。旧REVIEW・freeze・prepared kitは変更せず、新kit生成・判定は未実施です。次の確認実験は人手レビュー・不一致処理の終了前に開始しません。
+- [Evidence Lineageレビューv3](docs/human-review-stage-analysis-plan-v3.md)・[metrics plan](docs/evidence-lineage-metrics-plan.md)・[開始前checklist](docs/human-review-preflight-freeze-checklist.md)：two-pass registry、観測stage、独立判定・集計の未freeze設計です。旧[段階別案](docs/human-review-stage-analysis-plan.md)と[旧kitへの影響監査](docs/review-stage-amendment-and-kit-impact.md)は履歴として保持します。旧REVIEW・freeze・prepared kitは変更せず、新kit生成・判定は未実施です。確認実験は人手レビュー終了前に開始しません。
 
 - [Windows実比較の結果](docs/qwen3-14b-windows-outcome.md)：81件の実生成と集計、未完了の人手レビューを区別した報告。
 
-- [独立レビューの引き継ぎ](REVIEW-HANDOFF.md)：担当者未定のまま準備した資料と、担当者が決まった後の手順。
+- [独立レビューの引き継ぎ](REVIEW-HANDOFF.md)：旧仕様で準備した資料・手順の履歴。v3として使うには上記checklistと新packet設計の人間による採用が必要です。
 
 - [研究計画](PLAN.md)：仮説、入力の作り方、3問の動作確認と既存24問の比較、分析・完了条件。
-- [レビュー基準](REVIEW.md)：原文・公開出力・最終回答の内容検証と、独立人手レビューの手順。
+- [レビュー基準](REVIEW.md)：freeze済みの旧仕様。現行v3設計へ遡及変更しません。
 - [運用・検証計画](OPERATIONS.md)：source保全、Mock、token計測、保存エラーの観測、実生成の開始条件。
 - [機械可読の計画仕様](study.json)：質問ID、予定81呼び出し、設定、参照元のhash。実行済みmanifestやfreezeではありません。
 
