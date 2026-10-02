@@ -1,0 +1,18 @@
+{
+  "protocol_version": "observable-evidence-lineage-v3",
+  "schema_version": "3.0.0",
+  "builder_version": "3.0.0",
+  "analysis_rule_version": "3.0.0-candidate",
+  "design": "DESIGN IMPLEMENTED",
+  "human_review": "HUMAN REVIEW NOT STARTED",
+  "human_labels": 0,
+  "freeze": "NOT FINAL-FROZEN",
+  "candidate": "HUMAN REVIEW V3 FREEZE CANDIDATE",
+  "reviewers": [null, null],
+  "scope_30_or_28": null,
+  "bootstrap_config": null,
+  "human_signoff": null,
+  "adjudication_records": 0,
+  "real_packets_generated": 0,
+  "real_lineage_results_generated": false
+}

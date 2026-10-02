@@ -1,0 +1,52 @@
+{
+  "audit_date": "2026-10-02",
+  "audit_kind": "implementation_and_synthetic_mechanical_tests_only",
+  "audited_remote_main_snapshot": "d998ed6b76714f56a9a5c3d0728a0c649cdca5f0",
+  "audited_local_base_snapshot": "a9280fd9312d814fbae3aa3cf99d7bb4f33a10b9",
+  "base_tree_contents_match": true,
+  "namespace": "experiments/synthesis-evidence-preservation/review_v3",
+  "design": "DESIGN IMPLEMENTED",
+  "human_review": "HUMAN REVIEW NOT STARTED",
+  "human_labels": 0,
+  "freeze": "NOT FINAL-FROZEN",
+  "human_signoff": null,
+  "reviewers": [null, null],
+  "scope_30_or_28": null,
+  "bootstrap_configuration_finalized": false,
+  "tests": {
+    "suite": "review_v3/tests",
+    "fixture_kind": "invented_synthetic_only",
+    "passed": 72,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 0.68,
+    "ruff_check": "passed",
+    "root_regression_suite_run": false
+  },
+  "preservation": {
+    "byte_sha256_baseline_files": 1439,
+    "includes_all_existing_tracked_files": 597,
+    "changed": 0,
+    "missing": 0,
+    "v1_code_hashes_verified": 102,
+    "v1_source_hashes_verified": 424,
+    "v1_freeze_sha256": "8025a14a49ccc7423b19f63a6b1c97dfa1c5c6795fbd2f62d1d6ec90728eb134",
+    "old_kit_manifests_verified": 2,
+    "old_kit_manifest_listed_files_verified": 414,
+    "existing_files_modified": 0,
+    "historical_hashes_updated": false,
+    "complete_filesystem_backup_claimed": false
+  },
+  "not_performed": [
+    "LLM or Ollama generation",
+    "model or dataset downloads",
+    "real fact registry creation or alternative path discovery",
+    "semantic human labeling or adjudication",
+    "human reviewer assignment",
+    "real review packet or kit generation",
+    "real lineage metrics, IAA, bootstrap or factorial analysis",
+    "historical asset edits",
+    "raw/private data staging",
+    "commit or push"
+  ]
+}
