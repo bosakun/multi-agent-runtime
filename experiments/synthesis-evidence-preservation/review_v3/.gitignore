@@ -1,0 +1,7 @@
+/local/
+/packets/
+/exports/
+/sessions/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
