@@ -73,6 +73,13 @@ class ReviewStore:
         "post_freeze_candidate",
         "workflow",
         "packets",
+        "codebook_versions",
+        "codebook_revisions",
+        "pilot_batches",
+        "ambiguity_logs",
+        "pilot_clearances",
+        "path_admission_checks",
+        "path_requiredness_checks",
     }
 
     def __init__(self, root):

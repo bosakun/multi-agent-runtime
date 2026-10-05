@@ -212,6 +212,7 @@ def build_packet(
     packet = {
         "case_code": aliases["question"],
         "phase": phase,
+        "review_mode": workflow.review_mode,
         "allocation_blinding": "allocation-blinded where feasible",
         "materials": project(source, registry, phase, selected_arm, aliases),
         "form": blank_registry(source, phase)
@@ -251,6 +252,9 @@ def build_packet(
         "visible_materials_hash": digest(packet["materials"]),
         "registry_hash": workflow.registry_hash,
         "codebook_hash": workflow.codebook_hash,
+        "review_mode": workflow.review_mode,
+        "pilot_protocol_hash": workflow.pilot_protocol_hash,
+        "pilot_clearance_hash": workflow.pilot_clearance_hash,
         "phase": phase,
         "gold_included": phase == "R2",
         "condition_mapping_included": False,

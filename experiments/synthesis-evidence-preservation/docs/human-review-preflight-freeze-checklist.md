@@ -28,6 +28,13 @@
 
 ## Calibration / production / agreement
 
+- [ ] [Codebook candidate](../review_v3/CODEBOOK.md)の版・stable Rule IDs・document hashes・semantic equivalence / partial / distorted / absent / unclear / missingの境界を人間が採用する。
+- [ ] alternative valid pathのpre-output候補化、登録premises、外部factual premise禁止、logical composition、path-conditional requiredness、post-freeze候補分離の規則を固定する。
+- [ ] [Adjudication Rules](../review_v3/ADJUDICATION-RULES.md)の優先順位、evidence pointer、独立票保存、未解決unclear、第三adjudicator利用方針を開始前に固定する。
+- [ ] [Pilot Protocol](../review_v3/PILOT-PROTOCOL.md)のmain30問外selection rule、Study 2 main/smoke exclusion、result-aware selection禁止、資料出自・共有方式、batch packet freezeを固定する。今回実case・reviewerは未選定。
+- [ ] pilotを2名が独立に完了し、両票lock後のdisagreement inspection / adjudication / ambiguity logを保存する。教材の存在をpilot完了と数えない。
+- [ ] adopted candidate版のcritical edge-case coverage、final batch new-rule count=0、主要不一致の既存ruleによる解決可能性、未解決ambiguityの明記・blockerなしを人間が確認する。高kappaを終了条件にしない。
+- [ ] old candidate版・change reason・affected fields/units・再判定影響を保持し、signed PilotClearanceとCodebook v1.0 human sign-offを新versionへ保存する。コードのstop候補から自動freezeしない。
 - [ ] 対象外HotpotQA 4〜6問程度のregistry calibration選定基準とstage edge-case vignettesを固定する。
 - [ ] 最終batchで新guideline ruleなし＋必須境界のcoverageという終了条件、未達時の追加batch・改訂記録を定める。
 - [ ] 本判定前にcodebook v1.0をfreezeする。開始後の重大改訂はstop / amendment / new version / affected cases全再判定 / 旧票保存とする。

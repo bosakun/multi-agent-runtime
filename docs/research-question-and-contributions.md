@@ -27,7 +27,7 @@ annotation単位はpath-conditional fact、support set、pathです。sentence�
 
 Workerの内部思考やLLMのhidden chain-of-thoughtは観測しません。現在の設計では「internally extracted / understood / used / ignored / relied on」を評価labelにしません。独立publication transitionのないidentity aliasはS3=NAです。最終短答にbridge factが書かれないだけではfailureにせず、受信したpathによる支持と出力の整合関係を判定します。識別不能は`undetermined`／`unclear`を残します。
 
-RQ2の意味的分析は独立人手レビュー未実施です。Study 2はこの問いを動機とした探索的追加実験であり、RQ2全体や因果機構を解決したものではありません。[v3レビュー設計](../experiments/synthesis-evidence-preservation/docs/human-review-stage-analysis-plan-v3.md)は未freeze・未実装のplanned analysisです。
+RQ2の意味的分析は独立人手レビュー未実施です。Study 2はこの問いを動機とした探索的追加実験であり、RQ2全体や因果機構を解決したものではありません。[v3レビュー設計](../experiments/synthesis-evidence-preservation/docs/human-review-stage-analysis-plan-v3.md)は未freezeのplanned analysisです。空の[versioned tooling](../experiments/synthesis-evidence-preservation/review_v3/README.md)は実装候補となり、2026-10-05には[Codebook候補](../experiments/synthesis-evidence-preservation/review_v3/CODEBOOK.md)とpilot・adjudication規則を具体化しました。pilot/mainレビューは未開始で、方法論の検証や人手結果を意味しません。
 
 ## Contributions：現在の貢献候補と証拠の境界
 
