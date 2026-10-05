@@ -39,6 +39,21 @@ class Workflow(Record):
     pilot_protocol_hash: str | None = None
     pilot_clearance_hash: str | None = None
     codebook_rule_ids: list[str] = Field(default_factory=list)
+    translation_asset_hash: str | None = None
+    translation_version: str | None = None
+
+    def bind_translations(self, asset):
+        from review_v3.bilingual import TranslationAsset
+
+        asset = TranslationAsset.model_validate(asset)
+        if self.locks or self.translation_asset_hash or self.review_mode != asset.review_mode:
+            raise ValueError("Translation freeze binding precedes review; no silent replacement")
+        return self.model_copy(
+            update={
+                "translation_asset_hash": asset.frozen_hash,
+                "translation_version": asset.version,
+            }
+        )
 
     @model_validator(mode="after")
     def ordered_history(self):
@@ -188,6 +203,7 @@ class Workflow(Record):
                 definition.document_hashes != pilot_definition.document_hashes
                 or (definition.rules != pilot_definition.rules)
                 or definition.example_hashes != pilot_definition.example_hashes
+                or definition.language_policy_hash != pilot_definition.language_policy_hash
             ):
                 raise ValueError("Changed rules/documents after stable pilot require another pilot")
             additional = {

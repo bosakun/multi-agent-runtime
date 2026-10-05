@@ -18,6 +18,8 @@
 
 ## Labels / derivation / packets
 
+- [ ] 日本語話者2名を前提に、[英語原文＋固定日本語訳](../review_v3/BILINGUAL-REVIEW-POLICY.md)の同一表示、対応表、text/asset hashes、作成・人間確認方法をpilot/main開始前に固定する。原文・訳ともgold/finalの開示順を守る。
+- [ ] translation ambiguityの記録、unclearの扱い、途中修正時の停止／amendment／新版／両者への同一修正版／全影響判定再実施／旧訳と票の保持を固定する。その場のreviewer別・case別LLM翻訳はしない。
 - [ ] S0〜S5a/b、applicability、identity_aliasのS3=NA、unknown transition、S4 routeとmachine_payload_matchを固定する。
 - [ ] observed stateとfailure eventを分離し、upstream prerequisites、重複eventの統合、cascade非二重計上を定める。
 - [ ] first_observable_failure_stageは規則で導出し、不明な先行stageがある場合のundeterminedを定める。root causeと呼ばない。

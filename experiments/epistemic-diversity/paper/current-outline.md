@@ -67,6 +67,7 @@ Motivation→Role / actual Information Access→Runtime as treatment integrity�
 
 ## 9. Observable Evidence Lineage Human Analysis（RQ2：計画・未実施）
 
+- Reviewerは日本語話者2名を前提とする。[固定訳方針](../../synthesis-evidence-preservation/review_v3/BILINGUAL-REVIEW-POLICY.md)に従い、英語原文と事前固定日本語訳を併記し、日本語訳を主に参照して判定する予定である。methodologyでは同一訳の共有・対応表・版/hash・翻訳確認方法・開示順・ambiguityを記録する。実施後に実記録で確認できた場合のみ「判定した」と記述する。翻訳を介する不確実性もlimitationsへ加える。
 - [v3計画](../../synthesis-evidence-preservation/docs/human-review-stage-analysis-plan-v3.md): two-pass registryを出力開示前にfreeze。sentence/fact/support set/path、alternative paths、path-conditional requirednessを明示する。RQ2の本文分析であって付録だけに置かない。
 - S0 reference presence→S1 actual Worker accessibility→S2 public expression→S3独立publication（aliasはNA）→S4 actual Synthesizer input / routes→S5a final relation＋S5b evidential support。引用ID・payload一致と意味stateを分け、内部extract/use/ignoreを推定しない。
 - independent reviewers2名、対象外registry校正とedge cases、progressive disclosureとlocks、allocation blindingの限界、pre-adjudication IAA、adjudication別versionを説明する。stateとderived failure eventを分け、first observable failureをroot causeと呼ばない。

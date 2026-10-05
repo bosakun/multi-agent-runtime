@@ -8,6 +8,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from review_v3.ballots import validate_ballot  # noqa: E402
+from review_v3.bilingual import TranslationAsset  # noqa: E402
 from review_v3.calibration import PilotBatch, PilotClearance, PilotSelection  # noqa: E402
 from review_v3.codebook import (  # noqa: E402
     Ambiguity,
@@ -41,6 +42,7 @@ def main(argv=None):
         "pilot-clearance": PilotClearance,
         "path-admission": PathAdmission,
         "requiredness": RequirednessCheck,
+        "translations": TranslationAsset,
     }
     schema = commands.add_parser("schema")
     schema.add_argument("kind", choices=list(models))
@@ -57,6 +59,10 @@ def main(argv=None):
     packet.add_argument("--case-alias")
     packet.add_argument("--arm-alias")
     packet.add_argument("--private-linkage", required=True)
+    packet.add_argument("--translations")
+    translation = commands.add_parser("bind-translations")
+    for name in ("workflow", "translations", "output"):
+        translation.add_argument("--" + name, required=True)
     lock = commands.add_parser("lock")
     for name in ("workflow", "reviewer", "phase", "ballot", "version", "store", "unit"):
         lock.add_argument("--" + name, required=True)
@@ -108,6 +114,7 @@ def main(argv=None):
             args.case_alias,
             args.arm_alias,
             Scope.model_validate(read(args.scope)),
+            read(args.translations) if args.translations else None,
         )
         # Linkage is NEVER inside reviewer export. Refuse its path within that folder.
         exclusive(linkage, result["private_linkage"])
@@ -145,6 +152,15 @@ def main(argv=None):
         )
         exclusive(args.output, updated.model_dump(mode="json"))
         result = {"pilot_authorization_recorded": True, "not_main_codebook_freeze": True}
+    elif args.command == "bind-translations":
+        updated = Workflow.model_validate(read(args.workflow)).bind_translations(
+            read(args.translations)
+        )
+        exclusive(args.output, updated.model_dump(mode="json"))
+        result = {
+            "translation_asset_hash": updated.translation_asset_hash,
+            "not_review_started": True,
+        }
     else:
         workflow = Workflow.model_validate(read(args.workflow))
         registry = Registry.model_validate(read(args.registry)) if args.registry else None

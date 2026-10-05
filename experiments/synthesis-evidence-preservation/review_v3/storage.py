@@ -80,6 +80,7 @@ class ReviewStore:
         "pilot_clearances",
         "path_admission_checks",
         "path_requiredness_checks",
+        "translation_assets",
     }
 
     def __init__(self, root):

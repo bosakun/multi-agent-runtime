@@ -1,4 +1,4 @@
-# Adjudication Rules — candidate v0.1.0
+# Adjudication Rules — candidate v0.2.0
 
 2026-10-05。**未採用・実協議0件**。[CODEBOOK](CODEBOOK.md)の候補と同時にpilotで確認する。人間の判断をコードで置き換えない。
 
@@ -29,6 +29,8 @@
 unit_id、field、reviewer1_label、reviewer2_label、adjudicated_label、reason、guideline_rule（stable ID）、**evidence_pointer**、adjudicator、timestamp、codebook_version、resolution_statusを保存する。元票のhash / lock / source版へのリンクも協議資料のmanifestへ残す。両者labelを勝手に訂正してからIAAを出さない。original labelsは上書きせずadjudication_logとfinal_adjudicated_labelsへ別version保存する。候補規則が不十分ならambiguity logにaffected fields、競合label、既存rule、修正候補、blockerかを残す。
 
 ## 第三者・訂正
+
+翻訳ambiguityはGEN-TRANS-001と[固定訳方針](BILINGUAL-REVIEW-POLICY.md)を適用する。協議recordのevidence_pointerに英語原文位置と固定訳のpair位置/hashを対応づけ、原文基準で検討する。解決不能はunclear、翻訳修正が必要なら停止・新版・両者への同一修正版・全影響判定の再判定とし、旧訳・独立票は保持する。
 
 <!-- rule: ADJ-THIRD-001 -->
 第三adjudicatorを使うか、適格性、担当範囲、いつ開示するかを**pilot/main開始前に**人間が固定する。今回担当者は未選定。不一致を見て都合のよいcaseだけ第三者を導入しない。第三者なしなら2名discussion後も未解決をunclearとして残す。非独立の協議票をhuman reviewer追加1名と数えない。

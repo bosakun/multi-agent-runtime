@@ -1,8 +1,10 @@
-# Pilot Human Review Protocol — candidate v0.1.0
+# Pilot Human Review Protocol — candidate v0.2.0
 
 2026-10-05。**PILOT HUMAN REVIEW NOT STARTED / MAIN HUMAN REVIEW NOT STARTED / 0 HUMAN LABELS / NOT FINAL-FROZEN**。pilotはannotation guidelineのcalibrationであり、新しいLLM experimentでも本研究の性能結果でもない。今回case選定、reviewer割当、packet・票の生成、判定を行わない。
 
 ## 事前に人間が固定するもの
+
+reviewerは日本語話者2名。[固定訳方針](BILINGUAL-REVIEW-POLICY.md)に従い、pilot開始前に英語原文と対応する日本語訳の版/hashを固定し、両者へ同一の訳を提示する。gold/final訳も当該phaseまで非開示。翻訳ambiguityと訳修正の影響範囲もpilotの確認対象とする。今回翻訳生成・実訳の固定は行わない。
 
 Codebook candidateの版とdocument hashes、selection rule、pilot資料の出自／ライセンス、2名の独立reviewerと既読履歴、第三adjudicator利用方針、packet限定開示・lock方式、ambiguity logの責任者を固定する。担当者は実装・実験作成者以外。AIをreviewerとして数えない。新モデル生成を資料作成の条件にしない。
 
