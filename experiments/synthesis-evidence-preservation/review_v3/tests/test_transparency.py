@@ -101,6 +101,34 @@ def test_known_results_are_disclosed_not_claimed_fully_blind():
     assert context.disclosure_notes
 
 
+@pytest.mark.parametrize("use_third", [False, True])
+def test_optional_third_adjudicator_supports_main_signoff(use_third):
+    value = main_signoff().model_dump()
+    value["third_adjudicator_used"] = use_third
+    if not use_third:
+        value["adjudicator_contexts"] = []
+    signoff = MainReviewSignoff(**value)
+    assert bool(signoff.adjudicator_contexts) == use_third
+    sealed = unfrozen_main().freeze_codebook(
+        "1.0.0", definition_v1().model_dump(), True, "SYNTHETIC ONLY",
+        clearance(main_signoff=signoff),
+    )
+    assert sealed.main_signoff_hash == signoff.content_hash
+
+
+@pytest.mark.parametrize("policy", ["missing", "true_without_context", "false_with_context"])
+def test_third_adjudicator_policy_must_be_explicit_and_consistent(policy):
+    value = main_signoff().model_dump()
+    if policy == "missing":
+        del value["third_adjudicator_used"]
+    elif policy == "true_without_context":
+        value["adjudicator_contexts"] = []
+    else:
+        value["third_adjudicator_used"] = False
+    with pytest.raises(ValidationError):
+        MainReviewSignoff(**value)
+
+
 def test_signoffs_and_profiles_are_append_only_author_records(tmp_path):
     store = ReviewStore(tmp_path)
     record = main_signoff()
