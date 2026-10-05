@@ -34,6 +34,8 @@ CodebookRevisionの旧/新版・hash・理由・affected rules/units、versioned
 
 `MainReviewSignoff`はversion、10項目の人間による確認、採用Codebook version/hash、translation/adjudication policy version/hash、ReviewerProfile、AdjudicatorContext、Study 1 Scope、署名者・日時を持つ。30/28も対象IDsも既定値を持たず、人間が指定する。Study 2 main24×A/B/Cとsmoke exclusionは既存の別scope/manifestを維持する。
 
+第三adjudicatorはoptional。利用方針は既定値のない`third_adjudicator_used`で開始前に明示する。falseなら`adjudicator_contexts=[]`とし、2名のReviewer discussionのみで協議し未解決はunclearを残す。trueの場合のみ第三adjudicatorのAdjudicatorContextを1件以上保存する。方針未指定、trueで空、falseでcontextありはschemaで拒否する。Reviewer自身の関与・結果既知はReviewerProfileへ引き続き記録する。
+
 将来のcoordinatorは`main_review_signoffs`へ独立versionで保存し、PilotClearance.main_signoffに同じ内容を結び付ける。実mainのcodebook freeze gateはこの署名、workflow/pilotのReviewer ID、採用policy/codebook hashesの一致を要求する。pilot完了票だけでは不足。機械的schema一致は人間による実確認の代用ではない。main registry R1を含む作業開始前のpreflight採用・承認は人間が行い、toolingが自動開始しない。
 
 Codebook本体のfinal freeze、各翻訳assetの固定、registry freeze、codebook promotionのrevision記録、main packets/source hashes、IAA/metrics/analysis設定のfreezeは別の既存手順として必要。candidate状態のmain_signoffを実署名として発行しない。

@@ -60,7 +60,8 @@ class MainReviewSignoff(Record):
     reviewers: list[ReviewerProfile] = Field(min_length=2, max_length=2)
     adjudication_policy_version: str = Field(min_length=1)
     adjudication_policy_hash: str = Field(pattern=r"^[a-f0-9]{64}$")
-    adjudicator_contexts: list[AdjudicatorContext] = Field(min_length=1)
+    third_adjudicator_used: bool
+    adjudicator_contexts: list[AdjudicatorContext]
     study1_main_n: Literal[30, 28]
     study1_scope: Scope
     human_signoff: str = Field(min_length=1)
@@ -70,6 +71,8 @@ class MainReviewSignoff(Record):
     def explicit_confirmation(self):
         if set(self.confirmed_items) != set(SIGNOFF_ITEMS) or len(self.confirmed_items) != 10:
             raise ValueError("All ten HUMAN confirmations required; no automatic completion")
+        if self.third_adjudicator_used != bool(self.adjudicator_contexts):
+            raise ValueError("Third-adjudicator policy must match its optional context records")
         ids = [r.reviewer_id for r in self.reviewers]
         if len(set(ids)) != 2:
             raise ValueError("Two distinct pseudonymous reviewers required")

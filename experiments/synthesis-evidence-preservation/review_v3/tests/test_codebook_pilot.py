@@ -88,6 +88,7 @@ def main_signoff():
         ) for r in ("synthetic-r1", "synthetic-r2")],
         adjudication_policy_version="synthetic-policy",
         adjudication_policy_hash=definition.document_hashes["ADJUDICATION-RULES.md"],
+        third_adjudicator_used=True,
         adjudicator_contexts=[dict(
             adjudicator_id="synthetic-only", prior_result_exposure=True, prior_case_exposure=[],
             disclosure_notes="Invented known-results limitation",
