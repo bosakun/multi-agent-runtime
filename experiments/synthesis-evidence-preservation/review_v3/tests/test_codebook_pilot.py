@@ -25,6 +25,7 @@ from review_v3.manifest import freeze_candidate
 from review_v3.metrics import observed_state
 from review_v3.schema import S1, S2, S3, Adjudication
 from review_v3.storage import ReviewStore, digest, file_hash, read
+from review_v3.transparency import SIGNOFF_ITEMS, MainReviewSignoff
 from review_v3.workflow import Workflow
 from synthetic import workflow
 
@@ -72,9 +73,40 @@ def definition_v1():
     )
 
 
+def main_signoff():
+    definition = definition_v1()
+    return MainReviewSignoff(
+        version="synthetic-v1", confirmed_items=list(SIGNOFF_ITEMS),
+        codebook_version=definition.version,
+        codebook_definition_hash=definition_hash(definition),
+        translation_policy_version="synthetic-policy",
+        translation_policy_hash=definition.language_policy_hash,
+        reviewers=[dict(
+            reviewer_id=r, relationship_to_author=["none"],
+            involvement_in_implementation=False, involvement_in_experiment_design=False,
+            prior_result_exposure=False, prior_case_exposure=[], disclosure_notes="Synthetic only",
+        ) for r in ("synthetic-r1", "synthetic-r2")],
+        adjudication_policy_version="synthetic-policy",
+        adjudication_policy_hash=definition.document_hashes["ADJUDICATION-RULES.md"],
+        adjudicator_contexts=[dict(
+            adjudicator_id="synthetic-only", prior_result_exposure=True, prior_case_exposure=[],
+            disclosure_notes="Invented known-results limitation",
+            allocation_blinded_where_feasible=True,
+        )],
+        study1_main_n=30,
+        study1_scope=dict(
+            included_case_ids=[f"invented-{i}" for i in range(30)],
+            iaa_eligible_case_ids=[f"invented-{i}" for i in range(30)],
+            descriptive_only_case_ids=[],
+            decision_reason="Synthetic count test, not real scope decision",
+        ),
+        human_signoff="SYNTHETIC ONLY", signed_at=TIME + timedelta(hours=3),
+    )
+
+
 def test_codebook_schema_version_and_unique_rule_ids():
     candidate = candidate_definition()
-    assert candidate.version == "0.2.0" and candidate.status == "candidate"
+    assert candidate.version == "0.3.0" and candidate.status == "candidate"
     ids = [r.rule_id for r in candidate.rules]
     assert len(ids) == len(set(ids)) and "ADJ-UNCLEAR-001" in ids
     assert "S3-ALIAS-001" in ids and "PATH-REQUIRED-001" in ids
@@ -243,7 +275,7 @@ def test_revision_history_preserves_versions():
         timestamp=TIME,
     )
     assert validate_revision_history([old, new], [revision])
-    assert old.version == "0.2.0"
+    assert old.version == "0.3.0"
     with pytest.raises(ValueError):
         validate_revision_history([old, new], [])
     with pytest.raises(ValidationError):
@@ -270,7 +302,8 @@ def test_main_freeze_requires_signed_clearance_and_human_signoff():
         with pytest.raises(ValueError):
             flow.freeze_codebook("1.0.0", definition_v1().model_dump(), True, signoff, clear)
     sealed = flow.freeze_codebook(
-        "1.0.0", definition_v1().model_dump(), True, "SYNTHETIC ONLY", clearance()
+        "1.0.0", definition_v1().model_dump(), True, "SYNTHETIC ONLY",
+        clearance(main_signoff=main_signoff())
     )
     sealed.authorize("S1", "synthetic-r1")
     assert sealed.pilot_clearance_hash and sealed.codebook_human_signoff
@@ -289,7 +322,7 @@ def test_pilot_candidate_does_not_require_main_freeze_or_promote():
         flow.authorize("S1", "synthetic-r1")
     pilot = flow.authorize_pilot_candidate(candidate_definition(), "SYNTHETIC ONLY")
     pilot.authorize("S1", "synthetic-r1")
-    assert not pilot.calibration_completed and pilot.codebook_version == "0.2.0"
+    assert not pilot.calibration_completed and pilot.codebook_version == "0.3.0"
     with pytest.raises(ValueError):
         pilot.freeze_codebook("1.0.0", {}, True, "synthetic", clearance())
     with pytest.raises(ValueError):
@@ -352,7 +385,7 @@ def test_real_path_adjudication_requires_rule_pointer_and_disposition(tmp_path):
 
 def test_candidate_remains_unstarted_no_labels_or_real_packets():
     result = freeze_candidate()
-    assert result["codebook_candidate"]["version"] == "0.2.0"
+    assert result["codebook_candidate"]["version"] == "0.3.0"
     assert result["pilot_batches_completed"] == result["human_labels"] == 0
     assert result["pilot_clearance"] is None and result["human_signoff"] is None
     assert not result["final_frozen"]
@@ -380,7 +413,7 @@ def test_new_cli_schema_metadata_only(capsys):
     from review_v3.run import main
 
     assert main(["codebook-candidate"]) == 0
-    assert '"version": "0.2.0"' in capsys.readouterr().out
+    assert '"version": "0.3.0"' in capsys.readouterr().out
     for kind in ("codebook", "pilot-batch", "pilot-clearance", "path-admission", "ambiguity"):
         assert main(["schema", kind]) == 0
         assert "properties" in capsys.readouterr().out

@@ -38,6 +38,7 @@ class Workflow(Record):
     pilot_authorization: str | None = None
     pilot_protocol_hash: str | None = None
     pilot_clearance_hash: str | None = None
+    main_signoff_hash: str | None = None
     codebook_rule_ids: list[str] = Field(default_factory=list)
     translation_asset_hash: str | None = None
     translation_version: str | None = None
@@ -175,6 +176,7 @@ class Workflow(Record):
                 self.codebook_human_signoff
                 and self.codebook_frozen_at
                 and self.pilot_clearance_hash
+                and self.main_signoff_hash
             ):
                 raise ValueError("Main review requires signed pilot clearance/codebook freeze")
         required = STAGES[: STAGES.index(phase)]
@@ -198,6 +200,24 @@ class Workflow(Record):
             if definition.status != "freeze_candidate" or definition.version != version:
                 raise ValueError("Human-selected main codebook version >=1 required")
             clearance = PilotClearance.model_validate(pilot_clearance)
+            clearance = PilotClearance.model_validate(clearance.model_dump(mode="json"))
+            confirmation = clearance.main_signoff
+            if confirmation is None:
+                raise ValueError("Pilot completion alone is not main HUMAN preflight sign-off")
+            from review_v3.codebook import definition_hash
+
+            if (
+                confirmation.codebook_version != version
+                or confirmation.codebook_definition_hash != definition_hash(definition)
+                or confirmation.translation_policy_hash != definition.language_policy_hash
+                or confirmation.adjudication_policy_hash
+                != definition.document_hashes["ADJUDICATION-RULES.md"]
+                or {r.reviewer_id for r in confirmation.reviewers} != set(self.reviewer_ids)
+                or set(clearance.batches[-1].independent_ballot_locks) != set(self.reviewer_ids)
+                or confirmation.signed_at < clearance.signed_at
+                or confirmation.human_signoff != signoff
+            ):
+                raise ValueError("Main sign-off must match policies, reviewers and pilot clearance")
             pilot_definition = clearance.final_pilot_definition
             if (
                 definition.document_hashes != pilot_definition.document_hashes
@@ -208,6 +228,7 @@ class Workflow(Record):
                 raise ValueError("Changed rules/documents after stable pilot require another pilot")
             additional = {
                 "pilot_clearance_hash": clearance.content_hash,
+                "main_signoff_hash": confirmation.content_hash,
                 "codebook_rule_ids": [r.rule_id for r in definition.rules],
             }
         return self.model_copy(

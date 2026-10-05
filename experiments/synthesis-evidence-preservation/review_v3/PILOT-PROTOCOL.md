@@ -1,4 +1,4 @@
-# Pilot Human Review Protocol — candidate v0.2.0
+# Pilot Human Review Protocol — candidate v0.3.0
 
 2026-10-05。**PILOT HUMAN REVIEW NOT STARTED / MAIN HUMAN REVIEW NOT STARTED / 0 HUMAN LABELS / NOT FINAL-FROZEN**。pilotはannotation guidelineのcalibrationであり、新しいLLM experimentでも本研究の性能結果でもない。今回case選定、reviewer割当、packet・票の生成、判定を行わない。
 
@@ -6,7 +6,9 @@
 
 reviewerは日本語話者2名。[固定訳方針](BILINGUAL-REVIEW-POLICY.md)に従い、pilot開始前に英語原文と対応する日本語訳の版/hashを固定し、両者へ同一の訳を提示する。gold/final訳も当該phaseまで非開示。翻訳ambiguityと訳修正の影響範囲もpilotの確認対象とする。今回翻訳生成・実訳の固定は行わない。
 
-Codebook candidateの版とdocument hashes、selection rule、pilot資料の出自／ライセンス、2名の独立reviewerと既読履歴、第三adjudicator利用方針、packet限定開示・lock方式、ambiguity logの責任者を固定する。担当者は実装・実験作成者以外。AIをreviewerとして数えない。新モデル生成を資料作成の条件にしない。
+Codebook candidateの版とdocument hashes、selection rule、pilot資料の出自／ライセンス、独立判定を行う2名と既読履歴、第三adjudicator利用方針、packet限定開示・lock方式、ambiguity logの責任者を固定する。担当者は実装・実験作成者以外。AIをreviewerとして数えない。新モデル生成を資料作成の条件にしない。
+
+独立性は初回判定中に相談せず、相手のlabelを見ず、adjudication前に各自の票を作るindependent annotationを指す。著者との人的関係の有無は別に[Adjudication Rules](ADJUDICATION-RULES.md)のauthor-only項目へ記録する。[日本語Reviewerガイド](REVIEWER-GUIDE-JA.md)を開始前に共有する。英語はsemantic source of record、日本語はprimary displayであり、R1訳の準備にもfuture-stage情報を使わない。
 
 ## Sample selection rule（未実行）
 
@@ -57,7 +59,11 @@ raw agreement、disagreement/confusion matrix、カテゴリ頻度、unclear rat
 
 ## Revision / amendment
 
+pilotでは問題を発見してCodebookを修正してよいが、修正過程を完全に残す。不一致が出たcaseだけに都合のよい基準を適用することは禁止する。旧・新Codebook version/definition hash、理由、affected rule IDs、affected pilot units、旧annotationの保存先/hash、実際に再判定した範囲を`CodebookRevision`へ記録する。semantic rule変更時は**影響する全pilot unitsを同じ新版で再判定**するか、改訂を採用した**新しいindependent pilot batch**へ分離する。後者では旧unitsを新版の判定として扱わず、旧・新batchのIAAを混ぜない。
+
 <!-- rule: PILOT-REVISION-001 -->
 old codebook/document hash・版を保持し、change ID、reason、affected fields/rule IDs、affected pilot units、影響と再判定方針、timestamp、新版をchange logへ記録する。rule IDを別意味へsilent再利用しない。最終安定batch後にsemantic ruleを変えた場合は再pilotが必要。内容不変のv0.x→v1.0 promotionもsigned clearanceに元candidate hashを残す。main開始後はADJ-AMEND-001のSTOP/amendment/all-affected-case手順。
 
 Pilot終了・freeze可能性をこの候補文書だけで記録しない。人間のpilot完了票・independent locks・ambiguity log・clearance・sign-offが存在するまで状態は未開始のまま。
+
+PilotClearanceだけでmainへ進まない。[透明性metadataとmain sign-off](TRANSPARENCY-AND-SIGNOFF.md)の10項目を人間が確認し、versioned `MainReviewSignoff`を別保存してclearanceに結び付ける。これはpilotのテスト成功をコードが自動認定する仕組みではない。main開始後はSTOP→amendment→new version→affected cases全再判定→old labels保存を維持し、結果を見ながら柔軟に基準を変えない。

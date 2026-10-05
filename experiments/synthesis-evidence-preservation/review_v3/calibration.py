@@ -8,6 +8,7 @@ from pydantic import Field, model_validator
 from review_v3.codebook import CodebookDefinition, definition_hash
 from review_v3.schema import Record
 from review_v3.storage import digest
+from review_v3.transparency import MainReviewSignoff
 
 EDGE_CASES = (
     "correct",
@@ -110,6 +111,7 @@ class PilotClearance(Record):
     unresolved_ambiguity_disposition: str = Field(min_length=1)
     human_signoff: str = Field(min_length=1)
     signed_at: datetime
+    main_signoff: MainReviewSignoff | None = None
 
     @model_validator(mode="after")
     def stable(self):

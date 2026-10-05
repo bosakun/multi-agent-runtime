@@ -113,6 +113,8 @@ partial expression等はstage state・metricに残す。absentやdistortedへ強
 
 ## 5. Reviewer workflow / calibration / progressive disclosure
 
+ここでの独立性は**independent annotation**（初回判定中は相談せず、相手のlabelを見ず、adjudication前に各自の票をlock）であり、著者との人的関係がないことではない。family / academic advisor / friend等の関係性は[別のauthor-only記録](../review_v3/ADJUDICATION-RULES.md)へ残す。英語はsemantic source of record、日本語はreviewer primary displayと分離する。R1の訳もquestion/raw evidenceだけで準備・確認し、GoldやWorker/final output等のfuture-stage情報で曖昧さを解消しない。開始前の説明には[日本語Reviewerガイド](../review_v3/REVIEWER-GUIDE-JA.md)を用いる。
+
 日本語話者の2名を前提に、英語原文と事前固定した日本語訳を併記し、日本語訳を主に参照して判定できる設計とする。[固定訳方針](../review_v3/BILINGUAL-REVIEW-POLICY.md)に従い同一訳・対応表・hashを開始前に固定する。翻訳も追加の情報変換であり、翻訳ambiguityをunclear／別logへ残す。これは今後の方法論方針で、レビュー実施済みを意味しない。原文・訳とも下記の段階限定開示を維持する。
 
 1. 実装・実験作成者以外の2名を確保し、role、経験、利益相反、既読ケースを記録する。AIは人数に数えず、Codexは空票を埋めない。

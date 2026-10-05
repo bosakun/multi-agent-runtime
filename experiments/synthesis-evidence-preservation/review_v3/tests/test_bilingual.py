@@ -36,6 +36,11 @@ def artificial_asset(reg):
         question_id=reg.question.question_id,
         pairs=pairs,
         preparation_method="Artificial non-semantic test values only",
+        translation_method="other",
+        translation_prepared_by_or_system="SYNTHETIC ONLY",
+        translation_verified_by="SYNTHETIC ONLY",
+        verification_method="Invented metadata; no semantic verification",
+        translation_system_metadata={},
         human_approved_by="SYNTHETIC ONLY",
         frozen_at="2020-01-01T00:00:00Z",
     )
@@ -77,6 +82,10 @@ def test_both_reviewers_receive_same_fixed_pairs_raw_unchanged(tmp_path):
         for r in flow.reviewer_ids
     ]
     assert packets[0]["packet"]["bilingual_display"] == packets[1]["packet"]["bilingual_display"]
+    display = packets[0]["packet"]["bilingual_display"]
+    assert display["semantic_reference_language"] == "en"
+    assert display["reviewer_primary_display_language"] == "ja"
+    assert "primary_reference_language" not in display
     assert packets[0]["packet"]["materials"]["question_text"] == reg.question.question_text
     serialized = json.dumps(packets[0]["packet"])
     assert "private-gold" not in serialized and "Invented final" not in serialized

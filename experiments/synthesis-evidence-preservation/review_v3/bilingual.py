@@ -38,6 +38,13 @@ class TranslationAsset(Record):
     question_id: str
     pairs: list[TranslationPair] = Field(min_length=1)
     preparation_method: str = Field(min_length=1)
+    translation_method: Literal[
+        "human_manual", "machine_translation", "llm_assisted_translation", "other"
+    ]
+    translation_prepared_by_or_system: str = Field(min_length=1)
+    translation_verified_by: str = Field(min_length=1)
+    verification_method: str = Field(min_length=1)
+    translation_system_metadata: dict[str, str] = Field(default_factory=dict)
     human_approved_by: str = Field(min_length=1)
     frozen_at: datetime
     frozen_hash: str
@@ -116,7 +123,8 @@ def bilingual_projection(materials, asset):
         )
     return {
         "reviewer_language": "ja",
-        "primary_reference_language": "ja",
+        "semantic_reference_language": "en",
+        "reviewer_primary_display_language": "ja",
         "translation_version": asset.version,
         "pairs": visible,
         "visible_pairs_hash": digest(visible),

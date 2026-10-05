@@ -10,7 +10,7 @@ from pydantic import Field, model_validator
 from review_v3.schema import Decision, Record
 from review_v3.storage import digest, file_hash
 
-CANDIDATE_VERSION = "0.2.0"
+CANDIDATE_VERSION = "0.3.0"
 DOCUMENTS = ("CODEBOOK.md", "ADJUDICATION-RULES.md", "PILOT-PROTOCOL.md")
 
 
@@ -58,6 +58,10 @@ class CodebookRevision(Record):
     affected_pilot_units: list[str]
     impact_and_reannotation: str = Field(min_length=1)
     semantic_rules_changed: bool
+    old_annotation_hashes: dict[str, str] | None = None
+    reannotation_strategy: Literal["all_affected_units", "new_independent_batch"] | None = None
+    reannotated_pilot_units: list[str] | None = None
+    new_independent_batch_id: str | None = None
     timestamp: datetime
 
     @model_validator(mode="after")
@@ -71,6 +75,19 @@ class CodebookRevision(Record):
             raise ValueError("Revision must increase version; preserve old artifacts")
         if self.old_definition_hash == self.new_definition_hash:
             raise ValueError("Distinct definition hashes required")
+        if self.semantic_rules_changed:
+            if not (
+                self.affected_rule_ids and self.affected_pilot_units and self.old_annotation_hashes
+            ):
+                raise ValueError("Semantic revision needs rules/units and preserved old ballots")
+            if self.reannotation_strategy == "all_affected_units":
+                if set(self.reannotated_pilot_units or []) != set(self.affected_pilot_units):
+                    raise ValueError("Reannotate ALL affected units, not selected disagreements")
+            elif self.reannotation_strategy == "new_independent_batch":
+                if not self.new_independent_batch_id:
+                    raise ValueError("Separate independent batch reference required")
+            else:
+                raise ValueError("Explicit semantic revision reannotation strategy required")
         return self
 
 

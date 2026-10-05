@@ -22,7 +22,7 @@ Study 2 main24×3、smoke exclusionを維持します。toolingがcaseを選ぶ�
 
 ## 順序
 
-2026-10-05からの候補：まず[CODEBOOK v0.2.0](CODEBOOK.md)、[PILOT-PROTOCOL](PILOT-PROTOCOL.md)、
+2026-10-05からの候補（現revision v0.3.0）：まず[CODEBOOK](CODEBOOK.md)、[PILOT-PROTOCOL](PILOT-PROTOCOL.md)、
 [ADJUDICATION-RULES](ADJUDICATION-RULES.md)を人間が採用し、main対象外でpilotを行います。
 以下の従来main手順の前に、candidate版→pilot packet freeze→2名独立票lock→不一致確認→
 協議→ambiguity log→必要なrevision / next batch→signed PilotClearance→main用codebook freezeを置きます。
@@ -144,13 +144,15 @@ semantic correctness、reviewer資格、独立性や方法論の妥当性は保�
 
 ## Pilot / version metadata（将来操作、今回は実行しない）
 
+[透明性/sign-off手順](TRANSPARENCY-AND-SIGNOFF.md)も採用前に確認してください。reviewer-profile / adjudicator-context / main-signoffのschema/validateとauthor-only保存を利用可能です。実mainのfreeze-codebookにはPilotClearance.main_signoffの10項目の人間確認、scope、policy/codebook hashes、Reviewer構成が必要です。pilot完了を自動main承認にしません。
+
 日本語話者向けの[固定訳方針](BILINGUAL-REVIEW-POLICY.md)を追加しました。pilot/main開始前に
 人間がTranslationAssetを準備・確認・固定し、`bind-translations --workflow ... --translations ...
 --output ...`で両reviewer共有のworkflowへ一度だけhash/versionを結び付けます。
 実`packet`には`--translations ...`を指定します。未固定／欠訳／不一致は出力前に拒否します。
 全翻訳assetはauthor-onlyで、reviewerへはそのstageの英日ペアだけを渡します。
 registryの人間記述は原則日本語。訳を途中で変える場合はamendmentと旧資料・票保存を必要とします。
-schema/builderは3.2.0ですが、旧manifestやkitは変更しません。翻訳生成commandはありません。
+schema/builderの現候補は3.3.0ですが、旧manifestやkitは変更しません。翻訳生成commandはありません。
 
 `codebook-candidate`は3文書のbyte SHA256とstable rule一覧のmetadataをstdoutへ表示するだけです。
 実票、Fact Registry、packetを生成しません。`schema` / `validate`はcodebook、codebook-revision、
