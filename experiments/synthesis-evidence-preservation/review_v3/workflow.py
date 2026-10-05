@@ -34,6 +34,11 @@ class Workflow(Record):
     codebook_human_signoff: str | None = None
     codebook_frozen_at: str | None = None
     synthetic: bool = False
+    review_mode: Literal["main", "pilot"] = "main"
+    pilot_authorization: str | None = None
+    pilot_protocol_hash: str | None = None
+    pilot_clearance_hash: str | None = None
+    codebook_rule_ids: list[str] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def ordered_history(self):
@@ -121,6 +126,13 @@ class Workflow(Record):
     def authorize(self, phase, reviewer):
         if reviewer not in self.reviewer_ids:
             raise ValueError("Unauthorized reviewer")
+        if self.review_mode == "pilot" and not (
+            self.pilot_authorization
+            and self.pilot_protocol_hash
+            and self.codebook_version
+            and self.codebook_version.startswith("0.")
+        ):
+            raise ValueError("Pilot requires pre-authorized candidate version and protocol")
         if any(item.reviewer_id == reviewer and item.phase == phase for item in self.locks):
             raise ValueError("Phase already locked; preserve existing packet or use amendment")
         if phase == "R1":
@@ -133,16 +145,55 @@ class Workflow(Record):
             return
         if phase not in STAGES or self.state != "REGISTRY_FROZEN":
             raise ValueError("System outputs unavailable before registry freeze")
-        if not (self.codebook_hash and self.codebook_version and self.calibration_completed):
-            raise ValueError("Stage calibration and human-frozen codebook required")
+        if self.review_mode == "pilot":
+            if not (
+                self.codebook_hash
+                and self.codebook_version
+                and self.pilot_authorization
+                and self.pilot_protocol_hash
+            ):
+                raise ValueError("Pilot requires explicitly authorized batch candidate")
+        else:
+            if not (self.codebook_hash and self.codebook_version and self.calibration_completed):
+                raise ValueError("Stage calibration and human-frozen codebook required")
+            if not self.synthetic and not (
+                self.codebook_human_signoff
+                and self.codebook_frozen_at
+                and self.pilot_clearance_hash
+            ):
+                raise ValueError("Main review requires signed pilot clearance/codebook freeze")
         required = STAGES[: STAGES.index(phase)]
         completed = {item.phase for item in self.locks if item.reviewer_id == reviewer}
         if not set(required) <= completed:
             raise ValueError("Progressive disclosure requires own preceding locks")
 
-    def freeze_codebook(self, version, codebook, calibration_completed, signoff):
+    def freeze_codebook(
+        self, version, codebook, calibration_completed, signoff, pilot_clearance=None
+    ):
         if self.codebook_hash or not calibration_completed or not signoff:
             raise ValueError("Explicit calibration/sign-off; no silent codebook mutation")
+        if self.review_mode != "main":
+            raise ValueError("Pilot workflow cannot be promoted silently into main")
+        additional = {}
+        if not self.synthetic:
+            from review_v3.calibration import PilotClearance
+            from review_v3.codebook import CodebookDefinition
+
+            definition = CodebookDefinition.model_validate(codebook)
+            if definition.status != "freeze_candidate" or definition.version != version:
+                raise ValueError("Human-selected main codebook version >=1 required")
+            clearance = PilotClearance.model_validate(pilot_clearance)
+            pilot_definition = clearance.final_pilot_definition
+            if (
+                definition.document_hashes != pilot_definition.document_hashes
+                or (definition.rules != pilot_definition.rules)
+                or definition.example_hashes != pilot_definition.example_hashes
+            ):
+                raise ValueError("Changed rules/documents after stable pilot require another pilot")
+            additional = {
+                "pilot_clearance_hash": clearance.content_hash,
+                "codebook_rule_ids": [r.rule_id for r in definition.rules],
+            }
         return self.model_copy(
             update={
                 "codebook_version": version,
@@ -150,6 +201,30 @@ class Workflow(Record):
                 "calibration_completed": True,
                 "codebook_human_signoff": signoff,
                 "codebook_frozen_at": now(),
+                **additional,
+            }
+        )
+
+    def authorize_pilot_candidate(self, definition, human_authorization):
+        """Future human operation; not a main freeze and not automatic calibration."""
+        from review_v3.codebook import CodebookDefinition, definition_hash
+
+        definition = CodebookDefinition.model_validate(definition)
+        if (
+            self.review_mode != "pilot"
+            or self.codebook_hash
+            or not human_authorization
+            or definition.status != "candidate"
+            or any(x.phase in STAGES for x in self.locks)
+        ):
+            raise ValueError("Fresh pilot workflow and explicit human authorization required")
+        return self.model_copy(
+            update={
+                "codebook_version": definition.version,
+                "codebook_hash": definition_hash(definition),
+                "codebook_rule_ids": [r.rule_id for r in definition.rules],
+                "pilot_protocol_hash": definition.document_hashes["PILOT-PROTOCOL.md"],
+                "pilot_authorization": human_authorization,
             }
         )
 

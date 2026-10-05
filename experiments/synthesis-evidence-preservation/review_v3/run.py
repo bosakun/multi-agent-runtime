@@ -8,6 +8,15 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from review_v3.ballots import validate_ballot  # noqa: E402
+from review_v3.calibration import PilotBatch, PilotClearance, PilotSelection  # noqa: E402
+from review_v3.codebook import (  # noqa: E402
+    Ambiguity,
+    CodebookDefinition,
+    CodebookRevision,
+    PathAdmission,
+    RequirednessCheck,
+    candidate_definition,
+)
 from review_v3.manifest import freeze_candidate  # noqa: E402
 from review_v3.packets import PrivateSource, build_packet  # noqa: E402
 from review_v3.schema import STAGE_MODELS, Registry, Scope  # noqa: E402
@@ -19,10 +28,24 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description="Empty v3 human review infrastructure")
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("candidate")  # Print only; never marks final frozen.
+    commands.add_parser("codebook-candidate")  # Design metadata, no ballots/packets.
+    models = {
+        "registry": Registry,
+        "scope": Scope,
+        **STAGE_MODELS,
+        "codebook": CodebookDefinition,
+        "codebook-revision": CodebookRevision,
+        "ambiguity": Ambiguity,
+        "pilot-selection": PilotSelection,
+        "pilot-batch": PilotBatch,
+        "pilot-clearance": PilotClearance,
+        "path-admission": PathAdmission,
+        "requiredness": RequirednessCheck,
+    }
     schema = commands.add_parser("schema")
-    schema.add_argument("kind", choices=["registry", "scope", *STAGE_MODELS])
+    schema.add_argument("kind", choices=list(models))
     validate = commands.add_parser("validate")
-    validate.add_argument("kind", choices=["registry", "scope", *STAGE_MODELS])
+    validate.add_argument("kind", choices=list(models))
     validate.add_argument("input")
     verify = commands.add_parser("verify-preservation")
     verify.add_argument("snapshot")
@@ -49,10 +72,15 @@ def main(argv=None):
     for name in ("workflow", "codebook", "version", "human-signoff", "output"):
         codebook.add_argument("--" + name, required=True)
     codebook.add_argument("--calibration-completed", action="store_true", required=True)
+    codebook.add_argument("--pilot-clearance", required=True)
+    pilot = commands.add_parser("authorize-pilot-codebook")
+    for name in ("workflow", "codebook", "human-authorization", "output"):
+        pilot.add_argument("--" + name, required=True)
     args = parser.parse_args(argv)
-    models = {"registry": Registry, "scope": Scope, **STAGE_MODELS}
     if args.command == "candidate":
         result = freeze_candidate()
+    elif args.command == "codebook-candidate":
+        result = candidate_definition().model_dump(mode="json")
     elif args.command == "schema":
         result = models[args.kind].model_json_schema()
     elif args.command == "validate":
@@ -103,10 +131,20 @@ def main(argv=None):
     elif args.command == "freeze-codebook":
         workflow = Workflow.model_validate(read(args.workflow))
         updated = workflow.freeze_codebook(
-            args.version, read(args.codebook), args.calibration_completed, args.human_signoff
+            args.version,
+            read(args.codebook),
+            args.calibration_completed,
+            args.human_signoff,
+            read(args.pilot_clearance),
         )
         exclusive(args.output, updated.model_dump(mode="json"))
         result = {"codebook_hash": updated.codebook_hash, "human_signoff_recorded": True}
+    elif args.command == "authorize-pilot-codebook":
+        updated = Workflow.model_validate(read(args.workflow)).authorize_pilot_candidate(
+            read(args.codebook), args.human_authorization
+        )
+        exclusive(args.output, updated.model_dump(mode="json"))
+        result = {"pilot_authorization_recorded": True, "not_main_codebook_freeze": True}
     else:
         workflow = Workflow.model_validate(read(args.workflow))
         registry = Registry.model_validate(read(args.registry)) if args.registry else None

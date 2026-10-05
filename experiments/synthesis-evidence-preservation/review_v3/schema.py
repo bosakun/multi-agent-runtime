@@ -136,6 +136,9 @@ class Common(Record):
     evidence_pointer: list[str] = Field(default_factory=list)
     confidence: Literal["high", "medium", "low"] | None = None
     rationale: str | None = None
+    record_availability: (
+        Literal["available", "missing", "unreadable", "mapping_unresolved"] | None
+    ) = None
 
     @model_validator(mode="after")
     def na_is_structural(self):
@@ -306,6 +309,16 @@ class Adjudication(Record):
     adjudicator: str
     timestamp: datetime
     codebook_version: str
+    evidence_pointer: list[str] = Field(default_factory=list)
+    resolution_status: Literal["resolved", "unresolved", "missing_record"] | None = None
+
+    @model_validator(mode="after")
+    def unresolved_is_not_forced(self):
+        if self.resolution_status == "unresolved" and self.adjudicated_label != "unclear":
+            raise ValueError("Unresolved semantic judgment must remain unclear")
+        if self.resolution_status == "missing_record" and self.adjudicated_label is not None:
+            raise ValueError("Missing record cannot be converted to a semantic judgment")
+        return self
 
 
 STAGE_MODELS = {"S0": S0, "S1": S1, "S2": S2, "S3": S3, "S4": S4, "S5a": S5a, "S5b": S5b}

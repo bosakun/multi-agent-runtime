@@ -3,6 +3,7 @@
 from pathlib import Path
 
 from review_v3 import BUILDER_VERSION, PROTOCOL_VERSION, RULE_VERSION, SCHEMA_VERSION, STATUS
+from review_v3.codebook import candidate_definition
 from review_v3.storage import file_hash
 
 UNRESOLVED = [
@@ -16,6 +17,9 @@ UNRESOLVED = [
     "source/packet inclusion, normalization and privacy sharing approval unresolved",
     "primary metrics, sensitivity and analysis software require human sign-off",
     "no human labels; no adjudication",
+    "pilot selection/reviewers/third-adjudicator policy and packet freeze unresolved",
+    "pilot not performed; stability and ambiguity inspection absent",
+    "codebook candidate requires pilot revisions and v1.0 human sign-off",
 ]
 
 
@@ -29,6 +33,9 @@ def freeze_candidate():
         "builder_version": BUILDER_VERSION,
         "analysis_rule_version": RULE_VERSION,
         "codebook_version": None,
+        "codebook_candidate": candidate_definition().model_dump(mode="json"),
+        "pilot_batches_completed": 0,
+        "pilot_clearance": None,
         "reviewers": [None, None],
         "scope": None,
         "bootstrap_config": None,

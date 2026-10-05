@@ -2,6 +2,9 @@
 
 ```text
 DESIGN IMPLEMENTED
+CODEBOOK CANDIDATE PREPARED
+PILOT HUMAN REVIEW NOT STARTED
+MAIN HUMAN REVIEW NOT STARTED
 HUMAN REVIEW NOT STARTED
 0 HUMAN LABELS
 NOT FINAL-FROZEN
@@ -16,6 +19,9 @@ No Human Review has been conducted yet.
 [metrics plan](../docs/evidence-lineage-metrics-plan.md)、
 [preflight checklist](../docs/human-review-preflight-freeze-checklist.md)の実装候補です。
 コード・人工テストの完成は方法論の検証、review開始、担当者決定、final freezeを意味しません。
+2026-10-05：候補[CODEBOOK](CODEBOOK.md)、[ADJUDICATION-RULES](ADJUDICATION-RULES.md)、
+[PILOT-PROTOCOL](PILOT-PROTOCOL.md)と[人工境界例](examples/semantic-boundaries.md)を追加しました。
+pilotを実施した記録ではありません。metadata schema/builderは3.1.0、failure rule版は既存のままです。
 `STATUS`は今回のimplementation snapshotです。将来の実施状況は実際の独立票・lock・
 sign-off・adjudication記録に分けて保存し、このsnapshotで実施件数を代用しません。
 
@@ -37,6 +43,7 @@ sign-off・adjudication記録に分けて保存し、このsnapshotで実施件�
 | `agreement.py` | 独立票からraw agreement、unweighted kappa、marginals、matrix、multi-label一致、IAA scope限定 |
 | `adjudication.py` | 両者の独立lock後に別versionの人間協議結果を保存 |
 | `calibration.py` | 本判定外external cases / synthetic vignettesの登録schemaと終了候補条件 |
+| `codebook.py` | candidate version/rule IDs、path採用の人間入力条件、requiredness、ambiguityとrevision ancestryの機械検証 |
 | `manifest.py`, `run.py` | freeze candidate、schema出力、入力検証、明示的lock/transition/packet CLI |
 | `tests/` | invented fixturesのみの機械的テスト＋既存seal/kitのhash-only確認 |
 
@@ -109,4 +116,5 @@ repo内の生成物は`local/`, `packets/`, `exports/`, `sessions/`のみ許可�
 旧namespaceへの出力は拒否し、既存出力への再生成・上書きも拒否します。
 
 開始前の手順は[OPERATIONS](OPERATIONS.md)、保全結果は[PRESERVATION](PRESERVATION.md)を参照してください。
+2026-10-05の候補準備・回帰確認・旧資産保全は[Codebook preparation audit](CODEBOOK-PREPARATION-AUDIT.md)へ分離しました。
 実kit、fact registry、human labels、reviewer assignment、final freezeは今回作成していません。

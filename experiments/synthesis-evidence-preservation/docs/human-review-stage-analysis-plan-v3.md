@@ -4,6 +4,8 @@
 
 ## 1. 目的と観測範囲
 
+2026-10-05現行補足：冒頭の「未実装」は初回設計snapshotの状態です。別namespaceの[tooling](../review_v3/README.md)は空の実装候補となり、[Codebook](../review_v3/CODEBOOK.md)、[Adjudication Rules](../review_v3/ADJUDICATION-RULES.md)、[Pilot Protocol](../review_v3/PILOT-PROTOCOL.md)を追加しました。pilot/mainは未実施・未freezeのままです。本書のstage/metricの主定義は維持し、candidate pilot→revision→human codebook freeze→mainの具体的手順は新文書を参照します。
+
 RQ2は、reference factsが実際のWorker入力、Workerの公開表現、publication transition、実際のSynthesizer入力、最終出力の証拠支持に沿ってどう保持・変形・欠落するかを問う。内部抽出、理解、hidden reasoning、証拠を「使った／無視した」、root causeは判定しない。引用IDの一致は意味的な表現の正しさではなく、payload一致も原文の意味の保持を証明しない。
 
 ```text

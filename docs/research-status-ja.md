@@ -6,6 +6,8 @@
 
 ## 全体の要約
 
+2026-10-05追記：空の[v3 tooling](../experiments/synthesis-evidence-preservation/review_v3/README.md)は実装候補となり、[Codebook](../experiments/synthesis-evidence-preservation/review_v3/CODEBOOK.md)・[pilot protocol](../experiments/synthesis-evidence-preservation/review_v3/PILOT-PROTOCOL.md)・[adjudication rules](../experiments/synthesis-evidence-preservation/review_v3/ADJUDICATION-RULES.md)を具体化しました。pilot/mainレビューとも未開始、human labelsは0、final freeze未完了です。以下の結果・研究解釈は変更していません。
+
 この研究は、同じLLMに異なる役割を与えることと、参照できる外部情報を実際に分けることが、最終回答にどう関係するかを調べています。情報境界をコードで強制するRuntime上で、Study 1ではHotpotQAの固定30問・5条件を実行し、事前指定の24問ではC3（中立役割・分割情報）がC2（多様役割・全文情報）より低いAnswer F1となりました。そこから公開表現・情報保持・回答の支持に関する仮説が生じ、Study 2では保存済みWorker出力を固定して引用原文を追加しました。しかし、中立文による入力量対照と比べた平均回答改善は観測されませんでした。二つのモデル比較は完了していますが、独立人手レビュー、機構の因果的特定、再現性・一般化の確認は未完了です。
 
 ## Runtimeと研究の関係

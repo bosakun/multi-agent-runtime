@@ -24,6 +24,8 @@ class Unit:
 def observed_state(record, field="state"):
     if record is None:
         return None
+    if record.record_availability in ("missing", "unreadable"):
+        return None
     if record.applicability is None:
         return None
     if record.applicability == "unclear":

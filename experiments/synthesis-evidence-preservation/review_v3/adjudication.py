@@ -12,6 +12,12 @@ def save_adjudication(store, workflow, unit_id, version, records, final_labels):
         r.unit_id != unit_id or r.codebook_version != workflow.codebook_version for r in validated
     ):
         raise ValueError("Adjudication unit/codebook mismatch")
+    if not workflow.synthetic and any(
+        not r.evidence_pointer or r.guideline_rule not in workflow.codebook_rule_ids
+        or r.resolution_status is None
+        for r in validated
+    ):
+        raise ValueError("Human adjudication requires rule ID, evidence pointer and disposition")
     store.append(
         "adjudication_log", unit_id, version, [r.model_dump(mode="json") for r in validated]
     )
