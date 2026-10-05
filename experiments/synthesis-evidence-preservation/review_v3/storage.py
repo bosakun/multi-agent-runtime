@@ -81,6 +81,9 @@ class ReviewStore:
         "path_admission_checks",
         "path_requiredness_checks",
         "translation_assets",
+        "reviewer_profiles",
+        "adjudicator_contexts",
+        "main_review_signoffs",
     }
 
     def __init__(self, root):

@@ -22,6 +22,11 @@ from review_v3.manifest import freeze_candidate  # noqa: E402
 from review_v3.packets import PrivateSource, build_packet  # noqa: E402
 from review_v3.schema import STAGE_MODELS, Registry, Scope  # noqa: E402
 from review_v3.storage import ReviewStore, exclusive, read, verify_snapshot  # noqa: E402
+from review_v3.transparency import (  # noqa: E402
+    AdjudicatorContext,
+    MainReviewSignoff,
+    ReviewerProfile,
+)
 from review_v3.workflow import Workflow, frozen_registry  # noqa: E402
 
 
@@ -43,6 +48,9 @@ def main(argv=None):
         "path-admission": PathAdmission,
         "requiredness": RequirednessCheck,
         "translations": TranslationAsset,
+        "reviewer-profile": ReviewerProfile,
+        "adjudicator-context": AdjudicatorContext,
+        "main-signoff": MainReviewSignoff,
     }
     schema = commands.add_parser("schema")
     schema.add_argument("kind", choices=list(models))

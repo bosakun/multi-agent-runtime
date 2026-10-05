@@ -1,6 +1,6 @@
 # Human Review v3 — preflight / freeze checklist
 
-2026-10-02。**全項目は未完了の設計checklist**。この文書の作成はreviewのfreeze・開始・承認を意味しない。人間の研究責任者と2名のindependent reviewersが、[v3 protocol](human-review-stage-analysis-plan-v3.md)と[metrics](evidence-lineage-metrics-plan.md)の採用版を確認する。旧freeze/kitは変更せず、新しいversioned manifestを将来作る。
+2026-10-02。**全項目は未完了の設計checklist**。この文書の作成はreviewのfreeze・開始・承認を意味しない。人間の研究責任者と独立判定を行う2名のreviewersが、[v3 protocol](human-review-stage-analysis-plan-v3.md)と[metrics](evidence-lineage-metrics-plan.md)の採用版を確認する。旧freeze/kitは変更せず、新しいversioned manifestを将来作る。
 
 ## Scope / registry
 
@@ -10,6 +10,7 @@
 - [ ] 選択理由、旧2問を既に閲覧した人、discussion/calibration実施の有無と参加者、reviewerごとの既知ケース、IAA対象に含める妥当性、除外ケースをdescriptive-onlyとして残すかを記録する。**calibrationやdiscussionで基準形成に使ったcaseは、そのreviewerのindependent IAA sampleへ無条件に戻さない**。本判定対象数と、2名とも独立性を満たすIAA対象case IDsを区別して固定する。
 - [ ] Study 2 main24問×A/B/Cを維持し、smokeは本比較から除外する。既読ケースの扱いも開始前に記録する。
 - [ ] reviewer2名（実装・実験作成者以外）、registryとstage担当の関係、過去の閲覧・利益相反を記録する。AIを人員に数えない。
+- [ ] independent annotation（初回判定中は相談せず相手のlabelを見ない、adjudication前に各自の票をlock）を確認する。著者との人的関係とは分離し、family / academic advisor / friend等の関係・関与・既読履歴・利益相反への対応をauthor-onlyで記録する。関係なし／未開示を混同せず、個人情報をGitへ追加しない。
 - [ ] R1 raw-only discoveryの資料、gold非開示、独立immutable票の保存を確認する。
 - [ ] R2 gold answer/supporting facts開示時点とsystem output非開示を固定する。
 - [ ] sentence / fact / support set / pathのschema、path-conditional requiredness、alternative path validity / OR–AND規則を固定する。
@@ -19,6 +20,7 @@
 ## Labels / derivation / packets
 
 - [ ] 日本語話者2名を前提に、[英語原文＋固定日本語訳](../review_v3/BILINGUAL-REVIEW-POLICY.md)の同一表示、対応表、text/asset hashes、作成・人間確認方法をpilot/main開始前に固定する。原文・訳ともgold/finalの開示順を守る。
+- [ ] semantic reference language=English、reviewer primary display language=Japaneseを分離する。R1訳の準備・確認にquestion/raw evidence以外のfuture-stage情報を使わない手順と閲覧範囲を確認し、[日本語Reviewerガイド](../review_v3/REVIEWER-GUIDE-JA.md)を共有する。
 - [ ] translation ambiguityの記録、unclearの扱い、途中修正時の停止／amendment／新版／両者への同一修正版／全影響判定再実施／旧訳と票の保持を固定する。その場のreviewer別・case別LLM翻訳はしない。
 - [ ] S0〜S5a/b、applicability、identity_aliasのS3=NA、unknown transition、S4 routeとmachine_payload_matchを固定する。
 - [ ] observed stateとfailure eventを分離し、upstream prerequisites、重複eventの統合、cascade非二重計上を定める。
@@ -58,6 +60,10 @@
 - [ ] fixed selected sample・rare failure・質問間依存・1モデル1反復のlimitationsを固定する。
 
 ## Sign-off / gate
+
+- [ ] [透明性metadata](../review_v3/TRANSPARENCY-AND-SIGNOFF.md)のReviewerProfile、翻訳作成・確認metadata、AdjudicatorContextをauthor-onlyで保存する。実人物・実訳は今回未登録。
+- [ ] pilot revisionは旧/新版・hash・理由・affected rule IDs/units・旧票保存hash・再判定範囲を残し、semantic change時に全影響unitを同じ新版で再判定するか新independent batchへ分離する。caseごとの都合のよい変更をしない。
+- [ ] critical edge coverageの実施、final new-rule=0、ambiguity記録、blockerなし、final Codebook版/hash、translation policy版/hash、Reviewer構成、adjudication policy、main30/28 scope、IAA対象の10項目を人間が確認し、versioned MainReviewSignoffとPilotClearanceへ保存する。機械test成功を承認の代用にしない。
 
 - [ ] 新版protocol・registry・codebook・packet/analysis manifestの採用者、版、日付、hashを記録する。old manifestのhashを更新しない。
 - [ ] raw/local/private dataの公開可否・ライセンス・reviewerへの共有方式を人間が判断する。Gitへ自動追加しない。
