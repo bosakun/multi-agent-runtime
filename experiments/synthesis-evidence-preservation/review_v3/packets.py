@@ -6,6 +6,7 @@ from pathlib import Path
 from pydantic import Field
 
 from review_v3 import BUILDER_VERSION, PROTOCOL_VERSION, RULE_VERSION, SCHEMA_VERSION, STATUS
+from review_v3.bilingual import TranslationAsset, bilingual_projection
 from review_v3.schema import STAGE_MODELS, Question, Record, Registry, Sentence, Transition
 from review_v3.storage import digest, ensure_local_output, exclusive, file_hash
 
@@ -180,6 +181,7 @@ def build_packet(
     case_alias=None,
     arm_alias=None,
     scope=None,
+    translations=None,
 ):
     """Export ONE authorized stage; never build all future stages at once.
 
@@ -236,6 +238,20 @@ def build_packet(
     else:
         for form in packet["form"]:
             form["annotation"]["question_id"] = aliases["question"]
+    if translations is None and not workflow.synthetic:
+        raise ValueError("Japanese-speaking human review requires pre-frozen bilingual assets")
+    if translations is not None:
+        asset = TranslationAsset.model_validate(translations)
+        # Revalidate nested records/hashes, even if caller passed an existing model instance.
+        asset = TranslationAsset.model_validate(asset.model_dump(mode="json"))
+        if (
+            asset.frozen_hash != workflow.translation_asset_hash
+            or asset.version != workflow.translation_version
+            or asset.question_id != source.question.question_id
+            or asset.review_mode != workflow.review_mode
+        ):
+            raise ValueError("Both reviewers must use the workflow's same fixed translation asset")
+        packet["bilingual_display"] = bilingual_projection(packet["materials"], asset)
     destination = Path(destination)
     ensure_local_output(destination)
     destination.mkdir(parents=True, exist_ok=False)
@@ -259,6 +275,8 @@ def build_packet(
         "gold_included": phase == "R2",
         "condition_mapping_included": False,
         "scores_included": False,
+        "bilingual_display_hash": packet.get("bilingual_display", {}).get("visible_pairs_hash"),
+        "translation_version": workflow.translation_version,
     }
     exclusive(destination / "manifest.json", manifest)
     manifest_hash = file_hash(destination / "manifest.json")
@@ -276,6 +294,8 @@ def build_packet(
             "schema_version": SCHEMA_VERSION,
             "builder_version": BUILDER_VERSION,
             "analysis_rule_version": RULE_VERSION,
+            "translation_asset_hash": workflow.translation_asset_hash,
+            "translation_version": workflow.translation_version,
         },
         "packet": packet,
     }

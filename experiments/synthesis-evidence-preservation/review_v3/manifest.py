@@ -20,6 +20,7 @@ UNRESOLVED = [
     "pilot selection/reviewers/third-adjudicator policy and packet freeze unresolved",
     "pilot not performed; stability and ambiguity inspection absent",
     "codebook candidate requires pilot revisions and v1.0 human sign-off",
+    "fixed shared English/Japanese translation assets and human approval absent",
 ]
 
 

@@ -136,6 +136,9 @@ class Common(Record):
     evidence_pointer: list[str] = Field(default_factory=list)
     confidence: Literal["high", "medium", "low"] | None = None
     rationale: str | None = None
+    translation_issue: Literal["none", "ambiguous", "mismatch", "unclear"] | None = None
+    translation_unit_pointers: list[str] = Field(default_factory=list)
+    translation_visible_pairs_hash: str | None = None
     record_availability: (
         Literal["available", "missing", "unreadable", "mapping_unresolved"] | None
     ) = None

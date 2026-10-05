@@ -60,7 +60,7 @@ def test_r1_raw_only_blank_registry(tmp_path):
     reg = registry()
     result = build_packet(
         source(reg),
-        Workflow(reviewer_ids=("r1", "r2")),
+        Workflow(reviewer_ids=("r1", "r2"), synthetic=True),
         reg,
         "R1",
         "r1",
@@ -80,7 +80,7 @@ def test_r1_raw_only_blank_registry(tmp_path):
 
 def test_r2_gold_only_after_both_r1_and_own_ballot(tmp_path):
     reg = registry()
-    flow = Workflow(reviewer_ids=("r1", "r2"))
+    flow = Workflow(reviewer_ids=("r1", "r2"), synthetic=True)
     with pytest.raises(ValueError):
         build_packet(source(reg), flow, reg, "R2", "r1", tmp_path / "early", scope=scope(reg))
     for reviewer in flow.reviewer_ids:

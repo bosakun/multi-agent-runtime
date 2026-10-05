@@ -10,7 +10,7 @@ from pydantic import Field, model_validator
 from review_v3.schema import Decision, Record
 from review_v3.storage import digest, file_hash
 
-CANDIDATE_VERSION = "0.1.0"
+CANDIDATE_VERSION = "0.2.0"
 DOCUMENTS = ("CODEBOOK.md", "ADJUDICATION-RULES.md", "PILOT-PROTOCOL.md")
 
 
@@ -25,6 +25,7 @@ class CodebookDefinition(Record):
     document_hashes: dict[str, str]
     rules: list[CodebookRule]
     example_hashes: dict[str, str] = Field(default_factory=dict)
+    language_policy_hash: str = Field(pattern=r"^[a-f0-9]{64}$")
 
     @model_validator(mode="after")
     def consistency(self):
@@ -150,6 +151,7 @@ def candidate_definition():
         example_hashes={
             "examples/semantic-boundaries.md": file_hash(root / "examples/semantic-boundaries.md")
         },
+        language_policy_hash=file_hash(root / "BILINGUAL-REVIEW-POLICY.md"),
     )
 
 

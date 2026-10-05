@@ -1,4 +1,4 @@
-# Observable Evidence Lineage — Codebook candidate v0.1.0
+# Observable Evidence Lineage — Codebook candidate v0.2.0
 
 2026-10-05。**候補・未freeze・pilot未実施・human labels 0**。人間の採用・pilot後にv1.0 freeze候補を作る。これは判定規則であり、本研究caseの判定結果ではない。[Pilot](PILOT-PROTOCOL.md)・[Adjudication](ADJUDICATION-RULES.md)・[v3設計](../docs/human-review-stage-analysis-plan-v3.md)と併用する。
 
@@ -16,6 +16,9 @@ Reference evidence → actual Worker input → Worker public expression
 引用ID一致だけではsemantic correctnessとせず、payload一致だけではsemantic retentionとしない。正答だけではevidenceを内部利用したとしない。独立票をlockするまで相手の票・将来stage・総合scoreを見ない。S0はregistry/reference integrity時、S1以降はprogressive disclosureで判定する。
 
 ## 共通のsemantic rules
+
+<!-- rule: GEN-TRANS-001 -->
+reviewerは日本語話者を前提とし、英語sourceと事前固定の日本語訳を併記する。[固定訳方針](BILINGUAL-REVIEW-POLICY.md)に従い2名へ同一訳を提示する。翻訳は表示上の追加変換であり、元のWorker/Artifact/実入力を書き換えない。翻訳由来の曖昧さ・不一致はtranslation_issueとambiguityへ残し、確定不能な意味判定はunclearとする。訳の誤りをモデルのfailureに自動帰属せず、原文と訳のpointer・hashを残す。review途中に訳をsilent修正しない。
 
 各factについてregistryのentity / relation / value・attribute / polarity / 必要なtime・scope qualifiersを確認し、該当recordの文字列位置を引用する。対象外factや別Workerの記述を混ぜない。
 

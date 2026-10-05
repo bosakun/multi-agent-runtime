@@ -113,6 +113,8 @@ partial expression等はstage state・metricに残す。absentやdistortedへ強
 
 ## 5. Reviewer workflow / calibration / progressive disclosure
 
+日本語話者の2名を前提に、英語原文と事前固定した日本語訳を併記し、日本語訳を主に参照して判定できる設計とする。[固定訳方針](../review_v3/BILINGUAL-REVIEW-POLICY.md)に従い同一訳・対応表・hashを開始前に固定する。翻訳も追加の情報変換であり、翻訳ambiguityをunclear／別logへ残す。これは今後の方法論方針で、レビュー実施済みを意味しない。原文・訳とも下記の段階限定開示を維持する。
+
 1. 実装・実験作成者以外の2名を確保し、role、経験、利益相反、既読ケースを記録する。AIは人数に数えず、Codexは空票を埋めない。
 2. **Registry calibration:** 対象30問外のHotpotQA 4〜6問程度を候補とする。選定条件と公開範囲を事前固定する。今回その選定・取得・判定は行わない。
 3. **Stage calibration:** bridge、comparison、partial、distorted、absent、alternative path、identity_alias、unclearを含むedge-case vignetteを使う。架空例なら実データ・実験結果と明確に区別する。

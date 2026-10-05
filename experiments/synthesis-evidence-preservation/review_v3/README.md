@@ -21,7 +21,8 @@ No Human Review has been conducted yet.
 コード・人工テストの完成は方法論の検証、review開始、担当者決定、final freezeを意味しません。
 2026-10-05：候補[CODEBOOK](CODEBOOK.md)、[ADJUDICATION-RULES](ADJUDICATION-RULES.md)、
 [PILOT-PROTOCOL](PILOT-PROTOCOL.md)と[人工境界例](examples/semantic-boundaries.md)を追加しました。
-pilotを実施した記録ではありません。metadata schema/builderは3.1.0、failure rule版は既存のままです。
+pilotを実施した記録ではありません。初回候補のmetadata schema/builderは3.1.0でした。
+固定訳併記を追加した現候補は下記の3.2.0であり、failure rule版は既存のままです。
 `STATUS`は今回のimplementation snapshotです。将来の実施状況は実際の独立票・lock・
 sign-off・adjudication記録に分けて保存し、このsnapshotで実施件数を代用しません。
 
@@ -52,6 +53,11 @@ sign-off・adjudication記録に分けて保存し、このsnapshotで実施件�
 Runtime core、旧freeze、Protocol、既存結果・空票・kitは変更しません。
 
 ## データと判断の境界
+
+日本語話者reviewer向けに、[英語原文＋固定日本語訳](BILINGUAL-REVIEW-POLICY.md)の併記を追加しました。
+実packetでは両者が同一の事前固定assetを使い、段階限定の`bilingual_display.pairs`を表示します。
+`bilingual.py`は対応とhashを検証するだけで、訳もsemantic labelも生成しません。
+Codebook候補はv0.2.0、schema/builderは3.2.0。実訳は未準備、pilot/mainは未開始です。
 
 R1はquestion / raw sentencesのみ。R2は**両者のR1 lock後**にgoldを開示し、
 そのreviewer自身のimmutable R1候補を参照します。他者の独立票はpacketに入りません。
