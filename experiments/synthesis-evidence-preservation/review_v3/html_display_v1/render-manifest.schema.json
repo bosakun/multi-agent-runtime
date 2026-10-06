@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Coordinator-only static HTML projection manifest v1",
+  "type": "object",
+  "required": ["renderer_version", "renderer_source_hash", "source_json_path", "source_json_sha256", "phase", "entries", "index_html_sha256", "read_only", "human_review_started", "final_frozen"],
+  "properties": {
+    "renderer_version": {"const": "static-html-display-v1.0.0"},
+    "renderer_source_hash": {"$ref": "#/$defs/sha"},
+    "source_json_path": {"type": "string"},
+    "source_json_sha256": {"$ref": "#/$defs/sha"},
+    "source_json_canonical_hash": {"$ref": "#/$defs/sha"},
+    "translation_json_path": {"type": ["string", "null"]},
+    "translation_json_sha256": {"anyOf": [{"$ref": "#/$defs/sha"}, {"type": "null"}]},
+    "phase": {"enum": ["R1", "R2", "S1", "S2", "S3", "S4", "S5"]},
+    "index_html_sha256": {"$ref": "#/$defs/sha"},
+    "read_only": {"const": true},
+    "human_review_started": {"const": false},
+    "final_frozen": {"const": false},
+    "manifest_visibility": {"type": "string"},
+    "entries": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["case_id", "phase", "html_file", "html_sha256", "source_pointer", "text_lineage", "translation_asset_version", "translation_asset_hash", "translation_basis"],
+        "properties": {
+          "case_id": {"type": "string"},
+          "phase": {"enum": ["R1", "R2", "S1", "S2", "S3", "S4", "S5"]},
+          "html_file": {"type": "string", "pattern": "^[a-zA-Z0-9_-]+\\.html$"},
+          "html_sha256": {"$ref": "#/$defs/sha"},
+          "source_pointer": {"type": "string"},
+          "translation_asset_version": {"type": "string"},
+          "translation_asset_hash": {"$ref": "#/$defs/sha"},
+          "translation_basis": {"type": "string"},
+          "translation_hash_valid": {"type": "boolean"},
+          "human_translation_frozen": {"const": false},
+          "text_lineage": {
+            "type": "array",
+            "items": {
+              "type": "object", "additionalProperties": false,
+              "required": ["source_pointer", "translation_pointer", "english_sha256", "japanese_sha256", "author_source_pointers"],
+              "properties": {
+                "source_pointer": {"type": "string"},
+                "translation_pointer": {"type": ["string", "null"]},
+                "english_sha256": {"$ref": "#/$defs/sha"},
+                "japanese_sha256": {"$ref": "#/$defs/sha"},
+                "author_source_pointers": {"type": "array", "items": {"type": "string"}}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {"sha": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}
