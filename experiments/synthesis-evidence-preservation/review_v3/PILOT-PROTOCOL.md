@@ -8,6 +8,11 @@ reviewerは日本語話者2名。[固定訳方針](BILINGUAL-REVIEW-POLICY.md)�
 
 Codebook candidateの版とdocument hashes、selection rule、pilot資料の出自／ライセンス、独立判定を行う2名と既読履歴、第三adjudicator利用方針、packet限定開示・lock方式、ambiguity logの責任者を固定する。担当者は実装・実験作成者以外。AIをreviewerとして数えない。新モデル生成を資料作成の条件にしない。
 
+<!-- rule: PILOT-REVIEWER-001 -->
+Reviewer候補は、成人または大学生相当以上で、日本語でReviewer GuideとCodebookを理解でき、pilot calibrationを最後まで完了できる人とする。runtime実装およびStudy 1/2の実験設計に関与しておらず、初回annotationを他Reviewerへ相談せず、相手の票を見ずに行えることを確認する。AI/LLM・NLPの専門知識は必須とせず、必要なのは保存されたobservable evidenceだけを基準にCodebookに沿って判定できること。Pilot中に判定困難が明らかになった候補者はMain Reviewerに採用しない。PilotとMainのReviewer候補について、関与・既知情報・関係性は既存ReviewerProfileへ開始前に記録する。
+
+今回の研究では、査読上不要な疑義を避けるため家族をMain Reviewer候補から除外し、Reviewerとして使用しない。これは本研究の選択であり、家族Reviewerを方法論上一般に禁止する規則ではない。具体的な候補者・関係性の登録は人間が行い、実名や個人情報を公開文書へ書かない。
+
 独立性は初回判定中に相談せず、相手のlabelを見ず、adjudication前に各自の票を作るindependent annotationを指す。著者との人的関係の有無は別に[Adjudication Rules](ADJUDICATION-RULES.md)のauthor-only項目へ記録する。[日本語Reviewerガイド](REVIEWER-GUIDE-JA.md)を開始前に共有する。英語はsemantic source of record、日本語はprimary displayであり、R1訳の準備にもfuture-stage情報を使わない。
 
 ## Sample selection rule（未実行）
@@ -53,7 +58,7 @@ raw agreement、disagreement/confusion matrix、カテゴリ頻度、unclear rat
 ## Stop criterionとfreeze候補
 
 <!-- rule: PILOT-STOP-001 -->
-最低条件は（1）critical edge cases全coverage、（2）最後の独立batchでnew guideline rules=0、（3）主要不一致がそのbatch-frozen Codebookで解決可能、（4）未解決ambiguityがlogへ記録され、freezeを妨げるblockerがないこと。unclearのまま残す境界も明示的な規則で扱えるなら許容し、その件数を隠さない。固定件数を終えただけ／高kappaになるまでtuningしただけでは終了しない。
+最低条件は（1）critical edge cases全coverage、（2）最後の独立batchでnew guideline rules=0、（3）主要不一致がそのbatch-frozen Codebookで解決可能、（4）未解決ambiguityがlogへ記録され、freezeを妨げるblockerがないこと。さらに、`unclear`が頻発する、ReviewerがCodebookの同じ箇所で繰り返し迷う、critical boundaryで安定した判定ができない、または新しい判定規則が継続的に必要な場合はMain Reviewへ進まず、Codebookまたはtraining materialを見直して必要なpilot calibrationを続ける。固定数値thresholdは設けず、高いagreementを証明することもstop目的にしない。人間が判定基準の実用上の安定性を確認する。unclearのまま残す境界も明示的な規則で扱えるなら許容し、その件数を隠さない。固定件数を終えただけ／高kappaになるまでtuningしただけでは終了しない。
 
 `calibration_stop_candidate()`のtyped PilotBatch入力は上記を機械確認するのみ。旧dict入力によるcoverage/new-rule summaryはpreliminary checkでありfreeze authorizationではない。人間のsigned PilotClearance、candidate version/hashとの一致、本番版とrevision履歴、codebook v1.0採用sign-offを別に必要とする。コードが自動freeze・review開始をしない。
 

@@ -10,6 +10,8 @@
 - [ ] 選択理由、旧2問を既に閲覧した人、discussion/calibration実施の有無と参加者、reviewerごとの既知ケース、IAA対象に含める妥当性、除外ケースをdescriptive-onlyとして残すかを記録する。**calibrationやdiscussionで基準形成に使ったcaseは、そのreviewerのindependent IAA sampleへ無条件に戻さない**。本判定対象数と、2名とも独立性を満たすIAA対象case IDsを区別して固定する。
 - [ ] Study 2 main24問×A/B/Cを維持し、smokeは本比較から除外する。既読ケースの扱いも開始前に記録する。
 - [ ] reviewer2名（実装・実験作成者以外）、registryとstage担当の関係、過去の閲覧・利益相反を記録する。AIを人員に数えない。
+- [ ] Reviewer候補ごとに、成人または大学生相当以上、日本語でGuide/Codebookを理解できること、runtime実装・Study 1/2設計への非関与、独立初回判定、pilot calibration完了可能性を確認する。AI/NLP専門知識は要件にしない。PilotでCodebookに沿った判定が困難と分かった候補者はMain Reviewerに採用しない。
+- [ ] 今回の研究上の選択として、家族をMain Reviewer候補から除外したことを確認する。これは一般的方法論上の禁止ではない。実際の関係性はauthor-only ReviewerProfileに記録する。
 - [ ] independent annotation（初回判定中は相談せず相手のlabelを見ない、adjudication前に各自の票をlock）を確認する。著者との人的関係とは分離し、family / academic advisor / friend等の関係・関与・既読履歴・利益相反への対応をauthor-onlyで記録する。関係なし／未開示を混同せず、個人情報をGitへ追加しない。
 - [ ] R1 raw-only discoveryの資料、gold非開示、独立immutable票の保存を確認する。
 - [ ] R2 gold answer/supporting facts開示時点とsystem output非開示を固定する。
@@ -38,6 +40,7 @@
 - [ ] [Pilot Protocol](../review_v3/PILOT-PROTOCOL.md)のmain30問外selection rule、Study 2 main/smoke exclusion、result-aware selection禁止、資料出自・共有方式、batch packet freezeを固定する。今回実case・reviewerは未選定。
 - [ ] pilotを2名が独立に完了し、両票lock後のdisagreement inspection / adjudication / ambiguity logを保存する。教材の存在をpilot完了と数えない。
 - [ ] adopted candidate版のcritical edge-case coverage、final batch new-rule count=0、主要不一致の既存ruleによる解決可能性、未解決ambiguityの明記・blockerなしを人間が確認する。高kappaを終了条件にしない。
+- [ ] `unclear`の頻発、同じCodebook箇所での反復した迷い、critical boundaryの不安定さ、新しい規則の継続的追加があればMainへ進まず、Codebook/training materialを見直して追加calibrationする。固定数値thresholdや高agreementを合格条件として発明しない。
 - [ ] old candidate版・change reason・affected fields/units・再判定影響を保持し、signed PilotClearanceとCodebook v1.0 human sign-offを新versionへ保存する。コードのstop候補から自動freezeしない。
 - [ ] 対象外HotpotQA 4〜6問程度のregistry calibration選定基準とstage edge-case vignettesを固定する。
 - [ ] 最終batchで新guideline ruleなし＋必須境界のcoverageという終了条件、未達時の追加batch・改訂記録を定める。
