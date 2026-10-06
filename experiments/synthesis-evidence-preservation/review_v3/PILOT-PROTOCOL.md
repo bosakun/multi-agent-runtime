@@ -1,6 +1,6 @@
 # Pilot Human Review Protocol — candidate v0.3.0
 
-2026-10-05。**PILOT HUMAN REVIEW NOT STARTED / MAIN HUMAN REVIEW NOT STARTED / 0 HUMAN LABELS / NOT FINAL-FROZEN**。pilotはannotation guidelineのcalibrationであり、新しいLLM experimentでも本研究の性能結果でもない。今回case選定、reviewer割当、packet・票の生成、判定を行わない。
+2026-10-06現在。**PILOT MATERIALS PREPARED / PILOT HUMAN REVIEW NOT STARTED / MAIN HUMAN REVIEW NOT STARTED / REAL HUMAN LABELS = 0 / NOT FINAL-FROZEN**。pilotはannotation guidelineのcalibrationであり、新しいLLM experimentでも本研究の性能結果でもない。PR #17でPilot Materials Preparationが完了し、Pilot Aの6問はresult-blind / deterministicに選定済み。Reviewer assignment、real translation freeze、reviewer-specific packet authorization、人間によるpilot annotationは未実施。
 
 ## 事前に人間が固定するもの
 
@@ -15,12 +15,14 @@ Reviewer候補は、成人または大学生相当以上で、日本語でReview
 
 独立性は初回判定中に相談せず、相手のlabelを見ず、adjudication前に各自の票を作るindependent annotationを指す。著者との人的関係の有無は別に[Adjudication Rules](ADJUDICATION-RULES.md)のauthor-only項目へ記録する。[日本語Reviewerガイド](REVIEWER-GUIDE-JA.md)を開始前に共有する。英語はsemantic source of record、日本語はprimary displayであり、R1訳の準備にもfuture-stage情報を使わない。
 
-## Sample selection rule（未実行）
+## Sample selection rule（Pilot A選定済み／human annotation未開始）
 
 <!-- rule: PILOT-SELECT-001 -->
 原則、Study 1のmain候補30問の**外**からHotpotQA distractor dev 4〜6問程度をregistry calibration用に選ぶ。Study 2 main24・smoke IDsもexplicit exclusion manifestへ入れ、重複がないことを検証する。旧2校正caseも今回の新pilotへ流用しない。main30/28の選択は別の未決定human preflightである。
 
-question type等のraw metadataによる事前strata、安定したquestion ID順位／seed付きdeterministic方法等を人間がpilot開始前に固定し、pool hash・ID mapping・selection methodを保存する。model performance、answer correctness、desired failure pattern、Study 1/2のscoreを見てcaseを選ばない。今回は実ID・seed・選択caseを指定しない。取得済み資料がなければ別途人間が共有方法を決める（今回downloadなし）。
+Pilot Aでは、取得済みのHotpotQA distractor dev 7,405問から上記の既存caseを重複除外し、eligible pool 7,375問に対して事前固定した `selection_salt = "human-review-pilot-v1:"` と `rank = SHA256(UTF8(selection_salt + QA_ID))` を使用した。rankのhex ascending順の先頭6問を選定済みであり、model performance、answer correctness、desired failure pattern、Study 1/2のscoreや問題内容を選定に用いていない。salt・ranking・exclusion manifest・選定済み6 IDsは維持し、再選定・資料再生成は行わない。
+
+Actual selected IDs、順序、pool/exclusion hashes、dataset hash、provenance、selection timestampおよびprepared material hashesのsource of recordは、[pilot_materials_v1 manifest](pilot_materials_v1/pilot_materials_manifest.json)と[preparation outcome](pilot_materials_v1/PREPARATION-OUTCOME.md)とする。この同期は現在文書の状態記述のみの更新であり、保存済みmanifestや資料、選定前のhistorical commitは書き換えない。資料準備済みはhuman pilot開始を意味せず、Reviewer assignment・固定訳・packet authorizationを人間が完了してからpilot annotationへ進む。
 
 外部HotpotQAはquestion/reference/goldによるR1/R2校正用で、Worker/Synthesizer traceがない場合にそれを捏造しない。stage校正には出自を記録したarchival recordsまたは人工vignettesを使い、新LLM callを行わない。archival recordsはmain対象と独立で、選定をdesired model failureへ合わせない。人工vignetteは本研究実結果ではない。pilot IDをmain independent IAA sampleへ戻さない。
 
